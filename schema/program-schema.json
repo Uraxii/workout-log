@@ -1,0 +1,416 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Uraxii/workout-log/schema/program-schema.json",
+  "title": "Program template",
+  "description": "One template in library/, stored verbatim as JSON in the Notion config page program/current. Headers name, origin, progression_unit, dose, days map 1:1 to schema/notion-schema.json config_pages['program/current'].",
+  "type": "object",
+  "required": [
+    "format_version",
+    "name",
+    "origin",
+    "source",
+    "progression_unit",
+    "dose",
+    "days",
+    "rotation"
+  ],
+  "properties": {
+    "format_version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "origin": {
+      "type": "string",
+      "description": "Credit line: author and where the structure is published."
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "url",
+        "note"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "method_url": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "progression_unit": {
+      "enum": [
+        "session",
+        "week",
+        "block",
+        "level"
+      ],
+      "description": "Cadence at which progression is evaluated."
+    },
+    "dose": {
+      "enum": [
+        "sets",
+        "minutes"
+      ]
+    },
+    "days": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Sessions per week the source prescribes."
+    },
+    "notes": {
+      "type": "string"
+    },
+    "rotation": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/node"
+      },
+      "description": "Ordered nodes. The cursor indexes this array and wraps."
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "blocks"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/block"
+          },
+          "description": "Empty array = rest node (lifecycle rule L17)."
+        }
+      }
+    },
+    "block": {
+      "type": "object",
+      "oneOf": [
+        {
+          "required": [
+            "exercise"
+          ]
+        },
+        {
+          "required": [
+            "sequence"
+          ]
+        }
+      ],
+      "properties": {
+        "exercise": {
+          "type": "string",
+          "description": "Exercises catalog id."
+        },
+        "sequence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/prescription"
+          },
+          "description": "Ordered inner prescriptions repeated `sets` times: run/walk intervals, ladders, complexes."
+        },
+        "label": {
+          "type": "string",
+          "description": "Tier or group label shown in the opener, e.g. T1."
+        },
+        "sets": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rep_range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "amrap_last": {
+          "type": "boolean"
+        },
+        "duration_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "distance": {
+          "type": "object",
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "enum": [
+                "m",
+                "km",
+                "mi"
+              ]
+            }
+          }
+        },
+        "interval_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rest_s": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "load_pct": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1.5,
+          "description": "Fraction of the exercise's training_max this set loads to, e.g. 0.85. For a wave-percentage template (nSuns); absent means load comes from `start`/`next_target` instead."
+        },
+        "side": {
+          "enum": [
+            "each",
+            "left",
+            "right",
+            "both"
+          ],
+          "default": "both",
+          "description": "`each`: the prescription repeats once per side (alternating). `left`/`right`: one side only. `both`: bilateral or side-agnostic, the default."
+        },
+        "start": {
+          "$ref": "#/$defs/start_rule"
+        },
+        "progression": {
+          "$ref": "#/$defs/progression"
+        },
+        "stages": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/prescription"
+          }
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "prescription": {
+      "type": "object",
+      "description": "A stage or a sequence step. Same magnitude fields as a block; set fields override the block's.",
+      "properties": {
+        "exercise": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "sets": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rep_range": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "amrap_last": {
+          "type": "boolean"
+        },
+        "duration_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "distance": {
+          "type": "object",
+          "required": [
+            "value",
+            "unit"
+          ],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "enum": [
+                "m",
+                "km",
+                "mi"
+              ]
+            }
+          }
+        },
+        "interval_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "load_pct": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1.5
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "progression": {
+      "type": "object",
+      "required": [
+        "axis",
+        "advance_when",
+        "on_miss"
+      ],
+      "properties": {
+        "axis": {
+          "enum": [
+            "weight",
+            "reps",
+            "level",
+            "duration",
+            "none"
+          ],
+          "description": "What moves when the block advances."
+        },
+        "increment": {
+          "type": "number"
+        },
+        "increment_unit": {
+          "enum": [
+            "lb",
+            "kg",
+            "reps",
+            "levels",
+            "s"
+          ]
+        },
+        "advance_when": {
+          "$ref": "#/$defs/advance_when"
+        },
+        "on_miss": {
+          "enum": [
+            "hold",
+            "next_stage",
+            "deload"
+          ]
+        },
+        "after_misses": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1,
+          "description": "Consecutive misses before `on_miss` fires. Absent means 1 (fires on the first miss)."
+        },
+        "deload_pct": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "reset": {
+          "$ref": "#/$defs/start_rule"
+        }
+      }
+    },
+    "advance_when": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "all_prescribed_reps",
+            "top_of_rep_range",
+            "amrap_at_least",
+            "sessions_at_stage",
+            "user_says_easy"
+          ]
+        },
+        "reps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "start_rule": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "retest_pct",
+            "load_delta",
+            "hold"
+          ]
+        },
+        "test": {
+          "enum": [
+            "1rm",
+            "3rm",
+            "5rm"
+          ]
+        },
+        "pct": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "enum": [
+            "lb",
+            "kg"
+          ]
+        },
+        "stage": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

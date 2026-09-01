@@ -1,0 +1,8 @@
+@tz	UTC
+@units	lb
+@now	2026-09-01T09:00:00+00:00
+@exercise	Squat (Barbell)	weight_reps
+@exercise	L-Sit	hold_time
+185x5
+185x5
+l-sit 20s

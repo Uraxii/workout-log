@@ -1,0 +1,15 @@
+@tz	UTC
+@units	lb
+@now	2026-09-01T09:00:00+00:00
+@exercise	Row	weight_reps
+
+# G2 (build-plan s3.1, dec "S26 weight/reps order"): a grey-band `20x8` with
+# no carry-forward and no program target resolves with no dialogue. Order:
+# the exercise's measure kind (weight_reps, still ambiguous on its own),
+# then the program target (none exists here), else weight x reps. The
+# reading goes in the confirm line, never a question.
+Row 20x8
+# `fix` reverses the last grey-band reading: weight x reps -> sets x reps.
+# The original first number (20) becomes the set count, the second (8)
+# stays the rep count, so this reverses to 20 sets of 8.
+fix

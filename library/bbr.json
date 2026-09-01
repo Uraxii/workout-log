@@ -1,0 +1,128 @@
+{
+  "format_version": 1,
+  "name": "r/Fitness Basic Beginner Routine",
+  "origin": "r/Fitness community, as documented on the r/Fitness wiki",
+  "source": {
+    "url": "https://thefitness.wiki/routines/r-fitness-basic-beginner-routine/",
+    "note": "Structure only: which lifts, sets and reps, when load moves. Written in our own words from the cited page, no text reproduced. A training method is not copyrightable expression (17 U.S.C. 102(b), research/16 'The licence rule')."
+  },
+  "progression_unit": "session",
+  "dose": "sets",
+  "days": 3,
+  "notes": "Two workouts, A and B, alternate every session so a 3-session week runs A-B-A one week and B-A-B the next. Starting loads come from a tested 5RM at 90%; the source gives no single number for the accessory row so it is set at intake. `after_misses: 3` on every lift: the source deloads 10% after three consecutive stalls at the same weight, not on the first miss.",
+  "rotation": [
+    {
+      "id": "A",
+      "label": "A (squat, bench, row)",
+      "blocks": [
+        {
+          "label": "Squat",
+          "exercise": "Barbell_Squat",
+          "sets": 3,
+          "reps": 5,
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "deload",
+            "after_misses": 3,
+            "deload_pct": 0.9
+          }
+        },
+        {
+          "label": "Bench",
+          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "sets": 3,
+          "reps": 5,
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "deload",
+            "after_misses": 3,
+            "deload_pct": 0.9
+          }
+        },
+        {
+          "label": "Row",
+          "exercise": "Bent_Over_Barbell_Row",
+          "sets": 3,
+          "reps": 5,
+          "amrap_last": true,
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "deload",
+            "after_misses": 3,
+            "deload_pct": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "label": "B (squat, overhead press, deadlift)",
+      "blocks": [
+        {
+          "label": "Squat",
+          "exercise": "Barbell_Squat",
+          "sets": 3,
+          "reps": 5,
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "deload",
+            "after_misses": 3,
+            "deload_pct": 0.9
+          }
+        },
+        {
+          "label": "Overhead press",
+          "exercise": "Standing_Military_Press",
+          "sets": 3,
+          "reps": 5,
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "deload",
+            "after_misses": 3,
+            "deload_pct": 0.9
+          }
+        },
+        {
+          "label": "Deadlift",
+          "exercise": "Barbell_Deadlift",
+          "sets": 1,
+          "reps": 5,
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "deload",
+            "after_misses": 3,
+            "deload_pct": 0.9
+          }
+        }
+      ]
+    }
+  ]
+}

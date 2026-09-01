@@ -1,0 +1,29 @@
+# Phase 6 safety proof: build-plan.md s9 phase 6 row, s6.1 rules S2, S3, S5,
+# S8, L12. A niggle never halts; a stop report halts the session and opens a
+# dated limits entry naming the area; a logging attempt is refused while
+# halted; a bare "I'm fine" clears neither progression:manual nor the entry.
+#
+# S2's refusal is proved twice, on purpose (workout-log-qdb). msg-5 routes
+# 205x5 to `session-runner`, the only seam in the repo with a write path, so
+# the check can actually fail: delete the guard in
+# session-runner/scripts/preconditions.py and this fixture goes red with the
+# 205 lb row it just wrote. msg-6 repeats the line through `trainer-core`,
+# which gates but cannot write, so that turn proves the wording is the same
+# whichever seam the user's line reaches, and nothing more.
+@tz	UTC
+@units	lb
+@now	2026-09-01T09:00:00+00:00
+@exercise	Squat (Barbell)	weight_reps
+185x5
+@skill	pain-triage
+just a little twinge in my knee today
+@skill	session-runner
+185x5
+@skill	pain-triage
+sharp pain in my left knee, felt a pop
+@skill	session-runner
+205x5
+@skill	trainer-core
+205x5
+@skill	pain-triage
+I'm fine

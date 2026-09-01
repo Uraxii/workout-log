@@ -1,0 +1,43 @@
+url	title	kind	cited_by	why	access
+https://developers.notion.com/guides/get-started/overview	Notion API: connections overview	primary	-	Canonical entry point for Notion integration auth models and API capabilities	open
+https://www.notion.com/pricing	Notion Pricing Plans: Free, Plus, Business, Enterprise	primary	-	Vendor pricing grid; settles which API and AI features gate by plan	open
+https://developers.notion.com/docs/get-started-with-mcp	Connect to Notion MCP	primary	-	Official Notion MCP endpoints and OAuth requirement for agent clients	open
+https://docs.github.com/en/rest/repos/contents	REST API endpoints for repository contents	primary	-	Canonical read/write file API for a git-backed log without cloning	open
+https://code.claude.com/docs/en/web-quickstart	Get started with Claude Code on the web	primary	-	Phone-to-agent path for the git option; plan requirements stated	open
+https://raw.githubusercontent.com/Vinzent03/obsidian-git/master/README.md	Obsidian Git plugin README	primary	-	Maintainer README; source of the mobile instability warning	open
+https://raw.githubusercontent.com/coddingtonbear/obsidian-local-rest-api/main/README.md	Obsidian Local REST API README	primary	-	Vault CRUD plus built-in MCP endpoint; localhost-only binding constraint	open
+https://obsidian.md/sync	Obsidian Sync	primary	-	Vendor page for Sync tiers, storage and vault limits	open
+https://raw.githubusercontent.com/wger-project/wger/master/README.md	wger README	primary	-	AGPL self-hosted fitness tracker; features, licence, deployment entry points	open
+https://raw.githubusercontent.com/wger-project/mcp-server/master/README.md	wger MCP server README	primary	-	Official wger MCP server exposing the fitness REST API to agents	open
+https://developers.google.com/workspace/sheets/api/reference/rest	Google Sheets API REST reference	primary	-	Canonical Sheets v4 endpoint reference for programmatic row appends	open
+https://developers.cloudflare.com/workers/platform/pricing/	Cloudflare Workers pricing	primary	-	Free-tier request and CPU allowances for a self-built log API	open
+https://developers.cloudflare.com/d1/platform/pricing/	Cloudflare D1 pricing	primary	-	Free-tier row read/write and storage limits for D1 databases	open
+https://supabase.com/pricing	Supabase Pricing	primary	-	Free-tier database size, request limits, and project pausing policy	open
+https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities	Use connectors to extend Claude's capabilities	primary	-	Which connectors exist, platform availability, and per-action write permissions	open
+https://developers.notion.com/reference/intro	Notion API Introduction	cited	https://developers.notion.com/guides/get-started/overview	Full REST endpoint reference behind the overview page	open
+https://developers.notion.com/reference/request-limits	Notion API request limits	cited	https://developers.notion.com/guides/get-started/overview	Rate limits and payload caps; plan-scaled workspace limit unpublished	open
+https://developers.notion.com/docs/authorization	Notion authorization	cited	https://developers.notion.com/guides/get-started/overview	Internal token versus OAuth; decides unattended agent write path	open
+https://www.notion.com/help/create-integrations-with-the-notion-api	Create integrations with the Notion API	cited	https://developers.notion.com/guides/get-started/overview	Workspace-owner steps to mint an internal integration token	open
+https://developers.notion.com/docs/mcp	Notion MCP	cited	https://developers.notion.com/docs/get-started-with-mcp	Companion MCP doc; tool surface and no stated plan gate	open
+https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api	Authenticating to the GitHub REST API	cited	https://docs.github.com/en/rest/repos/contents	Token types and scopes needed for agent commits to private repos	open
+https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api	Rate limits for the GitHub REST API	cited	https://docs.github.com/en/rest/repos/contents	Request budget for a polling or committing agent	open
+https://docs.github.com/en/rest/about-the-rest-api/api-versions	GitHub REST API versions	cited	https://docs.github.com/en/rest/repos/contents	Version header pinning so a stored integration does not drift	open
+https://code.claude.com/docs/en/claude-code-on-the-web	Use Claude Code on the web	cited	https://code.claude.com/docs/en/web-quickstart	Full web reference: session limits, GitHub auth options, platform restrictions	open
+https://code.claude.com/docs/en/routines	Automate work with routines	cited	https://code.claude.com/docs/en/web-quickstart	Scheduled, API, and GitHub-event triggers for unattended log processing	open
+https://code.claude.com/docs/en/cloud-environments	Configure cloud environments	cited	https://code.claude.com/docs/en/web-quickstart	Network access levels and secrets handling for cloud agent runs	open
+https://publish.obsidian.md/git-doc/Start+here	Obsidian Git documentation	cited	https://raw.githubusercontent.com/Vinzent03/obsidian-git/master/README.md	Maintainer docs site; setup and mobile limitations in detail	open
+https://coddingtonbear.github.io/obsidian-local-rest-api/	Local REST API for Obsidian: interactive API docs	cited	https://raw.githubusercontent.com/coddingtonbear/obsidian-local-rest-api/main/README.md	OpenAPI browser for the plugin endpoints; renders client-side only	js-only
+https://obsidian.md/pricing	Obsidian pricing	cited	https://obsidian.md/sync	Confirms the app is free and commercial licence is optional	open
+https://wger.readthedocs.io/en/latest/	wger documentation	cited	https://raw.githubusercontent.com/wger-project/wger/master/README.md	Official docs root for install, configuration and API chapters	open
+https://wger.readthedocs.io/en/latest/api/index.html	wger REST API documentation	cited	https://raw.githubusercontent.com/wger-project/wger/master/README.md	Authoritative wger API chapter; resolves the unverified auth model	open
+https://raw.githubusercontent.com/wger-project/docker/master/README.md	wger docker deployment README	cited	https://raw.githubusercontent.com/wger-project/wger/master/README.md	Official compose files for prod, sqlite dev, and postgres	open
+https://pypi.org/project/wger-mcp/	wger-mcp on PyPI	cited	https://raw.githubusercontent.com/wger-project/mcp-server/master/README.md	Published package and version history for the wger MCP server	open
+https://modelcontextprotocol.io/docs/getting-started/intro	What is the Model Context Protocol	cited	https://raw.githubusercontent.com/wger-project/mcp-server/master/README.md	Protocol home page every MCP server in this set references	open
+https://developers.cloudflare.com/kv/platform/limits/	Cloudflare KV limits	cited	https://developers.cloudflare.com/workers/platform/pricing/	Daily write cap that disqualifies KV as a log store	open
+https://developers.cloudflare.com/workers/platform/limits/	Cloudflare Workers limits	cited	https://developers.cloudflare.com/workers/platform/pricing/	Runtime, subrequest and size limits beyond the pricing allowances	open
+https://supabase.com/docs/guides/getting-started/mcp	Supabase MCP Server	cited	https://supabase.com/pricing	Official MCP server plus its warning against connecting production data	open
+https://supabase.com/docs/guides/platform/billing-on-supabase	Billing on Supabase	cited	https://supabase.com/pricing	How free-tier quotas, overages and project pausing are actually billed	open
+https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp	Get started with custom connectors using remote MCP	cited	https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities	Plan availability for custom remote MCP connectors, including the Free limit	open
+https://developers.google.com/workspace/sheets/api/quickstart/python	Google Sheets API Python quickstart	cited	https://developers.google.com/workspace/sheets/api/reference/rest	Concrete setup path: GCP project, enabled API, credentials	open
+https://developers.google.com/workspace/guides/auth-overview	Google Workspace authentication and authorization overview	cited	https://developers.google.com/workspace/sheets/api/reference/rest	Service account versus OAuth choice for an unattended Sheets writer	open
+https://developers.google.com/workspace/sheets/api/limits	Google Sheets API usage limits	cited	https://developers.google.com/workspace/sheets/api/reference/rest	Per-minute read and write quotas for the Sheets API	open

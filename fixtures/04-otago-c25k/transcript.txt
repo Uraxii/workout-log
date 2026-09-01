@@ -1,0 +1,28 @@
+# Phase 4 proof: build-plan.md s9 phase 4 row. Two more library/ templates
+# through session-runner's "what am i doing today": Otago (progression_unit
+# level, dose sets, its S day's level_reps blocks) and Couch to 5k
+# (progression_unit session, dose minutes, sequence-block run/walk
+# intervals). No line count is asserted on either opener.
+#
+# Ticket ayf.15 proof: the Couch to 5k opener is read from a COLD chat, one
+# closed Otago session already in history. The rotation cursor counts the
+# sessions closed since THIS program was picked (program/current.started_at),
+# so C25K opens on W1D1. Counting every closed session in the workspace,
+# which is what hydrate.py used to do, opened it on W1D2: a second program
+# inheriting the first one's cursor.
+@tz	UTC
+@units	lb
+@now	2026-09-01T09:00:00+00:00
+@skill	program-design
+make me a plan, falls prevention, older adult
+@skill	session-runner
+@now	2026-09-01T09:05:00+00:00
+what am i doing today
+done for today
+@skill	program-design
+@now	2026-09-03T09:00:00+00:00
+make me a plan, couch to 5k, running
+@skill	session-runner
+@now	2026-09-03T09:05:00+00:00
+@cold
+what am i doing today

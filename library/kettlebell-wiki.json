@@ -1,0 +1,79 @@
+{
+  "format_version": 1,
+  "name": "r/kettlebell wiki programming",
+  "origin": "r/kettlebell community wiki",
+  "source": {
+    "url": "https://www.reddit.com/r/kettlebell/wiki/programming/",
+    "method_url": "https://www.reddit.com/r/kettlebell/wiki/faq/",
+    "note": "Structure only: the swing-and-get-up beginner shape the wiki links to, written in our own words, no text reproduced. A training method is not copyrightable expression (17 U.S.C. 102(b), research/16 'The licence rule')."
+  },
+  "progression_unit": "week",
+  "dose": "sets",
+  "days": 3,
+  "notes": "Same session run 3x a week. Swings expressed as an EMOM (interval_s, sets = minutes); the ladder block shows the rep-step shape (sequence of rising then falling reps, run for its listed sets). Get-ups are prescribed per side in the source: `side: \"each\"` on the get-up block repeats its 6 sets once per side, alternating.",
+  "rotation": [
+    {
+      "id": "A",
+      "label": "Swing EMOM + get-ups",
+      "blocks": [
+        {
+          "label": "Swings (EMOM)",
+          "exercise": "Kettlebell_Swing",
+          "reps": 10,
+          "interval_s": 60,
+          "sets": 10,
+          "stages": [
+            {"sets": 8},
+            {"sets": 10},
+            {"sets": 12}
+          ],
+          "progression": {
+            "axis": "level",
+            "increment": 1,
+            "increment_unit": "levels",
+            "advance_when": {"kind": "sessions_at_stage", "count": 4},
+            "on_miss": "hold"
+          },
+          "note": "One set of 10 swings starts every 60s (interval_s); sets = EMOM minutes. Stages step the minute count up, not the swing weight."
+        },
+        {
+          "label": "Get-up",
+          "exercise": "Kettlebell_Turkish_Get-Up_Lunge_style",
+          "sets": 3,
+          "reps": 1,
+          "rest_s": 60,
+          "side": "each",
+          "note": "3 singles per side, alternating, 6 total. `side: each` repeats the 3 sets once per side."
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "label": "Swing ladder + get-ups",
+      "blocks": [
+        {
+          "label": "Swing ladder",
+          "sets": 3,
+          "rest_s": 45,
+          "sequence": [
+            {"exercise": "Kettlebell_Swing", "reps": 3},
+            {"exercise": "Kettlebell_Swing", "reps": 5},
+            {"exercise": "Kettlebell_Swing", "reps": 7},
+            {"exercise": "Kettlebell_Swing", "reps": 5},
+            {"exercise": "Kettlebell_Swing", "reps": 3}
+          ],
+          "note": "One ladder trip (3-5-7-5-3 reps) counts as one set; run it 3 times."
+        },
+        {
+          "label": "Get-up",
+          "exercise": "Kettlebell_Turkish_Get-Up_Lunge_style",
+          "sets": 3,
+          "reps": 1,
+          "rest_s": 60,
+          "side": "each",
+          "note": "3 singles per side, alternating, 6 total. `side: each` repeats the 3 sets once per side."
+        }
+      ]
+    }
+  ]
+}

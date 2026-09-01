@@ -1,0 +1,15 @@
+# Phase 4 proof: build-plan.md s9 phase 4 row, lim L-21's session-only half.
+# `swap <exercise>` re-scopes today's lift; the logged rows name the swap,
+# and program/current gets no further config-write after the plan pick, so
+# the program itself (build-plan s6, rule "swap-in-place is program-
+# design's job, not session-runner's") is left untouched.
+@tz	UTC
+@units	lb
+@now	2026-09-01T09:00:00+00:00
+@skill	program-design
+make me a plan, goal get stronger, 3 days a week, barbell and rack, some experience, squat 185x5
+@skill	session-runner
+@now	2026-09-01T18:00:00+00:00
+what am i doing today
+swap front barbell squat
+225x5x3

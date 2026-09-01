@@ -1,0 +1,151 @@
+{
+  "schema_version": "2.1",
+  "source": "docs/build-plan.md s1.1-s1.8",
+  "note": "Property names are Notion display names, verbatim from s1.2-s1.8. One workspace = one client.",
+
+  "measure_kinds": {
+    "weight_reps":   {"magnitudes": ["Load", "Unit", "Reps"]},
+    "reps_only":     {"magnitudes": ["Reps"]},
+    "hold_time":     {"magnitudes": ["duration_s"]},
+    "distance_load": {"magnitudes": ["distance", "distance_unit", "Load", "Unit"]},
+    "distance_time": {"magnitudes": ["distance", "distance_unit", "duration_s"]},
+    "level_reps":    {"magnitudes": ["level", "Reps"]},
+    "interval_reps": {"magnitudes": ["Reps", "interval_s", "Load", "Unit"]}
+  },
+
+  "databases": {
+    "Sets": {
+      "description": "One row per set. s1.2.",
+      "identity": ["write_key"],
+      "idempotency": ["source_message_id"],
+      "properties": {
+        "Session":           {"type": "relation", "database": "Sessions"},
+        "Exercise":          {"type": "relation", "database": "Exercises"},
+        "Set index":         {"type": "number"},
+        "Set type":          {"type": "select", "enum": ["warmup", "working", "backoff", "dropset"], "default": "working"},
+        "is_amrap":          {"type": "checkbox"},
+        "to_failure":        {"type": "checkbox"},
+        "RPE":               {"type": "number"},
+        "RIR":               {"type": "number"},
+        "Timestamp":         {"type": "date"},
+        "machine_setting":   {"type": "rich_text"},
+        "Side":              {"type": "select", "enum": ["both", "left", "right"], "default": "both"},
+        "reps_left":         {"type": "number"},
+        "reps_right":        {"type": "number"},
+        "Notes":             {"type": "rich_text"},
+        "Load":              {"type": "number"},
+        "Unit":              {"type": "select", "enum": ["lb", "kg"]},
+        "load_kind":         {"type": "select", "enum": ["absolute", "added", "assist"]},
+        "Reps":              {"type": "number"},
+        "duration_s":        {"type": "number"},
+        "distance":          {"type": "number"},
+        "distance_unit":     {"type": "select", "enum": ["m", "km", "mi"]},
+        "level":             {"type": "number"},
+        "interval_s":        {"type": "number"},
+        "attempt":           {"type": "number", "default": 0},
+        "write_key":         {"type": "rich_text"},
+        "source_message_id": {"type": "rich_text"},
+        "Pain flag":         {"type": "select", "enum": ["none", "niggle", "stop"], "default": "none"},
+        "confirm_line":      {"type": "rich_text"},
+        "stale":             {"type": "checkbox"},
+        "e1RM":              {"type": "formula", "expression": "Load / (1.0278 - 0.0278 * Reps)", "null_when": ["Reps > 10", "Set type != working"]}
+      }
+    },
+
+    "Sessions": {
+      "description": "One row per session. s1.4, rules L1-L18.",
+      "identity": ["page_id"],
+      "properties": {
+        "Title":             {"type": "title"},
+        "Date":              {"type": "date", "frozen_at": "open", "rule": "L4"},
+        "Timezone":          {"type": "rich_text", "frozen_at": "open", "rule": "L3"},
+        "Status":            {"type": "select", "enum": ["open", "closed", "abandoned", "halted"], "default": "open"},
+        "Start time":        {"type": "date"},
+        "End time":          {"type": "date"},
+        "Program":           {"type": "rich_text"},
+        "Day":               {"type": "rich_text"},
+        "Cursor":            {"type": "rich_text", "advisory_only": true, "rule": "L8"},
+        "week_index":        {"type": "number", "derived_from": "Date", "rule": "L18"},
+        "Readiness":         {"type": "number", "range": [1, 5], "rule": "L2"},
+        "Session RPE":       {"type": "number"},
+        "Bodyweight":        {"type": "number"},
+        "Bodyweight unit":   {"type": "select", "enum": ["lb", "kg"]},
+        "Location":          {"type": "relation", "database": "Locations"},
+        "Notes":             {"type": "rich_text"}
+      }
+    },
+
+    "Exercises": {
+      "description": "The catalog plus per-exercise state. s1.5, s1.6.",
+      "identity": ["Name"],
+      "properties": {
+        "Name":               {"type": "title"},
+        "slug":               {"type": "rich_text"},
+        "aliases":            {"type": "rich_text"},
+        "measure":            {"type": "select", "enum": ["weight_reps", "reps_only", "hold_time", "distance_load", "distance_time", "level_reps", "interval_reps"]},
+        "implements":         {"type": "number", "default": 1},
+        "primary_muscles":    {"type": "multi_select"},
+        "secondary_muscles":  {"type": "multi_select"},
+        "equipment":          {"type": "multi_select"},
+        "mechanic":           {"type": "select", "enum": ["compound", "isolation"]},
+        "is_unilateral":      {"type": "checkbox"},
+        "min_increment":      {"type": "number"},
+        "min_increment_unit": {"type": "select", "enum": ["lb", "kg"]},
+        "variation_chain":    {"type": "rich_text"},
+        "variation_index":    {"type": "number"},
+        "source":             {"type": "select", "enum": ["free-exercise-db", "extra", "user"]},
+        "fail_count":         {"type": "number", "written_by": "load-adjust"},
+        "training_max":       {"type": "number", "written_by": "load-adjust"},
+        "stage_index":        {"type": "number", "written_by": "load-adjust"},
+        "last_deload_at":     {"type": "date", "written_by": "load-adjust"},
+        "deload_declined_at": {"type": "date", "written_by": "load-adjust"},
+        "grey_band_answer":   {"type": "rich_text", "written_by": "session-runner", "rule": "G2"},
+        "next_target":        {"type": "rich_text", "written_by": "load-adjust"},
+        "target_source_set":  {"type": "rich_text", "written_by": "load-adjust"}
+      }
+    },
+
+    "Locations": {
+      "description": "Per-gym equipment reality. s1.8.",
+      "identity": ["Name"],
+      "properties": {
+        "Name":             {"type": "title"},
+        "plate_pairs_lb":   {"type": "rich_text"},
+        "plate_pairs_kg":   {"type": "rich_text"},
+        "bar_weight_lb":    {"type": "number"},
+        "bar_weight_kg":    {"type": "number"},
+        "fixed_stacks":     {"type": "rich_text"},
+        "min_increment_lb": {"type": "number"},
+        "min_increment_kg": {"type": "number"},
+        "Notes":            {"type": "rich_text"}
+      }
+    }
+  },
+
+  "config_pages": {
+    "config/athlete": {
+      "keys": ["goal", "training_age", "days_per_week", "equipment", "strength_baseline", "jurisdiction", "referral_name", "age", "measure_kinds", "intake_cursor"]
+    },
+    "config/preferences": {
+      "keys": ["units", "nutrition_strictness", "rest_display"],
+      "enums": {"units": ["lb", "kg"]}
+    },
+    "config/limits": {
+      "keys": ["entries", "progression", "policy_checked", "clearance", "parq_date"],
+      "enums": {
+        "progression": ["auto", "manual"],
+        "clearance": ["cleared", "not_required", "pending", "referred"],
+        "entry_status": ["open", "resolved", "cleared by clinician"]
+      }
+    },
+    "program/current": {
+      "note": "`body` is the picked library/*.json template verbatim, JSON encoded, so the rotation a later chat reads is the one this program actually has, swaps included. `started_at` scopes the rotation cursor to this program: the sessions that count are the closed ones that also started at or after it was picked. Round trip owned by .claude/skills/program-design/scripts/program_page.py.",
+      "headers": ["name", "origin", "progression_unit", "dose", "days", "template_id", "started_at", "body"],
+      "enums": {
+        "progression_unit": ["session", "week", "block", "level"],
+        "dose": ["sets", "minutes"]
+      }
+    },
+    "program/history/<date>": {"headers": ["name", "origin", "closed_at"]}
+  }
+}

@@ -1,0 +1,87 @@
+verb	target	field	value
+row-create	Sessions	Date	2026-09-01
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
+row-create	Sessions	week_index	36
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	590df2ecff4e15ca
+row-create	Sets	source_message_id	msg-1
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	2
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	90
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	ecbc92e5d28605f5
+row-create	Sets	source_message_id	msg-2
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Squat (Barbell) set 2, 90 kg x 5. Set 3 at 90 kg.
+row-create	Exercises	fail_count	0
+row-create	Exercises	next_target	195 lb
+row-create	Exercises	next_target	205 lb
+row-create	Exercises	next_target	215 lb
+row-create	Exercises	fail_count	1
+row-create	Exercises	fail_count	2
+row-create	Exercises	deload_declined_at	today
+row-create	Exercises	fail_count	3
+row-create	Exercises	fail_count	0
+row-create	Exercises	stage_index	4
+row-create	Exercises	fail_count	0
+row-create	Exercises	next_target	35 lb
+row-create	Exercises	fail_count	1
+row-create	Exercises	fail_count	2
+row-create	Exercises	fail_count	0
+row-create	Exercises	last_deload_at	today
+row-create	Exercises	next_target	90 lb
+row-create	Exercises	fail_count	1
+row-create	Exercises	fail_count	2
+row-create	Sessions	Status	halted
+config-write	config/limits	entries	[{"area": "knee", "status": "open", "opened_at": "2026-09-01"}]
+config-write	config/limits	progression	manual
+say	session-runner	msg-1	"Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-2	"Squat (Barbell) set 2, 90 kg x 5. Set 3 at 90 kg."
+say	load-adjust	msg-3	"Progression set for Squat (Barbell)."
+say	load-adjust	msg-4	"Squat (Barbell): top of the range, bumping up to 195 lb."
+say	load-adjust	msg-5	"Squat (Barbell): top of the range, bumping up to 205 lb."
+say	load-adjust	msg-6	"Squat (Barbell): top of the range, bumping up to 215 lb."
+say	load-adjust	msg-7	"Progression set for Bench Press (Barbell)."
+say	load-adjust	msg-8	"Bench Press (Barbell): missed the bottom of the range, holding."
+say	load-adjust	msg-9	"Bench Press (Barbell): 10% deload to 90 lb? (yes/no)"
+say	load-adjust	msg-10	"Bench Press (Barbell): keeping the current load. Won't ask again for this streak (rule L-22)."
+say	load-adjust	msg-11	"Bench Press (Barbell): repeat miss, holding (deload already declined)."
+say	load-adjust	msg-12	"Progression set for Ring Row."
+say	load-adjust	msg-13	"Ring Row: top of the range, bumping up to 4."
+say	load-adjust	msg-14	"Progression set for Assisted Pull-up."
+say	load-adjust	msg-15	"Assisted Pull-up: top of the range, bumping less assist to 35 lb."
+say	load-adjust	msg-16	"Progression set for Running."
+say	load-adjust	msg-17	"On feminizing HRT, endurance and hemoglobin drop before strength does (research/11 s1.1): a slower pace or higher heart rate in the first months is the hormone, not a stall, so this isn't a deload trigger. Keeping resistance volume steady defends strength best."
+say	load-adjust	msg-18	"Progression set for Overhead Press (Barbell)."
+say	load-adjust	msg-19	"Overhead Press (Barbell): missed the bottom of the range, holding."
+say	load-adjust	msg-20	"Overhead Press (Barbell): 10% deload to 90 lb? (yes/no)"
+say	load-adjust	msg-21	"Overhead Press (Barbell): deloaded to 90 lb."
+say	load-adjust	msg-22	"Overhead Press (Barbell): missed the bottom of the range, holding."
+say	load-adjust	msg-23	"Overhead Press (Barbell): 10% deload to 81 lb? (yes/no)"
+say	pain-triage	msg-24	"Stopping here. That's a stop-level signal (knee). See a physician or physiotherapist before that movement again. I can still help with everything else on the plan."
+say	load-adjust	msg-25	"Good to hear, but progression stays manual until 14 symptom-free days pass or a clinician clearance / re-screen clears it. A confirmation alone can't do that (rule S5)."
+say	load-adjust	msg-26	"Progression is set to manual, not auto-adjusting. Logged for the record."
+say	load-adjust	msg-27	"Progression is set to manual, not auto-adjusting. Logged for the record."
+say	load-adjust	msg-28	"I couldn't read 'abc', so I logged nothing for it. I need a set like `185x8`, `bw+25x8`, `bw-25x8`, or a bare rep count like `8`. What did you mean?"
+say	load-adjust	msg-29	"Nothing was there where I needed a set like `185x8`, `bw+25x8`, `bw-25x8`, or a bare rep count like `8`, so I logged nothing. What did you mean?"

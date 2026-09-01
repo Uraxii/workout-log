@@ -1,0 +1,34 @@
+# Phase 4 proof: build-plan.md s9 phase 4 row, s4 core loop. A full GZCLP
+# cycle from library/, read through program/current (program-design), with
+# session-runner answering "what am i doing today" from the cursor each
+# day, a rest node (docs/program-format.md's own mini-example shape, seeded
+# by @rest_node since no library/ template ships one, program-design notes
+# say so on gzclp.json itself) acknowledged and the cursor advancing past
+# it back to A1 (cycle 1: the full lap), and the readiness turn appearing
+# once per session, skipped every time with no block on the first set.
+@tz	UTC
+@units	lb
+@now	2026-09-01T09:00:00+00:00
+@skill	program-design
+make me a plan, goal get stronger, 3 days a week, barbell and rack, some experience, squat 185x5
+@rest_node	Rest
+@skill	session-runner
+@now	2026-09-01T18:00:00+00:00
+what am i doing today
+225x5x3
+done for today
+@now	2026-09-03T18:00:00+00:00
+what am i doing today
+95x5x3
+done for today
+@now	2026-09-05T18:00:00+00:00
+what am i doing today
+185x5x3
+done for today
+@now	2026-09-07T18:00:00+00:00
+what am i doing today
+315x5x3
+done for today
+@now	2026-09-09T18:00:00+00:00
+what am i doing today
+done

@@ -1,0 +1,17 @@
+# Phase 3 proof: rule L11's other half, `open -> abandoned`. A session
+# opened 2026-08-25 is never closed with "done for today". The first line
+# on 2026-08-27 arms the finish-or-advance ask (dec "S21 partial session")
+# but still logs into the stale session by default: it stays open until
+# the user says so. "advance" then abandons it and opens 08-27 fresh, with
+# a reset cursor (rule L7) proving it is a genuinely new session, not the
+# old one relabelled.
+@tz	UTC
+@units	lb
+@now	2026-08-25T09:00:00+00:00
+@exercise	Squat (Barbell)	weight_reps
+Squat (Barbell) 185x5
+@now	2026-08-27T09:00:00+00:00
+Squat (Barbell) 186x5
+advance
+Squat (Barbell) 190x5
+done for today

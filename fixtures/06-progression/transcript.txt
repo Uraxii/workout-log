@@ -1,0 +1,60 @@
+# Phase 6 progression proof: build-plan.md s9 phase 6 row, s6.1 rules S5, S7,
+# s1.6, s1.7, docs/limitations.md L-05, L-20, L-22, L-35, L-42, L-44.
+# Squat: three top-of-range sessions bump `next_target` automatically, no ask.
+# Bench Press: a repeat miss asks before a -10% deload; a decline is not
+# re-offered on the very next miss.
+# Ring Row: a level-axis exercise steps `stage_index`, never `next_target`.
+# Assisted Pull-up: an assist set at the top of the range lowers the stored
+# `Load` (less assistance = progress), never framed as a rising trend.
+# Running: a performance question reads the HRT branch, no writes.
+# The mixed-unit Squat history (lb then kg) is ranked in the write-up via
+# `read_layer.rank_best`, since ranking is read-only and never a write.
+# Overhead Press: a deload accept writes only after a literal `yes`, and a
+# second ask left pending across the halt is refused, not written (9vm).
+# The pain-triage halt sets `progression: manual`; a bare "I'm fine" routed
+# to load-adjust neither clears it, nor lets a session report auto-adjust,
+# nor lets a `yes` to a pending deload write under the off switch. A
+# malformed set line under the off switch refuses out loud with zero writes:
+# neither a traceback nor a silent "Noted." (ayf.12).
+@tz	UTC
+@units	lb
+@now	2026-09-01T09:00:00+00:00
+@exercise	Squat (Barbell)	weight_reps
+@exercise	Bench Press (Barbell)	weight_reps
+@exercise	Ring Row	level_reps
+@exercise	Assisted Pull-up	weight_reps
+@exercise	Running	distance_time
+@exercise	Overhead Press (Barbell)	weight_reps
+@skill	session-runner
+Squat (Barbell) 185x5
+Squat (Barbell) 90kgx5
+@skill	load-adjust
+setup	Squat (Barbell)	axis=weight	increment=10	unit=lb	rep_range=5-8	on_miss=deload	deload_pct=10	after_misses=2	current=185
+Squat (Barbell)	185x8,185x8,185x8
+Squat (Barbell)	195x8,195x8,195x8
+Squat (Barbell)	205x8,205x8,205x8
+setup	Bench Press (Barbell)	axis=weight	increment=10	unit=lb	rep_range=5-8	on_miss=deload	deload_pct=10	after_misses=2	current=100
+Bench Press (Barbell)	100x3,100x3,100x3
+Bench Press (Barbell)	100x3,100x3,100x3
+no
+Bench Press (Barbell)	100x3,100x3,100x3
+setup	Ring Row	axis=level	increment=1	rep_range=6-8	on_miss=hold	after_misses=3	current=3
+Ring Row	8,8,8
+setup	Assisted Pull-up	axis=weight	increment=5	unit=lb	rep_range=6-10	on_miss=deload	deload_pct=10	after_misses=2	current=40
+Assisted Pull-up	bw-40x10,bw-40x10,bw-40x10
+setup	Running	hrt=feminizing
+why did my running get slower?
+setup	Overhead Press (Barbell)	axis=weight	increment=5	unit=lb	rep_range=5-8	on_miss=deload	deload_pct=10	after_misses=2	current=100
+Overhead Press (Barbell)	100x3,100x3,100x3
+Overhead Press (Barbell)	100x3,100x3,100x3
+yes
+Overhead Press (Barbell)	90x3,90x3,90x3
+Overhead Press (Barbell)	90x3,90x3,90x3
+@skill	pain-triage
+sharp pain in my knee, felt a pop
+@skill	load-adjust
+I'm fine
+Squat (Barbell)	225x8,225x8,225x8
+yes
+Squat (Barbell)	abc
+Squat (Barbell)	

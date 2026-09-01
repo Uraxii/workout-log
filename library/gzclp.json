@@ -1,0 +1,240 @@
+{
+  "format_version": 1,
+  "name": "GZCLP",
+  "origin": "Cody Lefever (GZCL tier method); GZCLP structure as documented on the r/Fitness wiki",
+  "source": {
+    "url": "https://thefitness.wiki/routines/gzclp/",
+    "method_url": "https://swoleateveryheight.blogspot.com/2014/07/the-gzcl-method-simplified_13.html",
+    "note": "Structure only: which lifts, how many sets and reps, when load moves. Written in our own words from the cited pages, no text reproduced. A training method is not copyrightable expression (17 U.S.C. 102(b), research/16 'The licence rule')."
+  },
+  "progression_unit": "session",
+  "dose": "sets",
+  "days": 3,
+  "notes": "Four workouts rotate in order regardless of weekday; the source runs them 3 to 4 times a week, so spacing is the user's. No rest nodes: the rotation is not pinned to a weekly grid. T1 starts at 85% of a tested 5RM; T2 and T3 starting loads are set at intake, the source gives no single number worth asserting.",
+  "rotation": [
+    {
+      "id": "A1",
+      "label": "A1 (squat T1, bench T2)",
+      "blocks": [
+        {
+          "label": "T1",
+          "exercise": "Barbell_Squat",
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.85},
+          "stages": [
+            {"sets": 5, "reps": 3, "amrap_last": true},
+            {"sets": 6, "reps": 2, "amrap_last": true},
+            {"sets": 10, "reps": 1, "amrap_last": true}
+          ],
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "next_stage",
+            "reset": {"kind": "retest_pct", "test": "5rm", "pct": 0.85, "stage": 0}
+          }
+        },
+        {
+          "label": "T2",
+          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "stages": [
+            {"sets": 3, "reps": 10},
+            {"sets": 3, "reps": 8},
+            {"sets": 3, "reps": 6}
+          ],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "next_stage",
+            "reset": {"kind": "load_delta", "value": 15, "unit": "lb", "stage": 0}
+          }
+        },
+        {
+          "label": "T3",
+          "exercise": "Wide-Grip_Lat_Pulldown",
+          "sets": 3,
+          "reps": 15,
+          "amrap_last": true,
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "amrap_at_least", "reps": 25},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "label": "B1 (overhead press T1, deadlift T2)",
+      "blocks": [
+        {
+          "label": "T1",
+          "exercise": "Standing_Military_Press",
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.85},
+          "stages": [
+            {"sets": 5, "reps": 3, "amrap_last": true},
+            {"sets": 6, "reps": 2, "amrap_last": true},
+            {"sets": 10, "reps": 1, "amrap_last": true}
+          ],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "next_stage",
+            "reset": {"kind": "retest_pct", "test": "5rm", "pct": 0.85, "stage": 0}
+          }
+        },
+        {
+          "label": "T2",
+          "exercise": "Barbell_Deadlift",
+          "stages": [
+            {"sets": 3, "reps": 10},
+            {"sets": 3, "reps": 8},
+            {"sets": 3, "reps": 6}
+          ],
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "next_stage",
+            "reset": {"kind": "load_delta", "value": 15, "unit": "lb", "stage": 0}
+          }
+        },
+        {
+          "label": "T3",
+          "exercise": "Bent_Over_Two-Dumbbell_Row",
+          "sets": 3,
+          "reps": 15,
+          "amrap_last": true,
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "amrap_at_least", "reps": 25},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "label": "A2 (bench T1, squat T2)",
+      "blocks": [
+        {
+          "label": "T1",
+          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.85},
+          "stages": [
+            {"sets": 5, "reps": 3, "amrap_last": true},
+            {"sets": 6, "reps": 2, "amrap_last": true},
+            {"sets": 10, "reps": 1, "amrap_last": true}
+          ],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "next_stage",
+            "reset": {"kind": "retest_pct", "test": "5rm", "pct": 0.85, "stage": 0}
+          }
+        },
+        {
+          "label": "T2",
+          "exercise": "Barbell_Squat",
+          "stages": [
+            {"sets": 3, "reps": 10},
+            {"sets": 3, "reps": 8},
+            {"sets": 3, "reps": 6}
+          ],
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "next_stage",
+            "reset": {"kind": "load_delta", "value": 15, "unit": "lb", "stage": 0}
+          }
+        },
+        {
+          "label": "T3",
+          "exercise": "Wide-Grip_Lat_Pulldown",
+          "sets": 3,
+          "reps": 15,
+          "amrap_last": true,
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "amrap_at_least", "reps": 25},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "label": "B2 (deadlift T1, overhead press T2)",
+      "blocks": [
+        {
+          "label": "T1",
+          "exercise": "Barbell_Deadlift",
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.85},
+          "stages": [
+            {"sets": 5, "reps": 3, "amrap_last": true},
+            {"sets": 6, "reps": 2, "amrap_last": true},
+            {"sets": 10, "reps": 1, "amrap_last": true}
+          ],
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "next_stage",
+            "reset": {"kind": "retest_pct", "test": "5rm", "pct": 0.85, "stage": 0}
+          }
+        },
+        {
+          "label": "T2",
+          "exercise": "Standing_Military_Press",
+          "stages": [
+            {"sets": 3, "reps": 10},
+            {"sets": 3, "reps": 8},
+            {"sets": 3, "reps": 6}
+          ],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "next_stage",
+            "reset": {"kind": "load_delta", "value": 15, "unit": "lb", "stage": 0}
+          }
+        },
+        {
+          "label": "T3",
+          "exercise": "Bent_Over_Two-Dumbbell_Row",
+          "sets": 3,
+          "reps": 15,
+          "amrap_last": true,
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "amrap_at_least", "reps": 25},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    }
+  ]
+}

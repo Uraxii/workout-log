@@ -1,0 +1,42 @@
+# Ticket R1 proof: a chat that starts with genuinely empty in-memory state
+# reads its way back to a working training session.
+#
+# Day 1 is the warm path: program-design picks GZCLP, session-runner opens a
+# session, logs the T1 squat sets and closes it. `@cold` then says the chat
+# ended: `replay.py` throws `state` away and rebuilds it from the store's
+# read verbs alone (`hydrate.py`, `reader.py`), with no seam script changed.
+#
+# What it proves, in `expected.tsv`:
+#   - the `config-read` / `row-query` rows are the whole hydration, in order;
+#   - `config-read config/preferences * 0` is the cold case, a page in the
+#     schema that nothing ever wrote, answered with `{}` and not an error;
+#   - the SECOND `@cold` lands mid-session, with three sets already on the
+#     open session, so hydration takes the branch the first one cannot:
+#     `row-query Sessions Status=open 1` finds the session, and the fourth
+#     read `row-query Sets Session=sessions-2 3` rebuilds `cursor` from it.
+#     msg-7 then writes `Set index` 4 on that same session, not 1 (rule L7
+#     scopes `Set index` to `(session, exercise)`; a chat boundary is not a
+#     session boundary). msg-7 names the exercise because `scope` is chat
+#     state and does not survive the boundary, so a bare `95x5` would have
+#     nothing to attach to.
+#   - msg-5 and msg-6 are byte identical to `04-today`'s msg-5 and msg-6, so
+#     the day-2 opener (B1, read off a program cursor derived from the count
+#     of closed sessions) and the bare `95x5x3` (which finds its scope from
+#     the hydrated program) are unchanged by the chat boundary.
+@tz	UTC
+@units	lb
+@now	2026-09-01T09:00:00+00:00
+@skill	program-design
+make me a plan, goal get stronger, 3 days a week, barbell and rack, some experience, squat 185x5
+@skill	session-runner
+@now	2026-09-01T18:00:00+00:00
+what am i doing today
+225x5x3
+done for today
+@cold
+@now	2026-09-03T18:00:00+00:00
+what am i doing today
+95x5x3
+@cold
+standing military press 95x5
+done for today

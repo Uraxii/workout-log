@@ -1,0 +1,835 @@
+{
+  "format_version": 1,
+  "name": "Couch to 5k",
+  "origin": "Josh Clark, 1996 (released public domain); structure as carried forward by the NHS free derivative",
+  "source": {
+    "url": "https://www.nhs.uk/live-well/exercise/couch-to-5k-week-by-week/",
+    "note": "Structure only: week-by-week run/walk durations, written in our own words and re-derived as data, no source text reproduced. Original 1996 plan released to the public domain; a training structure is not copyrightable expression (17 U.S.C. 102(b))."
+  },
+  "progression_unit": "session",
+  "dose": "minutes",
+  "days": 3,
+  "notes": "9 weeks x 3 sessions, rotation fully expanded to 27 nodes per docs/program-format.md rather than 9 weeks with a repeat count. Each session opens and closes with a 5 minute brisk walk; the interval or continuous run is the middle block. Weeks 1-4 and 7-9 run the same session three times; weeks 5-6 vary session to session, ending each in one continuous run. No block carries a `progression` rule: advancing week to week is rotation-cursor movement, not a load or rep target.",
+  "rotation": [
+    {
+      "id": "W1S1",
+      "label": "Week 1, session 1",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 60
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            }
+          ],
+          "sets": 8
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W1S2",
+      "label": "Week 1, session 2",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 60
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            }
+          ],
+          "sets": 8
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W1S3",
+      "label": "Week 1, session 3",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 60
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            }
+          ],
+          "sets": 8
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W2S1",
+      "label": "Week 2, session 1",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 120
+            }
+          ],
+          "sets": 6
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W2S2",
+      "label": "Week 2, session 2",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 120
+            }
+          ],
+          "sets": 6
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W2S3",
+      "label": "Week 2, session 3",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 120
+            }
+          ],
+          "sets": 6
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W3S1",
+      "label": "Week 3, session 1",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 180
+            }
+          ],
+          "sets": 2
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W3S2",
+      "label": "Week 3, session 2",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 180
+            }
+          ],
+          "sets": 2
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W3S3",
+      "label": "Week 3, session 3",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 180
+            }
+          ],
+          "sets": 2
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W4S1",
+      "label": "Week 4, session 1",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 150
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            }
+          ]
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W4S2",
+      "label": "Week 4, session 2",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 150
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            }
+          ]
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W4S3",
+      "label": "Week 4, session 3",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 150
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 90
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            }
+          ]
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W5S1",
+      "label": "Week 5, session 1",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            }
+          ]
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W5S2",
+      "label": "Week 5, session 2",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 480
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 300
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 480
+            }
+          ]
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W5S3",
+      "label": "Week 5, session 3",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1200
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W6S1",
+      "label": "Week 6, session 1",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 480
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 300
+            }
+          ]
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W6S2",
+      "label": "Week 6, session 2",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "intervals",
+          "sequence": [
+            {
+              "exercise": "Running",
+              "duration_s": 600
+            },
+            {
+              "exercise": "Walking",
+              "duration_s": 180
+            },
+            {
+              "exercise": "Running",
+              "duration_s": 600
+            }
+          ]
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W6S3",
+      "label": "Week 6, session 3",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1500
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W7S1",
+      "label": "Week 7, session 1",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1500
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W7S2",
+      "label": "Week 7, session 2",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1500
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W7S3",
+      "label": "Week 7, session 3",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1500
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W8S1",
+      "label": "Week 8, session 1",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1680
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W8S2",
+      "label": "Week 8, session 2",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1680
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W8S3",
+      "label": "Week 8, session 3",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1680
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W9S1",
+      "label": "Week 9, session 1",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1800
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W9S2",
+      "label": "Week 9, session 2",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1800
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    },
+    {
+      "id": "W9S3",
+      "label": "Week 9, session 3",
+      "blocks": [
+        {
+          "label": "warm-up",
+          "exercise": "Walking",
+          "duration_s": 300
+        },
+        {
+          "label": "run",
+          "exercise": "Running",
+          "duration_s": 1800
+        },
+        {
+          "label": "cool-down",
+          "exercise": "Walking",
+          "duration_s": 300
+        }
+      ]
+    }
+  ]
+}

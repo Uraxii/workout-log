@@ -1,0 +1,218 @@
+verb	target	field	value
+row-create	Sessions	Date	2026-09-01
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
+row-create	Sessions	week_index	36
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	590df2ecff4e15ca
+row-create	Sets	source_message_id	msg-1
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
+row-create	Sessions	Status	halted
+config-write	config/limits	entries	[{"area": "knee", "status": "open", "opened_at": "2026-09-01"}]
+config-write	config/limits	progression	manual
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-02T09:00:00+00:00
+row-create	Sessions	Date	2026-09-03
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-03T09:00:00+00:00
+row-create	Sessions	week_index	36
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-03T09:00:00+00:00
+row-create	Sessions	Status	halted
+config-write	config/limits	entries	[{"area": "knee", "status": "open", "opened_at": "2026-09-04"}]
+row-create	Sessions	Date	2026-09-05
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-05T09:00:00+00:00
+row-create	Sessions	week_index	36
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-05T09:00:00+00:00
+row-create	Sessions	Date	2026-09-06
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-06T09:00:00+00:00
+row-create	Sessions	week_index	36
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-06T09:00:00+00:00
+row-create	Sessions	Date	2026-09-07
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-07T09:00:00+00:00
+row-create	Sessions	week_index	37
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-07T09:00:00+00:00
+row-create	Sessions	Date	2026-09-08
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-08T09:00:00+00:00
+row-create	Sessions	week_index	37
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-08T09:00:00+00:00
+row-create	Sessions	Date	2026-09-09
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-09T09:00:00+00:00
+row-create	Sessions	week_index	37
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-09T09:00:00+00:00
+row-create	Sessions	Date	2026-09-10
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-10T09:00:00+00:00
+row-create	Sessions	week_index	37
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-10T09:00:00+00:00
+row-create	Sessions	Date	2026-09-11
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-11T09:00:00+00:00
+row-create	Sessions	week_index	37
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-11T09:00:00+00:00
+row-create	Sessions	Date	2026-09-12
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-12T09:00:00+00:00
+row-create	Sessions	week_index	37
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-12T09:00:00+00:00
+row-create	Sessions	Date	2026-09-13
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-13T09:00:00+00:00
+row-create	Sessions	week_index	37
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-13T09:00:00+00:00
+row-create	Sessions	Date	2026-09-14
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-14T09:00:00+00:00
+row-create	Sessions	week_index	38
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-14T09:00:00+00:00
+row-create	Sessions	Date	2026-09-15
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-15T09:00:00+00:00
+row-create	Sessions	week_index	38
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-15T09:00:00+00:00
+row-create	Sessions	Date	2026-09-16
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-16T09:00:00+00:00
+row-create	Sessions	week_index	38
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-16T09:00:00+00:00
+row-create	Sessions	Date	2026-09-17
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-17T09:00:00+00:00
+row-create	Sessions	week_index	38
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-17T09:00:00+00:00
+config-read	config/preferences	*	0
+config-read	config/limits	*	2
+config-read	config/athlete	*	0
+config-read	program/current	*	0
+row-query	Exercises	*	1
+row-query	Sessions	*	15
+row-query	Sessions	Status=open	0
+config-write	config/limits	clearance	cleared
+config-write	config/limits	parq_date	2026-09-17
+row-create	Sessions	Date	2026-09-18
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-18T09:00:00+00:00
+row-create	Sessions	week_index	38
+row-create	Sets	Session	sessions-16
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-18T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	83daaa8d061d0d2a
+row-create	Sets	source_message_id	msg-43
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-18T09:00:00+00:00
+config-read	config/preferences	*	0
+config-read	config/limits	*	4
+config-read	config/athlete	*	0
+config-read	program/current	*	0
+row-query	Exercises	*	1
+row-query	Sessions	*	16
+row-query	Sessions	Status=open	0
+config-write	config/limits	parq_date	2026-09-18
+config-write	config/limits	progression	auto
+say	session-runner	msg-1	"Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.\nReadiness 1-5? (skip if you like)"
+say	pain-triage	msg-2	"Stopping here. That's a stop-level signal (knee). See a physician or physiotherapist before that movement again. I can still help with everything else on the plan."
+say	session-runner	msg-3	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-4	"Session closed. Nice work today.\n2026-09-01's session is still open. Keep logging to finish it, or say \"advance\" to start today fresh."
+say	session-runner	msg-5	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-6	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-7	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	pain-triage	msg-8	"Stopping here. That's a stop-level signal (knee). See a physician or physiotherapist before that movement again. I can still help with everything else on the plan."
+say	session-runner	msg-9	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-10	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-11	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-12	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-13	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-14	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-15	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-16	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-17	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-18	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-19	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-20	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-21	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-22	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-23	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-24	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-25	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-26	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-27	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-28	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-29	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-30	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-31	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-32	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-33	"Session is halted (Status: halted) until you acknowledge the hand-off. No sets logged until then."
+say	session-runner	msg-34	"Session closed. Nice work today.\nReadiness 1-5? (skip if you like)"
+say	screen	msg-35	"Has your doctor ever said that you have a heart condition OR high blood pressure?"
+say	screen	msg-36	"Do you feel pain in your chest at rest, during your daily activities of living, OR when you do physical activity?"
+say	screen	msg-37	"Do you lose balance because of dizziness OR have you lost consciousness in the last 12 months? Please answer NO if your dizziness was associated with over-breathing (including during vigorous exercise)."
+say	screen	msg-38	"Have you ever been diagnosed with another chronic medical condition (other than heart disease or high blood pressure)?"
+say	screen	msg-39	"Are you currently taking prescribed medications for a chronic medical condition?"
+say	screen	msg-40	"Do you currently have (or have had within the past 12 months) a bone, joint, or soft tissue (muscle, ligament, or tendon) problem that could be made worse by becoming more physically active? Please answer NO if you had a problem in the past, but it does not limit your current ability to be physically active."
+say	screen	msg-41	"Has your doctor ever said that you should only do medically supervised physical activity?"
+say	screen	msg-42	"All clear on PAR-Q+. Cleared for physical activity. Progression stays manual: rule S5 also needs 14 days of training logged with no symptom reported, and you have logged 13 since your last one."
+say	session-runner	msg-43	"Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-44	"Session closed. Nice work today."
+say	screen	msg-45	"Has your doctor ever said that you have a heart condition OR high blood pressure?"
+say	screen	msg-46	"Do you feel pain in your chest at rest, during your daily activities of living, OR when you do physical activity?"
+say	screen	msg-47	"Do you lose balance because of dizziness OR have you lost consciousness in the last 12 months? Please answer NO if your dizziness was associated with over-breathing (including during vigorous exercise)."
+say	screen	msg-48	"Have you ever been diagnosed with another chronic medical condition (other than heart disease or high blood pressure)?"
+say	screen	msg-49	"Are you currently taking prescribed medications for a chronic medical condition?"
+say	screen	msg-50	"Do you currently have (or have had within the past 12 months) a bone, joint, or soft tissue (muscle, ligament, or tendon) problem that could be made worse by becoming more physically active? Please answer NO if you had a problem in the past, but it does not limit your current ability to be physically active."
+say	screen	msg-51	"Has your doctor ever said that you should only do medically supervised physical activity?"
+say	screen	msg-52	"All clear on PAR-Q+. Cleared for physical activity. Progression goes back to automatic: a fresh screen plus 14 logged days with no symptom reported (rule S5)."

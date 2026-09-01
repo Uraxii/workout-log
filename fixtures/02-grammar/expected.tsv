@@ -1,0 +1,799 @@
+verb	target	field	value
+row-create	Sessions	Date	2026-09-01
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
+row-create	Sessions	week_index	36
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	590df2ecff4e15ca
+row-create	Sets	source_message_id	msg-1
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 1, 135 lb x 5. Set 2 at 135 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	2
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	ecbc92e5d28605f5
+row-create	Sets	source_message_id	msg-2
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 2, 135 lb x 5. Set 3 at 135 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	3
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	3b96ddd7f2827d02
+row-create	Sets	source_message_id	msg-3
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 3, 135 lb x 5. Set 4 at 135 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	4
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	4
+row-create	Sets	attempt	0
+row-create	Sets	write_key	b4f25242c163f14e
+row-create	Sets	source_message_id	msg-4
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 4, 135 lb x 4. Set 5 at 135 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	5
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	140
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	4
+row-create	Sets	attempt	0
+row-create	Sets	write_key	9c7a8292568dfc47
+row-create	Sets	source_message_id	msg-5
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 5, 140 lb x 4. Set 6 at 140 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	6
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	140
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	8
+row-create	Sets	attempt	0
+row-create	Sets	write_key	ff78d335db9fdd46
+row-create	Sets	source_message_id	msg-6
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 6, 140 lb x 8. Set 7 at 140 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	7
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	b877af9e73f392c5
+row-create	Sets	source_message_id	msg-7
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	8
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	bc5e166ad19ff9b0
+row-create	Sets	source_message_id	msg-7
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	9
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	4
+row-create	Sets	attempt	0
+row-create	Sets	write_key	61e804748c1eae86
+row-create	Sets	source_message_id	msg-7
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 7-9, 135 lb x 4. Set 10 at 135 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	10
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	225
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	2b7ad6e33d3a3276
+row-create	Sets	source_message_id	msg-8
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	11
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	225
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	c707966fb420e0c1
+row-create	Sets	source_message_id	msg-8
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	12
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	225
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	d3b79ff7937720c1
+row-create	Sets	source_message_id	msg-8
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 10-12, 225 lb x 5. Set 13 at 225 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	13
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	b07d6a56842fb213
+row-create	Sets	source_message_id	msg-9
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 13, 135 lb x 5. Set 14 at 135 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	14
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	57188874d638e0c5
+row-create	Sets	source_message_id	msg-10
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	15
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	c41457528414566f
+row-create	Sets	source_message_id	msg-10
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	16
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	fc98d7dd29dfdd53
+row-create	Sets	source_message_id	msg-10
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 14-16, 135 lb x 5. Set 17 at 135 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	17
+row-create	Sets	Set type	working
+row-create	Sets	RPE	8
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	f5372e1303eb1b07
+row-create	Sets	source_message_id	msg-11
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 17, 135 lb x 5 @8. Set 18 at 135 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	18
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	25
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	added
+row-create	Sets	Reps	8
+row-create	Sets	attempt	0
+row-create	Sets	write_key	3230d04ffdee1b1c
+row-create	Sets	source_message_id	msg-12
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 18, 25 lb x 8. Set 19 at 25 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	19
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	12
+row-create	Sets	attempt	0
+row-create	Sets	write_key	15bc0bf852b8299c
+row-create	Sets	source_message_id	msg-13
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 19, 12. Set 20.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	20
+row-create	Sets	Set type	working
+row-create	Sets	is_amrap	True
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	12
+row-create	Sets	attempt	0
+row-create	Sets	write_key	6ffe3b1a585aa156
+row-create	Sets	source_message_id	msg-14
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Bench Press set 20, 12. Set 21.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	95
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	8
+row-create	Sets	attempt	0
+row-create	Sets	write_key	468eab9b9f05b0ad
+row-create	Sets	source_message_id	msg-15
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	2
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	95
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	8
+row-create	Sets	attempt	0
+row-create	Sets	write_key	b6d96999a7a8cf84
+row-create	Sets	source_message_id	msg-15
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	3
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	95
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	6
+row-create	Sets	attempt	0
+row-create	Sets	write_key	6d503c9eea203593
+row-create	Sets	source_message_id	msg-15
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Standing Military Press set 1-3, 95 lb x 6. Set 4 at 95 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	4
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	60
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	8
+row-create	Sets	attempt	0
+row-create	Sets	write_key	2cedff4f7bfb5e59
+row-create	Sets	source_message_id	msg-16
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	5
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	60
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	8
+row-create	Sets	attempt	0
+row-create	Sets	write_key	d29d09758c973eb4
+row-create	Sets	source_message_id	msg-16
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	6
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	60
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	8
+row-create	Sets	attempt	0
+row-create	Sets	write_key	29fc6a7d3617f19c
+row-create	Sets	source_message_id	msg-16
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Standing Military Press set 4-6, 60 kg x 8. Set 7 at 60 kg.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	7
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	20
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	8
+row-create	Sets	attempt	0
+row-create	Sets	write_key	6bd9fea0b5c7dcd1
+row-create	Sets	source_message_id	msg-17
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Standing Military Press set 7, read as 20 lb x 8 fix if reversed. Set 8 at 20 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	8
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	40
+row-create	Sets	attempt	0
+row-create	Sets	write_key	d0baf90aa2efc392
+row-create	Sets	source_message_id	msg-18
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	9
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	40
+row-create	Sets	attempt	0
+row-create	Sets	write_key	dbbf8b9fec6107a6
+row-create	Sets	source_message_id	msg-18
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	10
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	40
+row-create	Sets	attempt	0
+row-create	Sets	write_key	c10b22aaa52b5c44
+row-create	Sets	source_message_id	msg-18
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	11
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	40
+row-create	Sets	attempt	0
+row-create	Sets	write_key	cf371ac01c59bc98
+row-create	Sets	source_message_id	msg-18
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	12
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	40
+row-create	Sets	attempt	0
+row-create	Sets	write_key	5170ec79342794f8
+row-create	Sets	source_message_id	msg-18
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	13
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	40
+row-create	Sets	attempt	0
+row-create	Sets	write_key	d0f001e2435c29e3
+row-create	Sets	source_message_id	msg-18
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	14
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	40
+row-create	Sets	attempt	0
+row-create	Sets	write_key	e284f2ff7e87f1c5
+row-create	Sets	source_message_id	msg-18
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Set index	15
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	40
+row-create	Sets	attempt	0
+row-create	Sets	write_key	ce14ef34551e15b9
+row-create	Sets	source_message_id	msg-18
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Standing Military Press set 8-15, 40. Set 16.
+row-create	Sets	stale	True
+row-create	Sets	Session	sessions-1
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Notes	fix set 3 was 4 reps
+row-create	Sets	attempt	0
+row-create	Sets	write_key	d908920b9893f4ad
+row-create	Sets	source_message_id	msg-24
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Noted.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Notes	left shoulder tweaky
+row-create	Sets	attempt	0
+row-create	Sets	write_key	e7f7b77cc787f751
+row-create	Sets	source_message_id	msg-25
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Noted: left shoulder tweaky
+row-create	Sessions	Status	closed
+row-create	Sessions	End time	2026-09-01T09:00:00+00:00
+row-create	Sessions	Status	open
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-2
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	51027a107470fe12
+row-create	Sets	source_message_id	msg-27
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-3
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	duration_s	20
+row-create	Sets	attempt	0
+row-create	Sets	write_key	5e9e63eaa46230eb
+row-create	Sets	source_message_id	msg-28
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	L-Sit set 1, 20s. Set 2, same target.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-4
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	70
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	distance	60
+row-create	Sets	distance_unit	m
+row-create	Sets	attempt	0
+row-create	Sets	write_key	9b093e2a40e9591e
+row-create	Sets	source_message_id	msg-29
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Farmer's Carry set 1, 60 m x 70 lb. Set 2.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-5
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	8
+row-create	Sets	level	3
+row-create	Sets	attempt	0
+row-create	Sets	write_key	47c5a96f272156eb
+row-create	Sets	source_message_id	msg-30
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Ring Row set 1, 3 x 8. Set 2.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	6cd843882f45b1db
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	2
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	72914772f39abbcf
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	3
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	8d81b95a264e3be2
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	4
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	e6927f4a8bef7992
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	5
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	ee45d613cb625e9f
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	6
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	96bfc575d8526221
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	7
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	7460aaa8089b3ace
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	8
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	bdb1ffe4fb0ce22f
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	9
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	1739ce099cc05a35
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-6
+row-create	Sets	Set index	10
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	24
+row-create	Sets	Unit	kg
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	10
+row-create	Sets	interval_s	60
+row-create	Sets	attempt	0
+row-create	Sets	write_key	efe4737bc8817e7e
+row-create	Sets	source_message_id	msg-31
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	KB Swing set 1-10, 10 x 60s x 24 kg. Set 11.
+row-create	Exercises	Name	Zurkhaneh Swing
+row-create	Exercises	measure	weight_reps
+row-create	Exercises	source	user
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-7
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	135
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	7ef5a199fa9704fc
+row-create	Sets	source_message_id	msg-32
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Added Zurkhaneh Swing to your catalog. Zurkhaneh Swing set 1, 135 lb x 5. Set 2 at 135 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Notes	asdlkfj not a real thing
+row-create	Sets	attempt	0
+row-create	Sets	write_key	79e76c7110ee311b
+row-create	Sets	source_message_id	msg-33
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Noted.
+say	session-runner	msg-1	"Bench Press set 1, 135 lb x 5. Set 2 at 135 lb.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-2	"Bench Press set 2, 135 lb x 5. Set 3 at 135 lb."
+say	session-runner	msg-3	"Bench Press set 3, 135 lb x 5. Set 4 at 135 lb."
+say	session-runner	msg-4	"Bench Press set 4, 135 lb x 4. Set 5 at 135 lb."
+say	session-runner	msg-5	"Bench Press set 5, 140 lb x 4. Set 6 at 140 lb."
+say	session-runner	msg-6	"Bench Press set 6, 140 lb x 8. Set 7 at 140 lb."
+say	session-runner	msg-7	"Bench Press set 7-9, 135 lb x 4. Set 10 at 135 lb."
+say	session-runner	msg-8	"Bench Press set 10-12, 225 lb x 5. Set 13 at 225 lb."
+say	session-runner	msg-9	"Bench Press set 13, 135 lb x 5. Set 14 at 135 lb."
+say	session-runner	msg-10	"Bench Press set 14-16, 135 lb x 5. Set 17 at 135 lb."
+say	session-runner	msg-11	"Bench Press set 17, 135 lb x 5 @8. Set 18 at 135 lb."
+say	session-runner	msg-12	"Bench Press set 18, 25 lb x 8. Set 19 at 25 lb."
+say	session-runner	msg-13	"Bench Press set 19, 12. Set 20."
+say	session-runner	msg-14	"Bench Press set 20, 12. Set 21."
+say	session-runner	msg-15	"Standing Military Press set 1-3, 95 lb x 6. Set 4 at 95 lb."
+say	session-runner	msg-16	"Standing Military Press set 4-6, 60 kg x 8. Set 7 at 60 kg."
+say	session-runner	msg-17	"Standing Military Press set 7, read as 20 lb x 8 fix if reversed. Set 8 at 20 lb."
+say	session-runner	msg-18	"Standing Military Press set 8-15, 40. Set 16."
+say	session-runner	msg-19	"Rest day logged."
+say	session-runner	msg-20	"Rest day logged."
+say	session-runner	msg-21	"Rest day logged."
+say	session-runner	msg-22	"Swapped to Incline Dumbbell Press for today's sets."
+say	session-runner	msg-23	"Undid the last entry."
+say	session-runner	msg-24	"Noted."
+say	session-runner	msg-25	"Noted: left shoulder tweaky"
+say	session-runner	msg-26	"Session closed. Nice work today."
+say	session-runner	msg-27	"Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb."
+say	session-runner	msg-28	"L-Sit set 1, 20s. Set 2, same target."
+say	session-runner	msg-29	"Farmer's Carry set 1, 60 m x 70 lb. Set 2."
+say	session-runner	msg-30	"Ring Row set 1, 3 x 8. Set 2."
+say	session-runner	msg-31	"KB Swing set 1-10, 10 x 60s x 24 kg. Set 11."
+say	session-runner	msg-32	"Added Zurkhaneh Swing to your catalog. Zurkhaneh Swing set 1, 135 lb x 5. Set 2 at 135 lb."
+say	session-runner	msg-33	"Noted."

@@ -1,0 +1,20 @@
+# Simulates a dropped connection: intake_cursor=9 (jurisdiction) is what a
+# fresh process would read back from config/athlete after the first eight
+# steps (units + the seven PAR-Q+ questions) were already answered and
+# written in an earlier, now-lost conversation. This fixture asserts the
+# resumed turn starts at jurisdiction, never at parq_1 or units (lim L-48).
+@now	2026-09-01T09:00:00+00:00
+@skill	intake
+@intake_cursor	9
+set me up
+California
+get stronger
+3 years, pretty consistent
+4
+barbell, rack, dumbbells
+185x5 on squat
+none of those
+29
+general
+Dr. Smith, my GP
+Downtown Gym

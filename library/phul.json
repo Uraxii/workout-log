@@ -1,0 +1,315 @@
+{
+  "format_version": 1,
+  "name": "PHUL",
+  "origin": "Brandon Campbell (PHUL: Power Hypertrophy Upper Lower)",
+  "source": {
+    "url": "https://www.muscleandstrength.com/workouts/phul-workout",
+    "note": "Structure only: which lifts, sets and reps, when load moves. Written in our own words from the cited page, no text reproduced. A training method is not copyrightable expression (17 U.S.C. 102(b), research/16 'The licence rule')."
+  },
+  "progression_unit": "session",
+  "dose": "sets",
+  "days": 4,
+  "notes": "Four days: upper power, lower power, upper hypertrophy, lower hypertrophy. Power days run low-rep linear loading on the main lifts. Hypertrophy days run double progression across a rep range: hold the top set count until the top of the range is hit for every set, then add load and drop back to the bottom. Accessory starting loads are set at intake, same precedent as GZCLP T2/T3.",
+  "rotation": [
+    {
+      "id": "UP",
+      "label": "Upper power",
+      "blocks": [
+        {
+          "label": "Bench",
+          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "sets": 3,
+          "reps": 5,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Row",
+          "exercise": "Bent_Over_Barbell_Row",
+          "sets": 3,
+          "reps": 5,
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Overhead press",
+          "exercise": "Standing_Military_Press",
+          "sets": 3,
+          "rep_range": [6, 10],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Lat pulldown",
+          "exercise": "Wide-Grip_Lat_Pulldown",
+          "sets": 3,
+          "rep_range": [6, 10],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Curl",
+          "exercise": "Barbell_Curl",
+          "sets": 2,
+          "rep_range": [6, 10],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LP",
+      "label": "Lower power",
+      "blocks": [
+        {
+          "label": "Squat",
+          "exercise": "Barbell_Squat",
+          "sets": 3,
+          "reps": 5,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Deadlift",
+          "exercise": "Barbell_Deadlift",
+          "sets": 3,
+          "reps": 5,
+          "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Leg press",
+          "exercise": "Leg_Press",
+          "sets": 3,
+          "rep_range": [10, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Leg curl",
+          "exercise": "Lying_Leg_Curls",
+          "sets": 3,
+          "rep_range": [6, 10],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Calf raise",
+          "exercise": "Standing_Calf_Raises",
+          "sets": 4,
+          "rep_range": [6, 10],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    },
+    {
+      "id": "UH",
+      "label": "Upper hypertrophy",
+      "blocks": [
+        {
+          "label": "Incline press",
+          "exercise": "Incline_Dumbbell_Press",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Lat pulldown",
+          "exercise": "Wide-Grip_Lat_Pulldown",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Flat dumbbell press",
+          "exercise": "Dumbbell_Bench_Press",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Seated row",
+          "exercise": "Seated_Cable_Rows",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Lateral raise",
+          "exercise": "Side_Lateral_Raise",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Triceps pushdown",
+          "exercise": "Triceps_Pushdown",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LH",
+      "label": "Lower hypertrophy",
+      "blocks": [
+        {
+          "label": "Squat",
+          "exercise": "Barbell_Squat",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Leg extension",
+          "exercise": "Leg_Extensions",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Romanian deadlift",
+          "exercise": "Romanian_Deadlift",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Leg curl",
+          "exercise": "Lying_Leg_Curls",
+          "sets": 3,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "Calf raise",
+          "exercise": "Standing_Calf_Raises",
+          "sets": 4,
+          "rep_range": [8, 12],
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "top_of_rep_range"},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    }
+  ]
+}

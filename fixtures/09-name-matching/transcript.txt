@@ -1,0 +1,43 @@
+# Ticket workout-log-9yj (R10) proof: the exercise matcher never logs a lift
+# the athlete did not name.
+#
+# The seeded catalog is a GZCLP athlete's own `Exercises` rows. Two of them
+# carry the word `press`, which is what makes the ambiguity real.
+#
+# What `expected.tsv` proves, line by line:
+#   - msg-1 `squat 225x5`: a plain word resolves. It used to return None and
+#     create a second catalog row called `squat` beside Barbell Squat.
+#   - msg-2 `row 60x12`: RUNG 3'S SCOPE FILTER. The shipped alias table says
+#     `row` is Bent Over Barbell Row, but this athlete's catalog holds Bent
+#     Over Two-Dumbbell Row, so the set lands on THEIR row (`exercises-2`).
+#     The same word answers differently for a different catalog.
+#   - msg-3 `press 95x8`: two catalog rows carry `press`, so the scope filter
+#     refuses rather than picking, and the authored alias settles it as the
+#     military press. It lands on `exercises-3`, the athlete's own row, not
+#     on the shipped `Standing_Military_Press` id, so one lift keeps one
+#     history.
+#   - msg-4 `curl 30x12` and msg-5 `dip 12`: plain words with nothing in this
+#     catalog to match, answered by the authored alias table. Both returned
+#     None before and grew the catalog a duplicate.
+#   - msg-6 `bnch press 135x5`: THE HEADLINE. This logged Neck Press at
+#     difflib cutoff 0.75 over 913 shipped names. Nothing in `expected.tsv`
+#     names Neck Press now. A name no table knows falls to rung 4, which
+#     writes ONE `Exercises` row (inside s3.2's per-turn ceiling) and says so
+#     in the confirm line the athlete reads, so the create is never quiet.
+#   - msg-7 `incline db press 60x10`: `db` is the same word as `dumbbell`, so
+#     the shipped Incline Dumbbell Press resolves with no alias authored for
+#     it, and without any similarity score.
+@tz	UTC
+@units	lb
+@now	2026-09-01T18:00:00+00:00
+@exercise	Barbell Squat	weight_reps
+@exercise	Bent Over Two-Dumbbell Row	weight_reps
+@exercise	Standing Military Press	weight_reps
+@exercise	Barbell Bench Press - Medium Grip	weight_reps
+squat 225x5
+row 60x12
+press 95x8
+curl 30x12
+dip 12
+bnch press 135x5
+incline db press 60x10

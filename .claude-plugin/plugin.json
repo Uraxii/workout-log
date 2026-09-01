@@ -1,0 +1,11 @@
+{
+  "name": "workout-trainer",
+  "displayName": "Workout Trainer",
+  "version": "1.0.0",
+  "description": "Logging grammar, progression rules and coaching skills for the workout-log Notion trainer.",
+  "author": { "name": "Uraxii" },
+  "repository": "https://github.com/Uraxii/workout-log",
+  "license": "MIT",
+  "skills": "./.claude/skills/",
+  "mcpServers": "./.mcp.json"
+}

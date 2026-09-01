@@ -1,0 +1,29 @@
+verb	target	field	value
+row-create	Exercises	fail_count	0
+row-create	Exercises	next_target	190 lb
+row-create	Exercises	fail_count	0
+row-create	Exercises	next_target	105 lb
+row-create	Exercises	next_target	110 lb
+row-create	Exercises	next_target	115 lb
+row-create	Exercises	fail_count	0
+row-create	Exercises	next_target	105 lb
+row-create	Exercises	next_target	110 lb
+say	load-adjust	msg-1	"Progression set for Squat (Barbell)."
+say	load-adjust	msg-2	"I couldn't read 'abc', so I logged nothing for it. I need a set like `185x8`, `bw+25x8`, `bw-25x8`, or a bare rep count like `8`. What did you mean?"
+say	load-adjust	msg-3	"I couldn't read 'five', so I logged nothing for it. I need a set like `185x8`, `bw+25x8`, `bw-25x8`, or a bare rep count like `8`. What did you mean?"
+say	load-adjust	msg-4	"Nothing was there where I needed a set like `185x8`, `bw+25x8`, `bw-25x8`, or a bare rep count like `8`, so I logged nothing. What did you mean?"
+say	load-adjust	msg-5	"I couldn't read '-50x5', so I logged nothing for it. I need a set like `185x8`, `bw+25x8`, `bw-25x8`, or a bare rep count like `8`. What did you mean?"
+say	load-adjust	msg-6	"I couldn't read 'abc', so I logged nothing for it. I need an RPE like `9.5`. What did you mean?"
+say	load-adjust	msg-7	"I couldn't read 'garbage', so I logged nothing for it. I need an `rpe=<n>` field. What did you mean?"
+say	load-adjust	msg-8	"I couldn't read '8.5', so I logged nothing for it. I need a set like `185x8`, `bw+25x8`, `bw-25x8`, or a bare rep count like `8`. What did you mean?"
+say	load-adjust	msg-9	"I couldn't read 'abc', so I logged nothing for it. I need a number for `increment`. What did you mean?"
+say	load-adjust	msg-10	"Squat (Barbell): top of the range, bumping up to 190 lb."
+say	load-adjust	msg-11	"Progression set for Bench Press (Barbell)."
+say	load-adjust	msg-12	"Bench Press (Barbell): top of the range, bumping up to 105 lb."
+say	load-adjust	msg-13	"Bench Press (Barbell): top of the range, bumping up to 110 lb."
+say	load-adjust	msg-14	"Bench Press (Barbell): top of the range, bumping up to 115 lb."
+say	load-adjust	msg-15	"Bench Press (Barbell): logged, holding at 115 lb."
+say	load-adjust	msg-16	"Progression set for Overhead Press (Barbell)."
+say	load-adjust	msg-17	"Overhead Press (Barbell): top of the range, bumping up to 105 lb."
+say	load-adjust	msg-18	"Overhead Press (Barbell): logged, holding at 105 lb."
+say	load-adjust	msg-19	"Overhead Press (Barbell): top of the range, bumping up to 110 lb."

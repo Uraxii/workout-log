@@ -1,0 +1,108 @@
+# Phase 6 proof for rule S5's LOGGED-day window (build-plan s6.1 rule S5,
+# s11 risk 19, ticket workout-log-3fc). The window counts days the athlete
+# actually logged training, never calendar days, and it restarts from the
+# newest `config/limits` entry's `opened_at`, which `pain-triage` rewrites
+# on every fresh stop-level mention (rule S8).
+#
+# fixtures/06-rescreen holds the other side of the same rule: 20 calendar
+# days with nothing logged never release the brake.
+@tz	UTC
+@units	lb
+@exercise	Squat (Barbell)	weight_reps
+
+# Day 0. One set opens a session, a stop-level report halts it, opens a
+# dated knee entry and switches progression to manual.
+@now	2026-09-01T09:00:00+00:00
+185x5
+@skill	pain-triage
+sharp pain in my left knee, felt a pop
+
+# Two logged days back, and then the knee goes again on the third. The
+# second report re-opens the same entry at 2026-09-04, which is the whole
+# reset: everything logged before that date stops counting.
+@skill	session-runner
+@now	2026-09-02T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-03T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-04T09:00:00+00:00
+185x5
+@skill	pain-triage
+sharp pain in my left knee again
+
+# 13 logged days after the second report, 2026-09-05 to 2026-09-17.
+@skill	session-runner
+@now	2026-09-05T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-06T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-07T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-08T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-09T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-10T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-11T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-12T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-13T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-14T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-15T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-16T09:00:00+00:00
+185x5
+done for today
+@now	2026-09-17T09:00:00+00:00
+185x5
+done for today
+
+# 15 logged days sit in the history and the count still says 13, because
+# the window starts at the re-opened entry. One short, so the completed
+# re-screen holds the brake and says how far along she is.
+@cold
+@skill	screen
+re-screen me, my health changed
+no
+no
+no
+no
+no
+no
+no
+
+# The 14th logged day since the second report.
+@skill	session-runner
+@now	2026-09-18T09:00:00+00:00
+185x5
+done for today
+
+# Both halves of rule S5 hold now: 14 symptom-free logged days AND this
+# completed re-screen. Progression goes back to auto.
+@cold
+@skill	screen
+re-screen me, my health changed
+no
+no
+no
+no
+no
+no
+no

@@ -1,0 +1,169 @@
+verb	target	field	value
+row-create	Sessions	Date	2026-09-01
+row-create	Sessions	Timezone	UTC
+row-create	Sessions	Status	open
+row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
+row-create	Sessions	week_index	36
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	590df2ecff4e15ca
+row-create	Sets	source_message_id	msg-1
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Notes	0x0
+row-create	Sets	attempt	0
+row-create	Sets	write_key	b014b987bfc8af81
+row-create	Sets	source_message_id	msg-2
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Noted.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	2
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	30
+row-create	Sets	attempt	0
+row-create	Sets	write_key	ecbc92e5d28605f5
+row-create	Sets	source_message_id	msg-3
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	3
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	30
+row-create	Sets	attempt	0
+row-create	Sets	write_key	3b96ddd7f2827d02
+row-create	Sets	source_message_id	msg-3
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	4
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	30
+row-create	Sets	attempt	0
+row-create	Sets	write_key	b4f25242c163f14e
+row-create	Sets	source_message_id	msg-3
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	5
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	30
+row-create	Sets	attempt	0
+row-create	Sets	write_key	9c7a8292568dfc47
+row-create	Sets	source_message_id	msg-3
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	6
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	30
+row-create	Sets	attempt	0
+row-create	Sets	write_key	ff78d335db9fdd46
+row-create	Sets	source_message_id	msg-3
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	7
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	30
+row-create	Sets	attempt	0
+row-create	Sets	write_key	b877af9e73f392c5
+row-create	Sets	source_message_id	msg-3
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	8
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	30
+row-create	Sets	attempt	0
+row-create	Sets	write_key	bc5e166ad19ff9b0
+row-create	Sets	source_message_id	msg-3
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Squat (Barbell) set 2-8, 185 lb x 30. Set 9 at 185 lb.
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-1
+row-create	Sets	Set index	9
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Load	185
+row-create	Sets	Unit	lb
+row-create	Sets	load_kind	absolute
+row-create	Sets	Reps	185
+row-create	Sets	attempt	0
+row-create	Sets	write_key	61e804748c1eae86
+row-create	Sets	source_message_id	msg-4
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Squat (Barbell) set 9, 185 lb x 185. Set 10 at 185 lb.
+row-create	Exercises	Name	a x
+row-create	Exercises	measure	reps_only
+row-create	Exercises	source	user
+row-create	Sets	Session	sessions-1
+row-create	Sets	Exercise	exercises-2
+row-create	Sets	Set index	1
+row-create	Sets	Set type	working
+row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
+row-create	Sets	Side	both
+row-create	Sets	Reps	5
+row-create	Sets	attempt	0
+row-create	Sets	write_key	51027a107470fe12
+row-create	Sets	source_message_id	msg-5
+row-create	Sets	Pain flag	none
+row-create	Sets	confirm_line	Added a x to your catalog. a x set 1, 5. Set 2.
+say	session-runner	msg-1	"Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-2	"Noted."
+say	session-runner	msg-3	"Squat (Barbell) set 2-8, 185 lb x 30. Set 9 at 185 lb."
+say	session-runner	msg-4	"Squat (Barbell) set 9, 185 lb x 185. Set 10 at 185 lb."
+say	session-runner	msg-5	"Added a x to your catalog. a x set 1, 5. Set 2."

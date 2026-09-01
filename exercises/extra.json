@@ -1,0 +1,638 @@
+[
+  {
+    "id": "Jefferson_Deadlift",
+    "name": "Jefferson Deadlift",
+    "force": "pull",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "barbell",
+    "primaryMuscles": ["hamstrings", "quadriceps", "lower back"],
+    "secondaryMuscles": ["glutes", "traps", "forearms"],
+    "instructions": [
+      "Straddle the bar with one foot forward and one foot back, feet offset like a staggered stance.",
+      "Grip the bar with one hand in front of your body and one hand behind it.",
+      "Stand up by driving through both legs and extending your hips, keeping the bar close to your straddled stance.",
+      "Lower under control and switch stance halfway through your sets to balance the asymmetry."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Safety_Bar_Squat",
+    "name": "Safety Bar Squat",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "barbell",
+    "primaryMuscles": ["quadriceps", "glutes"],
+    "secondaryMuscles": ["hamstrings", "lower back"],
+    "instructions": [
+      "Rack a safety squat bar so the padded yoke sits across your shoulders and the handles fall forward.",
+      "Unrack and step back, holding the handles for stability rather than pulling down on them.",
+      "Squat down until your hip crease passes below your knee, then drive back up.",
+      "Expect more forward lean than a straight bar squat; keep your chest tall against it."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Anderson_Squat",
+    "name": "Anderson Squat",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "barbell",
+    "primaryMuscles": ["quadriceps", "glutes"],
+    "secondaryMuscles": ["hamstrings", "lower back"],
+    "instructions": [
+      "Set safety pins or blocks in a rack at your bottom squat depth.",
+      "Start each rep from a dead stop on the pins with no stretch reflex, then squat up.",
+      "Reset fully between reps rather than lowering back to the pins under control.",
+      "Unlike the Zercher squat, the bar rests across your back or front rack, not in your elbow creases."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Pause_Squat",
+    "name": "Pause Squat",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "barbell",
+    "primaryMuscles": ["quadriceps", "glutes"],
+    "secondaryMuscles": ["hamstrings", "lower back"],
+    "instructions": [
+      "Perform a normal back or front squat descent.",
+      "Hold the bottom position for two to five seconds without relaxing or bouncing.",
+      "Drive up out of the pause with the same bar path and bracing as the descent.",
+      "Use a lighter load than your regular squat until the pause feels stable."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Snatch-Grip_Deadlift",
+    "name": "Snatch-Grip Deadlift",
+    "force": "pull",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "barbell",
+    "primaryMuscles": ["hamstrings", "lower back"],
+    "secondaryMuscles": ["glutes", "traps", "forearms"],
+    "instructions": [
+      "Take a wide, snatch-width overhand grip on the bar, well outside your shoulders.",
+      "Set your hips lower than a conventional deadlift to reach the bar at this width.",
+      "Drive through the floor and extend your hips and knees together to stand up.",
+      "Expect a longer range of motion and more upper-back demand than a conventional pull."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Shrimp_Squat",
+    "name": "Shrimp Squat",
+    "force": "push",
+    "level": "expert",
+    "mechanic": "compound",
+    "equipment": "body only",
+    "primaryMuscles": ["quadriceps", "glutes"],
+    "secondaryMuscles": ["hamstrings", "calves"],
+    "instructions": [
+      "Stand on one leg and hold the other foot behind you with the same-side hand.",
+      "Bend the standing knee and lower until the back knee lightly touches the floor.",
+      "Push back up through the standing leg without using the trailing leg for help.",
+      "Hold a wall or rail for balance while learning the pattern."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Archer_Pull-Up",
+    "name": "Archer Pull-Up",
+    "force": "pull",
+    "level": "expert",
+    "mechanic": "compound",
+    "equipment": "body only",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "forearms", "shoulders"],
+    "instructions": [
+      "Start from a wide-grip pull-up bar hang.",
+      "Pull up and shift your weight toward one hand, straightening the opposite arm out to the side.",
+      "Bring your chin near the bent-arm hand, then lower back to a dead hang.",
+      "Alternate sides, or work one side fully before switching."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Wall_Walk",
+    "name": "Wall Walk",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "body only",
+    "primaryMuscles": ["shoulders"],
+    "secondaryMuscles": ["triceps", "abdominals", "chest"],
+    "instructions": [
+      "Start in a push-up position with your feet against a wall.",
+      "Walk your feet up the wall while walking your hands back toward it, keeping your body straight.",
+      "Stop when your chest nears the wall in a near-handstand position.",
+      "Reverse the walk back down to the floor to complete one rep."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Dragon_Flag",
+    "name": "Dragon Flag",
+    "force": "static",
+    "level": "expert",
+    "mechanic": "compound",
+    "equipment": "body only",
+    "primaryMuscles": ["abdominals"],
+    "secondaryMuscles": ["lower back"],
+    "instructions": [
+      "Lie on a bench and grip behind your head for anchor.",
+      "Raise your legs and hips off the bench until only your upper back stays in contact.",
+      "Lower your body as one straight rigid line, stopping just before your hips touch down.",
+      "Raise back to the top without letting your lower back sag."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Ab_Wheel_Rollout",
+    "name": "Ab Wheel Rollout",
+    "force": "static",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "other",
+    "primaryMuscles": ["abdominals"],
+    "secondaryMuscles": ["lower back", "shoulders"],
+    "instructions": [
+      "Kneel on a pad and hold the wheel with both hands beneath your shoulders.",
+      "Roll the wheel forward, extending your body while keeping your core braced.",
+      "Stop before your lower back arches, then pull back to the start using your abs.",
+      "Shorten the range of motion until full rollouts stay pain-free."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Skin_The_Cat",
+    "name": "Skin The Cat",
+    "force": "pull",
+    "level": "expert",
+    "mechanic": "compound",
+    "equipment": "other",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["shoulders", "abdominals"],
+    "instructions": [
+      "Hang from rings or a bar with an overhand grip.",
+      "Tuck your knees and roll your hips through your arms until you invert behind them.",
+      "Continue until your feet point toward the floor behind you.",
+      "Reverse the motion back to a normal hang, controlling the descent throughout."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Ring_Row",
+    "name": "Ring Row",
+    "force": "pull",
+    "level": "beginner",
+    "mechanic": "compound",
+    "equipment": "other",
+    "primaryMuscles": ["middle back", "lats"],
+    "secondaryMuscles": ["biceps", "shoulders"],
+    "instructions": [
+      "Set gymnastic rings at waist to chest height and grip one in each hand.",
+      "Lean back with arms extended and feet on the floor, body in a straight line.",
+      "Pull your chest toward the rings, keeping elbows close to your sides.",
+      "Lower with control; walk your feet closer to the anchor to increase difficulty."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Broad_Jump",
+    "name": "Broad Jump",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "body only",
+    "primaryMuscles": ["quadriceps", "glutes"],
+    "secondaryMuscles": ["hamstrings", "calves"],
+    "instructions": [
+      "Stand with feet shoulder-width apart at a marked start line.",
+      "Swing your arms back and bend your knees, then jump forward as far as possible.",
+      "Land softly on both feet with your knees bent to absorb the impact.",
+      "Measure from the start line to your rearmost heel on landing."
+    ],
+    "category": "plyometrics",
+    "measure": "distance_load"
+  },
+  {
+    "id": "Man_Maker",
+    "name": "Man Maker",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "dumbbell",
+    "primaryMuscles": ["shoulders", "chest"],
+    "secondaryMuscles": ["quadriceps", "triceps", "abdominals"],
+    "instructions": [
+      "Start in a push-up position holding a pair of dumbbells.",
+      "Perform a push-up, then row each dumbbell to your hip one side at a time.",
+      "Jump your feet to your hands and stand up, curling the dumbbells to your shoulders.",
+      "Press the dumbbells overhead, then return to the push-up position to repeat."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Devil_Press",
+    "name": "Devil Press",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "dumbbell",
+    "primaryMuscles": ["shoulders", "chest"],
+    "secondaryMuscles": ["quadriceps", "hamstrings"],
+    "instructions": [
+      "Start standing with a dumbbell in each hand.",
+      "Drop into a burpee, planking with the dumbbells on the floor beneath your shoulders.",
+      "Explode your feet back in and swing the dumbbells up into an overhead snatch as you stand.",
+      "Reset your stance and repeat immediately for the next rep."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "GHD_Sit-Up",
+    "name": "GHD Sit-Up",
+    "force": "pull",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "equipment": "other",
+    "primaryMuscles": ["abdominals"],
+    "secondaryMuscles": ["lower back"],
+    "instructions": [
+      "Lock your ankles under the pads of a glute-ham developer with hips on the pad.",
+      "Lower your torso back past parallel until you feel a stretch through your abs.",
+      "Curl back up to a fully upright finish, using your abs rather than momentum.",
+      "Limit the range of motion at first; the extended stretch loads the spine hard."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Copenhagen_Plank",
+    "name": "Copenhagen Plank",
+    "force": "static",
+    "level": "expert",
+    "mechanic": "isolation",
+    "equipment": "body only",
+    "primaryMuscles": ["adductors"],
+    "secondaryMuscles": ["abdominals"],
+    "instructions": [
+      "Lie on your side and prop your top foot on a bench, with your bottom leg free beneath it.",
+      "Support your upper body on your forearm, forming a straight line from shoulder to top foot.",
+      "Hold the position, keeping hips level and lifted off the floor.",
+      "Start with the bottom knee bent for support, extending it fully as the hold gets stronger."
+    ],
+    "category": "strength",
+    "measure": "hold_time"
+  },
+  {
+    "id": "Pendlay_Row",
+    "name": "Pendlay Row",
+    "force": "pull",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "barbell",
+    "primaryMuscles": ["middle back", "lats"],
+    "secondaryMuscles": ["biceps", "shoulders"],
+    "instructions": [
+      "Set up over a bar on the floor with a flat back and torso close to parallel with the ground.",
+      "Grip the bar and pull it explosively into your lower chest or upper abdomen.",
+      "Let the bar return to a full dead stop on the floor after each rep.",
+      "Reset your position fully between reps rather than bouncing the plates."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Jefferson_Curl",
+    "name": "Jefferson Curl",
+    "force": "pull",
+    "level": "intermediate",
+    "mechanic": "isolation",
+    "equipment": "barbell",
+    "primaryMuscles": ["lower back"],
+    "secondaryMuscles": ["hamstrings"],
+    "instructions": [
+      "Stand on a raised platform holding a light barbell or dumbbell against your thighs.",
+      "Starting from the neck, round your spine downward one vertebra at a time.",
+      "Let the weight pull you into a deep forward fold once your spine is fully rounded.",
+      "Reverse the curl from the tailbone up, stacking your spine back to standing."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Nordic_Hamstring_Curl",
+    "name": "Nordic Hamstring Curl",
+    "force": "pull",
+    "level": "expert",
+    "mechanic": "isolation",
+    "equipment": "body only",
+    "primaryMuscles": ["hamstrings"],
+    "secondaryMuscles": ["calves"],
+    "instructions": [
+      "Kneel on a pad with your ankles anchored firmly, either by a partner or a fixed pad.",
+      "Keeping your hips extended, lower your torso toward the floor as slowly as possible.",
+      "Use your hamstrings to resist the fall for as long as you can.",
+      "Catch yourself with your hands and push back up, or return to kneeling if strong enough."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Poliquin_Step-Up",
+    "name": "Poliquin Step-Up",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "dumbbell",
+    "primaryMuscles": ["quadriceps", "glutes"],
+    "secondaryMuscles": ["hamstrings"],
+    "instructions": [
+      "Stand facing a step or box roughly knee height, holding dumbbells at your sides.",
+      "Place your whole foot on the box without pushing off your trailing leg.",
+      "Drive through the lead leg only to stand fully on the box.",
+      "Step back down under control and repeat all reps on one side before switching."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Peterson_Step-Up",
+    "name": "Peterson Step-Up",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "body only",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "hamstrings"],
+    "instructions": [
+      "Stand facing a low step with your lead foot planted and torso leaning slightly forward.",
+      "Drive up through the lead leg while keeping the trailing leg relaxed and light.",
+      "Pause briefly at the top with the hip extended before lowering back down.",
+      "Keep the movement slow to emphasize knee control through the full range."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "ATG_Split_Squat",
+    "name": "ATG Split Squat",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "dumbbell",
+    "primaryMuscles": ["quadriceps", "glutes"],
+    "secondaryMuscles": ["hamstrings", "calves"],
+    "instructions": [
+      "Set up in a deep split stance with your rear foot elevated behind you.",
+      "Lower straight down until your rear knee nearly touches the floor and your front shin travels well past your toes.",
+      "Drive back up through the front leg to standing.",
+      "Work within a range your ankle and knee tolerate, and progress the depth gradually."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "KOT_Split_Squat",
+    "name": "KOT Split Squat",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "dumbbell",
+    "primaryMuscles": ["quadriceps"],
+    "secondaryMuscles": ["glutes", "calves"],
+    "instructions": [
+      "Set up in a split stance with your rear foot elevated behind you on a bench or box.",
+      "Descend while deliberately letting your front knee travel forward over your toes.",
+      "Keep your heel planted and control the knee's forward path rather than avoiding it.",
+      "Drive back up through the front leg, then reset before the next rep."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Bulgarian_Split_Squat",
+    "name": "Bulgarian Split Squat",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "dumbbell",
+    "primaryMuscles": ["quadriceps", "glutes"],
+    "secondaryMuscles": ["hamstrings", "calves"],
+    "instructions": [
+      "Stand a couple of feet in front of a bench and rest the top of your rear foot on it.",
+      "Lower straight down until your front thigh is close to parallel, keeping your torso upright.",
+      "Drive back up through the front leg to standing.",
+      "Hold a dumbbell in each hand for load, or do it bodyweight-only while learning the balance."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Running",
+    "name": "Running",
+    "force": null,
+    "level": "beginner",
+    "mechanic": null,
+    "equipment": "body only",
+    "primaryMuscles": ["quadriceps", "hamstrings", "calves"],
+    "secondaryMuscles": ["glutes"],
+    "instructions": [
+      "Run at the prescribed pace for the prescribed time or distance."
+    ],
+    "category": "cardio",
+    "measure": "distance_time"
+  },
+  {
+    "id": "Walking",
+    "name": "Walking",
+    "force": null,
+    "level": "beginner",
+    "mechanic": null,
+    "equipment": "body only",
+    "primaryMuscles": ["quadriceps", "hamstrings", "calves"],
+    "secondaryMuscles": ["glutes"],
+    "instructions": [
+      "Walk at a brisk pace for the prescribed time or distance."
+    ],
+    "category": "cardio",
+    "measure": "distance_time"
+  },
+  {
+    "id": "Otago_Hip_Abduction",
+    "name": "Otago Hip Abduction",
+    "force": "pull",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "equipment": "body only",
+    "primaryMuscles": ["abductors"],
+    "secondaryMuscles": [],
+    "instructions": [
+      "Stand tall holding a chair back, lift one leg sideways keeping knee straight and toes forward.",
+      "Lower with control, repeat, then switch legs."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Otago_Toe_Raise",
+    "name": "Otago Toe Raise",
+    "force": "pull",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "equipment": "body only",
+    "primaryMuscles": ["calves"],
+    "secondaryMuscles": [],
+    "instructions": [
+      "Stand with feet flat, lift toes and forefoot off the floor keeping heels down.",
+      "Lower with control and repeat."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Otago_Tandem_Stance",
+    "name": "Otago Tandem Stance",
+    "force": "static",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "equipment": "body only",
+    "primaryMuscles": ["calves"],
+    "secondaryMuscles": ["abdominals"],
+    "instructions": [
+      "Stand with one foot directly in front of the other, heel touching toe, and hold.",
+      "Use a chair or wall for support at lower levels."
+    ],
+    "category": "strength",
+    "measure": "hold_time"
+  },
+  {
+    "id": "Otago_Heel_Toe_Walk",
+    "name": "Otago Heel Toe Walk",
+    "force": null,
+    "level": "beginner",
+    "mechanic": null,
+    "equipment": "body only",
+    "primaryMuscles": ["calves"],
+    "secondaryMuscles": ["abdominals"],
+    "instructions": [
+      "Walk forward placing the heel of one foot directly against the toes of the other with each step.",
+      "Keep gaze forward, arms free for balance."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Otago_One_Leg_Stand",
+    "name": "Otago One Leg Stand",
+    "force": "static",
+    "level": "beginner",
+    "mechanic": "isolation",
+    "equipment": "body only",
+    "primaryMuscles": ["calves"],
+    "secondaryMuscles": ["abdominals"],
+    "instructions": [
+      "Stand on one leg, holding a chair or wall at lower levels for support.",
+      "Hold, then switch legs; progress by removing support."
+    ],
+    "category": "strength",
+    "measure": "hold_time"
+  },
+  {
+    "id": "Otago_Backwards_Walking",
+    "name": "Otago Backwards Walking",
+    "force": null,
+    "level": "beginner",
+    "mechanic": null,
+    "equipment": "body only",
+    "primaryMuscles": ["hamstrings"],
+    "secondaryMuscles": ["calves"],
+    "instructions": [
+      "Walk backward in a straight line for the prescribed number of steps, keeping a clear path behind you.",
+      "Progress by removing support or adding head turns."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Kettlebell_Swing",
+    "name": "Kettlebell Swing",
+    "force": "pull",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "kettlebells",
+    "primaryMuscles": ["glutes", "hamstrings"],
+    "secondaryMuscles": ["shoulders", "abdominals"],
+    "instructions": [
+      "Two-hand hip hinge swing to chest height; hips drive, arms stay loose."
+    ],
+    "category": "strength",
+    "measure": "weight_reps"
+  },
+  {
+    "id": "Pistol_Squat",
+    "name": "Pistol Squat",
+    "force": "push",
+    "level": "expert",
+    "mechanic": "compound",
+    "equipment": "body only",
+    "primaryMuscles": ["quadriceps", "glutes"],
+    "secondaryMuscles": ["hamstrings", "calves"],
+    "instructions": [
+      "Single-leg squat to full depth with the free leg held forward; stand back up without touching down."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Negative_Pull-Up",
+    "name": "Negative Pull-Up",
+    "force": "pull",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "body only",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "forearms", "shoulders"],
+    "instructions": [
+      "Jump or step to the top of a pull-up and lower under control over 3-5 seconds."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  },
+  {
+    "id": "Diamond_Push-Up",
+    "name": "Diamond Push-Up",
+    "force": "push",
+    "level": "intermediate",
+    "mechanic": "compound",
+    "equipment": "body only",
+    "primaryMuscles": ["triceps", "chest"],
+    "secondaryMuscles": ["shoulders", "abdominals"],
+    "instructions": [
+      "Push-up with hands close, thumbs and index fingers forming a diamond under the chest."
+    ],
+    "category": "strength",
+    "measure": "reps_only"
+  }
+]

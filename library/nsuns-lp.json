@@ -1,0 +1,188 @@
+{
+  "format_version": 1,
+  "name": "nSuns 5/3/1 LP (4-day)",
+  "origin": "u/sunsun9m9 and the r/nSuns community",
+  "source": {
+    "url": "https://liftvault.com/programs/powerlifting/n-suns-lifting-spreadsheets/",
+    "method_url": "https://www.strongrfastr.com/workout_routines/73093-nsuns_lp_5day",
+    "note": "Structure only: which lifts, set count, when the training max moves. Written in our own words from the cited pages, no text or numbers table reproduced. A training method is not copyrightable expression (17 U.S.C. 102(b), research/16 'The licence rule')."
+  },
+  "progression_unit": "session",
+  "dose": "sets",
+  "days": 4,
+  "notes": "Each day has a 9-set main lift and a 4-set second lift; both run every session, not on a repeating stage index, so `stages` is unused. Each T1 set carries `load_pct`, its fraction of `training_max` (90% of a tested 1RM per `start`): a rising triple (65/75/85%), a plateau triple (85/90/95%), then a back-off triple (65/75/85%) with the last set AMRAP. `advance_when` also has one AMRAP-reps tier, not the source's three tiers (small, medium, large TM jump by reps beaten); this file uses the middle tier's rep target and reports the finer-grained jump as unrepresentable, same class of gap as the format doc's HYPOTHESIS list.",
+  "rotation": [
+    {
+      "id": "BENCH",
+      "label": "Bench day (bench T1, overhead press T2)",
+      "blocks": [
+        {
+          "label": "T1",
+          "sets": 1,
+          "sequence": [
+            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 8, "load_pct": 0.65},
+            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 6, "load_pct": 0.75},
+            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 4, "load_pct": 0.85},
+            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 3, "load_pct": 0.85},
+            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 3, "load_pct": 0.9},
+            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 3, "load_pct": 0.95},
+            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 5, "load_pct": 0.65},
+            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 5, "load_pct": 0.75},
+            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 5, "load_pct": 0.85}
+          ],
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "1rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "amrap_at_least", "reps": 3},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "T2",
+          "exercise": "Standing_Military_Press",
+          "sets": 4,
+          "reps": 6,
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    },
+    {
+      "id": "SQUAT",
+      "label": "Squat day (squat T1, deadlift T2)",
+      "blocks": [
+        {
+          "label": "T1",
+          "sets": 1,
+          "sequence": [
+            {"exercise": "Barbell_Squat", "reps": 8, "load_pct": 0.65},
+            {"exercise": "Barbell_Squat", "reps": 6, "load_pct": 0.75},
+            {"exercise": "Barbell_Squat", "reps": 4, "load_pct": 0.85},
+            {"exercise": "Barbell_Squat", "reps": 3, "load_pct": 0.85},
+            {"exercise": "Barbell_Squat", "reps": 3, "load_pct": 0.9},
+            {"exercise": "Barbell_Squat", "reps": 3, "load_pct": 0.95},
+            {"exercise": "Barbell_Squat", "reps": 5, "load_pct": 0.65},
+            {"exercise": "Barbell_Squat", "reps": 5, "load_pct": 0.75},
+            {"exercise": "Barbell_Squat", "reps": 5, "load_pct": 0.85}
+          ],
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "1rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "amrap_at_least", "reps": 3},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "T2",
+          "exercise": "Barbell_Deadlift",
+          "sets": 4,
+          "reps": 6,
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    },
+    {
+      "id": "OHP",
+      "label": "Overhead press day (overhead press T1, bench T2)",
+      "blocks": [
+        {
+          "label": "T1",
+          "sets": 1,
+          "sequence": [
+            {"exercise": "Standing_Military_Press", "reps": 8, "load_pct": 0.65},
+            {"exercise": "Standing_Military_Press", "reps": 6, "load_pct": 0.75},
+            {"exercise": "Standing_Military_Press", "reps": 4, "load_pct": 0.85},
+            {"exercise": "Standing_Military_Press", "reps": 3, "load_pct": 0.85},
+            {"exercise": "Standing_Military_Press", "reps": 3, "load_pct": 0.9},
+            {"exercise": "Standing_Military_Press", "reps": 3, "load_pct": 0.95},
+            {"exercise": "Standing_Military_Press", "reps": 5, "load_pct": 0.65},
+            {"exercise": "Standing_Military_Press", "reps": 5, "load_pct": 0.75},
+            {"exercise": "Standing_Military_Press", "reps": 5, "load_pct": 0.85}
+          ],
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "1rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "amrap_at_least", "reps": 3},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "T2",
+          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "sets": 4,
+          "reps": 6,
+          "progression": {
+            "axis": "weight",
+            "increment": 5,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    },
+    {
+      "id": "DEADLIFT",
+      "label": "Deadlift day (deadlift T1, squat T2)",
+      "blocks": [
+        {
+          "label": "T1",
+          "sets": 1,
+          "sequence": [
+            {"exercise": "Barbell_Deadlift", "reps": 8, "load_pct": 0.65},
+            {"exercise": "Barbell_Deadlift", "reps": 6, "load_pct": 0.75},
+            {"exercise": "Barbell_Deadlift", "reps": 4, "load_pct": 0.85},
+            {"exercise": "Barbell_Deadlift", "reps": 3, "load_pct": 0.85},
+            {"exercise": "Barbell_Deadlift", "reps": 3, "load_pct": 0.9},
+            {"exercise": "Barbell_Deadlift", "reps": 3, "load_pct": 0.95},
+            {"exercise": "Barbell_Deadlift", "reps": 5, "load_pct": 0.65},
+            {"exercise": "Barbell_Deadlift", "reps": 5, "load_pct": 0.75},
+            {"exercise": "Barbell_Deadlift", "reps": 5, "load_pct": 0.85}
+          ],
+          "amrap_last": true,
+          "start": {"kind": "retest_pct", "test": "1rm", "pct": 0.9},
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "amrap_at_least", "reps": 3},
+            "on_miss": "hold"
+          }
+        },
+        {
+          "label": "T2",
+          "exercise": "Barbell_Squat",
+          "sets": 4,
+          "reps": 6,
+          "progression": {
+            "axis": "weight",
+            "increment": 10,
+            "increment_unit": "lb",
+            "advance_when": {"kind": "all_prescribed_reps"},
+            "on_miss": "hold"
+          }
+        }
+      ]
+    }
+  ]
+}

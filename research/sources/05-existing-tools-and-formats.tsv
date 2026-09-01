@@ -1,0 +1,43 @@
+url	title	kind	cited_by	why	access
+https://github.com/yuhonas/free-exercise-db	free-exercise-db	primary	-	876 public-domain exercises with images; the recommended exercise list to reuse	open
+https://github.com/wger-project/wger	wger-project/wger	primary	-	AGPL self-hostable workout backend; source of the Routine/Day/Slot/SlotEntry schema	open
+https://github.com/wger-project/mcp-server	wger MCP server	primary	-	Only official MCP server for a self-hostable FLOSS workout backend	open
+https://wger.readthedocs.io/en/latest/api/routines.html	wger routines API reference	primary	-	Canonical Routine/Day/Slot/SlotEntry model; slot layer makes supersets representable	open
+https://github.com/astashov/liftosaur	astashov/liftosaur	primary	-	AGPL client and Liftoscript DSL source; program-file grammar to imitate	open
+https://www.liftosaur.com/doc/api	Liftosaur REST API docs	primary	-	Pro-gated REST endpoints for programs, history, live workout, exercise data	open
+https://api.hevyapp.com/docs/	Hevy public API docs	primary	-	Official Hevy API reference; Swagger UI shell, spec loaded by JavaScript	js-only
+https://help.strongapp.io/article/235-export-workout-data	Strong: export workout data	primary	-	Official Strong CSV export doc; export is one-way, no reimport	open
+https://www.getfitnotes.com/docs/migrate-from-other-apps.html	FitNotes migration docs	primary	-	Fixed CSV header schema FitNotes imports from Strong, Fitbod, Hevy, others	open
+https://github.com/Alex-Keyes/boostcamp-mcp	Alex-Keyes/boostcamp-mcp	primary	-	Reverse-engineered Boostcamp MCP server; precedent for a workout tool surface	open
+https://github.com/garmin/fit-javascript-sdk	Garmin FIT JavaScript SDK	primary	-	Official FIT SDK; carries the set message definition for strength training	open
+https://www.openmhealth.org/documentation/schema-docs/schema-library/	Open mHealth schema library	primary	-	Session-level physical-activity schema; deprecated 2022, no strength granularity	open
+https://developer.apple.com/tutorials/data/documentation/healthkit/hkworkout.json	HKWorkout (HealthKit) docs JSON	primary	-	Machine-readable HKWorkout reference; workout-level stats only, no set or rep records	open
+https://developer.android.com/reference/androidx/health/connect/client/records/ExerciseSessionRecord	Health Connect ExerciseSessionRecord	primary	-	Session record with segments and laps; no sets, reps, or weight fields	open
+https://musclewiki.com/robots.txt	MuscleWiki robots.txt	primary	-	Primary evidence MuscleWiki disallows /api/ crawling; grounds to reject the dataset	open
+https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/LICENSE.md	free-exercise-db LICENSE (Unlicense)	cited	https://github.com/yuhonas/free-exercise-db	Public-domain dedication; no attribution or share-alike obligation on reuse	open
+https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/schema.json	free-exercise-db schema.json	cited	https://github.com/yuhonas/free-exercise-db	JSON Schema every exercise document conforms to; nullable fields documented	open
+https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json	free-exercise-db exercises.json	cited	https://github.com/yuhonas/free-exercise-db	The full 876-exercise dataset as one bundled JSON file	open
+https://unlicense.org/	The Unlicense	cited	https://github.com/yuhonas/free-exercise-db	Canonical Unlicense text linked from the free-exercise-db README badge	open
+https://raw.githubusercontent.com/wger-project/wger/master/LICENSE.txt	wger LICENSE (AGPL-3.0)	cited	https://github.com/wger-project/wger	AGPL-3.0 terms governing the wger application code	open
+https://raw.githubusercontent.com/wger-project/wger/master/README.md	wger README	cited	https://github.com/wger-project/wger	States app licence and that exercise data is licensed per entry	open
+https://wger.de/api/v2/license/?format=json	wger licence endpoint	cited	https://raw.githubusercontent.com/wger-project/wger/master/README.md	Enumerates per-exercise data licences: CC-BY-SA, CC-BY, CC0, ODbL	open
+https://wger.readthedocs.io/en/latest/api/index.html	wger API documentation index	cited	https://github.com/wger-project/wger	Entry point to all wger REST endpoints beyond routines	open
+https://raw.githubusercontent.com/wger-project/mcp-server/master/README.md	wger MCP server README	cited	https://github.com/wger-project/mcp-server	Tool surface and setup for the official wger MCP server	open
+https://raw.githubusercontent.com/astashov/liftosaur/master/LICENSE	Liftosaur LICENSE (AGPL-3.0)	cited	https://github.com/astashov/liftosaur	AGPL-3.0 terms; the licence exposure if Liftoscript code is vendored	open
+https://raw.githubusercontent.com/astashov/liftosaur/master/docs/content/liftoscript.md	Liftoscript reference source	cited	https://github.com/astashov/liftosaur	Full DSL grammar in Markdown; the program-file shape worth imitating	open
+https://www.liftosaur.com/doc/liftoscript	Liftoscript documentation	cited	https://www.liftosaur.com/doc/api	Rendered Liftoscript reference with examples of sets, reps, RPE, progression	open
+https://api.hevyapp.com/docs/swagger-ui-init.js	Hevy OpenAPI 3.0 spec	cited	https://api.hevyapp.com/docs/	Full inline OpenAPI document behind the JS docs page; all v1 endpoints	open
+https://help.hevyapp.com/hc/en-us/articles/38001424401943-How-to-Import-Strong-App-CSV-Files-and-Export-Your-Data-in-Hevy	Hevy: import Strong CSV, export data	cited	-	Official Hevy doc for Strong CSV import and Hevy export	open
+https://raw.githubusercontent.com/matanabudy/workout-data-sync/main/examples/hevy_export_sample.csv	Hevy export CSV sample	cited	-	Real Hevy CSV columns including exercise_title, superset_id, set_type	open
+https://raw.githubusercontent.com/AlexandrosKyriakakis/StrongAppAnalytics/main/Data/strong.csv	Strong export CSV sample	cited	-	Real Strong CSV: one row per set, with RPE and workout notes	open
+https://raw.githubusercontent.com/Alex-Keyes/boostcamp-mcp/main/README.md	boostcamp-mcp README	cited	https://github.com/Alex-Keyes/boostcamp-mcp	Documents the reverse-engineered Boostcamp login and exposed MCP tools	open
+https://raw.githubusercontent.com/garmin/fit-javascript-sdk/main/src/profile.js	FIT global profile (set message 225)	cited	https://github.com/garmin/fit-javascript-sdk	Generated FIT profile defining set message 225 and its strength fields	open
+https://developer.garmin.com/fit/	Garmin FIT SDK site	cited	https://github.com/garmin/fit-javascript-sdk	Official FIT protocol and SDK portal linked from the SDK README	js-only
+https://developer.apple.com/tutorials/data/documentation/healthkit/hkworkoutactivitytype.json	HKWorkoutActivityType docs JSON	cited	https://developer.apple.com/tutorials/data/documentation/healthkit/hkworkout.json	Enumerates traditionalStrengthTraining and functionalStrengthTraining workout types	open
+https://developer.android.com/reference/androidx/health/connect/client/records/ExerciseSegment	Health Connect ExerciseSegment	cited	https://developer.android.com/reference/androidx/health/connect/client/records/ExerciseSessionRecord	Segment record with repetitions but no weight; finest strength granularity available	open
+https://raw.githubusercontent.com/openmhealth/schemas/master/schema/omh/physical-activity-1.2.json	Open mHealth physical-activity 1.2 schema	cited	https://www.openmhealth.org/documentation/schema-docs/schema-library/	The actual JSON Schema: activity name, duration, distance, intensity only	open
+https://schema.org/ExercisePlan	schema.org ExercisePlan	cited	-	Generic vocabulary for exercise plans; too coarse for per-set logging	open
+https://musclewiki.com/terms	MuscleWiki terms of service	cited	-	Redistribution terms; blocks default user agents, readable with browser UA	open
+https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb	ExerciseDB on RapidAPI	cited	-	Proprietary paywalled exercise API listing; terms not machine-readable	js-only
+https://github.com/exercisedb/exercisedb-api	exercisedb/exercisedb-api	cited	-	Open-source ExerciseDB API implementation, readable alternative to the RapidAPI listing	open
+https://raw.githubusercontent.com/everkinetic/data/main/LICENSE.md	everkinetic/data LICENSE (CC-BY-SA-4.0)	cited	-	Viral share-alike on a rejected 293-exercise dataset with dead image host	open
