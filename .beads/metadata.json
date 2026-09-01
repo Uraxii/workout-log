@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "workout_log",
+  "project_id": "30a8e1c0-3563-45cc-aba1-05572310b7ae"
+}

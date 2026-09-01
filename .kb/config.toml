@@ -1,0 +1,18 @@
+[models]
+summarize = "google/gemini-2.5-flash"
+embed = "openai/text-embedding-3-small"
+
+[endpoint]
+url = "https://openrouter.ai/api/v1"
+
+[identifiers.slice]
+pattern = "^0[1-6]-[a-z-]+$"
+describe = "research slice id, e.g. 01-storage-options, 03-progression-heuristics"
+
+[identifiers.tool]
+pattern = "^[a-z0-9-]{2,40}$"
+describe = "lowercase slug of a product, app, library, or service the page is about, e.g. notion, obsidian-git, liftosaur, wger"
+
+[identifiers.scheme]
+pattern = "^[a-z0-9-]{2,40}$"
+describe = "lowercase slug of a training program or progression scheme, e.g. gzclp, 531, double-progression, rpe-autoregulation"
