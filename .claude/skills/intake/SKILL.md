@@ -5,7 +5,8 @@ description: First run, "set me up", or a life change. Creates the four Notion d
 
 # intake
 
-Conversation belongs here; parsing, question order, and every write belongs to
+Conversation belongs here; the question table, its cursor and the parse of
+each answer belong to `scripts/questions.py`, and every write belongs to
 `scripts/intake.py`, which is pure and fixture-replayable
 (`intake_turn(line, state) -> {"writes", "say", "state"}`, docs/architecture.md
 "The script seam"). This skill calls it once per user turn, says exactly
@@ -52,6 +53,13 @@ then goal, history, constraints, body, recovery, preferences (build-plan
 s5.2). **One question per turn**, since this is a phone conversation
 (`principle-experience-first`), and **no silent defaults**: every item on
 the list gets asked, including age, with no gate (dec "T18 final").
+
+An answer that does not parse re-asks its own step instead of advancing the
+cursor (ticket workout-log-481). That is one rule over the whole table, in
+`questions.parse` returning `None`, not a retry branch on any one question:
+"maybe" to a PAR-Q+ item is not silently a NO, and free text where the
+follow-up needs a yes or no can no longer strand `config/limits.clearance`
+at `pending`. Say the `reask` line back and ask again; never guess.
 
 `intake_cursor` is written to `config/athlete` after every turn (lim L-48): a
 dropped connection resumes at the next unanswered item, never restarts. If
