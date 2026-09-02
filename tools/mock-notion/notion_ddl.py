@@ -101,3 +101,55 @@ def _validate_statement(ddl: str, known_data_source_ids: set[str]) -> None:
             f"rule 8: exactly one TITLE column required, found {len(titles)}: {titles}")
     for name, type_name, args, trailing in columns:
         validate_column(name, type_name, args, trailing, names, known_data_source_ids)
+
+
+def _self_check() -> None:
+    """Every rule, shown rejecting something. A rule nobody has watched
+    reject is not a rule (`principle-prove-it-works`); this is the guard
+    against one going inert under a later edit.
+
+        python3 tools/mock-notion/notion_ddl.py
+    """
+    parent = {"type": "page_id", "page_id": "b55c9c91"}
+
+    def raises(payload: dict, ids: set[str] = frozenset()) -> str:
+        """The violation message, asserting there is one."""
+        try:
+            validate_create(payload, set(ids))
+        except DdlViolation as violation:
+            return str(violation)
+        raise AssertionError(f"accepted, should not have: {payload!r}")
+
+    def rejects(schema: str, ids: set[str] = frozenset(), **extra) -> str:
+        return raises({"parent": parent, "schema": schema, **extra}, ids)
+
+    validate_create({"parent": parent, "schema": 'CREATE TABLE ("N" TITLE)'}, set())
+    assert "rule 2" in raises({"schema": 'CREATE TABLE ("N" TITLE)'})
+    assert "rule 3" in raises({"parent": "root-page", "schema": "x"})
+    assert "rule 4" in rejects('CREATE TABLE ("N" TITLE)', properties={})
+    assert "rule 7" in rejects('CREATE TABLE ("N" TITLE, "x" GEOPOINT)')
+    assert "rule 8" in rejects('CREATE TABLE ("x" NUMBER)')
+    assert "rule 8" in rejects('CREATE TABLE ("N" TITLE, "M" TITLE)')
+    assert "rule 9" in rejects("CREATE TABLE (\"N\" TITLE, \"x\" CHECKBOX('a'))")
+    assert "rules 10-11" in rejects("CREATE TABLE (\"N\" TITLE, \"r\" RELATION('Sessions'))")
+    assert "rule 12" in rejects("CREATE TABLE (\"N\" TITLE, \"r\" RELATION('d', SINGLE))", {"d"})
+    assert "rule 13" in rejects('CREATE TABLE ("N" TITLE, "s" SELECT(a))')
+    assert "rule 14" in rejects('CREATE TABLE ("N" TITLE, "s" SELECT(%s))'
+                                % ", ".join(f"'o{i}'" for i in range(101)))
+    assert "rule 15" in rejects("CREATE TABLE (\"N\" TITLE, \"s\" SELECT('a':chartreuse))")
+    assert "rule 16" in rejects("CREATE TABLE (\"N\" TITLE, \"f\" FORMULA('Load / 2'))")
+    assert "rule 16" in rejects("CREATE TABLE (\"N\" TITLE, \"f\" FORMULA('prop(\"Nope\")'))")
+    assert "rule 17" in rejects("CREATE TABLE (\"N\" TITLE, \"s\" SELECT('a') DEFAULT 'a')")
+    assert "rule 17" in rejects("CREATE TABLE (\"N\" TITLE, \"f\" FORMULA('1') NULL_WHEN 'x')")
+    assert "rule 18" in rejects("CREATE TABLE (\"N\" TITLE COMMENT '%s')" % ("x" * 281))
+    assert "rule 19" in rejects('CREATE TABLE ("N" TITLE COMMENT \'%s\')' % ("x" * MAX_BODY_BYTES))
+    # Accepted: every legal form the renderer can emit.
+    validate_create({"parent": parent, "schema": (
+        'CREATE TABLE ("N" TITLE COMMENT \'the name\', "L" NUMBER FORMAT \'dollar\', '
+        "\"s\" SELECT('a':blue), \"m\" MULTI_SELECT, \"r\" RELATION('d', DUAL 'back'), "
+        "\"f\" FORMULA('prop(\"L\") * 36 / (37 - prop(\"L\"))'))")}, {"d"})
+    print(f"notion_ddl self-check: ok. not enforced (UNSOURCED): {', '.join(UNENFORCED)}")
+
+
+if __name__ == "__main__":
+    _self_check()
