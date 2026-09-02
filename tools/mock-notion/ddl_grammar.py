@@ -11,7 +11,7 @@ from __future__ import annotations
 import re
 
 _COLUMN_RE = re.compile(r'^"([^"]+)"\s+(.*)$', re.DOTALL)
-_TYPE_RE = re.compile(r"^([A-Z_]+)\s*(\((.*)\))?\s*(.*)$", re.DOTALL)
+_TYPE_RE = re.compile(r"^([A-Z_]+)\s*(.*)$", re.DOTALL)
 
 
 class DdlViolation(ValueError):
@@ -30,10 +30,38 @@ def parse_column(text: str) -> tuple[str, str, str | None, str]:
     parsed = _TYPE_RE.match(rest)
     if parsed is None:
         raise DdlViolation(f'column "{name}": no type keyword in {rest!r}')
-    return name, parsed.group(1), parsed.group(3), parsed.group(4).strip()
+    args, trailing = _take_group(name, parsed.group(2))
+    return name, parsed.group(1), args, trailing.strip()
+
+
+def _take_group(name: str, text: str) -> tuple[str | None, str]:
+    r"""The parenthesised argument list, if the type has one.
+
+    Scanned, not matched with a regex: a greedy `\(.*\)` runs past the
+    closing paren to a later one, so `FORMULA('if(a,b)') COMMENT 'x (y)'`
+    parses as a single mangled argument list.
+    """
+    if not text.startswith("("):
+        return None, text
+    depth = 0
+    quote = ""
+    for i, char in enumerate(text):
+        if quote:
+            if char == quote:
+                quote = ""
+        elif char in "'\"":
+            quote = char
+        elif char == "(":
+            depth += 1
+        elif char == ")":
+            depth -= 1
+            if depth == 0:
+                return text[1:i], text[i + 1:]
+    raise DdlViolation(f'column "{name}": unclosed argument list')
 
 
 def take_literal(name: str, text: str) -> tuple[str, str]:
+    """The leading single-quoted value, and whatever follows it."""
     text = text.strip()
     if not text.startswith("'"):
         raise DdlViolation(f'column "{name}": expected a single-quoted value, got {text[:30]!r}')
