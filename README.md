@@ -50,7 +50,7 @@ enums all come from one file:
 
 - Codex loads the coaching text through `.agents/skills/`, but has no documented Notion MCP wiring, so a Codex user cannot write a set in release 1. No phase tests Codex.
 - Nothing here has run against a live Notion workspace. Every proof in the repo replays a fixture against an offline mock writer. Your first run is the first real test.
-- Notion Free allows roughly 3 requests per second, so seeding the 913-row catalog takes about 5 minutes. It happens once.
+- Notion paces each connection to an average of 3 requests per second on every plan, so seeding the 913-row catalog takes about 5 minutes. It happens once. The limit that scales with your plan is a separate per-workspace one with unpublished numbers (`research/01-storage-options.md:61`).
 - `screen` runs PAR-Q+ and `pain-triage` refers you to a professional. Neither is a diagnosis, and none of this is medical advice.
 
 ## Licence and credit
@@ -59,7 +59,9 @@ Code and skills are MIT (`.claude-plugin/plugin.json`).
 
 The exercise catalog is 913 rows: 876 vendored from
 [yuhonas/free-exercise-db](https://github.com/yuhonas/free-exercise-db) under
-the Unlicense, plus 24 written for this project. See `exercises/README.md`.
+the Unlicense, plus 37 written for this project. A separate table of 131
+aliases maps shorthand to those rows. Rebuild and recount with
+`python3 tools/catalog/build.py`. See `exercises/README.md`.
 
 The ten program templates carry structure only, written in our own words from
 freely published sources and credited by name in `library/README.md`. GZCLP,

@@ -6,7 +6,7 @@ Structure only; `docs/build-plan.md` is the authority for content.
 
 ```
 schema/notion-schema.json                    # the one schema: 4 dbs, 7 measure kinds, config pages
-tools/mock-notion/writer.py                  # offline Notion: 2 write verbs, appends TSV
+tools/mock-notion/writer.py                  # offline Notion: 3 write verbs, appends TSV
 tools/mock-notion/reader.py                  # offline Notion: 2 read verbs, appends TSV
 tools/mock-notion/hydrate.py                 # turn-1 state rebuilt from reads alone
 tools/mock-notion/replay.py                  # phase proof runner: transcript -> writes -> diff
@@ -46,7 +46,8 @@ Write = {"verb": "row-create"|"config-write", "target": str, "payload": dict}
 
 ## Mock writer contract
 
-Accepts only the two verbs any skill may use (build-plan s6):
+Accepts the three write verbs a skill may use (build-plan s6), plus a
+fixture-only seeder:
 
 - `row_create(db, payload) -> page_id`. Validates db, property names and enum
   values against the schema; raises `SchemaViolation` otherwise. Query before
@@ -74,6 +75,8 @@ Accepts only the two verbs any skill may use (build-plan s6):
   (schema is frozen this phase); `config_write` validates both the same
   way, since a table-shaped program page and a key-value config page differ
   in presentation, not in what needs validating.
+- `database_create(db, parent)`. `intake`'s one-time schema creation, one
+  call per database. See "Phase 5 note: intake and screen" below.
 - `seed_row(db, payload)`. Fixture preamble only, appends nothing.
 
 One TSV per run. One line per field whose value is neither null nor `false`, in
@@ -117,7 +120,7 @@ doubles the file and adds no information. The call plus its result count
 proves the read happened, proves its order against the other rows, and proves
 the empty case.
 
-### Against the two-write-verb rule
+### Reads, and the third write verb
 
 `docs/build-plan.md:271` names `config-write` and `row-create` "the only two
 **write** verbs any skill may use". A read is not a write, so a read verb does
@@ -131,8 +134,11 @@ count is zero and a ceiling on it could never fail. A check that cannot fail
 is worse than no check. Hydration is a turn-1 cost the caller pays, off the
 s3.2 budget the same way `intake`'s database-create turn already is.
 
-Whether `database_create` is a documented third **write** verb stays open.
-Ticket R12 (`workout-log-5o8`) owns that question.
+`database_create` is a documented third **write** verb, settled here rather
+than left open. `writer.py` implements it beside the other two, `intake` is
+its only caller and calls it once per database (build-plan s5.1), and AGENTS.md
+names all three. Ticket R12 (`workout-log-5o8`) keeps the rest of its scope and
+no longer owns this question.
 
 ### Hydration belongs to the caller
 

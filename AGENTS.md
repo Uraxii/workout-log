@@ -13,11 +13,19 @@ reads the same folders through `.agents/skills/`. GitHub Copilot reads
 `.github/copilot-instructions.md`. See docs/build-plan.md s8 for the full
 layout.
 
-## The one write path
+## The write verbs and the read verbs
 
-`config-write(page, key, value)` and `row-create(db, payload)` are the only
-two write verbs a skill may call (docs/build-plan.md s6). No skill writes to
-Notion, or to a fixture, through any other route.
+`config-write(page, key, value)` and `row-create(db, payload)` are the two
+write verbs a coaching skill may call (docs/build-plan.md s6).
+`database-create(db, payload)` is the third write verb, and `intake` alone
+calls it, once per database, to build the four the schema declares
+(docs/build-plan.md s5.1). No skill writes to Notion, or to a fixture, through
+any other route.
+
+Reads are not writes, so the rule above does not cover them. There are two read
+verbs, `config-read(page)` and `row-query(db, where)`, both in
+`tools/mock-notion/reader.py`. Each skill rebuilds its turn-1 state through
+them. For the contract, see "Mock reader contract" in docs/architecture.md.
 
 ## No user data
 

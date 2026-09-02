@@ -1,9 +1,10 @@
 # Database creation payload
 
 `intake` never hand-copies `schema/notion-schema.json`. It reads the schema at
-call time and maps each declared property type to a Notion API property
-type, so the create payload is generated, not authored twice (build-plan s5.1,
-s2 rule L8).
+call time and maps each declared property type to a SQL DDL column keyword,
+because the hosted `notion-create-database` MCP tool takes DDL, not the REST
+property object (`research/19-notion-database-create-api.md`). The call is
+generated, not authored twice (build-plan s5.1, s2 rule L8).
 
 ## The renderer owns the payload
 
@@ -38,13 +39,22 @@ no create call. The offline mock (`tools/mock-notion/writer.py`
 `database_create`) reproduces this by keying on `(db name, parent)` and
 appending nothing to the TSV on the second call.
 
-## Catalog seeding, after the four databases exist
+## Catalog seeding
 
-`Exercises` is seeded from `exercises/catalog.json` (913 rows: free-exercise-db
-plus `exercises/extra.json` plus the alias table). Each row is one
-`row_create("Exercises", ...)` call. Notion Free is rate-limited to roughly 3
-requests per second, so 913 rows is a one-time step of **roughly 5 minutes**;
-`intake` tells the user this before starting and does not block the rest of
-the conversation on it finishing. The offline proof does not replay all 913
-rows (they are mechanical, one per catalog entry, and add nothing the fixture
-format needs to assert); it asserts the four `database-create` calls only.
+Seeding starts once the fourth create returns, since the creates run one per
+turn. `Exercises` is seeded from `exercises/catalog.json`, which holds 913 rows:
+876 vendored from free-exercise-db plus 37 in `exercises/extra.json`. The 131
+aliases in `exercises/aliases.json` are a separate table and are not seeded.
+Each catalog row is one `row_create("Exercises", ...)` call.
+
+Notion paces each connection to an average of 3 requests per second, on every
+plan, so 913 rows is a one-time step of **roughly 5 minutes**. The limit that
+scales with the workspace plan is a separate per-workspace one with unpublished
+numbers (`research/01-storage-options.md:61`,
+`research/19-notion-database-create-api.md`). `intake` tells the user the
+5-minute figure before starting and does not block the rest of the conversation
+on it finishing.
+
+The offline proof does not replay all 913 rows, because they are mechanical,
+one per catalog entry, and add nothing the fixture format needs to assert. It
+asserts the `database-create` calls only.

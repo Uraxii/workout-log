@@ -4,16 +4,39 @@ By the end you have four Notion databases in your own workspace, a program, and
 one logged set. Pick one flavour. Flavour A needs a terminal, a PC that stays
 on, and a paid Claude plan. Flavour B runs on a free claude.ai account.
 
-Both flavours start the same way: create a free Notion account and one blank
-page. The agent builds everything inside that page.
+## Read this before you start
 
-No step below has run against a live Notion workspace yet. Every proof in this
-repo is an offline replay (`docs/architecture.md`), so treat your first run as
-the first real test.
+No step below has run against a live Notion workspace. Every proof in this repo
+is an offline replay (`docs/architecture.md`), so treat your first run as the
+first real test.
+
+Setup does not finish at this commit. `intake` never asks for your Notion page
+id, and `.claude/skills/intake/scripts/ddl.py` skips every database create while
+that id is missing, so no database gets built. Ticket `workout-log-mqs` tracks
+the fix. The health questions still run.
+
+<!-- TODO(workout-log-mqs): when intake asks for the parent page id, delete the
+     paragraph above and write the question into flavour A step 5 and flavour B
+     step 6. -->
+
+## Set up Notion first, either flavour
+
+1. Create a free Notion account.
+
+2. Create one blank Notion page. The agent builds all four databases inside
+   this page.
+
+3. Copy the page link and keep it. Click **Share**, then **Copy link**. You
+   need the page id from that link, which is the long string of letters and
+   digits at the end, before any `?`.
+
+There are no API keys and no tokens to paste, in either flavour. Both sign in
+to Notion in a browser instead.
 
 ## Flavour A: Claude Code plugin
 
-1. Open Claude Code in the terminal and add the marketplace.
+1. Open Claude Code in the terminal and add the marketplace. The repo is
+   private, so your GitHub account must be able to read it.
 
 		/plugin marketplace add Uraxii/workout-log
 
@@ -32,9 +55,9 @@ the first real test.
 
 		set me up
 
-   `intake` creates `Sessions`, `Exercises`, `Locations`, and `Sets`, then starts
-   the PAR-Q+ health questions, one per turn. It tells you the catalog seeding
-   runs for about 5 minutes in the background.
+   `intake` creates `Exercises`, `Locations`, `Sessions`, and `Sets`, one
+   database per turn, then starts the PAR-Q+ health questions, one per turn. It
+   tells you the catalog seeding runs for about 5 minutes in the background.
 
 6. Ask for a program.
 
@@ -59,16 +82,17 @@ the first real test.
 1. Go to **Settings > Capabilities** on claude.ai and turn on code execution.
    Skills do not run without it.
 
-2. Connect Notion under your connector settings and sign in. There are no API
-   keys to paste.
+2. Connect Notion under your connector settings and sign in.
 
-3. Get the skills ZIP. Download it from the repo:
-
-		dist/workout-trainer-skills.zip
-
-   Or clone the repo and rebuild it:
+3. Build the skills ZIP yourself. There is nothing to download: `dist/` is
+   gitignored (`.gitignore:18`), the repo publishes no release, and no workflow
+   builds one. Clone the repo, then run:
 
 		make skills
+
+   That writes the file you upload in the next step:
+
+		dist/workout-trainer-skills.zip
 
 4. Go to **Customize > Skills**, click `+`, then **Create skill**, then
    **Upload a skill**, and upload the ZIP.
@@ -106,13 +130,20 @@ exists. Finish "set me up", then "make me a plan".
 halted the session. Only `pain-triage` clears it, and only after you
 acknowledge the hand-off it gave you.
 
-**Setup sits on the catalog for minutes.** Notion Free allows roughly 3 requests
-per second and the catalog is 913 rows. Answer the profile questions while it
-seeds.
+**Setup sits on the catalog for minutes.** Notion paces each connection to an
+average of 3 requests per second, on every plan, and the catalog is 913 rows.
+The limit that scales with your plan is a separate per-workspace one, and Notion
+does not publish its numbers (`research/01-storage-options.md:61`,
+`research/19-notion-database-create-api.md`). Answer the profile questions while
+the catalog seeds.
 
 **You ran "set me up" twice.** Nothing is duplicated. `intake` queries before it
 creates, so a database of that name under your page is adopted, not rebuilt.
 
-**claude.ai rejects the ZIP (unverified).** The upload is documented for a single
-skill folder, and this ZIP holds seven at the root. If it is refused, zip each
-folder under `.claude/skills/` on its own and upload seven skills.
+**claude.ai rejects the ZIP.** Nobody has tried this upload yet. The claude.ai
+docs describe uploading one skill folder, and this ZIP holds seven folders at
+the root. There is no fallback. Uploading each folder on its own does not work,
+because `intake` imports `screen` and `load-adjust` imports `loads` from
+`program-design`, so a lone folder fails at import with a
+`ModuleNotFoundError`. Ticket `workout-log-ayf.14` holds the reproduction. Use
+flavour A until that is settled.
