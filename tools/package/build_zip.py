@@ -27,8 +27,10 @@ DIST_ZIP = REPO_ROOT / "dist" / "workout-trainer-skills.zip"
 SKIP_DIRS = {"__pycache__"}
 
 # Repo-root globs per skill, matching what each skill's scripts actually read:
-# library.py -> library/, rows.py -> schema/, catalog.py -> exercises/.
+# library.py -> library/, rows.py -> schema/, catalog.py -> exercises/,
+# intake's ddl.py -> schema/.
 BUNDLED_DATA = {
+    "intake": ("schema/notion-schema.json",),
     "program-design": ("library/*.json",),
     "session-runner": (
         "exercises/aliases.json",

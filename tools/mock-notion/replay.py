@@ -37,6 +37,9 @@ MAX_RESOLUTION_WRITES_PER_TURN = 1  # at most one `Exercises` create per turn
 # documented legitimate case (s1.3 row 5, 10 rows).
 MAX_SET_ROWS_PER_TURN = 20
 
+# Stand-in for the blank Notion page the user shares with the connection.
+PARENT_PAGE_ID = "b55c9c91-384d-452b-81db-d1ef79372b75"
+
 sys.path.insert(0, str(SKILLS_DIR / "session-runner" / "scripts"))
 import log_set  # noqa: E402  (skill-side seam, phase 1 has one script)
 
@@ -95,6 +98,10 @@ def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
         "session_seq": 0,
         "exercise_seq": len(catalog),
         "cursor": {},
+        # The page the user shared. In production `intake` asks for it
+        # (ticket workout-log-mqs); the harness stands in for that answer.
+        "notion_parent_page_id": PARENT_PAGE_ID,
+        "databases": {},
     }
     if fixture.intake_cursor is not None:
         state["intake"] = {"cursor": int(fixture.intake_cursor), "answers": {}, "any_yes": False}
@@ -129,6 +136,7 @@ def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
                 raise AssertionError(
                     f"{turn.message_id} {turn.line!r}: {set_rows} Sets rows "
                     f"exceeds the sanity ceiling of {MAX_SET_ROWS_PER_TURN}")
+        created: dict[str, str] = {}
         for write in result["writes"]:
             if write["verb"] == "row-create":
                 notion.row_create(write["target"], write["payload"])
@@ -136,10 +144,16 @@ def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
                 for key, value in write["payload"].items():
                     notion.config_write(write["target"], key, value)
             elif write["verb"] == "database-create":
-                notion.database_create(write["target"], write["payload"])
+                created[write["target"]] = notion.database_create(
+                    write["target"], write["payload"])
             else:
                 raise ValueError(f"unknown write verb {write['verb']!r}")
         state = result["state"]
+        # `notion-create-database` answers with the new data source id, and
+        # the next database's relation columns need it. Threading it back is
+        # the caller's job: a seam is a pure function of (line, state) and
+        # never sees a response.
+        state.setdefault("databases", {}).update(created)
         say_rows.append(
             f"say\t{turn.skill}\t{turn.message_id}\t{json.dumps(result[say_key])}\n")
 

@@ -1,12 +1,16 @@
 verb	target	field	value
-database-create	Sessions	Parent	root-page
-database-create	Exercises	Parent	root-page
-database-create	Locations	Parent	root-page
-database-create	Sets	Parent	root-page
+database-create	Exercises	Parent	b55c9c91-384d-452b-81db-d1ef79372b75
+database-create	Exercises	Schema	CREATE TABLE ("Name" TITLE, "slug" RICH_TEXT, "aliases" RICH_TEXT, "measure" SELECT('weight_reps', 'reps_only', 'hold_time', 'distance_load', 'distance_time', 'level_reps', 'interval_reps'), "implements" NUMBER, "primary_muscles" MULTI_SELECT, "secondary_muscles" MULTI_SELECT, "equipment" MULTI_SELECT, "mechanic" SELECT('compound', 'isolation'), "is_unilateral" CHECKBOX, "min_increment" NUMBER, "min_increment_unit" SELECT('lb', 'kg'), "variation_chain" RICH_TEXT, "variation_index" NUMBER, "source" SELECT('free-exercise-db', 'extra', 'user'), "fail_count" NUMBER, "training_max" NUMBER, "stage_index" NUMBER, "last_deload_at" DATE, "deload_declined_at" DATE, "grey_band_answer" RICH_TEXT, "next_target" RICH_TEXT, "target_source_set" RICH_TEXT)
+database-create	Locations	Parent	b55c9c91-384d-452b-81db-d1ef79372b75
+database-create	Locations	Schema	CREATE TABLE ("Name" TITLE, "plate_pairs_lb" RICH_TEXT, "plate_pairs_kg" RICH_TEXT, "bar_weight_lb" NUMBER, "bar_weight_kg" NUMBER, "fixed_stacks" RICH_TEXT, "min_increment_lb" NUMBER, "min_increment_kg" NUMBER, "Notes" RICH_TEXT)
 config-write	config/athlete	jurisdiction	California
 config-write	config/athlete	intake_cursor	10
+database-create	Sessions	Parent	b55c9c91-384d-452b-81db-d1ef79372b75
+database-create	Sessions	Schema	CREATE TABLE ("Title" TITLE, "Date" DATE, "Timezone" RICH_TEXT, "Status" SELECT('open', 'closed', 'abandoned', 'halted'), "Start time" DATE, "End time" DATE, "Program" RICH_TEXT, "Day" RICH_TEXT, "Cursor" RICH_TEXT, "week_index" NUMBER, "Readiness" NUMBER, "Session RPE" NUMBER, "Bodyweight" NUMBER, "Bodyweight unit" SELECT('lb', 'kg'), "Location" RELATION('ds-Locations'), "Notes" RICH_TEXT)
 config-write	config/athlete	goal	get stronger
 config-write	config/athlete	intake_cursor	11
+database-create	Sets	Parent	b55c9c91-384d-452b-81db-d1ef79372b75
+database-create	Sets	Schema	CREATE TABLE ("Session" RELATION('ds-Sessions'), "Exercise" RELATION('ds-Exercises'), "Set index" NUMBER, "Set type" SELECT('warmup', 'working', 'backoff', 'dropset'), "is_amrap" CHECKBOX, "to_failure" CHECKBOX, "RPE" NUMBER, "RIR" NUMBER, "Timestamp" DATE, "machine_setting" RICH_TEXT, "Side" SELECT('both', 'left', 'right'), "reps_left" NUMBER, "reps_right" NUMBER, "Notes" RICH_TEXT, "Load" NUMBER, "Unit" SELECT('lb', 'kg'), "load_kind" SELECT('absolute', 'added', 'assist'), "Reps" NUMBER, "duration_s" NUMBER, "distance" NUMBER, "distance_unit" SELECT('m', 'km', 'mi'), "level" NUMBER, "interval_s" NUMBER, "attempt" NUMBER, "write_key" RICH_TEXT, "source_message_id" RICH_TEXT, "Pain flag" SELECT('none', 'niggle', 'stop'), "confirm_line" TITLE, "stale" CHECKBOX, "e1RM" FORMULA('prop("Load") * 36 / (37 - prop("Reps"))'))
 config-write	config/athlete	training_age	3 years, pretty consistent
 config-write	config/athlete	intake_cursor	12
 config-write	config/athlete	days_per_week	4

@@ -46,9 +46,9 @@
         "write_key":         {"type": "rich_text"},
         "source_message_id": {"type": "rich_text"},
         "Pain flag":         {"type": "select", "enum": ["none", "niggle", "stop"], "default": "none"},
-        "confirm_line":      {"type": "rich_text"},
+        "confirm_line":      {"type": "title", "note": "Notion requires exactly one title per data source; the confirm line is what a Sets row is called, and session-runner already writes it on every row."},
         "stale":             {"type": "checkbox"},
-        "e1RM":              {"type": "formula", "expression": "Load / (1.0278 - 0.0278 * Reps)", "null_when": ["Reps > 10", "Set type != working"]}
+        "e1RM":              {"type": "formula", "expression": "prop(\"Load\") * 36 / (37 - prop(\"Reps\"))", "note": "Exact Brzycki, the same rational as loads.brzycki_e1rm (docs/unit-and-magnitude-model.md s2). Notion references properties as prop(\"Name\"); bare identifiers do not parse. null_when was not a Notion concept and mapped to no API field."}
       }
     },
 

@@ -27,8 +27,9 @@ from typing import Any, TypedDict
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "screen" / "scripts"))
 import screen  # noqa: E402  (skill-to-skill seam import, mirrors replay.py's own sys.path use)
 
-DB_ORDER = ("Sessions", "Exercises", "Locations", "Sets")
-PARENT = "root-page"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ddl  # noqa: E402  (same-dir renderer; the dir name is not importable)
+
 TRIGGER_RE = re.compile(r"\bset\s*me\s*up\b", re.IGNORECASE)
 DONE_SAY = 'All set. Say "what do I have today" to start.'
 
@@ -121,20 +122,45 @@ def _advance(ist: dict[str, Any], idx: int) -> tuple[int, list[str]]:
     ist["cursor"] = idx
     return idx, acks
 
-def _db_create_writes() -> list[Write]:
-    return [{"verb": "database-create", "target": db, "payload": {"parent": PARENT}} for db in DB_ORDER]
+def _db_create_writes(state: dict[str, Any]) -> list[Write]:
+    """At most one `database-create` per turn.
+
+    `notion-create-database` returns the new data source id, and a relation
+    column can only name a data source that already exists, so the four
+    creates are four calls with the caller threading each returned id back
+    into `state["databases"]` before the next one (ticket workout-log-29l).
+    The order is derived from the schema's relation graph, never hand-listed
+    (ticket workout-log-6zr).
+
+    The parent page id is the user's, read from `state`. `intake` asking for
+    it is ticket workout-log-mqs; with no id there is nothing to create under
+    and the questions still run.
+    """
+    parent = state.get("notion_parent_page_id")
+    created = state.get("databases", {})
+    if parent is None:
+        return []
+    for db in ddl.create_order():
+        if db not in created:
+            return [{"verb": "database-create", "target": db,
+                     "payload": ddl.create_payload(db, parent, created)}]
+    return []
 
 def intake_turn(line: str, state: dict[str, Any]) -> Turn:
     state = copy.deepcopy(state)
     ist = state.get("intake", {"cursor": 0, "answers": {}, "any_yes": False})
     now = state.get("now", "")
 
+    # One database per turn until all four exist, on every turn and not only
+    # the trigger turn, so the question flow is not stalled behind setup.
+    db_writes = _db_create_writes(state)
+
     if TRIGGER_RE.search(line):
-        # First "set me up" creates the databases and starts asking. A later
-        # one (interruption, or a curious re-run) adopts them (idempotent at
-        # the writer) and resumes at `intake_cursor` instead of restarting
+        # First "set me up" starts the creates and starts asking. A later one
+        # (interruption, or a curious re-run) adopts what exists (idempotent
+        # at the writer) and resumes at `intake_cursor` instead of restarting
         # (lim L-48).
-        writes = _db_create_writes()
+        writes = list(db_writes)
         idx, acks = _advance(ist, ist["cursor"])
         state["intake"] = ist
         if idx >= len(ALL_IDS):
@@ -144,10 +170,10 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
     idx = ist["cursor"]
     if idx >= len(ALL_IDS):
         state["intake"] = ist
-        return {"writes": [], "say": DONE_SAY, "state": state}
+        return {"writes": list(db_writes), "say": DONE_SAY, "state": state}
 
     step_id = ALL_IDS[idx]
-    writes: list[Write] = []
+    writes: list[Write] = list(db_writes)
 
     if step_id.startswith("parq_"):
         if step_id == "parq_followup":

@@ -44,8 +44,12 @@ SELECT_COLORS = frozenset((
 SIMPLE_TYPES = frozenset((
     "TITLE", "RICH_TEXT", "DATE", "PEOPLE", "CHECKBOX", "URL", "EMAIL",
     "PHONE_NUMBER", "STATUS", "FILES", "CREATED_TIME", "LAST_EDITED_TIME"))
-ARG_TYPES = frozenset((
-    "SELECT", "MULTI_SELECT", "FORMULA", "RELATION", "ROLLUP"))
+# A relation with no target and a formula with no expression cannot be
+# rendered at all; a select with no options is legal, Notion adds them as
+# rows use them (research/19 `multi_select` row).
+ARG_REQUIRED = frozenset(("FORMULA", "RELATION", "ROLLUP"))
+ARG_OPTIONAL = frozenset(("SELECT", "MULTI_SELECT"))
+ARG_TYPES = ARG_REQUIRED | ARG_OPTIONAL
 # NUMBER and UNIQUE_ID take a trailing modifier word, never parentheses.
 MODIFIER_TYPES = {"NUMBER": "FORMAT", "UNIQUE_ID": "PREFIX"}
 KNOWN_TYPES = SIMPLE_TYPES | ARG_TYPES | frozenset(MODIFIER_TYPES)
@@ -143,7 +147,7 @@ def _validate_column(name: str, type_name: str, args: str | None, trailing: str,
         raise DdlViolation(f'rule 7: column "{name}" has unknown type {type_name}')
     if type_name in SIMPLE_TYPES and args is not None:
         raise DdlViolation(f'rule 9: column "{name}" is {type_name} and takes no options, got ({args})')
-    if type_name in ARG_TYPES and args is None:
+    if type_name in ARG_REQUIRED and args is None:
         raise DdlViolation(f'column "{name}": {type_name} requires an argument list')
     if type_name in ("SELECT", "MULTI_SELECT"):
         _validate_options(name, args or "")

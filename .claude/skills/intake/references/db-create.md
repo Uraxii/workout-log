@@ -5,39 +5,31 @@ call time and maps each declared property type to a Notion API property
 type, so the create payload is generated, not authored twice (build-plan s5.1,
 s2 rule L8).
 
-## Type mapping
+## The renderer owns the payload
 
-| Schema `type` | Notion property type sent to `notion-create-database` |
-|---|---|
-| `title` | `title` |
-| `rich_text` | `rich_text` |
-| `number` | `number` |
-| `select` (has `enum`) | `select`, options = the enum values |
-| `multi_select` | `multi_select`, options = the enum values if present |
-| `checkbox` | `checkbox` |
-| `date` | `date` |
-| `relation` | `relation`, `database_id` = the already-created id of `properties.<name>.database` |
-| `formula` | `formula`, `expression` = the schema's `expression` string |
+`scripts/ddl.py` reads `schema/notion-schema.json` and renders the call. There
+is no type-mapping table here and no payload skeleton to copy, because a
+payload hand-built from prose drifts from the schema: tickets
+workout-log-29l, -3lw, -6zr and -8ms were four symptoms of that one cause.
 
-Databases are created in dependency order so a `relation` property always
-points at an id that already exists: `Sessions` and `Exercises` and
-`Locations` first (no relations out), then `Sets` (relations to all three).
+	from ddl import create_order, create_payload
+	create_payload(db, parent_page_id, data_source_ids)
 
-## Payload shape, one call per database
+- `create_order()` returns the database names in relation-graph order, so a
+  relation column always names a data source that an earlier call returned.
+  It is derived from the schema; adding a relation reorders the creates with
+  no code change.
+- `create_payload()` returns the `notion-create-database` arguments: `parent`
+  (`{"type": "page_id", "page_id": ...}`), `title`, and `schema`, a SQL DDL
+  `CREATE TABLE` statement. `COLUMN_DDL` in that module is the type table.
+- `data_source_ids` maps an already-created database name to the id its call
+  returned. **One create per turn**: the tool answers with the new data
+  source id, and the next database needs it.
 
-```json
-{
-  "parent": {"page_id": "<the user's blank page>"},
-  "title": "Sets",
-  "properties": {
-    "Session": {"relation": {"database_id": "<Sessions db id>"}},
-    "Exercise": {"relation": {"database_id": "<Exercises db id>"}},
-    "Set index": {"number": {}},
-    "Set type": {"select": {"options": [{"name": "warmup"}, {"name": "working"}, {"name": "backoff"}, {"name": "dropset"}]}},
-    "...": "one entry per schema.databases.Sets.properties key, in schema order"
-  }
-}
-```
+The rules the output must satisfy are in
+`research/19-notion-database-create-api.md`, each with a primary
+`developers.notion.com` URL, and are enforced offline by
+`tools/mock-notion/notion_ddl.py`.
 
 Query-before-create (rule L8): before calling `notion-create-database`,
 `intake` searches the parent page for a database already named `Sets` (or
