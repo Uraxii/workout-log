@@ -27,6 +27,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+import notion_ddl
+
 TSV_HEADER = ("verb", "target", "field", "value")
 DEFAULT_SCHEMA = Path(__file__).resolve().parents[2] / "schema" / "notion-schema.json"
 _SESSION_OPEN_FIELDS = ("Date", "Timezone", "Start time")  # rules L3, L4: frozen at open
@@ -52,22 +54,33 @@ class MockNotion:
         self._header_written = False
         self.out_path.write_text("")
 
-    def database_create(self, db: str, parent: str) -> str:
-        """Create one Notion database under `parent`, or adopt the one
-        already created there (build-plan s5.1, rule L8: same
+    def database_create(self, db: str, payload: dict[str, Any]) -> str:
+        """Create one Notion database, or adopt the one already created under
+        the same parent page (build-plan s5.1, rule L8: same
         query-before-create discipline as `row_create`). A second call for
-        the same `(db, parent)`, i.e. a second "set me up", appends nothing
-        and returns the existing id.
+        the same `(db, parent page)`, i.e. a second "set me up", appends
+        nothing and returns the existing data source id.
+
+        `payload` is the `notion-create-database` call verbatim: `parent`,
+        `schema` (a `CREATE TABLE` statement), and optionally `title`. It is
+        checked against Notion's rules by `notion_ddl`, which knows nothing
+        about `schema/notion-schema.json` (ticket workout-log-yir). The
+        returned id is a data source id: relation columns in later calls must
+        name it, which is what orders the creates.
         """
         if db not in self.schema["databases"]:
             raise SchemaViolation(f"unknown database {db!r}")
-        key = (db, parent)
+        notion_ddl.validate_create(payload, set(self._databases.values()))
+        key = (db, payload["parent"]["page_id"])
         existing = self._databases.get(key)
         if existing is not None:
             return existing
-        db_id = f"db-{db}"
+        db_id = f"ds-{db}"
         self._databases[key] = db_id
-        self.emit("database-create", db, {"Parent": parent})
+        self.emit("database-create", db, {
+            "Parent": payload["parent"]["page_id"],
+            "Schema": payload["schema"],
+        })
         return db_id
 
     def row_create(self, db: str, payload: dict[str, Any]) -> str:

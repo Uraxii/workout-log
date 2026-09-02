@@ -136,7 +136,7 @@ def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
                 for key, value in write["payload"].items():
                     notion.config_write(write["target"], key, value)
             elif write["verb"] == "database-create":
-                notion.database_create(write["target"], write["payload"].get("parent"))
+                notion.database_create(write["target"], write["payload"])
             else:
                 raise ValueError(f"unknown write verb {write['verb']!r}")
         state = result["state"]
