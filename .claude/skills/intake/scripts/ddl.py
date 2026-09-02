@@ -135,6 +135,29 @@ def create_payload(db: str, parent_page_id: str, data_source_ids: dict[str, str]
     }
 
 
+def next_create_write(state: dict[str, Any]) -> list[dict[str, Any]]:
+    """At most one `database-create` write: the next database still missing.
+
+    `notion-create-database` returns the new data source id, and a relation
+    column can only name a data source that already exists, so the four
+    creates are four calls with the caller threading each returned id back
+    into `state["databases"]` before the next one (ticket workout-log-29l).
+
+    The parent page id is the user's, read from `state`. `intake` asking for
+    it is ticket workout-log-mqs; with no id there is nothing to create under
+    and the questions still run.
+    """
+    parent = state.get("notion_parent_page_id")
+    created = state.get("databases", {})
+    if parent is None:
+        return []
+    for db in create_order():
+        if db not in created:
+            return [{"verb": "database-create", "target": db,
+                     "payload": create_payload(db, parent, created)}]
+    return []
+
+
 def _literal(text: object, quote: str = "'") -> str:
     """DDL quotes have no escape form, so a value carrying its own delimiter
     is rejected here rather than silently producing a broken statement. A

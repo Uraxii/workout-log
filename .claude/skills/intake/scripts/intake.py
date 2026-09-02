@@ -122,30 +122,6 @@ def _advance(ist: dict[str, Any], idx: int) -> tuple[int, list[str]]:
     ist["cursor"] = idx
     return idx, acks
 
-def _db_create_writes(state: dict[str, Any]) -> list[Write]:
-    """At most one `database-create` per turn.
-
-    `notion-create-database` returns the new data source id, and a relation
-    column can only name a data source that already exists, so the four
-    creates are four calls with the caller threading each returned id back
-    into `state["databases"]` before the next one (ticket workout-log-29l).
-    The order is derived from the schema's relation graph, never hand-listed
-    (ticket workout-log-6zr).
-
-    The parent page id is the user's, read from `state`. `intake` asking for
-    it is ticket workout-log-mqs; with no id there is nothing to create under
-    and the questions still run.
-    """
-    parent = state.get("notion_parent_page_id")
-    created = state.get("databases", {})
-    if parent is None:
-        return []
-    for db in ddl.create_order():
-        if db not in created:
-            return [{"verb": "database-create", "target": db,
-                     "payload": ddl.create_payload(db, parent, created)}]
-    return []
-
 def intake_turn(line: str, state: dict[str, Any]) -> Turn:
     state = copy.deepcopy(state)
     ist = state.get("intake", {"cursor": 0, "answers": {}, "any_yes": False})
@@ -153,7 +129,7 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
 
     # One database per turn until all four exist, on every turn and not only
     # the trigger turn, so the question flow is not stalled behind setup.
-    db_writes = _db_create_writes(state)
+    db_writes = ddl.next_create_write(state)
 
     if TRIGGER_RE.search(line):
         # First "set me up" starts the creates and starts asking. A later one

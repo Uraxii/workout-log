@@ -10,15 +10,8 @@ is an upsert, not an ignored duplicate (phase 3 defect 1) — it merges into
 the existing row and appends only the fields that changed value, so a
 resend with identical content still appends nothing.
 
-`Sessions` has no payload-derivable identity in the schema (`identity:
-["page_id"]`): a real page id does not exist until after the row is
-created, and the one caller that updates a session's `Status` after open
-(`pain-triage`) sends a bare `{"Status": ...}` with no identity field at
-all. Phase 3 defect 1 settles this without a schema change (out of this
-phase's scope): a write carrying the frozen open fields (`Date`,
-`Timezone`, `Start time`, rules L3, L4) keys on that tuple; any other
-`Sessions` write targets whichever session is currently open. See
-`_resolve_session`.
+`Sessions` has no payload-derivable identity in the schema; see
+`_resolve_session` for what stands in for one.
 """
 
 from __future__ import annotations
@@ -61,12 +54,9 @@ class MockNotion:
         the same `(db, parent page)`, i.e. a second "set me up", appends
         nothing and returns the existing data source id.
 
-        `payload` is the `notion-create-database` call verbatim: `parent`,
-        `schema` (a `CREATE TABLE` statement), and optionally `title`. It is
-        checked against Notion's rules by `notion_ddl`, which knows nothing
-        about `schema/notion-schema.json` (ticket workout-log-yir). The
-        returned id is a data source id: relation columns in later calls must
-        name it, which is what orders the creates.
+        `payload` is the `notion-create-database` call verbatim, checked by
+        `notion_ddl`. The returned id is a data source id: relation columns
+        in later calls must name it, which is what orders the creates.
         """
         if db not in self.schema["databases"]:
             raise SchemaViolation(f"unknown database {db!r}")
@@ -99,12 +89,8 @@ class MockNotion:
         no-op and appends nothing.
 
         Defect 4: `program/current` and `program/history/<date>` name their
-        allowed fields `headers`, not `keys` (schema is frozen this phase,
-        not a typo to fix there). Both lists mean the same thing here, the
-        allowed field names on that page body; a table-shaped program page
-        and a key-value config page differ in presentation, not in what
-        `config_write` needs to validate, so one check covers both rather
-        than adding a second code path per page shape."""
+        allowed fields `headers`, not `keys`. Both mean the same thing here,
+        so one check covers both rather than a code path per page shape."""
         pages = self.schema["config_pages"]
         if page not in pages:
             raise SchemaViolation(f"unknown config page {page!r}")

@@ -20,9 +20,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import writer  # noqa: E402  (same-dir module; the dir name is not importable)
 from hydrate import hydrate  # noqa: E402
 from reader import MockNotionReader  # noqa: E402
+from seams import SEAMS  # noqa: E402
 from transcript import Fixture, parse_transcript  # noqa: E402
-
-SKILLS_DIR = Path(__file__).resolve().parents[2] / ".claude" / "skills"
 
 # build-plan s3.2's round-trip ceiling covers exercise RESOLUTION cost, not a
 # multi-row entry's legitimate set count: rungs 1-3 add 0 round trips, rung 4
@@ -39,36 +38,6 @@ MAX_SET_ROWS_PER_TURN = 20
 
 # Stand-in for the blank Notion page the user shares with the connection.
 PARENT_PAGE_ID = "b55c9c91-384d-452b-81db-d1ef79372b75"
-
-sys.path.insert(0, str(SKILLS_DIR / "session-runner" / "scripts"))
-import log_set  # noqa: E402  (skill-side seam, phase 1 has one script)
-
-sys.path.insert(0, str(SKILLS_DIR / "screen" / "scripts"))
-sys.path.insert(0, str(SKILLS_DIR / "intake" / "scripts"))
-import screen  # noqa: E402  (phase 5 seam)
-import intake  # noqa: E402  (phase 5 seam)
-
-sys.path.insert(0, str(SKILLS_DIR / "trainer-core" / "scripts"))
-sys.path.insert(0, str(SKILLS_DIR / "pain-triage" / "scripts"))
-import trainer_core  # noqa: E402  (phase 6 seam)
-import pain_triage  # noqa: E402  (phase 6 seam)
-
-sys.path.insert(0, str(SKILLS_DIR / "program-design" / "scripts"))
-import design  # noqa: E402  (phase 4 seam)
-
-sys.path.insert(0, str(SKILLS_DIR / "load-adjust" / "scripts"))
-import load_adjust  # noqa: E402  (phase 6 seam)
-
-# One turn function per `@skill` a transcript can route to (phase 5, s9).
-_SEAMS = {
-    "session-runner": (log_set.log_set, "confirm_line"),
-    "intake": (intake.intake_turn, "say"),
-    "screen": (screen.screen_turn, "say"),
-    "trainer-core": (trainer_core.gate_turn, "say"),
-    "pain-triage": (pain_triage.triage_turn, "say"),
-    "program-design": (design.design_turn, "say"),
-    "load-adjust": (load_adjust.adjust_turn, "say"),
-}
 
 
 def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
@@ -117,7 +86,7 @@ def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
         if turn.rest_node_label is not None:
             call_state["program"]["rotation"].append(
                 {"id": "REST", "label": turn.rest_node_label, "blocks": []})
-        turn_fn, say_key = _SEAMS[turn.skill]
+        turn_fn, say_key = SEAMS[turn.skill]
         result = turn_fn(turn.line, call_state)
         if not turn.resend:
             last_pre_state = call_state
