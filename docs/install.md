@@ -10,15 +10,6 @@ No step below has run against a live Notion workspace. Every proof in this repo
 is an offline replay (`docs/architecture.md`), so treat your first run as the
 first real test.
 
-Setup does not finish at this commit. `intake` never asks for your Notion page
-id, and `.claude/skills/intake/scripts/ddl.py` skips every database create while
-that id is missing, so no database gets built. Ticket `workout-log-mqs` tracks
-the fix. The health questions still run.
-
-<!-- TODO(workout-log-mqs): when intake asks for the parent page id, delete the
-     paragraph above and write the question into flavour A step 5 and flavour B
-     step 6. -->
-
 ## Set up Notion first, either flavour
 
 1. Create a free Notion account.
@@ -54,6 +45,17 @@ to Notion in a browser instead.
 5. Start setup.
 
 		set me up
+
+   `intake` asks three questions about the tool before anything about you.
+
+   It asks where to keep your training log first. Answer `notion`. Name
+   anything else and it says it can't write there yet, records what you
+   named, and creates nothing.
+
+   Next it asks for the page: paste the link you copied in step 3, or the
+   bare page id. Dashed or undashed, any case, both work.
+
+   Last it asks your timezone, as an IANA name like `America/Los_Angeles`.
 
    `intake` creates `Exercises`, `Locations`, `Sessions`, and `Sets`, one
    database per turn, then starts the PAR-Q+ health questions, one per turn. It
@@ -103,8 +105,10 @@ to Notion in a browser instead.
 
 		set me up
 
-   Same result as flavour A: four databases, then the health questions, with the
-   catalog seeding in the background.
+   Same three questions first as flavour A: where to keep the log (answer
+   `notion`), the page link or id, then your timezone. Same result after
+   that: four databases, then the health questions, with the catalog
+   seeding in the background.
 
 7. Ask for a program.
 
@@ -129,6 +133,11 @@ exists. Finish "set me up", then "make me a plan".
 **Every reply says `Status: halted`.** You reported pain, so `pain-triage`
 halted the session. Only `pain-triage` clears it, and only after you
 acknowledge the hand-off it gave you.
+
+**It says it can't write to the store you named.** You answered the first
+setup question with something other than `notion`. It records what you named
+and creates nothing: no database, no catalog seed. Reply `notion` and setup
+continues from the same question.
 
 **Setup sits on the catalog for minutes.** Notion paces each connection to an
 average of 3 requests per second, on every plan, and the catalog is 913 rows.
