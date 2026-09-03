@@ -1,6 +1,13 @@
 @now	2026-09-01T09:00:00+00:00
 @skill	intake
 set me up
+
+# The two questions the tool itself needs, asked before anything about her
+# (tickets workout-log-mqs, workout-log-ayf.16). A bare dashed page id here;
+# fixtures/12-intake-parent covers the pasted-URL form and the refusal.
+24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
+America/Los_Angeles
+
 no
 no
 no

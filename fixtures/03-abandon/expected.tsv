@@ -4,6 +4,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-08-25T09:00:00+00:00
 row-create	Sessions	week_index	35
+row-create	Sets	Set	Squat (Barbell) set 1, 185 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	1
@@ -19,6 +20,7 @@ row-create	Sets	write_key	94ffe75fefffac7c
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
+row-create	Sets	Set	Squat (Barbell) set 2, 186 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	2
@@ -40,6 +42,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-08-27T09:00:00+00:00
 row-create	Sessions	week_index	35
+row-create	Sets	Set	Squat (Barbell) set 1, 190 lb x 5
 row-create	Sets	Session	sessions-2
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	1

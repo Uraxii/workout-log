@@ -34,7 +34,16 @@ an LLM assembles from prose drifts from the schema. See
 `references/db-create.md`.
 
 The parent page id is the user's, read from `state["notion_parent_page_id"]`.
-With no id there is nothing to create under, and the questions still run.
+It gets there by being asked for: it is the first question in the table
+(ticket workout-log-mqs), because nothing else can supply it and every
+create needs it. Until it is answered there is nothing to create under, so
+the creates wait and the questions still run.
+
+Each create answers with a data source id, and the caller threads it back
+into `state["databases"]`. `intake.py` also writes that map to
+`config/athlete.notion_data_sources`, JSON encoded: no read verb answers
+"which databases exist", so that key is the only way a later chat learns it
+(`tools/mock-notion/hydrate.py` reads it back).
 
 ## Catalog seeding
 
@@ -47,10 +56,15 @@ seeds, or right after; either order is fine as long as the user is told.
 
 ## The question flow
 
-`references/questions.md` has the ordered list: safety (PAR-Q+, seven
-questions plus a conditional follow-up, delegated in-process to `screen`),
-then goal, history, constraints, body, recovery, preferences (build-plan
-s5.2). **One question per turn**, since this is a phone conversation
+`references/questions.md` has the ordered list. Two questions about the tool
+come first, because nothing works without them: the Notion parent page id
+(ticket workout-log-mqs) and the timezone, which is frozen onto session 1
+(rule L3) and read by every later day-boundary check (ticket
+workout-log-ayf.16). A pasted page link and a bare id both answer the first;
+the id is stored dashed 8-4-4-4-12. Then safety (PAR-Q+, seven questions
+plus a conditional follow-up, delegated in-process to `screen`), then goal,
+history, constraints, body, recovery, preferences (build-plan s5.2). Every
+question after those first two is about her. **One question per turn**, since this is a phone conversation
 (`principle-experience-first`), and **no silent defaults**: every item on
 the list gets asked, including age, with no gate (dec "T18 final").
 
@@ -83,7 +97,9 @@ through `session-runner` like any other set.
 ## Turn 1, from cold
 
 One read: `config_read("config/athlete")`, which is also where every answer
-but `units` and `nutrition_strictness` lands. `{}` means this install was
+but `units` and `nutrition_strictness` lands, including the parent page id,
+the timezone, and the `notion_data_sources` map that says which databases
+already exist. `{}` means this install was
 never set up, so the `database-create` writes start and the questions
 start at item 1 of `references/questions.md`. A populated page means a
 resumed intake, and `intake_cursor` names the next unanswered item (lim
@@ -93,7 +109,10 @@ conversation no longer needs a seeded cursor to work.
 
 ## Never
 
-No silent default for any of: units, training age, goal, days per week,
-equipment, jurisdiction, nutrition strictness, referral name, age. No age
+No silent default for any of: the parent page id, the timezone, units,
+training age, goal, days per week, equipment, jurisdiction, nutrition
+strictness, referral name, age. Never guess a timezone from the clock and
+never guess a page id: both are asked, and an answer that does not parse is
+re-asked. No age
 gate, no guardian consent flow, no DPIA (dec "T18 final"). PAR-Q+ wording is
 never paraphrased; see `.claude/skills/screen/references/parq-plus.md`.

@@ -17,8 +17,9 @@ tool registry. Rule numbers in the messages are that file's numbering, under
 
 Rules 1 (`Notion-Version` header) and 20 (three requests per second) describe
 the REST transport and have no expression in an MCP tool call, so they are
-not enforced here. Everything that file marks UNSOURCED is deliberately not
-enforced; see `UNENFORCED` below.
+not enforced here. `UNENFORCED` below lists what else goes unchecked, and it
+is meant to be read as a promise: a rule that fires is not allowed to sit in
+it.
 """
 
 from __future__ import annotations
@@ -30,13 +31,22 @@ from notion_columns import validate_column
 
 __all__ = ["DdlViolation", "UNENFORCED", "validate_create"]
 
-# Nothing in research/19 caps the property count, the property-name length,
-# whether a zero-property data source is legal, or whether the initial data
-# source accepts a name. All four are listed under "UNSOURCED - do not
-# enforce". They stay unchecked on purpose; adding one here would invent an
-# API rule the sources do not support.
+# What goes unchecked, and why each entry is honest.
+#
+# The first three are research/19's "UNSOURCED - do not enforce" list; adding
+# one here would invent an API rule the sources do not support. Its fourth
+# entry, "whether a zero-property data source is legal", used to sit in this
+# tuple and was a falsehood printed to the user: rule 8 wants exactly one
+# TITLE column, so `CREATE TABLE ()` is rejected either way (workout-log-2as).
+# `_self_check` now pins that rejection so the entry cannot creep back.
+#
+# The last two are the parts of the MCP tool schema's grammar no source gives
+# a vocabulary for. ROLLUP's arity and quoting are checked; what its three
+# values may name is not. Same for the text after UNIQUE_ID PREFIX.
 UNENFORCED = ("max property count", "max property-name length",
-              "zero-property data source", "initial data source name")
+              "initial data source name",
+              "ROLLUP rel_prop/target_prop/function values",
+              "UNIQUE_ID prefix text")
 
 MAX_BODY_BYTES = 500 * 1024  # rule 19, request-limits
 
@@ -143,12 +153,35 @@ def _self_check() -> None:
     assert "rule 17" in rejects("CREATE TABLE (\"N\" TITLE, \"f\" FORMULA('1') NULL_WHEN 'x')")
     assert "rule 18" in rejects("CREATE TABLE (\"N\" TITLE COMMENT '%s')" % ("x" * 281))
     assert "rule 19" in rejects('CREATE TABLE ("N" TITLE COMMENT \'%s\')' % ("x" * MAX_BODY_BYTES))
-    # Accepted: every legal form the renderer can emit.
+    # Nothing inside parentheses rides along unread (workout-log-2as). One
+    # case per parser in `ddl_grammar`, because one discarded remainder is all
+    # it takes to turn the whole module back into a rubber stamp.
+    assert "rule 16" in rejects(
+        'CREATE TABLE ("N" TITLE, "f" FORMULA(\'prop("N")\', Reps, DROP TABLE))')
+    assert "rules 10-11" in rejects(
+        'CREATE TABLE ("N" TITLE, "r" RELATION(\'d\' AND MORE JUNK))', {"d"})
+    assert "rule 12" in rejects(
+        "CREATE TABLE (\"N\" TITLE, \"r\" RELATION('d', DUAL 'a' 'b' 'c'))", {"d"})
+    assert "rule 13" in rejects("CREATE TABLE (\"N\" TITLE, \"s\" SELECT('a' 'b'))")
+    assert "rule 16" in rejects(
+        'CREATE TABLE ("N" TITLE, "f" FORMULA(\'prop("N") + Reps (1)\'))')
+    assert "ROLLUP" in rejects("CREATE TABLE (\"N\" TITLE, \"u\" ROLLUP('anything'))")
+    assert "ROLLUP" in rejects("CREATE TABLE (\"N\" TITLE, \"u\" ROLLUP('a','b',c))")
+    assert "rule 17" in rejects("CREATE TABLE (\"N\" TITLE, \"n\" NUMBER FORMAT 'x' JUNK)")
+    # `zero-property data source` is not in UNENFORCED because rule 8 rejects
+    # one. This is the line that keeps that tuple honest.
+    assert "rule 8" in rejects("CREATE TABLE ()")
+    # Accepted: every legal form the renderer can emit, plus the two argument
+    # shapes it does not yet emit. The formula is the schema's real e1RM
+    # guard, so `if(...)`, `and` and `empty()` are proven to survive the
+    # bare-identifier check (ticket workout-log-8jb).
     validate_create({"parent": parent, "schema": (
         'CREATE TABLE ("N" TITLE COMMENT \'the name\', "L" NUMBER FORMAT \'dollar\', '
         "\"s\" SELECT('a':blue), \"m\" MULTI_SELECT, \"r\" RELATION('d', DUAL 'back'), "
-        "\"f\" FORMULA('prop(\"L\") * 36 / (37 - prop(\"L\"))'))")}, {"d"})
-    print(f"notion_ddl self-check: ok. not enforced (UNSOURCED): {', '.join(UNENFORCED)}")
+        "\"u\" UNIQUE_ID PREFIX 'X', \"p\" ROLLUP('r','L','sum'), "
+        "\"f\" FORMULA('if(prop(\"R\") >= 1 and prop(\"R\") <= 10, "
+        "prop(\"L\") * 36 / (37 - prop(\"R\")), empty())'), \"R\" NUMBER)")}, {"d"})
+    print(f"notion_ddl self-check: ok. not enforced: {', '.join(UNENFORCED)}")
 
 
 if __name__ == "__main__":

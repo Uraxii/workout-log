@@ -5,8 +5,9 @@ dicts (`Load`, `Unit`, `Reps`, `Set type`, `load_kind`). Pure, stdlib only.
 `e1rm` reuses `program-design/scripts/loads.py`'s Brzycki implementation
 (`docs/architecture.md` "script seam": one script per concern, shared by
 import, never copy-pasted) rather than re-deriving it: the schema's `Sets.e1RM`
-formula `Load / (1.0278 - 0.0278 * Reps)` is the same relation rearranged
-(1.0278 = 37/36, 0.0278 = 1/36), so `loads.brzycki_e1rm` already computes it.
+formula is the same relation, `Load * 36 / (37 - Reps)` guarded by an `if(...)`,
+so `loads.brzycki_e1rm` already computes it. `tools/schema/check_e1rm.py` runs
+in `make check` and fails if the two ever answer differently.
 
 `load_kind = assist` inverts the difficulty direction (lim L-05): more
 assistance is easier, so a *falling* `Load` on an assisted set is the lifter
@@ -39,8 +40,10 @@ def to_unit(value: float, from_unit: str, to_unit_: str) -> float:
 
 
 def e1rm(load: float, reps: int, set_type: str = "working") -> float | None:
-    """`Sets.e1RM`'s formula. Null above 10 reps or off a non-`working` set,
-    exactly the schema's `null_when` (schema/notion-schema.json Sets.e1RM)."""
+    """`Sets.e1RM`'s formula. Null below 1 rep, above 10 reps, or off a
+    non-`working` set, the same condition the schema's expression states in
+    its `if(...)` guard (schema/notion-schema.json Sets.e1RM). The two are
+    held to one answer by `tools/schema/check_e1rm.py`, not by this note."""
     if set_type != "working":
         return None
     return loads.brzycki_e1rm(load, reps)

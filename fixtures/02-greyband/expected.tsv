@@ -4,6 +4,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
 row-create	Sessions	week_index	36
+row-create	Sets	Set	Row set 1, 20 lb x 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	1
@@ -19,6 +20,7 @@ row-create	Sets	write_key	590df2ecff4e15ca
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Row set 1, read as 20 lb x 8 fix if reversed. Set 2 at 20 lb.
+row-create	Sets	Set	Row set 1, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	1
@@ -31,6 +33,7 @@ row-create	Sets	write_key	28076498516db288
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 2, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	2
@@ -43,6 +46,7 @@ row-create	Sets	write_key	ecbc92e5d28605f5
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 3, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	3
@@ -55,6 +59,7 @@ row-create	Sets	write_key	3b96ddd7f2827d02
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 4, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	4
@@ -67,6 +72,7 @@ row-create	Sets	write_key	b4f25242c163f14e
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 5, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	5
@@ -79,6 +85,7 @@ row-create	Sets	write_key	9c7a8292568dfc47
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 6, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	6
@@ -91,6 +98,7 @@ row-create	Sets	write_key	ff78d335db9fdd46
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 7, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	7
@@ -103,6 +111,7 @@ row-create	Sets	write_key	b877af9e73f392c5
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 8, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	8
@@ -115,6 +124,7 @@ row-create	Sets	write_key	bc5e166ad19ff9b0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 9, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	9
@@ -127,6 +137,7 @@ row-create	Sets	write_key	61e804748c1eae86
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 10, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	10
@@ -139,6 +150,7 @@ row-create	Sets	write_key	2b7ad6e33d3a3276
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 11, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	11
@@ -151,6 +163,7 @@ row-create	Sets	write_key	c707966fb420e0c1
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 12, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	12
@@ -163,6 +176,7 @@ row-create	Sets	write_key	d3b79ff7937720c1
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 13, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	13
@@ -175,6 +189,7 @@ row-create	Sets	write_key	b07d6a56842fb213
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 14, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	14
@@ -187,6 +202,7 @@ row-create	Sets	write_key	57188874d638e0c5
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 15, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	15
@@ -199,6 +215,7 @@ row-create	Sets	write_key	c41457528414566f
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 16, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	16
@@ -211,6 +228,7 @@ row-create	Sets	write_key	fc98d7dd29dfdd53
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 17, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	17
@@ -223,6 +241,7 @@ row-create	Sets	write_key	f5372e1303eb1b07
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 18, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	18
@@ -235,6 +254,7 @@ row-create	Sets	write_key	3230d04ffdee1b1c
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 19, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	19
@@ -247,6 +267,7 @@ row-create	Sets	write_key	15bc0bf852b8299c
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Row set 20, 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	20

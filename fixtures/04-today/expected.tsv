@@ -16,6 +16,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-01T18:00:00+00:00
 row-create	Sessions	week_index	36
+row-create	Sets	Set	Barbell Squat set 1, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Barbell_Squat
 row-create	Sets	Set index	1
@@ -31,6 +32,7 @@ row-create	Sets	write_key	1d883ce7024cbe30
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Barbell Squat set 2, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Barbell_Squat
 row-create	Sets	Set index	2
@@ -46,6 +48,7 @@ row-create	Sets	write_key	ec3fa29fea03e9d4
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Barbell Squat set 3, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Barbell_Squat
 row-create	Sets	Set index	3
@@ -68,6 +71,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-03T18:00:00+00:00
 row-create	Sessions	week_index	36
+row-create	Sets	Set	Standing Military Press set 1, 95 lb x 5
 row-create	Sets	Session	sessions-2
 row-create	Sets	Exercise	Standing_Military_Press
 row-create	Sets	Set index	1
@@ -83,6 +87,7 @@ row-create	Sets	write_key	d22bca227b725d7a
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Standing Military Press set 2, 95 lb x 5
 row-create	Sets	Session	sessions-2
 row-create	Sets	Exercise	Standing_Military_Press
 row-create	Sets	Set index	2
@@ -98,6 +103,7 @@ row-create	Sets	write_key	70d5d22e8e5b6ada
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Standing Military Press set 3, 95 lb x 5
 row-create	Sets	Session	sessions-2
 row-create	Sets	Exercise	Standing_Military_Press
 row-create	Sets	Set index	3
@@ -120,6 +126,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-05T18:00:00+00:00
 row-create	Sessions	week_index	36
+row-create	Sets	Set	Barbell Bench Press - Medium Grip set 1, 185 lb x 5
 row-create	Sets	Session	sessions-3
 row-create	Sets	Exercise	Barbell_Bench_Press_-_Medium_Grip
 row-create	Sets	Set index	1
@@ -135,6 +142,7 @@ row-create	Sets	write_key	b7e9cd525048722e
 row-create	Sets	source_message_id	msg-9
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Barbell Bench Press - Medium Grip set 2, 185 lb x 5
 row-create	Sets	Session	sessions-3
 row-create	Sets	Exercise	Barbell_Bench_Press_-_Medium_Grip
 row-create	Sets	Set index	2
@@ -150,6 +158,7 @@ row-create	Sets	write_key	c2ee078772fb6a42
 row-create	Sets	source_message_id	msg-9
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Barbell Bench Press - Medium Grip set 3, 185 lb x 5
 row-create	Sets	Session	sessions-3
 row-create	Sets	Exercise	Barbell_Bench_Press_-_Medium_Grip
 row-create	Sets	Set index	3
@@ -172,6 +181,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-07T18:00:00+00:00
 row-create	Sessions	week_index	37
+row-create	Sets	Set	Barbell Deadlift set 1, 315 lb x 5
 row-create	Sets	Session	sessions-4
 row-create	Sets	Exercise	Barbell_Deadlift
 row-create	Sets	Set index	1
@@ -187,6 +197,7 @@ row-create	Sets	write_key	60b8d2cac511de58
 row-create	Sets	source_message_id	msg-12
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Barbell Deadlift set 2, 315 lb x 5
 row-create	Sets	Session	sessions-4
 row-create	Sets	Exercise	Barbell_Deadlift
 row-create	Sets	Set index	2
@@ -202,6 +213,7 @@ row-create	Sets	write_key	c5c9717f07b74cf3
 row-create	Sets	source_message_id	msg-12
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Barbell Deadlift set 3, 315 lb x 5
 row-create	Sets	Session	sessions-4
 row-create	Sets	Exercise	Barbell_Deadlift
 row-create	Sets	Set index	3

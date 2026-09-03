@@ -27,12 +27,14 @@ import re
 import sys
 from typing import Any, Literal, TypedDict
 
+import bounds
 import catalog
 import entries
 import ladder
 import lifecycle
 import preconditions
 import session_open
+import titles
 import program as program_lib
 import rows as row_shapes
 
@@ -50,10 +52,16 @@ class Turn(TypedDict):
 
 
 def log_set(line: str, state: dict[str, Any]) -> Turn:
-    """The seam. Every turn leaves through here, so rule S2 is checked here:
-    a halted session takes no set writes, whichever handler produced them
-    (`preconditions.py`, build-plan s6.1 S2, rule L12)."""
-    return preconditions.no_sets_while_halted(_run_turn(line, state), state)
+    """The seam. Every turn leaves through here, so three cross-cutting
+    passes run here, on the turn's own writes rather than the line, so none
+    depends on which handler produced them: rule S2, a halted session takes
+    no set writes (`preconditions.py`, build-plan s6.1 S2, rule L12); an
+    implausible magnitude is refused, never written (`bounds.py`,
+    `docs/unit-and-magnitude-model.md` s4, `workout-log-ayf.3`); and every
+    surviving `Sets` row gets its Notion title (`titles.py`,
+    `workout-log-4sc`)."""
+    turn = preconditions.no_sets_while_halted(_run_turn(line, state), state)
+    return titles.name_every_set(bounds.reject_implausible_writes(turn, state), state)
 
 
 def _run_turn(line: str, state: dict[str, Any]) -> Turn:

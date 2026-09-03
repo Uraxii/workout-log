@@ -1,9 +1,10 @@
 """The intake question table and the cursor that walks it.
 
 Split out of `intake.py` (house limit, docs/architecture.md "One script per
-skill" splits by DOMAIN): what gets asked, in what order, and whether a
-given chat line answers it is one body of knowledge. Turning an answer into
-Notion writes is another, and stays in `intake.py`.
+skill" splits by DOMAIN): what gets asked and in what order is one body of
+knowledge. Turning an answer into Notion writes is another, and stays in
+`intake.py`; reading a value out of a chat line is a third, and lives in
+`readers.py`.
 
 `parse` returning `None` is the whole re-ask rule (ticket workout-log-481).
 A step whose answer does not parse is re-entered instead of advanced past,
@@ -15,112 +16,91 @@ on `pending` and nothing ever asked again.
 
 from __future__ import annotations
 
-import re
 import sys
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "screen" / "scripts"))
 import screen  # noqa: E402  (skill-to-skill seam import, mirrors intake.py's own)
 
-Reader = Callable[[str], Any | None]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import readers  # noqa: E402  (same-dir readers; the dir name is not importable)
 
 
-def _free_text(line: str) -> str | None:
-    return line.strip() or None
-
-
-def _bare_number(line: str) -> str | None:
-    """A line that is only a number, which is what a direct reply to "how
-    many days" or "how old are you" usually is."""
-    m = re.fullmatch(r"\s*(\d{1,3})\s*", line)
-    return m.group(1) if m else None
-
-
-def _units(line: str) -> str | None:
-    m = re.search(r"\b(lbs?|pounds?|kgs?|kilos?|kilograms?)\b", line, re.I)
-    if not m:
-        return None
-    return "kg" if m.group(1).lower().startswith(("kg", "kilo")) else "lb"
-
-
-def _days_in_sentence(line: str) -> str | None:
-    m = re.search(r"\b(\d+)\s*days?\b", line, re.I)
-    return m.group(1) if m else None
-
-
-def _age_in_sentence(line: str) -> str | None:
-    m = (re.search(r"\b(\d{1,3})\s*(?:years?\s*old|yo)\b", line, re.I)
-         or re.search(r"\bi'?m\s+(\d{1,3})\b", line, re.I))
-    return m.group(1) if m else None
-
-
-def _nutrition(line: str) -> str | None:
-    low = line.lower()
-    for word in ("none", "general", "specific"):
-        if word in low:
-            return word
-    return None
-
-
-def _days_answer(line: str) -> str | None:
-    return _days_in_sentence(line) or _bare_number(line)
-
-
-def _age_answer(line: str) -> str | None:
-    return _age_in_sentence(line) or _bare_number(line)
-
-
-# One row per question. Two readers, because they do two different jobs:
+# One row per question. Two reader slots, because they do two different jobs:
 # `answer` reads a direct reply to THIS question ("4"), `scan` hunts the
 # same field inside a line answering a different one ("lb, and I train 4
 # days", lim L-47) and so needs the unit word to be sure. `reask` is what
 # the athlete reads when her answer did not parse; a row without one
-# repeats its prompt.
+# repeats its prompt. `before_safety` puts the row ahead of PAR-Q+ in
+# `ALL_IDS`, and `state_key` names the state key the answer also lands on,
+# for the two values the rest of the turn needs in hand and not only on the
+# page it was written to.
 FIELD_STEPS: list[dict[str, Any]] = [
+    {"id": "notion_parent_page_id", "page": "config/athlete",
+     "key": "notion_parent_page_id", "before_safety": True,
+     "state_key": "notion_parent_page_id",
+     "prompt": "First, where should I put your logs? Make a blank Notion page, share it with this connection, then paste the page link here.",
+     "answer": readers.page_id,
+     "reask": "That has no Notion page id in it. Open the page, hit Share, copy link, and paste the whole link here."},
+    {"id": "timezone", "page": "config/athlete", "key": "timezone",
+     "before_safety": True, "state_key": "tz",
+     "prompt": "What timezone are you in? I need it as an IANA name, like America/Los_Angeles or Europe/London, so a late session lands on the right day.",
+     "answer": readers.timezone,
+     "reask": "I don't know that zone. It's Area/City, capitals and all, like America/New_York or Australia/Sydney."},
     {"id": "units", "page": "config/preferences", "key": "units",
-     "prompt": "Pounds or kilos?", "answer": _units, "scan": _units,
+     "prompt": "Pounds or kilos?", "answer": readers.units, "scan": readers.units,
      "reask": "Pounds or kilos? One or the other, please."},
     {"id": "jurisdiction", "page": "config/athlete", "key": "jurisdiction",
      "prompt": "What country or state are you in? Scope-of-practice rules vary.",
-     "answer": _free_text},
+     "answer": readers.free_text},
     {"id": "goal", "page": "config/athlete", "key": "goal",
      "prompt": "What's the goal? Strength, muscle, fat loss, endurance, sport, general health, or rehab-adjacent?",
-     "answer": _free_text},
+     "answer": readers.free_text},
     {"id": "training_age", "page": "config/athlete", "key": "training_age",
-     "prompt": "Have you trained before? How long, how consistently?", "answer": _free_text},
+     "prompt": "Have you trained before? How long, how consistently?", "answer": readers.free_text},
     {"id": "days_per_week", "page": "config/athlete", "key": "days_per_week",
      "prompt": "How many days a week can you train?",
-     "answer": _days_answer, "scan": _days_in_sentence,
+     "answer": readers.days_answer, "scan": readers.days_in_sentence,
      "reask": "I need a number of days. How many days a week can you train?"},
     {"id": "equipment", "page": "config/athlete", "key": "equipment",
      "prompt": "What equipment do you have? Barbell, dumbbells, machines, bands, bodyweight only?",
-     "answer": _free_text},
+     "answer": readers.free_text},
     {"id": "baseline", "page": "config/athlete", "key": "strength_baseline",
      "prompt": "Know your 1RM on your main lifts? If not, what's the most weight x reps you've done recently?",
-     "answer": _free_text},
+     "answer": readers.free_text},
     {"id": "measure_kinds", "page": "config/athlete", "key": "measure_kinds",
      "prompt": "Do any of these apply: timed holds, loaded carries, running, level-graded work like Otago?",
-     "answer": _free_text},
+     "answer": readers.free_text},
     {"id": "age", "page": "config/athlete", "key": "age",
-     "prompt": "How old are you?", "answer": _age_answer, "scan": _age_in_sentence,
+     "prompt": "How old are you?", "answer": readers.age_answer, "scan": readers.age_in_sentence,
      "reask": "I need a number. How old are you?"},
     {"id": "nutrition_strictness", "page": "config/preferences", "key": "nutrition_strictness",
      "prompt": "How strict do you want nutrition guidance? None, general, or specific numbers?",
-     "answer": _nutrition,
+     "answer": readers.nutrition,
      "reask": "None, general, or specific numbers? Pick one of those three."},
     {"id": "referral_name", "page": "config/athlete", "key": "referral_name",
      "prompt": "If something needs a referral, who's the name on file? A GP is the default.",
-     "answer": _free_text},
+     "answer": readers.free_text},
     {"id": "location", "page": None, "key": None,
      "prompt": "What gym or space are you training in? Name it, so I can track its equipment.",
-     "answer": _free_text, "location": True},
+     "answer": readers.free_text, "location": True},
 ]
 
 FIELD_BY_ID = {step["id"]: step for step in FIELD_STEPS}
 
 SAFETY_IDS = tuple(f"parq_{i}" for i in range(1, 8)) + ("parq_followup",)
-ALL_IDS = SAFETY_IDS + tuple(step["id"] for step in FIELD_STEPS)
+
+# Two questions about the tool, then every question after is about her. The
+# parent page id is first because the database creates fire from the "set me
+# up" turn onward and each one needs it (ticket workout-log-mqs); the
+# timezone is second because it is frozen onto session 1 (rule L3) and a
+# session can open long before the profile is finished (ticket
+# workout-log-ayf.16). Each row says for itself which side of PAR-Q+ it sits
+# on, so adding or renaming a row cannot silently reorder the flow.
+ALL_IDS = (tuple(s["id"] for s in FIELD_STEPS if s.get("before_safety"))
+           + SAFETY_IDS
+           + tuple(s["id"] for s in FIELD_STEPS if not s.get("before_safety")))
 
 
 def prompt_for(step_id: str) -> str:

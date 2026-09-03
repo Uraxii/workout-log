@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import re
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Callable, Iterable
 
@@ -172,5 +173,27 @@ def name_for(exercise_id: str, catalog_map: dict[str, Any],
     for nm, info in catalog_map.items():
         if info["id"] == exercise_id:
             return nm
-    names = {row["id"]: row["name"] for row in _load_json(EXERCISES_DIR / "catalog.json")}
-    return names.get(exercise_id, exercise_id)
+    shipped = shipped_by_id().get(exercise_id)
+    return shipped[0] if shipped else exercise_id
+
+
+def measure_for(exercise_id: str, catalog_map: dict[str, Any]) -> str | None:
+    """The measure kind for a row's exercise, resolved in `name_for`'s order:
+    the athlete's own rows first, then the shipped catalog. `None` when
+    neither knows the id, so a caller renders no magnitudes rather than
+    guessing which ones the row holds."""
+    for info in catalog_map.values():
+        if info["id"] == exercise_id:
+            return info["measure"]
+    shipped = shipped_by_id().get(exercise_id)
+    return shipped[1] if shipped else None
+
+
+@lru_cache(maxsize=1)
+def shipped_by_id() -> dict[str, tuple[str, str]]:
+    """`{shipped catalog id: (display name, measure kind)}`. A program picks
+    exercises by shipped id (`Barbell_Squat`), so a row can name an exercise
+    the athlete's own `Exercises` rows have never held. Cached: the 913-row
+    file is read once per process, not once per row named."""
+    return {row["id"]: (row["name"], row["measure"])
+            for row in _load_json(EXERCISES_DIR / "catalog.json")}

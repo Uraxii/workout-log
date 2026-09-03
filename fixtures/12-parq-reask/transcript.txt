@@ -5,10 +5,18 @@
 # The fix is one rule for the whole question table, not a PAR-Q+ retry
 # branch: questions.parse returns None when a line does not answer the step
 # in force, and intake_turn re-enters that step instead of advancing. This
-# fixture exercises that one rule on three different kinds of step.
+# fixture exercises that one rule on four different kinds of step.
 @now	2026-09-01T09:00:00+00:00
 @skill	intake
 set me up
+
+# 0. The two questions the tool needs before it can do anything (tickets
+# workout-log-mqs, workout-log-ayf.16). The timezone shows the same one
+# re-ask rule refusing a zone the tz database does not know, before the
+# PAR-Q+ steps below show it on safety.
+24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
+pacific time
+America/Los_Angeles
 
 # 1. A safety step. "maybe" is not a NO. Before, anything that was not a
 # bare yes counted as NO and the cursor advanced; now PAR-Q+ q1 is re-asked

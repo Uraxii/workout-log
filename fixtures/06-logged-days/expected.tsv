@@ -4,6 +4,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
 row-create	Sessions	week_index	36
+row-create	Sets	Set	Squat (Barbell) set 1, 185 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	1
@@ -138,6 +139,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-18T09:00:00+00:00
 row-create	Sessions	week_index	38
+row-create	Sets	Set	Squat (Barbell) set 1, 185 lb x 5
 row-create	Sets	Session	sessions-16
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	1

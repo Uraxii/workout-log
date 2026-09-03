@@ -16,6 +16,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-01T18:00:00+00:00
 row-create	Sessions	week_index	36
+row-create	Sets	Set	Front Barbell Squat set 1, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Front_Barbell_Squat
 row-create	Sets	Set index	1
@@ -31,6 +32,7 @@ row-create	Sets	write_key	97af1fcd500813ff
 row-create	Sets	source_message_id	msg-4
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Front Barbell Squat set 2, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Front_Barbell_Squat
 row-create	Sets	Set index	2
@@ -46,6 +48,7 @@ row-create	Sets	write_key	13c0a945cecd3cf7
 row-create	Sets	source_message_id	msg-4
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Front Barbell Squat set 3, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Front_Barbell_Squat
 row-create	Sets	Set index	3

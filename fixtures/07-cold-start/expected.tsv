@@ -16,6 +16,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-01T18:00:00+00:00
 row-create	Sessions	week_index	36
+row-create	Sets	Set	Barbell Squat set 1, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Barbell_Squat
 row-create	Sets	Set index	1
@@ -31,6 +32,7 @@ row-create	Sets	write_key	1d883ce7024cbe30
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Barbell Squat set 2, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Barbell_Squat
 row-create	Sets	Set index	2
@@ -46,6 +48,7 @@ row-create	Sets	write_key	ec3fa29fea03e9d4
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Barbell Squat set 3, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Barbell_Squat
 row-create	Sets	Set index	3
@@ -76,6 +79,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-03T18:00:00+00:00
 row-create	Sessions	week_index	36
+row-create	Sets	Set	Standing Military Press set 1, 95 lb x 5
 row-create	Sets	Session	sessions-2
 row-create	Sets	Exercise	Standing_Military_Press
 row-create	Sets	Set index	1
@@ -91,6 +95,7 @@ row-create	Sets	write_key	d22bca227b725d7a
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Standing Military Press set 2, 95 lb x 5
 row-create	Sets	Session	sessions-2
 row-create	Sets	Exercise	Standing_Military_Press
 row-create	Sets	Set index	2
@@ -106,6 +111,7 @@ row-create	Sets	write_key	70d5d22e8e5b6ada
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
+row-create	Sets	Set	Standing Military Press set 3, 95 lb x 5
 row-create	Sets	Session	sessions-2
 row-create	Sets	Exercise	Standing_Military_Press
 row-create	Sets	Set index	3
@@ -130,6 +136,7 @@ row-query	Sessions	*	2
 row-query	Sessions	Status=open	1
 row-query	Sets	Session=sessions-2	3
 row-query	Sessions	Status=closed	1
+row-create	Sets	Set	Standing Military Press set 4, 95 lb x 5
 row-create	Sets	Session	sessions-2
 row-create	Sets	Exercise	Standing_Military_Press
 row-create	Sets	Set index	4

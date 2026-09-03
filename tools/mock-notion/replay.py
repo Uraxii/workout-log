@@ -36,9 +36,6 @@ MAX_RESOLUTION_WRITES_PER_TURN = 1  # at most one `Exercises` create per turn
 # documented legitimate case (s1.3 row 5, 10 rows).
 MAX_SET_ROWS_PER_TURN = 20
 
-# Stand-in for the blank Notion page the user shares with the connection.
-PARENT_PAGE_ID = "b55c9c91-384d-452b-81db-d1ef79372b75"
-
 
 def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
     """Feed each turn through the skill script, apply the writes it returns.
@@ -67,9 +64,10 @@ def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
         "session_seq": 0,
         "exercise_seq": len(catalog),
         "cursor": {},
-        # The page the user shared. In production `intake` asks for it
-        # (ticket workout-log-mqs); the harness stands in for that answer.
-        "notion_parent_page_id": PARENT_PAGE_ID,
+        # No parent page id: a fixture that needs one gets it the way the
+        # athlete does, by answering `intake`'s first question in its own
+        # transcript (ticket workout-log-mqs). Seeding one here made it
+        # impossible for a fixture to prove intake ever asks.
         "databases": {},
     }
     if fixture.intake_cursor is not None:

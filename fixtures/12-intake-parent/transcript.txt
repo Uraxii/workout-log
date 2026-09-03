@@ -1,0 +1,49 @@
+# Tickets workout-log-mqs and workout-log-ayf.16. Nothing ever asked for the
+# Notion parent page id, so `replay.py` seeded one into every fixture's
+# state and no fixture could prove intake asks for it; nothing asked for the
+# timezone either, so session 1 froze `Timezone` empty and every later
+# day-boundary check read that back. The seed is gone. This fixture is the
+# proof that both values arrive from the athlete's own answers.
+@now	2026-09-01T09:00:00+00:00
+@units	lb
+@exercise	Squat (Barbell)	weight_reps
+@skill	intake
+
+# 1. The trigger turn. There is no page id yet, so nothing is created and
+# the first question asked is the page id itself.
+set me up
+
+# 2. A line with no 32-hex run in it answers nothing. The one re-ask rule
+# (ticket workout-log-481) re-enters the step: the cursor does not move,
+# nothing is written, and still nothing is created.
+it's the one I called Training Log
+
+# 3. A pasted Notion page link. The id is the undashed tail of the slug and
+# is stored dashed 8-4-4-4-12, the only form a documented `parent.page_id`
+# body shows (research/19-notion-database-create-api.md:209).
+https://www.notion.so/Training-Log-24b1f9c8e4b7801d9f3ac2d5e6f70a19
+
+# 4-5. With the id in hand the creates start, one database per turn, each
+# carrying that same id as `parent`. The data source ids the caller threads
+# back land on `config/athlete.notion_data_sources`: no read verb answers
+# "which databases exist", so that key is the only way a later chat learns.
+America/Los_Angeles
+no
+
+# 6. The chat ends. State is rebuilt from the store's reads alone, so the
+# parent page id and the data source ids come back from `config/athlete`.
+# The cursor does not yet come back with them, so the page id is asked
+# again; that gap is its own ticket. What this turn proves is the writes.
+@cold
+set me up
+
+# 7-8. The last two creates fire from the hydrated state: `Sessions` and
+# `Sets` carry RELATION('ds-Locations') and RELATION('ds-Exercises'), which
+# only renders if the ids survived the cold start.
+https://www.notion.so/Training-Log-24b1f9c8e4b7801d9f3ac2d5e6f70a19
+America/Los_Angeles
+
+# 9. Session 1 of a brand-new install. Its frozen `Timezone` is the zone she
+# answered with, not the empty string (rule L3, ticket workout-log-ayf.16).
+@skill	session-runner
+squat 185x5

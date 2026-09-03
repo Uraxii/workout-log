@@ -19,6 +19,7 @@
       "identity": ["write_key"],
       "idempotency": ["source_message_id"],
       "properties": {
+        "Set":               {"type": "title", "note": "Notion requires exactly one title per data source, and the title is the row's name everywhere it is read: the Sets table, a relation chip, an @-mention. session-runner derives it from the row's own exercise, set index and magnitudes in titles.name_every_set, which runs on every Sets write leaving the log_set seam, so no handler can produce an unnamed row (ticket workout-log-4sc)."},
         "Session":           {"type": "relation", "database": "Sessions"},
         "Exercise":          {"type": "relation", "database": "Exercises"},
         "Set index":         {"type": "number"},
@@ -46,9 +47,9 @@
         "write_key":         {"type": "rich_text"},
         "source_message_id": {"type": "rich_text"},
         "Pain flag":         {"type": "select", "enum": ["none", "niggle", "stop"], "default": "none"},
-        "confirm_line":      {"type": "title", "note": "Notion requires exactly one title per data source; the confirm line is what a Sets row is called, and session-runner already writes it on every row."},
+        "confirm_line":      {"type": "rich_text", "note": "The audit trail: what the agent said back (rule L10). One line per entry, not per row, so the non-last rows of a multi-row entry carry an empty string by design. It was the title until workout-log-4sc, which is exactly why it cannot be: those rows landed unnamed. `Set` is the title."},
         "stale":             {"type": "checkbox"},
-        "e1RM":              {"type": "formula", "expression": "prop(\"Load\") * 36 / (37 - prop(\"Reps\"))", "note": "Exact Brzycki, the same rational as loads.brzycki_e1rm (docs/unit-and-magnitude-model.md s2). Notion references properties as prop(\"Name\"); bare identifiers do not parse. null_when was not a Notion concept and mapped to no API field."}
+        "e1RM":              {"type": "formula", "expression": "if(prop(\"Set type\") == \"working\" and prop(\"Reps\") >= 1 and prop(\"Reps\") <= 10, prop(\"Load\") * 36 / (37 - prop(\"Reps\")), empty())", "note": "Exact Brzycki, the same rational as loads.brzycki_e1rm (docs/unit-and-magnitude-model.md s2). Notion references properties as prop(\"Name\"); bare identifiers do not parse. The guard is the expression's own if(...), because a formula config accepts no other key: null_when was not a Notion concept and mapped to no API field. Guarding at 10 reps also keeps the divisor at 27 or more, so no rep count bounds.py permits can divide by zero. if(cond, a, b) per https://developers.notion.com/reference/property-object#formula and https://www.notion.com/help/formula-syntax; empty() is Notion's empty value per https://www.notion.com/help/common-formula-errors. tools/schema/check_e1rm.py holds this and read_layer.e1rm to one answer."}
       }
     },
 
@@ -124,7 +125,8 @@
 
   "config_pages": {
     "config/athlete": {
-      "keys": ["goal", "training_age", "days_per_week", "equipment", "strength_baseline", "jurisdiction", "referral_name", "age", "measure_kinds", "intake_cursor"]
+      "note": "`notion_parent_page_id` is the page the athlete shared, asked for by intake because nothing else can supply it (ticket workout-log-mqs). `timezone` is asked too, because `Sessions.Timezone` is frozen at open (rule L3) and before this an install with no session had nowhere to hold one (ticket workout-log-ayf.16). `notion_data_sources` is the JSON `{database name: data source id}` the create calls returned: no read verb answers \"which databases exist\", so intake persists what the caller handed it and hydrate.py reads it back.",
+      "keys": ["goal", "training_age", "days_per_week", "equipment", "strength_baseline", "jurisdiction", "referral_name", "age", "measure_kinds", "intake_cursor", "notion_parent_page_id", "timezone", "notion_data_sources"]
     },
     "config/preferences": {
       "keys": ["units", "nutrition_strictness", "rest_display"],

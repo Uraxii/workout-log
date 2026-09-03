@@ -12,6 +12,7 @@ the hydration sequence itself, not just its result.
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 from typing import Any
@@ -34,12 +35,22 @@ def hydrate(reader: MockNotionReader) -> dict[str, Any]:
     store. A page or database that was never written yields the same empty
     value the seams already default to, so turn 1 of a genuinely empty
     workspace hydrates without a single special case."""
+    units = reader.config_read("config/preferences").get("units", DEFAULT_UNITS)
+    # `trainer_core` reads `limits.clearance`, `load_adjust` reads
+    # `limits.progression`, `pain_triage` reads `limits.entries`.
+    limits = reader.config_read("config/limits")
+    athlete = reader.config_read("config/athlete")
     state: dict[str, Any] = {
-        "units": reader.config_read("config/preferences").get("units", DEFAULT_UNITS),
-        # `trainer_core` reads `limits.clearance`, `load_adjust` reads
-        # `limits.progression`, `pain_triage` reads `limits.entries`.
-        "limits": reader.config_read("config/limits"),
-        "athlete": reader.config_read("config/athlete"),
+        "units": units,
+        "limits": limits,
+        "athlete": athlete,
+        # What `intake` asked for and wrote (ticket workout-log-mqs). The
+        # creates need the page id, and each one's returned data source id
+        # is named by the next database's relation columns; no read verb
+        # answers "which databases exist", so `intake` persists the ids the
+        # caller handed it and they come back from the page.
+        "notion_parent_page_id": athlete.get("notion_parent_page_id"),
+        "databases": json.loads(athlete.get("notion_data_sources") or "{}"),
     }
     page = program_page.read_page(reader.config_read("program/current"))
     state["has_program"] = page is not None
@@ -51,7 +62,7 @@ def hydrate(reader: MockNotionReader) -> dict[str, Any]:
     state["catalog"] = catalog
     state["exercise_seq"] = len(catalog)
 
-    state.update(_session_state(reader))
+    state.update(_session_state(reader, athlete))
     state.update(_program_state(reader, page))
     state.update(_EMPTY_AFTER_COLD)
     return state
@@ -74,20 +85,24 @@ _EMPTY_AFTER_COLD = {
 }
 
 
-def _session_state(reader: MockNotionReader) -> dict[str, Any]:
+def _session_state(reader: MockNotionReader,
+                   athlete: dict[str, Any]) -> dict[str, Any]:
     """Session identity and the open session's set cursor, from two reads of
     `Sessions` plus (only when one is open) one of `Sets`."""
     sessions = reader.row_query("Sessions")
     open_rows = reader.row_query("Sessions", {"Status": "open"})
     open_row = open_rows[-1] if open_rows else None
+    last_zone = (sessions[-1].get("Timezone") or "") if sessions else ""
     return {
         "session_seq": len(sessions),
-        # ponytail: no key in `config_pages` records the athlete's timezone;
-        # the stored `Sessions.Timezone` (rule L3, frozen at open) is its
-        # only record anywhere, so the last session's zone is the only thing
-        # a cold chat can carry forward. A real gap in the schema, named
-        # here rather than papered over with an invented config key.
-        "tz": (sessions[-1].get("Timezone") or "") if sessions else "",
+        # `intake` asks for the zone and writes it to `config/athlete`
+        # (ticket workout-log-ayf.16). Before that key existed, the frozen
+        # `Sessions.Timezone` (rule L3) was its only record anywhere, so an
+        # install whose first session had not opened yet had nothing to
+        # carry and froze an empty zone onto session 1. A workspace set up
+        # before the question existed still has only the last session's
+        # zone, which is what that fallback is for.
+        "tz": athlete.get("timezone") or last_zone,
         "sessions_by_date": _sessions_by_date(sessions),
         "session_id": open_row["page_id"] if open_row else None,
         "session_status": open_row["Status"] if open_row else None,

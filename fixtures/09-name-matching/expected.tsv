@@ -4,6 +4,7 @@ row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-01T18:00:00+00:00
 row-create	Sessions	week_index	36
+row-create	Sets	Set	Barbell Squat set 1, 225 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-1
 row-create	Sets	Set index	1
@@ -19,6 +20,7 @@ row-create	Sets	write_key	a433ae8670b5add8
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Barbell Squat set 1, 225 lb x 5. Set 2 at 225 lb.
+row-create	Sets	Set	Bent Over Two-Dumbbell Row set 1, 60 lb x 12
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-2
 row-create	Sets	Set index	1
@@ -34,6 +36,7 @@ row-create	Sets	write_key	c081f3960160008e
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bent Over Two-Dumbbell Row set 1, 60 lb x 12. Set 2 at 60 lb.
+row-create	Sets	Set	Standing Military Press set 1, 95 lb x 8
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-3
 row-create	Sets	Set index	1
@@ -49,6 +52,7 @@ row-create	Sets	write_key	131b883b9dfa8fd4
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Standing Military Press set 1, 95 lb x 8. Set 2 at 95 lb.
+row-create	Sets	Set	Barbell Curl set 1, 30 lb x 12
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Barbell_Curl
 row-create	Sets	Set index	1
@@ -64,6 +68,7 @@ row-create	Sets	write_key	8b5ad005567732f0
 row-create	Sets	source_message_id	msg-4
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Barbell Curl set 1, 30 lb x 12. Set 2 at 30 lb.
+row-create	Sets	Set	Parallel Bar Dip set 1, 12
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Parallel_Bar_Dip
 row-create	Sets	Set index	1
@@ -79,6 +84,7 @@ row-create	Sets	confirm_line	Parallel Bar Dip set 1, 12. Set 2.
 row-create	Exercises	Name	bnch press
 row-create	Exercises	measure	weight_reps
 row-create	Exercises	source	user
+row-create	Sets	Set	bnch press set 1, 135 lb x 5
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	exercises-5
 row-create	Sets	Set index	1
@@ -94,6 +100,7 @@ row-create	Sets	write_key	f6b1aca7f85fd0b1
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Added bnch press to your catalog. bnch press set 1, 135 lb x 5. Set 2 at 135 lb.
+row-create	Sets	Set	Incline Dumbbell Press set 1, 60 lb x 10
 row-create	Sets	Session	sessions-1
 row-create	Sets	Exercise	Incline_Dumbbell_Press
 row-create	Sets	Set index	1

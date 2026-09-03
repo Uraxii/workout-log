@@ -4,6 +4,9 @@ Syntax only. What the pieces are allowed to say is `notion_ddl`'s job. The
 grammar is the one described in `research/19-notion-database-create-api.md`,
 "Can the MCP tool express this?": column names double-quoted, type options
 single-quoted, no escape form for either quote.
+
+No function here returns text it did not read. See the comment above
+`_LITERAL_RE` for why that is a rule and not a coincidence.
 """
 
 from __future__ import annotations
@@ -60,15 +63,54 @@ def _take_group(name: str, text: str) -> tuple[str | None, str]:
     raise DdlViolation(f'column "{name}": unclosed argument list')
 
 
-def take_literal(name: str, text: str) -> tuple[str, str]:
-    """The leading single-quoted value, and whatever follows it."""
+# Every parser below is anchored to BOTH ends of the text it is given, so it
+# has no remainder to hand back and no caller can drop one. That is the whole
+# point of the shape: the old `take_literal` returned `(value, rest)`, three of
+# its four callers bound `rest` to `_`, and `FORMULA('prop("N")', DROP TABLE)`
+# and `RELATION('d' AND MORE JUNK)` rode in on the discard (workout-log-2as).
+# A new argument-taking type inherits the check by having nothing else to call.
+_LITERAL_RE = re.compile(r"'([^']*)'")
+_OPTION_RE = re.compile(r"'([^']*)'(?:\s*:\s*([A-Za-z_]+))?")
+_CLAUSE_RE = re.compile(r"([A-Za-z_]+)\s+'([^']*)'")
+
+
+def _anchored(pattern: re.Pattern[str], text: str, message: str) -> re.Match[str]:
+    match = pattern.fullmatch(text.strip())
+    if match is None:
+        raise DdlViolation(message)
+    return match
+
+
+def only_literal(rule: str, name: str, text: str) -> str:
+    """The one single-quoted value `text` is, with nothing either side of it."""
+    return _anchored(_LITERAL_RE, text, (
+        f'{rule}: column "{name}" takes one single-quoted value, '
+        f"got {text.strip()[:40]!r}")).group(1)
+
+
+def take_option(rule: str, name: str, text: str) -> tuple[str, str]:
+    """`'label'` or `'label':colour` -> (label, colour). Colour is "" if absent."""
+    match = _anchored(_OPTION_RE, text, (
+        f'{rule}: column "{name}" option must be \'name\' or \'name\':colour, '
+        f"got {text.strip()[:40]!r}"))
+    return match.group(1), match.group(2) or ""
+
+
+def take_clauses(rule: str, name: str, text: str) -> list[tuple[str, str]]:
+    """`WORD 'value'` repeated to the end of `text`, uppercased. [] if empty."""
     text = text.strip()
-    if not text.startswith("'"):
-        raise DdlViolation(f'column "{name}": expected a single-quoted value, got {text[:30]!r}')
-    end = text.index("'", 1) if "'" in text[1:] else -1
-    if end < 1:
-        raise DdlViolation(f'column "{name}": unterminated single-quoted value')
-    return text[1:end], text[end + 1:]
+    found: list[tuple[str, str]] = []
+    position = 0
+    while position < len(text):
+        match = _CLAUSE_RE.match(text, position)
+        if match is None:
+            raise DdlViolation(
+                f'{rule}: column "{name}" carries unsupported clause {text[position:]!r}')
+        found.append((match.group(1).upper(), match.group(2)))
+        position = match.end()
+        while position < len(text) and text[position].isspace():
+            position += 1
+    return found
 
 
 def split_top(text: str) -> list[str]:

@@ -56,13 +56,19 @@ def _config_write(page: str, key: str, value: Any) -> Write:
 
 
 def _answer_writes(step_id: str, line: str, value: Any,
-                   ist: dict[str, Any], now: str) -> list[Write]:
+                   state: dict[str, Any], now: str) -> list[Write]:
     """The writes one parsed answer earns, and the answer's mark in `ist`.
 
     PAR-Q+ earns nothing until the pass completes: all seven NO writes
     clearance straight away, any YES defers it to the follow-up turn. Rule
     S8 keeps that decision in `clearance.py`, reached through `screen`.
+
+    A row carrying `state_key` also lands its answer on `state`, because
+    the parent page id and the timezone are read by the rest of this same
+    turn and the next one (`ddl.next_create_write`, `session_open`) rather
+    than only by a later chat reading the page back.
     """
+    ist = state["intake"]
     ist["answers"][step_id] = value
     if step_id == "parq_followup":
         return [screen.clearance_write(True, line, now)]
@@ -74,6 +80,8 @@ def _answer_writes(step_id: str, line: str, value: Any,
         return []
 
     step = questions.FIELD_BY_ID[step_id]
+    if step.get("state_key"):
+        state[step["state_key"]] = value
     if step.get("location"):
         writes: list[Write] = [{"verb": "row-create", "target": "Locations",
                                 "payload": {"Name": value}}]
@@ -85,6 +93,23 @@ def _answer_writes(step_id: str, line: str, value: Any,
     return writes
 
 
+def _data_source_writes(state: dict[str, Any], ist: dict[str, Any]) -> list[Write]:
+    """Persist the data source ids the caller threaded back into
+    `state["databases"]`, whenever they changed.
+
+    No read verb answers "which databases exist", so a later cold chat has
+    nowhere else to learn it (ticket workout-log-mqs); `hydrate.py` reads
+    this key back. Written from what the creates actually returned, never
+    from a guess at the id.
+    """
+    ids = state.get("databases") or {}
+    encoded = json.dumps(ids, sort_keys=True)
+    if not ids or ist.get("data_sources") == encoded:
+        return []
+    ist["data_sources"] = encoded
+    return [_config_write("config/athlete", "notion_data_sources", encoded)]
+
+
 def intake_turn(line: str, state: dict[str, Any]) -> Turn:
     state = copy.deepcopy(state)
     ist = state.get("intake", {"cursor": 0, "answers": {}, "any_yes": False})
@@ -93,7 +118,8 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
 
     # One database per turn until all four exist, on every turn and not only
     # the trigger turn, so the question flow is not stalled behind setup.
-    writes: list[Write] = list(ddl.next_create_write(state))
+    writes: list[Write] = _data_source_writes(state, ist)
+    writes += ddl.next_create_write(state)
 
     if TRIGGER_RE.search(line):
         # First "set me up" starts the creates and starts asking. A later one
@@ -117,7 +143,7 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
         # step needs a retry branch of its own.
         return {"writes": writes, "say": questions.reask_for(step_id), "state": state}
 
-    writes += _answer_writes(step_id, line, value, ist, now)
+    writes += _answer_writes(step_id, line, value, state, now)
     next_idx, acks = questions.advance(ist["answers"], idx + 1)
     ist["cursor"] = next_idx
     writes.append(_config_write("config/athlete", "intake_cursor", str(next_idx)))
