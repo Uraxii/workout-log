@@ -29,7 +29,7 @@ Both install paths, step by step:
 
 Each is a folder under `.claude/skills/` holding a `SKILL.md` and its scripts.
 
-- `trainer-core` gates every turn: no set while the session is halted, no session without clearance and a program, and it says once that it is an AI.
+- `trainer-core` gates every turn: no set while the session is halted, no session without clearance and a program.
 - `intake` creates the four databases from the schema, seeds the exercise catalog, and asks every profile question with no silent defaults.
 - `screen` asks the seven PAR-Q+ health questions verbatim and writes the clearance state.
 - `program-design` picks a template from `library/`, writes it to `program/current`, and swaps one exercise when a new restriction rules it out.
