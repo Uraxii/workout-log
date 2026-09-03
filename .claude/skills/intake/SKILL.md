@@ -34,10 +34,10 @@ an LLM assembles from prose drifts from the schema. See
 `references/db-create.md`.
 
 The parent page id is the user's, read from `state["notion_parent_page_id"]`.
-It gets there by being asked for: it is the first question in the table
-(ticket workout-log-mqs), because nothing else can supply it and every
-create needs it. Until it is answered there is nothing to create under, so
-the creates wait and the questions still run.
+It gets there by being asked for: it is the second question in the table,
+right after `storage_platform` (ticket workout-log-mqs), because nothing
+else can supply it and every create needs it. Until it is answered there is
+nothing to create under, so the creates wait and the questions still run.
 
 Each create answers with a data source id, and the caller threads it back
 into `state["databases"]`. `intake.py` also writes that map to
@@ -56,15 +56,20 @@ seeds, or right after; either order is fine as long as the user is told.
 
 ## The question flow
 
-`references/questions.md` has the ordered list. Two questions about the tool
-come first, because nothing works without them: the Notion parent page id
-(ticket workout-log-mqs) and the timezone, which is frozen onto session 1
-(rule L3) and read by every later day-boundary check (ticket
-workout-log-ayf.16). A pasted page link and a bare id both answer the first;
-the id is stored dashed 8-4-4-4-12. Then safety (PAR-Q+, seven questions
-plus a conditional follow-up, delegated in-process to `screen`), then goal,
+`references/questions.md` has the ordered list. Three questions about the
+tool come first, because nothing works without them: the storage platform
+(`storage_platform`, docs/storage-section-design.md question 1), the Notion
+parent page id (ticket workout-log-mqs), and the timezone, which is frozen
+onto session 1 (rule L3) and read by every later day-boundary check (ticket
+workout-log-ayf.16). A pasted page link and a bare id both answer the
+parent page id; the id is stored dashed 8-4-4-4-12. Naming a store this
+build has no DDL for does not fail to parse; it is recorded, then refused
+in place of the next prompt, with the cursor held on `storage_platform` so
+she can correct herself (`storage.refusal`, pinned byte for byte by
+`fixtures/13-storage-refusal`). Then safety (PAR-Q+, seven questions plus a
+conditional follow-up, delegated in-process to `screen`), then goal,
 history, constraints, body, recovery, preferences (build-plan s5.2). Every
-question after those first two is about her. **One question per turn**, since this is a phone conversation
+question after those first three is about her. **One question per turn**, since this is a phone conversation
 (`principle-experience-first`), and **no silent defaults**: every item on
 the list gets asked, including age, with no gate (dec "T18 final").
 

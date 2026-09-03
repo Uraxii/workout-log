@@ -1,8 +1,9 @@
 # The storage section of intake
 
-Design only. No code has been written for this except the TODO stubs in
-`.claude/skills/intake/scripts/storage.py` and
-`.claude/skills/intake/scripts/conventions.py`.
+**Status.** Phase 1 shipped in commit e5b3e14: `storage_platform` is a live
+question, `storage.py` gates every create, and `fixtures/13-storage-refusal`
+pins the refusal. Phases 2 to 4 are still design; `conventions.py` is still
+the TODO stub they describe.
 
 This is an explanation document. It says what the storage section asks, where
 each answer lands, who honours it, and what happens when the athlete names a
@@ -381,7 +382,7 @@ because a check with no second store to check is speculative.
 Sequenced so the Notion path stays shippable and the first live run against a
 real workspace is not held up.
 
-**Phase 1. The question, the gate, the refusal.** One schema key
+**Phase 1, shipped in e5b3e14. The question, the gate, the refusal.** One schema key
 (`storage_platform` on `config/athlete`). One reader. One new module,
 `storage.py`, with `is_proven` and `refusal`. One added condition in
 `ddl.next_create_write`. One added check in `hydrate.py`. Two fixtures. The
@@ -392,17 +393,17 @@ downstream is unchanged. This is the phase that can ship in a day, and it is
 the one that makes the section real: from here on, storage is something she
 was asked about rather than something assumed.
 
-**Phase 2. The conventions that already have consumers.** `week_start` with
+**Phase 2, still design. The conventions that already have consumers.** `week_start` with
 its honouring point in `rows.week_index`. The conditional `storage_existing`
 question with its honouring point in `ddl.create_payload`'s `title`. `units`
 and `timezone` move into the section. `conventions.py` arrives. Fixtures
 regenerate, including the reordered ones.
 
-**Phase 3. The convention whose consumer has to be built.** `date_order`,
+**Phase 3, still design. The convention whose consumer has to be built.** `date_order`,
 landing in the same change that widens `_FIX_DATE_RE` to accept a slashed
 date, plus date rendering in the seams that speak one.
 
-**Phase 4. Only on a second real store.** Round-trip probe, sibling profile,
+**Phase 4, still design. Only on a second real store.** Round-trip probe, sibling profile,
 dispatch on platform. Not before.
 
 ## What this design refuses to do
