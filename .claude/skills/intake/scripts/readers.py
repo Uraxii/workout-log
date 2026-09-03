@@ -108,6 +108,8 @@ def age_answer(line: str) -> str | None:
 # above: `None` for the line that does not answer this field, which re-asks
 # the step and writes nothing (ticket workout-log-481).
 
+_WORD_RE = re.compile(r"[a-zA-Z]+")
+
 
 def platform(line: str) -> str | None:
     """The store the athlete named, lowercased, or `None`.
@@ -118,7 +120,8 @@ def platform(line: str) -> str | None:
     no place at all, because re-asking an athlete who answered correctly
     is the wrong failure.
     """
-    ...  # TODO
+    match = _WORD_RE.search(line)
+    return match.group(0).lower() if match else None
 
 
 def container_choice(line: str) -> str | None:

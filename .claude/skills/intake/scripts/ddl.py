@@ -21,6 +21,8 @@ import json
 from pathlib import Path
 from typing import Any, Callable
 
+import storage
+
 # <skill>/data is the copy tools/package/build_zip.py vendors into the ZIP;
 # the repo root is the shared original a plugin checkout keeps (build-plan s8).
 # Same resolution as session-runner/scripts/rows.py.
@@ -150,6 +152,11 @@ def next_create_write(state: dict[str, Any]) -> list[dict[str, Any]]:
     parent = state.get("notion_parent_page_id")
     created = state.get("databases", {})
     if parent is None:
+        return []
+    if not storage.is_proven(storage.named(state)):
+        # Gate 1 of two (docs/storage-section-design.md "Refusing a
+        # store"). Not one `database-create` for a store this build has no
+        # DDL for, so nothing is created under the athlete's page.
         return []
     for db in create_order():
         if db not in created:

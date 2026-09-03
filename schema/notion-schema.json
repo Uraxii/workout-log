@@ -126,7 +126,7 @@
   "config_pages": {
     "config/athlete": {
       "note": "`notion_parent_page_id` is the page the athlete shared, asked for by intake because nothing else can supply it (ticket workout-log-mqs). `timezone` is asked too, because `Sessions.Timezone` is frozen at open (rule L3) and before this an install with no session had nowhere to hold one (ticket workout-log-ayf.16). `notion_data_sources` is the JSON `{database name: data source id}` the create calls returned: no read verb answers \"which databases exist\", so intake persists what the caller handed it and hydrate.py reads it back.",
-      "keys": ["goal", "training_age", "days_per_week", "equipment", "strength_baseline", "jurisdiction", "referral_name", "age", "measure_kinds", "intake_cursor", "notion_parent_page_id", "timezone", "notion_data_sources"]
+      "keys": ["goal", "training_age", "days_per_week", "equipment", "strength_baseline", "jurisdiction", "referral_name", "age", "measure_kinds", "intake_cursor", "storage_platform", "notion_parent_page_id", "timezone", "notion_data_sources"]
     },
     "config/preferences": {
       "keys": ["units", "nutrition_strictness", "rest_display"],

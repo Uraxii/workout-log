@@ -10,10 +10,12 @@
 @skill	intake
 set me up
 
-# 0. The two questions the tool needs before it can do anything (tickets
-# workout-log-mqs, workout-log-ayf.16). The timezone shows the same one
-# re-ask rule refusing a zone the tz database does not know, before the
-# PAR-Q+ steps below show it on safety.
+# 0. The three questions the tool needs before it can do anything
+# (docs/storage-section-design.md question 1, tickets workout-log-mqs,
+# workout-log-ayf.16). The timezone shows the same one re-ask rule
+# refusing a zone the tz database does not know, before the PAR-Q+ steps
+# below show it on safety.
+notion
 24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
 pacific time
 America/Los_Angeles

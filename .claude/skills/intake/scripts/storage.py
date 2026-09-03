@@ -1,9 +1,6 @@
 """Which stores this build can write to, and what happens when the
 athlete names one it cannot.
 
-SKELETON ONLY. Every body below is a TODO stub. The design is
-docs/storage-section-design.md; nothing here is implemented.
-
 One body of domain knowledge (docs/architecture.md "One script per skill"
 splits by DOMAIN, never by execution step): what a store is, whether this
 build has been proven against it, what it is called under the athlete's
@@ -32,7 +29,12 @@ def named(state: dict[str, Any]) -> str | None:
     needs it on the same turn the answer lands (the same reason
     `notion_parent_page_id` carries a `state_key`).
     """
-    ...  # TODO
+    return state.get("storage_platform")
+
+
+# The only store this build has DDL and fixtures for
+# (docs/storage-section-design.md "Where store-specific mapping lives").
+PROVEN = frozenset({"notion"})
 
 
 def is_proven(platform: str | None) -> bool:
@@ -43,7 +45,7 @@ def is_proven(platform: str | None) -> bool:
     today. Proven means a DDL renderer plus fixtures replaying against
     `tools/mock-notion`, never a claim in prose.
     """
-    ...  # TODO
+    return platform in PROVEN
 
 
 def refusal(platform: str) -> str:
@@ -54,7 +56,13 @@ def refusal(platform: str) -> str:
     by `fixtures/13-storage-refusal`, so rewording it turns that fixture
     red.
     """
-    ...  # TODO
+    name = platform.capitalize()
+    return (
+        f"I can't write to {name} yet. Notion is the only one I've been "
+        f"proven against, and I'd rather say so now than build you half a "
+        f"log. I've written down that you asked for {name}. Say 'notion' "
+        f"and I'll set that up instead."
+    )
 
 
 def container_name(db: str, prefix: str) -> str:

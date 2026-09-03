@@ -22,10 +22,12 @@ from reader import MockNotionReader
 _SKILLS_DIR = Path(__file__).resolve().parents[2] / ".claude" / "skills"
 sys.path.insert(0, str(_SKILLS_DIR / "program-design" / "scripts"))
 sys.path.insert(0, str(_SKILLS_DIR / "session-runner" / "scripts"))
+sys.path.insert(0, str(_SKILLS_DIR / "intake" / "scripts"))
 
 import program as program_lib  # noqa: E402  (owns the cursor contract)
 import program_page  # noqa: E402  (owns the `program/current` round trip)
 import rows as row_shapes  # noqa: E402  (owns the client-side session key)
+import storage  # noqa: E402  (owns is_proven/refusal, the cold-start gate)
 
 DEFAULT_UNITS = "lb"
 
@@ -40,6 +42,14 @@ def hydrate(reader: MockNotionReader) -> dict[str, Any]:
     # `limits.progression`, `pain_triage` reads `limits.entries`.
     limits = reader.config_read("config/limits")
     athlete = reader.config_read("config/athlete")
+    storage_platform = athlete.get("storage_platform")
+    if storage_platform is not None and not storage.is_proven(storage_platform):
+        # Gate 2 of two (docs/storage-section-design.md "Refusing a
+        # store"). `None` means the question has not been asked yet, which
+        # is not a refusal; a named, unproven store stops every skill's
+        # cold start here, not just intake's, because hydrate.py is the
+        # one chokepoint every cold turn already routes through.
+        raise RuntimeError(storage.refusal(storage_platform))
     state: dict[str, Any] = {
         "units": units,
         "limits": limits,

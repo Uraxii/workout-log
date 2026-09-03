@@ -25,6 +25,7 @@ import screen  # noqa: E402  (skill-to-skill seam import, mirrors intake.py's ow
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import readers  # noqa: E402  (same-dir readers; the dir name is not importable)
+import storage  # noqa: E402  (same-dir storage; the dir name is not importable)
 
 
 # One row per question. Two reader slots, because they do two different jobs:
@@ -32,19 +33,34 @@ import readers  # noqa: E402  (same-dir readers; the dir name is not importable)
 # same field inside a line answering a different one ("lb, and I train 4
 # days", lim L-47) and so needs the unit word to be sure. `reask` is what
 # the athlete reads when her answer did not parse; a row without one
-# repeats its prompt. `before_safety` puts the row ahead of PAR-Q+ in
-# `ALL_IDS`, and `state_key` names the state key the answer also lands on,
-# for the two values the rest of the turn needs in hand and not only on the
-# page it was written to.
+# repeats its prompt. `section` (only value used today: `"storage"`) puts a
+# row ahead of PAR-Q+ in `ALL_IDS`; every other row runs after. `state_key`
+# names the state key the answer also lands on, for the two values the rest
+# of the turn needs in hand and not only on the page it was written to.
+
+
+def _storage_refusal(value: str) -> str | None:
+    """`None` when the athlete named a store this build can write to;
+    otherwise the line she reads instead of the next question
+    (docs/storage-section-design.md "Refusing a store")."""
+    return None if storage.is_proven(value) else storage.refusal(value)
+
+
 FIELD_STEPS: list[dict[str, Any]] = [
+    {"id": "storage_platform", "page": "config/athlete", "key": "storage_platform",
+     "section": "storage", "state_key": "storage_platform",
+     "prompt": "Where do you want your training log kept? Notion is what I can write to today. Name anything else and I'll tell you straight away rather than half build it.",
+     "answer": readers.platform,
+     "reask": "I need the name of a place to put it. Notion is the one I can write to today.",
+     "refuse": _storage_refusal},
     {"id": "notion_parent_page_id", "page": "config/athlete",
-     "key": "notion_parent_page_id", "before_safety": True,
+     "key": "notion_parent_page_id", "section": "storage",
      "state_key": "notion_parent_page_id",
      "prompt": "First, where should I put your logs? Make a blank Notion page, share it with this connection, then paste the page link here.",
      "answer": readers.page_id,
      "reask": "That has no Notion page id in it. Open the page, hit Share, copy link, and paste the whole link here."},
     {"id": "timezone", "page": "config/athlete", "key": "timezone",
-     "before_safety": True, "state_key": "tz",
+     "section": "storage", "state_key": "tz",
      "prompt": "What timezone are you in? I need it as an IANA name, like America/Los_Angeles or Europe/London, so a late session lands on the right day.",
      "answer": readers.timezone,
      "reask": "I don't know that zone. It's Area/City, capitals and all, like America/New_York or Australia/Sydney."},
@@ -91,16 +107,19 @@ FIELD_BY_ID = {step["id"]: step for step in FIELD_STEPS}
 
 SAFETY_IDS = tuple(f"parq_{i}" for i in range(1, 8)) + ("parq_followup",)
 
-# Two questions about the tool, then every question after is about her. The
-# parent page id is first because the database creates fire from the "set me
-# up" turn onward and each one needs it (ticket workout-log-mqs); the
-# timezone is second because it is frozen onto session 1 (rule L3) and a
-# session can open long before the profile is finished (ticket
-# workout-log-ayf.16). Each row says for itself which side of PAR-Q+ it sits
-# on, so adding or renaming a row cannot silently reorder the flow.
-ALL_IDS = (tuple(s["id"] for s in FIELD_STEPS if s.get("before_safety"))
+# Three questions about the tool, then every question after is about her.
+# The storage platform is first because the athlete has to name a store
+# before anything else about it makes sense
+# (docs/storage-section-design.md question 1); the parent page id is
+# second because the database creates fire from the "set me up" turn
+# onward and each one needs it (ticket workout-log-mqs); the timezone is
+# third because it is frozen onto session 1 (rule L3) and a session can
+# open long before the profile is finished (ticket workout-log-ayf.16).
+# Each row says for itself which side of PAR-Q+ it sits on, so adding or
+# renaming a row cannot silently reorder the flow.
+ALL_IDS = (tuple(s["id"] for s in FIELD_STEPS if s.get("section") == "storage")
            + SAFETY_IDS
-           + tuple(s["id"] for s in FIELD_STEPS if not s.get("before_safety")))
+           + tuple(s["id"] for s in FIELD_STEPS if s.get("section") != "storage"))
 
 
 def prompt_for(step_id: str) -> str:

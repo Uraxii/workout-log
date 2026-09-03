@@ -1,26 +1,26 @@
 verb	target	field	value
 config-write	config/athlete	jurisdiction	California
-config-write	config/athlete	intake_cursor	12
-config-write	config/athlete	goal	get stronger
 config-write	config/athlete	intake_cursor	13
-config-write	config/athlete	training_age	3 years, pretty consistent
+config-write	config/athlete	goal	get stronger
 config-write	config/athlete	intake_cursor	14
-config-write	config/athlete	days_per_week	4
+config-write	config/athlete	training_age	3 years, pretty consistent
 config-write	config/athlete	intake_cursor	15
-config-write	config/athlete	equipment	barbell, rack, dumbbells
+config-write	config/athlete	days_per_week	4
 config-write	config/athlete	intake_cursor	16
-config-write	config/athlete	strength_baseline	185x5 on squat
+config-write	config/athlete	equipment	barbell, rack, dumbbells
 config-write	config/athlete	intake_cursor	17
-config-write	config/athlete	measure_kinds	none of those
+config-write	config/athlete	strength_baseline	185x5 on squat
 config-write	config/athlete	intake_cursor	18
-config-write	config/athlete	age	29
+config-write	config/athlete	measure_kinds	none of those
 config-write	config/athlete	intake_cursor	19
-config-write	config/preferences	nutrition_strictness	general
+config-write	config/athlete	age	29
 config-write	config/athlete	intake_cursor	20
-config-write	config/athlete	referral_name	Dr. Smith, my GP
+config-write	config/preferences	nutrition_strictness	general
 config-write	config/athlete	intake_cursor	21
-row-create	Locations	Name	Downtown Gym
+config-write	config/athlete	referral_name	Dr. Smith, my GP
 config-write	config/athlete	intake_cursor	22
+row-create	Locations	Name	Downtown Gym
+config-write	config/athlete	intake_cursor	23
 say	intake	msg-1	"What country or state are you in? Scope-of-practice rules vary."
 say	intake	msg-2	"What's the goal? Strength, muscle, fat loss, endurance, sport, general health, or rehab-adjacent?"
 say	intake	msg-3	"Have you trained before? How long, how consistently?"

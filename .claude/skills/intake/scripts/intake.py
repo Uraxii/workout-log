@@ -143,7 +143,17 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
         # step needs a retry branch of its own.
         return {"writes": writes, "say": questions.reask_for(step_id), "state": state}
 
+    refuse = questions.FIELD_BY_ID.get(step_id, {}).get("refuse")
+    refusal_text = refuse(value) if refuse else None
     writes += _answer_writes(step_id, line, value, state, now)
+    if refusal_text is not None:
+        # A row can opt into this generically (same shape as `state_key`
+        # and `location`): the answer is still recorded above, so she is
+        # never asked the question from scratch, but the cursor does not
+        # move, so the same step catches her correction
+        # (docs/storage-section-design.md "Refusing a store").
+        return {"writes": writes, "say": refusal_text, "state": state}
+
     next_idx, acks = questions.advance(ist["answers"], idx + 1)
     ist["cursor"] = next_idx
     writes.append(_config_write("config/athlete", "intake_cursor", str(next_idx)))

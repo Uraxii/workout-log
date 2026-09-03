@@ -1,9 +1,9 @@
-# Simulates a dropped connection: intake_cursor=11 (jurisdiction) is what a
-# fresh process would read back from config/athlete after the first eleven
-# steps (the parent page id, the timezone, the seven PAR-Q+ questions and
-# its follow-up, and units) were already answered and written in an
-# earlier, now-lost conversation. This fixture asserts the resumed turn
-# starts at jurisdiction, never at parq_1 or units (lim L-48).
+# Simulates a dropped connection: intake_cursor=12 (jurisdiction) is what a
+# fresh process would read back from config/athlete after the first twelve
+# steps (the storage platform, the parent page id, the timezone, the seven
+# PAR-Q+ questions and its follow-up, and units) were already answered and
+# written in an earlier, now-lost conversation. This fixture asserts the
+# resumed turn starts at jurisdiction, never at parq_1 or units (lim L-48).
 #
 # No database is created here. The parent page id lives on the same
 # config/athlete page the cursor came from, and @intake_cursor stands in
@@ -11,7 +11,7 @@
 # fixtures/05-first-run and fixtures/12-intake-parent.
 @now	2026-09-01T09:00:00+00:00
 @skill	intake
-@intake_cursor	11
+@intake_cursor	12
 set me up
 California
 get stronger
