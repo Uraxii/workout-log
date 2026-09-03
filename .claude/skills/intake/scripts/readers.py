@@ -101,3 +101,52 @@ def days_answer(line: str) -> str | None:
 
 def age_answer(line: str) -> str | None:
     return age_in_sentence(line) or _bare_number(line)
+
+
+# --- SKELETON ONLY, docs/storage-section-design.md. TODO stubs, no logic. ---
+# The storage section's three new readers. Same contract as every reader
+# above: `None` for the line that does not answer this field, which re-asks
+# the step and writes nothing (ticket workout-log-481).
+
+
+def platform(line: str) -> str | None:
+    """The store the athlete named, lowercased, or `None`.
+
+    An unrecognised store name is a PARSED answer, not a parse failure:
+    "airtable" returns "airtable" and is refused downstream by
+    `storage.refusal` with a reason. `None` is reserved for a line naming
+    no place at all, because re-asking an athlete who answered correctly
+    is the wrong failure.
+    """
+    ...  # TODO
+
+
+def container_choice(line: str) -> str | None:
+    """`"reuse"` for a line meaning use the databases already there, or the
+    prefix word for a line offering one. `None` otherwise.
+
+    Only reached when the caller threaded a non-empty
+    `state["storage_existing"]` in, so the question fires on an observed
+    collision and never on a clean page.
+    """
+    ...  # TODO
+
+
+def week_start(line: str) -> str | None:
+    """`"monday"` or `"sunday"`, or `None`.
+
+    Monday is ISO 8601 and the shipped default, but it is asked rather than
+    assumed: `Sessions.week_index` is stored (rule L18) and a wrong week
+    number is never repaired by a later read.
+    """
+    ...  # TODO
+
+
+def date_order(line: str) -> str | None:
+    """`"day_first"` or `"month_first"`, or `None`.
+
+    Phase 3. It governs what the athlete may type and what she reads back,
+    never what is stored: the store holds ISO 8601 because `hydrate.py`
+    compares those strings lexically.
+    """
+    ...  # TODO
