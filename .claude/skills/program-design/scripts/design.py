@@ -109,7 +109,7 @@ def _plan_turn(line: str, state: dict[str, Any]) -> Turn:
                                         progression)
     if load_lines:
         # One write for every resolved load: per-exercise state is one key on
-        # `program/current`, never a row. A starting load is not a log.
+        # `agent/progression-state`, never a row. A starting load is not a log.
         writes.append(program_page.progression_write(progression))
 
     state["program"] = program

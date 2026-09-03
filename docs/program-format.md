@@ -3,9 +3,10 @@
 One JSON object per template in `library/`, stored verbatim in the Notion
 config page `program/current` and archived to `program/history/<date>`
 (build-plan s6, s1.8). The file never changes at runtime: every moving number
-lives in Notion, under the `progression` key on that same `program/current`
-page (`stage_index`, `variation_index`, `next_target`, s1.6) or in the
-cursor. `progression` is JSON, `{exercise name: {field: value}}`. One shape covers all ten templates of
+lives in Notion, under the `progression` key on the agent's own bookkeeping
+page, `agent/progression-state` (`stage_index`, `variation_index`,
+`next_target`, s1.6), or in the cursor. `progression` is JSON, `{exercise
+name: {field: value}}`. One shape covers all ten templates of
 s7.1, with no second schema. Machine-checkable form:
 `schema/program-schema.json` (draft 2020-12), checked by
 `python3 library/check.py`, standard library only.
@@ -88,8 +89,10 @@ The cursor is `{"node": <index>, "cycle": <n>}`, stored in `Sessions.Cursor`
 (advisory, rule L8) and in `program/current`. Today is `rotation[cursor.node]`,
 one array index. Per block: the active prescription is
 `stages[progression[exercise].stage_index]` merged over the block, the load is
-`progression[exercise].next_target` written by `load-adjust` at last close, or `start` on
-the first session. Nothing is searched. Advancing is
+`progression[exercise].next_target` written by `load-adjust` at last close, or
+`start` on the first session. `progression[exercise]` itself reads from
+`agent/progression-state`, the agent's own bookkeeping. Nothing is searched.
+Advancing is
 `(node + 1) % len(rotation)`, `cycle` incremented on wrap, the same operation
 for a rest node.
 

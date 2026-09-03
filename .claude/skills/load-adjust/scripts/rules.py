@@ -6,7 +6,7 @@ turn/conversation domain and calls into these (`docs/architecture.md`
 
 `load_kind = assist` inverts bump and deload direction (lim L-05): less
 assistance is progress, so a bump *subtracts* magnitude and a deload *adds*
-it back. `axis` picks which `program/current.progression` field a bump or deload targets
+it back. `axis` picks which `agent/progression-state.progression` field a bump or deload targets
 (lim L-20): `weight` writes `next_target`, `level` and `variation` write
 `stage_index` / `variation_index` instead of ever touching load.
 """

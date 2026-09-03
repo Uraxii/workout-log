@@ -12,11 +12,13 @@ JSON string under `body`. `json.dumps` escapes tabs and newlines, so the
 value stays a single TSV cell. The five header keys stay beside it, plain,
 because the user hand-reads this page (build-plan s1.8).
 
-`progression` rides the same way. It is the per-exercise state that used to
-sit on an `Exercises` row: the fields no reader can recover from the logged
-sets, which is the training max a block was anchored to, the load or stage a
-rule last resolved, and the two dates that record a conversation about a
-deload rather than a set that was lifted.
+`progression` rides on its own page, `agent/progression-state`, because it
+is the agent's bookkeeping for applying the progression rule again next
+turn, not the athlete's program: the training max a block was anchored to,
+the load or stage a rule last resolved, and the two dates that record a
+conversation about a deload rather than a set that was lifted. None of it
+describes the program itself, which is why it does not ride on
+`program/current` (AGENTS.md "Storage: athlete pages and agent pages").
 """
 
 from __future__ import annotations
@@ -26,6 +28,7 @@ from typing import Any, NamedTuple
 
 FORMAT_VERSION = 1  # `docs/program-format.md` "Top level"
 HEADER_KEYS = ("name", "origin", "progression_unit", "dose", "days")
+PROGRESSION_PAGE = "agent/progression-state"
 # What one exercise's `progression` record may hold. Everything else a
 # progression rule tracks (the rep range, the miss counter's own streak) is
 # either in the template body or recomputable from the logged `Sets`.
@@ -36,12 +39,12 @@ PROGRESSION_FIELDS = ("training_max", "next_target", "stage_index",
 
 def progression_write(progression: dict[str, dict[str, Any]]) -> dict[str, Any]:
     """One `config-write` carrying the whole `{exercise name: {field: value}}`
-    map. One key, not one row per exercise: `program/current` is a config
-    page, and a config page is key/value text."""
+    map. One key, not one row per exercise: `agent/progression-state` is a
+    config page, and a config page is key/value text."""
     body = {name: {field: record[field] for field in PROGRESSION_FIELDS
                    if field in record}
             for name, record in sorted(progression.items())}
-    return {"verb": "config-write", "target": "program/current",
+    return {"verb": "config-write", "target": PROGRESSION_PAGE,
             "payload": {"progression": json.dumps(body, sort_keys=True)}}
 
 
@@ -125,7 +128,7 @@ def _self_check() -> None:
     merge_progression(state, "Barbell Squat", {"training_max": 140.0})
     merge_progression(state, "Barbell Squat", {"next_target": "120 lb"})
     write = progression_write(state)
-    assert write["target"] == "program/current"
+    assert write["target"] == PROGRESSION_PAGE
     assert json.loads(write["payload"]["progression"]) == {
         "Barbell Squat": {"training_max": 140.0, "next_target": "120 lb"}}
     assert "\t" not in write["payload"]["progression"]

@@ -97,13 +97,17 @@
       }
     },
     "program/current": {
-      "note": "`body` is the picked library/*.json template verbatim, JSON encoded, so the rotation a later chat reads is the one this program actually has, swaps included. `started_at` scopes the rotation cursor to this program: the sessions that count are the closed ones that also started at or after it was picked. `progression` is the JSON `{exercise name: {field: value}}` that per-exercise progression state lives in now that there is no `Exercises` row to hang it on: only the fields no reader can derive from the logged sets are here. Round trip owned by .claude/skills/program-design/scripts/program_page.py.",
-      "headers": ["name", "origin", "progression_unit", "dose", "days", "template_id", "started_at", "body", "progression"],
+      "note": "`body` is the picked library/*.json template verbatim, JSON encoded, so the rotation a later chat reads is the one this program actually has, swaps included. `started_at` scopes the rotation cursor to this program: the sessions that count are the closed ones that also started at or after it was picked. This page describes the program itself, what the athlete is meant to do; the agent's own bookkeeping for applying it lives on `agent/progression-state` instead (AGENTS.md 'Storage: athlete pages and agent pages'). Round trip owned by .claude/skills/program-design/scripts/program_page.py.",
+      "headers": ["name", "origin", "progression_unit", "dose", "days", "template_id", "started_at", "body"],
       "enums": {
         "progression_unit": ["session", "week", "block", "level"],
         "dose": ["sets", "minutes"]
       }
     },
-    "program/history/<date>": {"headers": ["name", "origin", "closed_at"]}
+    "program/history/<date>": {"headers": ["name", "origin", "closed_at"]},
+    "agent/progression-state": {
+      "note": "The agent's own bookkeeping for applying the progression rule again next turn, not the athlete's program: fields no reader can recompute from the logged `Sets` (AGENTS.md 'Storage: athlete pages and agent pages'). `progression` is the JSON `{exercise name: {field: value}}` moved here verbatim from `program/current.progression` (.nikki-agents/decisions.tsv 2026-09-03T15:14:39Z progression-state). `training_max`, `stage_index`, `variation_index`, `last_deload_at` and `deload_declined_at` cannot be derived at all: each records a design-time choice or a conversation, not a lifted set. `next_target` and `fail_count` are derivable in principle by replaying the progression rule over the logged Sets, but that replay engine does not exist yet; tracked as workout-log-vi3 and workout-log-8j6. Round trip owned by .claude/skills/program-design/scripts/program_page.py.",
+      "keys": ["progression"]
+    }
   }
 }

@@ -69,7 +69,8 @@ def hydrate(reader: MockNotionReader) -> dict[str, Any]:
     program_body = reader.config_read("program/current")
     page = program_page.read_page(program_body)
     state["has_program"] = page is not None
-    state["progression"] = json.loads(program_body.get("progression") or "{}")
+    progression_body = reader.config_read(program_page.PROGRESSION_PAGE)
+    state["progression"] = json.loads(progression_body.get("progression") or "{}")
 
     # ponytail: every `Sets` row, unfiltered, so it grows with the log.
     # `row_query` has no ranges; add one and filter on `Timestamp` when this

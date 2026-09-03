@@ -1,10 +1,10 @@
 verb	target	field	value
-config-write	program/current	progression	{"Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
-config-write	program/current	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "105 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
-config-write	program/current	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "110 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
-config-write	program/current	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "115 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
-config-write	program/current	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "115 lb"}, "Overhead Press (Barbell)": {"fail_count": 0, "next_target": "105 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
-config-write	program/current	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "115 lb"}, "Overhead Press (Barbell)": {"fail_count": 0, "next_target": "110 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
+config-write	agent/progression-state	progression	{"Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
+config-write	agent/progression-state	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "105 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
+config-write	agent/progression-state	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "110 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
+config-write	agent/progression-state	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "115 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
+config-write	agent/progression-state	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "115 lb"}, "Overhead Press (Barbell)": {"fail_count": 0, "next_target": "105 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
+config-write	agent/progression-state	progression	{"Bench Press (Barbell)": {"fail_count": 0, "next_target": "115 lb"}, "Overhead Press (Barbell)": {"fail_count": 0, "next_target": "110 lb"}, "Squat (Barbell)": {"fail_count": 0, "next_target": "190 lb"}}
 say	load-adjust	msg-1	"Progression set for Squat (Barbell)."
 say	load-adjust	msg-2	"I couldn't read 'abc', so I logged nothing for it. I need a set like `185x8`, `bw+25x8`, `bw-25x8`, or a bare rep count like `8`. What did you mean?"
 say	load-adjust	msg-3	"I couldn't read 'five', so I logged nothing for it. I need a set like `185x8`, `bw+25x8`, `bw-25x8`, or a bare rep count like `8`. What did you mean?"

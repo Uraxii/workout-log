@@ -69,7 +69,8 @@ class Turn(TypedDict):
 
 
 def _write(state: dict[str, Any], name: str, fields: dict[str, Any]) -> Write:
-    """Per-exercise progression state, on `program/current`. There is no
+    """Per-exercise progression state, on `agent/progression-state`: the
+    agent's own bookkeeping, not the athlete's program. There is no
     `Exercises` row to hang it on: Notion holds logs only, and this is not a
     log. `program_page` owns the page shape and rejects a field it does not
     carry, so a rule cannot invent a column the way it could on a database."""
@@ -137,7 +138,7 @@ def _route(text: str, state: dict[str, Any]) -> tuple[list[Write], str]:
     seam's caller, so the S5 gate sees every write this module makes."""
     # The progression RULE per exercise, seeded by a `setup` line and held
     # for this chat. Not a store: `state["progression"]` is the part that
-    # persists, and `program/current` is where it goes.
+    # persists, and `agent/progression-state` is where it goes.
     rules_by_exercise = state.setdefault("rules_by_exercise", {})
 
     if text.startswith("setup\t"):

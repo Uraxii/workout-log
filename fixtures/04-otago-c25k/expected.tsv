@@ -25,6 +25,7 @@ config-read	config/preferences	*	0
 config-read	config/limits	*	0
 config-read	config/athlete	*	0
 config-read	program/current	*	8
+config-read	agent/progression-state	*	0
 row-query	Sets	*	0
 row-query	Sessions	*	1
 row-query	Sessions	Status=open	0

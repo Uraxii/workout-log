@@ -29,6 +29,29 @@ and `library/*.json` are the whole of it. Nothing seeds a catalog into her
 workspace, and no database points at another, so every stored value is a
 string, number, date, select or checkbox.
 
+## Storage: athlete pages and agent pages
+
+A config page holds one of two things, and the two never mix on the same
+page. `config/*` and `program/*` hold the athlete's own state: her
+settings, her limits, her current program. `agent/*` holds the other thing,
+the agent's own bookkeeping: state a rule needs to apply itself again next
+turn, with nothing in the logged `Sets` to read it back from.
+`agent/progression-state` is the only one so far.
+
+Before adding a field to either kind of page, derive it from the logged
+`Sets` if the store can compute it today. Hand-maintain it only when the log
+cannot recover the value at all, or when deriving it would mean replaying
+the log through a rule engine that does not exist yet, which is a feature to
+build and ticket, not a field to add here. `agent/progression-state` hand-
+maintains seven fields today. `training_max`, `stage_index`,
+`variation_index`, `last_deload_at` and `deload_declined_at` cannot be
+derived at all: each records a design-time choice or a conversation, not a
+lifted set. `next_target` and `fail_count` are derivable in principle, but
+deriving them needs a replay engine nothing has built yet (tickets
+workout-log-vi3, workout-log-8j6). See
+`schema/notion-schema.json` `config_pages['agent/progression-state']` for
+the field-by-field reasoning.
+
 Reads are not writes, so the rule above does not cover them. There are two read
 verbs, `config-read(page)` and `row-query(db, where)`, both in
 `tools/mock-notion/reader.py`. Each skill rebuilds its turn-1 state through

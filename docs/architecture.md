@@ -377,7 +377,7 @@ What left, and where it went:
 | `Exercises.slug` | nothing. Identity is the `name` | One identifier, and it is the one a human reads |
 | `Sets.Exercise` relation | `Sets.Exercise` text, the name verbatim | Nothing to relate to |
 | `Sets.Session` relation | `Sets.Session` text, the session page id | Same value, no relation |
-| `Exercises` progression fields | `program/current.progression`, JSON keyed by name | Not a log, and it belongs to the program that produced it |
+| `Exercises` progression fields | `agent/progression-state.progression`, JSON keyed by name | Not a log, and not the program either: it is the agent's own bookkeeping for applying the progression rule again, moved off `program/current` in a later pass (`.nikki-agents/decisions.tsv` 2026-09-03T15:14:39Z progression-state; AGENTS.md "Storage: athlete pages and agent pages") |
 | `Locations` database | `config/preferences` keys | The gym's plates are her settings |
 | `Sessions.Location` relation | dropped | Nothing to relate to |
 
