@@ -4,7 +4,7 @@
   "description": "Skills, agents, and MCP config for the workout-log Notion trainer.",
   "plugins": [
     {
-      "name": "workout-trainer",
+      "name": "workout",
       "source": "./",
       "description": "Logging grammar, progression rules and coaching skills for the workout-log Notion trainer."
     }

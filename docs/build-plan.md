@@ -371,7 +371,7 @@ workout-log/
 ├── .github/copilot-instructions.md
 ├── .claude-plugin/{plugin.json,marketplace.json}
 ├── .mcp.json
-└── dist/workout-trainer-skills.zip   # 7 skill dirs, each with its own data/ copies
+└── dist/workout-skills.zip   # 7 skill dirs, each with its own data/ copies
 ```
 
 Layout from (13 s7). `make skills` generates the symlinks and the ZIP (13 s7).
@@ -391,8 +391,8 @@ present is a `FileNotFoundError` naming the path, never a silent wrong dir
 | 1 | Free Notion account (00 sS "Friend replicates it" 1) | Same |
 | 2 | Create one blank Notion page (dec "Notion template replaced by intake") | Same |
 | 3 | `/plugin marketplace add Uraxii/workout-log` (13 s1.4) | Connect the Notion connector, OAuth, no keys (13 s6) |
-| 4 | `/plugin install workout-trainer@uraxii-plugins` (13 s1.4) | Enable code execution in Settings, Capabilities (13 s6) |
-| 5 | Grant the Notion MCP access to that page (13 s7) | Customize > Skills > Upload `dist/workout-trainer-skills.zip` (13 s6) |
+| 4 | `/plugin install workout@uraxii-plugins` (13 s1.4) | Enable code execution in Settings, Capabilities (13 s6) |
+| 5 | Grant the Notion MCP access to that page (13 s7) | Customize > Skills > Upload `dist/workout-skills.zip` (13 s6) |
 | 6 | Say "set me up"; `intake` creates the four databases (dec "Notion template replaced by intake") | Same |
 
 A needs a terminal, an always-on PC and Pro-or-better, phone leg via Remote

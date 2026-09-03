@@ -4,7 +4,7 @@
 Every other phase 7 check (docs/build-plan.md s9) reads the repo tree, so a
 ZIP that ships no data files still passed them while flavour B (docs/install.md)
 could not import `rows.py` at all (workout-log-d2y). This unpacks
-dist/workout-trainer-skills.zip into a scratch dir outside the repo, which is
+dist/workout-skills.zip into a scratch dir outside the repo, which is
 what a claude.ai upload gets, imports every <skill>/scripts/*.py from it, then
 calls the `session-runner` seam and checks the row it writes.
 
@@ -19,7 +19,7 @@ import zipfile
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DIST_ZIP = REPO_ROOT / "dist" / "workout-trainer-skills.zip"
+DIST_ZIP = REPO_ROOT / "dist" / "workout-skills.zip"
 
 # One turn against the seam that broke: fixture 01-three-sets' first line and
 # the state replay.py builds for it (fixtures/01-three-sets/transcript.txt).

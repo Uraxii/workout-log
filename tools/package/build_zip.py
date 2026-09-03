@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Zip every .claude/skills/<name> dir into dist/workout-trainer-skills.zip.
+"""Zip every .claude/skills/<name> dir into dist/workout-skills.zip.
 
 Each skill lands at the ZIP root as <name>/... so claude.ai's Customize >
 Skills upload sees one top-level folder per skill with SKILL.md inside
@@ -23,7 +23,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SKILLS_DIR = REPO_ROOT / ".claude" / "skills"
-DIST_ZIP = REPO_ROOT / "dist" / "workout-trainer-skills.zip"
+DIST_ZIP = REPO_ROOT / "dist" / "workout-skills.zip"
 SKIP_DIRS = {"__pycache__"}
 
 # Repo-root globs per skill, matching what each skill's scripts actually read:

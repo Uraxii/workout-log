@@ -1,4 +1,4 @@
-# Packaging targets for the workout-trainer skills.
+# Packaging targets for the workout skills.
 # See docs/build-plan.md s8 (layout) and s9 phase 7 (proofs).
 
 SKILL_MANIFESTS := $(wildcard .claude/skills/*/SKILL.md)
@@ -8,7 +8,7 @@ FIXTURES := $(wildcard fixtures/*/)
 .PHONY: skills check
 
 # Symlink every existing .claude/skills/<name> into .agents/skills/<name>
-# (Codex discovery path) and zip them into dist/workout-trainer-skills.zip
+# (Codex discovery path) and zip them into dist/workout-skills.zip
 # (claude.ai upload path). Safe to rerun: prunes stale links first.
 skills:
 	@mkdir -p .agents/skills

@@ -33,7 +33,7 @@ to Notion in a browser instead.
 
 2. Install the plugin. The marketplace is named `uraxii-plugins`.
 
-		/plugin install workout-trainer@uraxii-plugins
+		/plugin install workout@uraxii-plugins
 
 3. Approve the `notion` MCP server when Claude Code asks. The plugin declares it
    in `.mcp.json` as the HTTP server at `https://mcp.notion.com/mcp`. Sign in to
@@ -94,7 +94,7 @@ to Notion in a browser instead.
 
    That writes the file you upload in the next step:
 
-		dist/workout-trainer-skills.zip
+		dist/workout-skills.zip
 
 4. Go to **Customize > Skills**, click `+`, then **Create skill**, then
    **Upload a skill**, and upload the ZIP.
