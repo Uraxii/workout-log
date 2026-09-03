@@ -1,6 +1,6 @@
 ---
 name: trainer-core
-description: The gate loaded before every other coaching turn. Checks that a session may open (clearance, a current program) and that no set gets logged while the session is halted, refuses by naming which precondition failed, and states the AI disclosure once. Never writes, never programs. Use on every user turn, before the turn reaches another skill.
+description: The gate loaded before every other coaching turn. Checks that a session may open (clearance, a current program) and that no set gets logged while the session is halted, and refuses by naming which precondition failed. Never writes, never programs. Use on every user turn, before the turn reaches another skill.
 ---
 
 # trainer-core
@@ -52,15 +52,6 @@ rule S1 refuses it by naming the missing precondition, no clearance or no
 program, never a generic decline. An empty `config/limits` means *not
 screened yet*, never `cleared`: absent is `pending`. Never open a session on
 a guessed clearance state.
-
-## Disclosure, once
-
-State once, at first contact, that this is an AI system, not a person, per
-the honesty rule every trainer code of ethics states and the EU AI Act
-Article 50 transparency obligation. Do not repeat it every message; a
-disclosure repeated every turn gets ignored, which defeats the disclosure.
-Re-state it only where a person might reasonably have forgotten (a new
-session after a long gap, a hand-off to a different install).
 
 ## One client, no audit beyond the log
 

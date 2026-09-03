@@ -274,7 +274,7 @@ config" half of R6 without adding a skill (lim R6), (lim L-33).
 
 | Skill | Trigger | Writes | New in v2, by root shape |
 |---|---|---|---|
-| `trainer-core` | Every coaching turn, loaded unconditionally | nothing, it gates | Audit = the stored `confirm_line`, single client, no per-client jurisdiction (dec "T2 superseded"), (lim L-31). Discloses once (00 sT "Disclosure rule"). Never unattended (dec "S4 no unattended runs") |
+| `trainer-core` | Every coaching turn, loaded unconditionally | nothing, it gates | Audit = the stored `confirm_line`, single client, no per-client jurisdiction (dec "T2 superseded"), (lim L-31). Never unattended (dec "S4 no unattended runs") |
 | `intake` | First run, "set me up", life change | all config, and the four databases | Creates databases via API (dec "Notion template replaced by intake"). `intake_cursor` (lim L-48). Out-of-order writes (lim L-47). Q23 measure kinds (lim R1) |
 | `screen` | Inside `intake`; re-fires on any health change | clearance state and date | PAR-Q+ verbatim, follow-ups only on YES (dec "T3 PAR-Q+ asked verbatim"). Owns the re-screen that clears `progression: manual`, rule S5 (lim L-42) |
 | `program-design` | "Make me a plan", block end, **any new `open` limits entry** | `program/current`, `program/history/<date>` | Trigger threshold now defined (lim L-21). Scripted refusal-with-options, section 7.2 (lim L-17). Swap-in-place for one exercise, replacing the cut `substitute-exercise` (lim L-21). Emits `progression_unit: level` and `dose: minutes` (lim L-19) |

@@ -212,8 +212,7 @@ byte-for-byte compare cover writes and reads together.
 - **Unasserted.** Prose a model composes around a seam's return value. The
   harness runs no LLM, so that text never reaches the TSV and no fixture can
   speak to it. Mandatory wording that lives only in SKILL.md prose and never
-  in a script return value is unasserted for the same reason;
-  `trainer-core`'s AI disclosure (00 sT) is the one such case today.
+  in a script return value is unasserted for the same reason.
 
 Regenerate an expectation from a real run instead of editing it by hand:
 
