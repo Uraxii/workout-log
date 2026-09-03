@@ -25,6 +25,7 @@ check:
 	python3 tools/catalog/build.py
 	python3 library/check.py
 	python3 tools/schema/check_e1rm.py
+	python3 tools/intake/check_questions_docs.py
 	python3 tools/mock-notion/notion_ddl.py
 	@fixtures_failed=0; \
 	for f in $(FIXTURES); do \
