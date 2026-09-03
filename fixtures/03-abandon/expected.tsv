@@ -6,7 +6,7 @@ row-create	Sessions	Start time	2026-08-25T09:00:00+00:00
 row-create	Sessions	week_index	35
 row-create	Sets	Set	Squat (Barbell) set 1, 185 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-08-25T09:00:00+00:00
@@ -16,13 +16,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	94ffe75fefffac7c
+row-create	Sets	write_key	40ecdf9e9883776f
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
 row-create	Sets	Set	Squat (Barbell) set 2, 186 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-08-27T09:00:00+00:00
@@ -32,7 +32,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	c003c53a07798e85
+row-create	Sets	write_key	b7e3196fad8f85bf
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 2, 186 lb x 5. Set 3 at 186 lb.
@@ -44,7 +44,7 @@ row-create	Sessions	Start time	2026-08-27T09:00:00+00:00
 row-create	Sessions	week_index	35
 row-create	Sets	Set	Squat (Barbell) set 1, 190 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-08-27T09:00:00+00:00
@@ -54,7 +54,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	7197e6075d97dd50
+row-create	Sets	write_key	ff98e8ad341825aa
 row-create	Sets	source_message_id	msg-4
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 190 lb x 5. Set 2 at 190 lb.

@@ -23,13 +23,6 @@ from reader import MockNotionReader  # noqa: E402
 from seams import SEAMS  # noqa: E402
 from transcript import Fixture, parse_transcript  # noqa: E402
 
-# build-plan s3.2's round-trip ceiling covers exercise RESOLUTION cost, not a
-# multi-row entry's legitimate set count: rungs 1-3 add 0 round trips, rung 4
-# adds "1 create" (s3.2:193). A multi-row entry (EMOM, a ladder, rule B/C)
-# writes one `Sets` row per set on purpose (s1.3 row 5: 10 rows, one EMOM
-# turn) and is not part of this ceiling.
-MAX_RESOLUTION_WRITES_PER_TURN = 1  # at most one `Exercises` create per turn
-
 # No round-trip ceiling covers a single entry's row count, but an unbounded
 # one (e.g. a mistyped EMOM round count) still shouldn't silently write
 # hundreds of rows. Sanity ceiling, not from the spec: double the largest
@@ -51,18 +44,19 @@ def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
     the s3.2 budget the same way `intake`'s database-create turn is.
     """
     reader = MockNotionReader(notion)
-    catalog = {}
-    for entry in fixture.catalog:
-        page_id = notion.seed_row("Exercises", {"Name": entry["name"], "measure": entry["measure"]})
-        catalog[entry["name"]] = {"id": page_id, "measure": entry["measure"]}
-
+    for key, value in fixture.preferences.items():
+        notion.seed_config("config/preferences", key, value)
     state = {
         "tz": fixture.timezone,
         "units": fixture.units,
-        "catalog": catalog,
+        # `@exercise` seeds what the athlete has logged before this
+        # transcript starts. Nothing is written to the store for it: there
+        # is no exercise database, and a cold turn rederives the same map
+        # from the `Sets` rows (`hydrate.known_exercises`).
+        "known": dict(fixture.known),
+        "preferences": dict(fixture.preferences),
         "session_id": None,
         "session_seq": 0,
-        "exercise_seq": len(catalog),
         "cursor": {},
         # No parent page id: a fixture that needs one gets it the way the
         # athlete does, by answering `intake`'s first question in its own
@@ -88,17 +82,11 @@ def replay(fixture: Fixture, notion: writer.MockNotion) -> list[str]:
         result = turn_fn(turn.line, call_state)
         if not turn.resend:
             last_pre_state = call_state
-        # The s3.2 ceiling bounds exercise-resolution cost (build-plan s3.2);
-        # it does not apply to `intake`'s one-time, multi-write
-        # database-creation turn (build-plan s5.1), which runs once at
-        # install, off the budget.
+        # Rungs 1-4 all cost zero round trips now: resolution reads the
+        # package defaults, and a name they lack is logged as typed
+        # (build-plan s3.2). Only the row count is still worth bounding.
         if turn.skill == "session-runner":
-            resolution_writes = sum(1 for w in result["writes"] if w["target"] == "Exercises")
             set_rows = sum(1 for w in result["writes"] if w["target"] == "Sets")
-            if resolution_writes > MAX_RESOLUTION_WRITES_PER_TURN:
-                raise AssertionError(
-                    f"{turn.message_id} {turn.line!r}: {resolution_writes} Exercises "
-                    f"creates exceeds the s3.2 round-trip ceiling of {MAX_RESOLUTION_WRITES_PER_TURN}")
             if set_rows > MAX_SET_ROWS_PER_TURN:
                 raise AssertionError(
                     f"{turn.message_id} {turn.line!r}: {set_rows} Sets rows "

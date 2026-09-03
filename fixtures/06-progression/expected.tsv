@@ -6,7 +6,7 @@ row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
 row-create	Sessions	week_index	36
 row-create	Sets	Set	Squat (Barbell) set 1, 185 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -16,13 +16,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	590df2ecff4e15ca
+row-create	Sets	write_key	2a7b6b000ddc1e5b
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
 row-create	Sets	Set	Squat (Barbell) set 2, 90 kg x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -32,29 +32,24 @@ row-create	Sets	Unit	kg
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	ecbc92e5d28605f5
+row-create	Sets	write_key	dda859b3f54e8b0e
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 2, 90 kg x 5. Set 3 at 90 kg.
-row-create	Exercises	fail_count	0
-row-create	Exercises	next_target	195 lb
-row-create	Exercises	next_target	205 lb
-row-create	Exercises	next_target	215 lb
-row-create	Exercises	fail_count	1
-row-create	Exercises	fail_count	2
-row-create	Exercises	deload_declined_at	today
-row-create	Exercises	fail_count	3
-row-create	Exercises	fail_count	0
-row-create	Exercises	stage_index	4
-row-create	Exercises	fail_count	0
-row-create	Exercises	next_target	35 lb
-row-create	Exercises	fail_count	1
-row-create	Exercises	fail_count	2
-row-create	Exercises	fail_count	0
-row-create	Exercises	last_deload_at	today
-row-create	Exercises	next_target	90 lb
-row-create	Exercises	fail_count	1
-row-create	Exercises	fail_count	2
+config-write	program/current	progression	{"Squat (Barbell)": {"fail_count": 0, "next_target": "195 lb"}}
+config-write	program/current	progression	{"Squat (Barbell)": {"fail_count": 0, "next_target": "205 lb"}}
+config-write	program/current	progression	{"Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Bench Press (Barbell)": {"fail_count": 1}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Bench Press (Barbell)": {"fail_count": 2}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Bench Press (Barbell)": {"deload_declined_at": "today", "fail_count": 2}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Bench Press (Barbell)": {"deload_declined_at": "today", "fail_count": 3}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Bench Press (Barbell)": {"deload_declined_at": "today", "fail_count": 3}, "Ring Row": {"fail_count": 0, "stage_index": 4}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Assisted Pull-up": {"fail_count": 0, "next_target": "35 lb"}, "Bench Press (Barbell)": {"deload_declined_at": "today", "fail_count": 3}, "Ring Row": {"fail_count": 0, "stage_index": 4}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Assisted Pull-up": {"fail_count": 0, "next_target": "35 lb"}, "Bench Press (Barbell)": {"deload_declined_at": "today", "fail_count": 3}, "Overhead Press (Barbell)": {"fail_count": 1}, "Ring Row": {"fail_count": 0, "stage_index": 4}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Assisted Pull-up": {"fail_count": 0, "next_target": "35 lb"}, "Bench Press (Barbell)": {"deload_declined_at": "today", "fail_count": 3}, "Overhead Press (Barbell)": {"fail_count": 2}, "Ring Row": {"fail_count": 0, "stage_index": 4}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Assisted Pull-up": {"fail_count": 0, "next_target": "35 lb"}, "Bench Press (Barbell)": {"deload_declined_at": "today", "fail_count": 3}, "Overhead Press (Barbell)": {"fail_count": 0, "last_deload_at": "today", "next_target": "90 lb"}, "Ring Row": {"fail_count": 0, "stage_index": 4}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Assisted Pull-up": {"fail_count": 0, "next_target": "35 lb"}, "Bench Press (Barbell)": {"deload_declined_at": "today", "fail_count": 3}, "Overhead Press (Barbell)": {"fail_count": 1, "last_deload_at": "today", "next_target": "90 lb"}, "Ring Row": {"fail_count": 0, "stage_index": 4}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
+config-write	program/current	progression	{"Assisted Pull-up": {"fail_count": 0, "next_target": "35 lb"}, "Bench Press (Barbell)": {"deload_declined_at": "today", "fail_count": 3}, "Overhead Press (Barbell)": {"fail_count": 2, "last_deload_at": "today", "next_target": "90 lb"}, "Ring Row": {"fail_count": 0, "stage_index": 4}, "Squat (Barbell)": {"fail_count": 0, "next_target": "215 lb"}}
 row-create	Sessions	Status	halted
 config-write	config/limits	entries	[{"area": "knee", "status": "open", "opened_at": "2026-09-01"}]
 config-write	config/limits	progression	manual

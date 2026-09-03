@@ -41,9 +41,13 @@ from __future__ import annotations
 import copy
 import json
 import sys
+from pathlib import Path
 from typing import Any, TypedDict
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "program-design" / "scripts"))
+
 import parse
+import program_page
 import rules
 import say
 
@@ -64,8 +68,14 @@ class Turn(TypedDict):
     state: dict[str, Any]
 
 
-def _write(name: str, fields: dict[str, Any]) -> Write:
-    return {"verb": "row-create", "target": "Exercises", "payload": {"Name": name, **fields}}
+def _write(state: dict[str, Any], name: str, fields: dict[str, Any]) -> Write:
+    """Per-exercise progression state, on `program/current`. There is no
+    `Exercises` row to hang it on: Notion holds logs only, and this is not a
+    log. `program_page` owns the page shape and rejects a field it does not
+    carry, so a rule cannot invent a column the way it could on a database."""
+    progression = program_page.merge_progression(
+        state.setdefault("progression", {}), name, fields)
+    return program_page.progression_write(progression)
 
 
 def _stored_value(cfg: dict[str, Any], result: dict[str, Any]) -> Any:
@@ -77,7 +87,8 @@ def _stored_value(cfg: dict[str, Any], result: dict[str, Any]) -> Any:
     return int(result["value"])
 
 
-def _evaluate_turn(name: str, cfg: dict[str, Any], rest: str) -> tuple[list[Write], str]:
+def _evaluate_turn(state: dict[str, Any], name: str, cfg: dict[str, Any],
+                   rest: str) -> tuple[list[Write], str]:
     parts = rest.split("\t")
     set_rows, kind = parse.sets(parts[0])
     result = rules.evaluate(cfg, set_rows, kind, parse.rpe(parts[1:]))
@@ -85,14 +96,15 @@ def _evaluate_turn(name: str, cfg: dict[str, Any], rest: str) -> tuple[list[Writ
 
     writes: list[Write] = []
     if "field" in result:
-        writes.append(_write(name, {result["field"]: _stored_value(cfg, result),
-                                     "fail_count": cfg["fail_count"]}))
+        writes.append(_write(state, name, {result["field"]: _stored_value(cfg, result),
+                                           "fail_count": cfg["fail_count"]}))
     elif "fail_count" in result:
-        writes.append(_write(name, {"fail_count": result["fail_count"]}))
+        writes.append(_write(state, name, {"fail_count": result["fail_count"]}))
     return writes, say.OUTCOME[result['outcome']](name, cfg, result)
 
 
-def _decline_or_accept(name: str, cfg: dict[str, Any], text: str) -> tuple[list[Write], str]:
+def _decline_or_accept(state: dict[str, Any], name: str, cfg: dict[str, Any],
+                       text: str) -> tuple[list[Write], str]:
     pending = cfg["pending_deload"]
     cfg["pending_deload"] = None
     if text in _YES:
@@ -100,10 +112,11 @@ def _decline_or_accept(name: str, cfg: dict[str, Any], text: str) -> tuple[list[
         cfg["fail_count"] = 0
         field = rules.TARGET_FIELD[cfg["axis"]]
         value = say.fmt(cfg, pending['proposed'])
-        return [_write(name, {field: value, "last_deload_at": "today", "fail_count": 0})], \
+        return [_write(state, name, {field: value, "last_deload_at": "today",
+                                     "fail_count": 0})], \
             f"{name}: deloaded to {value}."
     cfg["declined_streak"] = cfg["fail_count"]
-    return [_write(name, {"deload_declined_at": "today"})], \
+    return [_write(state, name, {"deload_declined_at": "today"})], \
         f"{name}: keeping the current load. Won't ask again for this streak (rule L-22)."
 
 
@@ -122,30 +135,35 @@ def _is_manual(state: dict[str, Any]) -> bool:
 def _route(text: str, state: dict[str, Any]) -> tuple[list[Write], str]:
     """Every branch of the turn grammar. A branch returns here, never to the
     seam's caller, so the S5 gate sees every write this module makes."""
-    exercises = state.setdefault("exercises", {})
+    # The progression RULE per exercise, seeded by a `setup` line and held
+    # for this chat. Not a store: `state["progression"]` is the part that
+    # persists, and `program/current` is where it goes.
+    rules_by_exercise = state.setdefault("rules_by_exercise", {})
 
     if text.startswith("setup\t"):
         fields = text.split("\t")[1:]
         name, cfg = fields[0], parse.setup_config(fields[1:])
-        exercises[name] = cfg
+        rules_by_exercise[name] = cfg
         return [], f"Progression set for {name}."
 
-    pending = next((n for n, c in exercises.items() if c.get("pending_deload")), None)
+    pending = next((n for n, c in rules_by_exercise.items()
+                    if c.get("pending_deload")), None)
     if pending and text.lower() in _YES | _NO:
-        return _decline_or_accept(pending, exercises[pending], text.lower())
+        return _decline_or_accept(state, pending, rules_by_exercise[pending],
+                                  text.lower())
 
     if "\t" in text:
         name, rest = text.split("\t", 1)
-        cfg = exercises.get(name)
+        cfg = rules_by_exercise.get(name)
         if cfg is not None:
-            return _evaluate_turn(name, cfg, rest)
+            return _evaluate_turn(state, name, cfg, rest)
 
     if text.lower() in _REASSURANCE:
         return [], say.NO_BARE_CLEAR if _is_manual(state) else "Noted."
 
     if text.endswith("?") or text.lower().startswith(("why", "how")):
-        name = next((n for n in exercises if n.lower() in text.lower()), None)
-        return [], _performance_question(name, exercises.get(name), state)
+        name = next((n for n in rules_by_exercise if n.lower() in text.lower()), None)
+        return [], _performance_question(name, rules_by_exercise.get(name), state)
 
     return [], "Noted."
 

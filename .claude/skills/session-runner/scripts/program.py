@@ -88,7 +88,7 @@ def advance_once(state: dict[str, Any]) -> None:
 
 
 def _active_prescription(block: dict[str, Any]) -> dict[str, Any]:
-    """`stages[Exercises.stage_index]` merged over the block. No read verb
+    """`stages[stage_index]` merged over the block. No read verb
     exists yet for `stage_index` (build-plan s9 phase 4 leaves per-exercise
     progression to `load-adjust`, phase 6), so this reads stage 0, the same
     default a first-ever session would use."""
@@ -106,10 +106,10 @@ def describe_block(block: dict[str, Any]) -> str:
     label = block.get("label", "")
     prefix = f"{label} " if label else ""
     if "sequence" in block:
-        steps = ", ".join(f"{s['exercise'].replace('_', ' ')} {s['duration_s']}s" for s in block["sequence"])
+        steps = ", ".join(f"{s['exercise']} {s['duration_s']}s" for s in block["sequence"])
         return f"{prefix}{block.get('sets', 1)}x [{steps}]"
     prescription = _active_prescription(block)
-    name = block["exercise"].replace("_", " ")
+    name = block["exercise"]
     if "duration_s" in prescription:
         return f"{prefix}{name} {prescription['duration_s']}s"
     if "level" in prescription:
@@ -159,7 +159,7 @@ def try_today(text: str, state: dict[str, Any], ctx: dict[str, Any]) -> dict[str
     node = current_node(program, cursor)
     exercise_id = first_exercise_id(node)
     if exercise_id is not None:
-        state["scope"] = [exercise_id, catalog.load_measures()[exercise_id]]
+        state["scope"] = [exercise_id, catalog.measure_of(exercise_id)]
     return {"writes": [], "confirm_line": describe_today(node), "state": state}
 
 
@@ -173,8 +173,8 @@ def try_swap(text: str, state: dict[str, Any], ctx: dict[str, Any], lookup) -> d
     name = match.group(1).strip()
     found = lookup(name)
     if found is None:
-        return {"writes": [], "confirm_line": f"No exercise named '{name}' in your catalog.", "state": state}
+        return {"writes": [], "confirm_line": f"No exercise named '{name}'.", "state": state}
     exercise_id, measure = found
     state["scope"] = [exercise_id, measure]
-    return {"writes": [], "confirm_line": f"Swapped to {exercise_id.replace('_', ' ')} for today's sets.",
+    return {"writes": [], "confirm_line": f"Swapped to {exercise_id} for today's sets.",
            "state": state}

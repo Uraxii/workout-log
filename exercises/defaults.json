@@ -1,0 +1,462 @@
+[
+  {
+    "name": "ATG Split Squat",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Ab Wheel Rollout",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Anderson Squat",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Archer Pull-Up",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Barbell Bench Press - Medium Grip",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Barbell Curl",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Barbell Deadlift",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Barbell Hack Squat",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Barbell Hip Thrust",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Barbell Shoulder Press",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Barbell Squat",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Bear Crawl Sled Drags",
+    "measure": "distance_load",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Bent Over Barbell Row",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Bent Over Two-Dumbbell Row",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Bodyweight Squat",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Box Jump (Multiple Response)",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Broad Jump",
+    "measure": "distance_load",
+    "source": "extra"
+  },
+  {
+    "name": "Bulgarian Split Squat",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Chair Squat",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Chin-Up",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Clean and Jerk",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Copenhagen Plank",
+    "measure": "hold_time",
+    "source": "extra"
+  },
+  {
+    "name": "Devil Press",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Diamond Push-Up",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Dragon Flag",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Dumbbell Bench Press",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Face Pull",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Farmer's Walk",
+    "measure": "distance_load",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Front Barbell Squat",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Front Squat (Clean Grip)",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "GHD Sit-Up",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Glute Ham Raise",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Good Morning",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Handstand Push-Ups",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Hanging Leg Raise",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Hip Extension with Bands",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Incline Dumbbell Press",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Incline Push-Up",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Jefferson Curl",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Jefferson Deadlift",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "KOT Split Squat",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Kettlebell Swing",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Kettlebell Thruster",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Kettlebell Turkish Get-Up (Lunge style)",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Leg Extensions",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Leg Press",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Lying Leg Curls",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Man Maker",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Muscle Up",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Negative Pull-Up",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Nordic Hamstring Curl",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "One-Arm Kettlebell Swings",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Otago Backwards Walking",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Otago Heel Toe Walk",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Otago Hip Abduction",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Otago One Leg Stand",
+    "measure": "hold_time",
+    "source": "extra"
+  },
+  {
+    "name": "Otago Tandem Stance",
+    "measure": "hold_time",
+    "source": "extra"
+  },
+  {
+    "name": "Otago Toe Raise",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Overhead Squat",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Parallel Bar Dip",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Pause Squat",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Pendlay Row",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Peterson Step-Up",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Pistol Squat",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Plank",
+    "measure": "hold_time",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Poliquin Step-Up",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Power Clean",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Pullups",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Pushups",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Ring Dips",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Ring Row",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Rocking Standing Calf Raise",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Romanian Deadlift",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Rope Climb",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Running",
+    "measure": "distance_time",
+    "source": "extra"
+  },
+  {
+    "name": "Safety Bar Squat",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Seated Cable Rows",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Shrimp Squat",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Side Bridge",
+    "measure": "hold_time",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Side Lateral Raise",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Skin The Cat",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Snatch-Grip Deadlift",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Standing Calf Raises",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Standing Leg Curl",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Standing Military Press",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Stiff-Legged Barbell Deadlift",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Trap Bar Deadlift",
+    "measure": "reps_only",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Triceps Pushdown",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Walking",
+    "measure": "distance_time",
+    "source": "extra"
+  },
+  {
+    "name": "Wall Walk",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Wide-Grip Lat Pulldown",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  },
+  {
+    "name": "Zottman Curl",
+    "measure": "weight_reps",
+    "source": "free-exercise-db"
+  }
+]

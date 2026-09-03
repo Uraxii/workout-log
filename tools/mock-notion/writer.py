@@ -1,17 +1,16 @@
 """Offline stand-in for the Notion MCP write verbs (build-plan s6, s9).
 
-Accepts the two write verbs any skill may use for data (`row_create`,
-`config_write`), plus `database_create`, `intake`'s one-time schema-creation
-call (build-plan s5.1). Every payload validates against
-schema/notion-schema.json, and each verb appends one TSV line per emitted
-field so a fixture can be compared byte for byte. All three are
-query-before-create (rule L8): a payload whose identity key already exists
-is an upsert, not an ignored duplicate (phase 3 defect 1) — it merges into
-the existing row and appends only the fields that changed value, so a
-resend with identical content still appends nothing.
+Two write verbs any skill may use for data (`row_create`, `config_write`),
+plus `database_create`, `intake`'s one-time schema-creation call (build-plan
+s5.1). Every payload validates against schema/notion-schema.json and appends
+one TSV line per emitted field.
 
-`Sessions` has no payload-derivable identity in the schema; see
-`_resolve_session` for what stands in for one.
+All three are query-before-create (rule L8). A payload whose identity key
+already exists is an upsert, not an ignored duplicate (phase 3 defect 1): it
+merges into the existing row and appends only the fields whose value changed,
+so a resend of identical content appends nothing. `Sessions` has no
+payload-derivable identity in the schema; `_resolve_session` is what stands
+in for one.
 """
 
 from __future__ import annotations
@@ -21,14 +20,14 @@ from pathlib import Path
 from typing import Any
 
 import notion_ddl
+from payload_rules import (SchemaViolation, check_config_key, check_fields,
+                           properties_of)
+
+__all__ = ["MockNotion", "SchemaViolation", "TSV_HEADER"]
 
 TSV_HEADER = ("verb", "target", "field", "value")
 DEFAULT_SCHEMA = Path(__file__).resolve().parents[2] / "schema" / "notion-schema.json"
 _SESSION_OPEN_FIELDS = ("Date", "Timezone", "Start time")  # rules L3, L4: frozen at open
-
-
-class SchemaViolation(ValueError):
-    """Payload names a database, property, or enum value the schema lacks."""
 
 
 class MockNotion:
@@ -58,8 +57,7 @@ class MockNotion:
         `notion_ddl`. The returned id is a data source id: relation columns
         in later calls must name it, which is what orders the creates.
         """
-        if db not in self.schema["databases"]:
-            raise SchemaViolation(f"unknown database {db!r}")
+        properties_of(self.schema, db)
         notion_ddl.validate_create(payload, set(self._databases.values()))
         key = (db, payload["parent"]["page_id"])
         existing = self._databases.get(key)
@@ -86,41 +84,40 @@ class MockNotion:
 
     def config_write(self, page: str, key: str, value: str) -> None:
         """Set one key on one config page body. Rewriting the same value is a
-        no-op and appends nothing.
+        no-op and appends nothing."""
+        if self._set_config(page, key, value):
+            self.emit("config-write", page, {key: value})
 
-        Defect 4: `program/current` and `program/history/<date>` name their
-        allowed fields `headers`, not `keys`. Both mean the same thing here,
-        so one check covers both rather than a code path per page shape."""
-        pages = self.schema["config_pages"]
-        if page not in pages:
-            raise SchemaViolation(f"unknown config page {page!r}")
-        spec = pages[page]
-        allowed = spec.get("keys", spec.get("headers", []))
-        if key not in allowed:
-            raise SchemaViolation(f"{page}.{key} not in schema")
-        enum = spec.get("enums", {}).get(key)
-        if enum is not None and value not in enum:
-            raise SchemaViolation(f"{page}.{key}={value!r} not in {enum}")
+    def _set_config(self, page: str, key: str, value: str) -> bool:
+        """Validate and store one config key, False when unchanged."""
+        check_config_key(self.schema, page, key, value)
         if self.config.get(page, {}).get(key) == value:
-            return
+            return False
         self.config.setdefault(page, {})[key] = value
-        self.emit("config-write", page, {key: value})
+        return True
 
     def seed_row(self, db: str, payload: dict[str, Any]) -> str:
         """Insert a row without emitting TSV, for fixture `@` preamble rows."""
         return self._create(db, payload, record=False)
 
+    def seed_config(self, page: str, key: str, value: str) -> None:
+        """`seed_row` for config pages: set one key, emit no TSV."""
+        self._set_config(page, key, value)
+
     def _create(self, db: str, payload: dict[str, Any], record: bool) -> str:
-        self._validate(db, payload)
+        check_fields(self.schema, db, payload, check_enums=True)
         schema_db = self.schema["databases"][db]
+        key = None
         if db == "Sessions":
             page_id, is_new = self._resolve_session(payload)
         else:
-            existing = self._find(db, schema_db, payload)
+            key = self._identity(db, schema_db, payload)
+            existing = self._by_key.get(key) if key else None
             page_id, is_new = (existing, False) if existing is not None else (self._new_id(db), True)
         if is_new:
             self.rows.setdefault(db, {})[page_id] = {}
-            self._index(db, schema_db, payload, page_id)
+            if key:
+                self._by_key[key] = page_id
         changed = self._merge(db, page_id, schema_db, payload)
         if record and changed:
             self.emit("row-create", db, changed)
@@ -164,29 +161,14 @@ class MockNotion:
                     changed[name] = value
         return changed
 
-    def _find(self, db: str, schema_db: dict[str, Any], payload: dict[str, Any]) -> str | None:
+    def _identity(self, db: str, schema_db: dict[str, Any],
+                  payload: dict[str, Any]) -> tuple | None:
+        """This payload's `_by_key` key, `None` when it carries no value for
+        every declared identity property."""
         keys = schema_db.get("identity", [])
-        if keys and all(payload.get(k) is not None for k in keys):
-            return self._by_key.get((db, tuple(payload[k] for k in keys)))
-        return None
-
-    def _index(self, db: str, schema_db: dict[str, Any], payload: dict[str, Any], page_id: str) -> None:
-        keys = schema_db.get("identity", [])
-        if keys and all(payload.get(k) is not None for k in keys):
-            self._by_key[(db, tuple(payload[k] for k in keys))] = page_id
-
-    def _validate(self, db: str, payload: dict[str, Any]) -> None:
-        """Raise SchemaViolation on an unknown db, property, or enum value."""
-        databases = self.schema["databases"]
-        if db not in databases:
-            raise SchemaViolation(f"unknown database {db!r}")
-        props = databases[db]["properties"]
-        for name, value in payload.items():
-            if name not in props:
-                raise SchemaViolation(f"{db}.{name} not in schema")
-            enum = props[name].get("enum")
-            if enum is not None and value is not None and value not in enum:
-                raise SchemaViolation(f"{db}.{name}={value!r} not in {enum}")
+        if not keys or any(payload.get(k) is None for k in keys):
+            return None
+        return (db, tuple(payload[k] for k in keys))
 
     def emit(self, verb: str, target: str, fields: dict[str, Any]) -> None:
         """Append TSV lines. Writes TSV_HEADER first if the file is new."""

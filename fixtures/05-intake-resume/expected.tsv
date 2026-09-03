@@ -19,7 +19,7 @@ config-write	config/preferences	nutrition_strictness	general
 config-write	config/athlete	intake_cursor	21
 config-write	config/athlete	referral_name	Dr. Smith, my GP
 config-write	config/athlete	intake_cursor	22
-row-create	Locations	Name	Downtown Gym
+config-write	config/preferences	location	Downtown Gym
 config-write	config/athlete	intake_cursor	23
 say	intake	msg-1	"What country or state are you in? Scope-of-practice rules vary."
 say	intake	msg-2	"What's the goal? Strength, muscle, fat loss, endurance, sport, general health, or rehab-adjacent?"

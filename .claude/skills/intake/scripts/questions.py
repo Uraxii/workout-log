@@ -98,9 +98,9 @@ FIELD_STEPS: list[dict[str, Any]] = [
     {"id": "referral_name", "page": "config/athlete", "key": "referral_name",
      "prompt": "If something needs a referral, who's the name on file? A GP is the default.",
      "answer": readers.free_text},
-    {"id": "location", "page": None, "key": None,
+    {"id": "location", "page": "config/preferences", "key": "location",
      "prompt": "What gym or space are you training in? Name it, so I can track its equipment.",
-     "answer": readers.free_text, "location": True},
+     "answer": readers.free_text},
 ]
 
 FIELD_BY_ID = {step["id"]: step for step in FIELD_STEPS}

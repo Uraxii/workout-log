@@ -36,7 +36,7 @@ the top (lim L-48).
 | 20 | `age` | "How old are you?" | `config/athlete.age` |
 | 21 | `nutrition_strictness` | "How strict do you want nutrition guidance? None, general, or specific numbers?" | `config/preferences.nutrition_strictness` |
 | 22 | `referral_name` | "If something needs a referral, who's the name on file? A GP is the default." | `config/athlete.referral_name` |
-| 23 | `location` | "What gym or space are you training in? Name it, so I can track its equipment." | `Locations` row |
+| 23 | `location` | "What gym or space are you training in? Name it, so I can track its equipment." | `config/preferences.location` |
 
 `parq_followup` is a conditional slot: `_advance` marks it pre-answered
 (`"n/a"`) the moment all seven come back NO, so it is skipped with no spoken

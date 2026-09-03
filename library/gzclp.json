@@ -18,7 +18,7 @@
       "blocks": [
         {
           "label": "T1",
-          "exercise": "Barbell_Squat",
+          "exercise": "Barbell Squat",
           "amrap_last": true,
           "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.85},
           "stages": [
@@ -37,7 +37,7 @@
         },
         {
           "label": "T2",
-          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "exercise": "Barbell Bench Press - Medium Grip",
           "stages": [
             {"sets": 3, "reps": 10},
             {"sets": 3, "reps": 8},
@@ -54,7 +54,7 @@
         },
         {
           "label": "T3",
-          "exercise": "Wide-Grip_Lat_Pulldown",
+          "exercise": "Wide-Grip Lat Pulldown",
           "sets": 3,
           "reps": 15,
           "amrap_last": true,
@@ -74,7 +74,7 @@
       "blocks": [
         {
           "label": "T1",
-          "exercise": "Standing_Military_Press",
+          "exercise": "Standing Military Press",
           "amrap_last": true,
           "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.85},
           "stages": [
@@ -93,7 +93,7 @@
         },
         {
           "label": "T2",
-          "exercise": "Barbell_Deadlift",
+          "exercise": "Barbell Deadlift",
           "stages": [
             {"sets": 3, "reps": 10},
             {"sets": 3, "reps": 8},
@@ -110,7 +110,7 @@
         },
         {
           "label": "T3",
-          "exercise": "Bent_Over_Two-Dumbbell_Row",
+          "exercise": "Bent Over Two-Dumbbell Row",
           "sets": 3,
           "reps": 15,
           "amrap_last": true,
@@ -130,7 +130,7 @@
       "blocks": [
         {
           "label": "T1",
-          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "exercise": "Barbell Bench Press - Medium Grip",
           "amrap_last": true,
           "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.85},
           "stages": [
@@ -149,7 +149,7 @@
         },
         {
           "label": "T2",
-          "exercise": "Barbell_Squat",
+          "exercise": "Barbell Squat",
           "stages": [
             {"sets": 3, "reps": 10},
             {"sets": 3, "reps": 8},
@@ -166,7 +166,7 @@
         },
         {
           "label": "T3",
-          "exercise": "Wide-Grip_Lat_Pulldown",
+          "exercise": "Wide-Grip Lat Pulldown",
           "sets": 3,
           "reps": 15,
           "amrap_last": true,
@@ -186,7 +186,7 @@
       "blocks": [
         {
           "label": "T1",
-          "exercise": "Barbell_Deadlift",
+          "exercise": "Barbell Deadlift",
           "amrap_last": true,
           "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.85},
           "stages": [
@@ -205,7 +205,7 @@
         },
         {
           "label": "T2",
-          "exercise": "Standing_Military_Press",
+          "exercise": "Standing Military Press",
           "stages": [
             {"sets": 3, "reps": 10},
             {"sets": 3, "reps": 8},
@@ -222,7 +222,7 @@
         },
         {
           "label": "T3",
-          "exercise": "Bent_Over_Two-Dumbbell_Row",
+          "exercise": "Bent Over Two-Dumbbell Row",
           "sets": 3,
           "reps": 15,
           "amrap_last": true,

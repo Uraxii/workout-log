@@ -34,7 +34,7 @@ BUNDLED_DATA = {
     "program-design": ("library/*.json",),
     "session-runner": (
         "exercises/aliases.json",
-        "exercises/catalog.json",
+        "exercises/defaults.json",
         "schema/notion-schema.json",
     ),
 }

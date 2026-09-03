@@ -18,14 +18,14 @@
       "blocks": [
         {
           "label": "Pull",
-          "exercise": "Ring_Row",
+          "exercise": "Ring Row",
           "sets": 3,
           "rep_range": [8, 12],
           "stages": [
-            {"exercise": "Ring_Row", "rep_range": [8, 12]},
-            {"exercise": "Negative_Pull-Up", "rep_range": [5, 8]},
+            {"exercise": "Ring Row", "rep_range": [8, 12]},
+            {"exercise": "Negative Pull-Up", "rep_range": [5, 8]},
             {"exercise": "Pullups", "rep_range": [5, 8]},
-            {"exercise": "Archer_Pull-Up", "rep_range": [3, 5]}
+            {"exercise": "Archer Pull-Up", "rep_range": [3, 5]}
           ],
           "progression": {
             "axis": "level",
@@ -37,14 +37,14 @@
         },
         {
           "label": "Push",
-          "exercise": "Incline_Push-Up",
+          "exercise": "Incline Push-Up",
           "sets": 3,
           "rep_range": [8, 12],
           "stages": [
-            {"exercise": "Incline_Push-Up", "rep_range": [8, 12]},
+            {"exercise": "Incline Push-Up", "rep_range": [8, 12]},
             {"exercise": "Pushups", "rep_range": [8, 12]},
-            {"exercise": "Diamond_Push-Up", "rep_range": [6, 10]},
-            {"exercise": "Ring_Dips", "rep_range": [5, 8]}
+            {"exercise": "Diamond Push-Up", "rep_range": [6, 10]},
+            {"exercise": "Ring Dips", "rep_range": [5, 8]}
           ],
           "progression": {
             "axis": "level",
@@ -56,13 +56,13 @@
         },
         {
           "label": "Squat",
-          "exercise": "Chair_Squat",
+          "exercise": "Chair Squat",
           "sets": 3,
           "rep_range": [8, 12],
           "stages": [
-            {"exercise": "Chair_Squat", "rep_range": [8, 12]},
-            {"exercise": "Bodyweight_Squat", "rep_range": [8, 12]},
-            {"exercise": "Pistol_Squat", "rep_range": [5, 8]}
+            {"exercise": "Chair Squat", "rep_range": [8, 12]},
+            {"exercise": "Bodyweight Squat", "rep_range": [8, 12]},
+            {"exercise": "Pistol Squat", "rep_range": [5, 8]}
           ],
           "progression": {
             "axis": "level",
@@ -79,8 +79,8 @@
           "duration_s": 30,
           "stages": [
             {"exercise": "Plank", "duration_s": 30},
-            {"exercise": "Side_Bridge", "duration_s": 30},
-            {"exercise": "Hanging_Leg_Raise", "rep_range": [8, 12]}
+            {"exercise": "Side Bridge", "duration_s": 30},
+            {"exercise": "Hanging Leg Raise", "rep_range": [8, 12]}
           ],
           "progression": {
             "axis": "level",

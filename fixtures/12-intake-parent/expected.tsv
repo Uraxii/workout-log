@@ -3,35 +3,33 @@ config-write	config/athlete	storage_platform	notion
 config-write	config/athlete	intake_cursor	1
 config-write	config/athlete	notion_parent_page_id	24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
 config-write	config/athlete	intake_cursor	2
-database-create	Exercises	Parent	24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
-database-create	Exercises	Schema	CREATE TABLE ("Name" TITLE, "slug" RICH_TEXT, "aliases" RICH_TEXT, "measure" SELECT('weight_reps', 'reps_only', 'hold_time', 'distance_load', 'distance_time', 'level_reps', 'interval_reps'), "implements" NUMBER, "primary_muscles" MULTI_SELECT, "secondary_muscles" MULTI_SELECT, "equipment" MULTI_SELECT, "mechanic" SELECT('compound', 'isolation'), "is_unilateral" CHECKBOX, "min_increment" NUMBER, "min_increment_unit" SELECT('lb', 'kg'), "variation_chain" RICH_TEXT, "variation_index" NUMBER, "source" SELECT('free-exercise-db', 'extra', 'user'), "fail_count" NUMBER, "training_max" NUMBER, "stage_index" NUMBER, "last_deload_at" DATE, "deload_declined_at" DATE, "grey_band_answer" RICH_TEXT, "next_target" RICH_TEXT, "target_source_set" RICH_TEXT)
+database-create	Sets	Parent	24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
+database-create	Sets	Schema	CREATE TABLE ("Set" TITLE, "Session" RICH_TEXT, "Exercise" RICH_TEXT, "Set index" NUMBER, "Set type" SELECT('warmup', 'working', 'backoff', 'dropset'), "is_amrap" CHECKBOX, "to_failure" CHECKBOX, "RPE" NUMBER, "RIR" NUMBER, "Timestamp" DATE, "machine_setting" RICH_TEXT, "Side" SELECT('both', 'left', 'right'), "reps_left" NUMBER, "reps_right" NUMBER, "Notes" RICH_TEXT, "Load" NUMBER, "Unit" SELECT('lb', 'kg'), "load_kind" SELECT('absolute', 'added', 'assist'), "Reps" NUMBER, "duration_s" NUMBER, "distance" NUMBER, "distance_unit" SELECT('m', 'km', 'mi'), "level" NUMBER, "interval_s" NUMBER, "attempt" NUMBER, "write_key" RICH_TEXT, "source_message_id" RICH_TEXT, "Pain flag" SELECT('none', 'niggle', 'stop'), "confirm_line" RICH_TEXT, "stale" CHECKBOX, "e1RM" FORMULA('if(prop("Set type") == "working" and prop("Reps") >= 1 and prop("Reps") <= 10, prop("Load") * 36 / (37 - prop("Reps")), empty())'))
 config-write	config/athlete	timezone	America/Los_Angeles
 config-write	config/athlete	intake_cursor	3
-config-write	config/athlete	notion_data_sources	{"Exercises": "ds-Exercises"}
-database-create	Locations	Parent	24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
-database-create	Locations	Schema	CREATE TABLE ("Name" TITLE, "plate_pairs_lb" RICH_TEXT, "plate_pairs_kg" RICH_TEXT, "bar_weight_lb" NUMBER, "bar_weight_kg" NUMBER, "fixed_stacks" RICH_TEXT, "min_increment_lb" NUMBER, "min_increment_kg" NUMBER, "Notes" RICH_TEXT)
+config-write	config/athlete	notion_data_sources	{"Sets": "ds-Sets"}
+database-create	Sessions	Parent	24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
+database-create	Sessions	Schema	CREATE TABLE ("Title" TITLE, "Date" DATE, "Timezone" RICH_TEXT, "Status" SELECT('open', 'closed', 'abandoned', 'halted'), "Start time" DATE, "End time" DATE, "Program" RICH_TEXT, "Day" RICH_TEXT, "Cursor" RICH_TEXT, "week_index" NUMBER, "Readiness" NUMBER, "Session RPE" NUMBER, "Bodyweight" NUMBER, "Bodyweight unit" SELECT('lb', 'kg'), "Notes" RICH_TEXT)
 config-write	config/athlete	intake_cursor	4
 config-read	config/preferences	*	0
 config-read	config/limits	*	0
 config-read	config/athlete	*	5
 config-read	program/current	*	0
-row-query	Exercises	*	1
+row-query	Sets	*	0
 row-query	Sessions	*	0
 row-query	Sessions	Status=open	0
 config-write	config/athlete	intake_cursor	1
 config-write	config/athlete	intake_cursor	2
-config-write	config/athlete	notion_data_sources	{"Exercises": "ds-Exercises", "Locations": "ds-Locations"}
-database-create	Sessions	Parent	24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
-database-create	Sessions	Schema	CREATE TABLE ("Title" TITLE, "Date" DATE, "Timezone" RICH_TEXT, "Status" SELECT('open', 'closed', 'abandoned', 'halted'), "Start time" DATE, "End time" DATE, "Program" RICH_TEXT, "Day" RICH_TEXT, "Cursor" RICH_TEXT, "week_index" NUMBER, "Readiness" NUMBER, "Session RPE" NUMBER, "Bodyweight" NUMBER, "Bodyweight unit" SELECT('lb', 'kg'), "Location" RELATION('ds-Locations'), "Notes" RICH_TEXT)
+config-write	config/athlete	notion_data_sources	{"Sessions": "ds-Sessions", "Sets": "ds-Sets"}
 config-write	config/athlete	intake_cursor	3
 row-create	Sessions	Date	2026-09-01
 row-create	Sessions	Timezone	America/Los_Angeles
 row-create	Sessions	Status	open
 row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
 row-create	Sessions	week_index	36
-row-create	Sets	Set	Squat (Barbell) set 1, 185 lb x 5
+row-create	Sets	Set	Barbell Squat set 1, 185 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Barbell Squat
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -41,10 +39,10 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	980ef4e922cdb7ef
+row-create	Sets	write_key	795a7e54feb1c61f
 row-create	Sets	source_message_id	msg-11
 row-create	Sets	Pain flag	none
-row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
+row-create	Sets	confirm_line	Barbell Squat set 1, 185 lb x 5. Set 2 at 185 lb.
 say	intake	msg-1	"Where do you want your training log kept? Notion is what I can write to today. Name anything else and I'll tell you straight away rather than half build it."
 say	intake	msg-2	"First, where should I put your logs? Make a blank Notion page, share it with this connection, then paste the page link here."
 say	intake	msg-3	"That has no Notion page id in it. Open the page, hit Share, copy link, and paste the whole link here."
@@ -55,4 +53,4 @@ say	intake	msg-7	"Where do you want your training log kept? Notion is what I can
 say	intake	msg-8	"First, where should I put your logs? Make a blank Notion page, share it with this connection, then paste the page link here."
 say	intake	msg-9	"What timezone are you in? I need it as an IANA name, like America/Los_Angeles or Europe/London, so a late session lands on the right day."
 say	intake	msg-10	"Has your doctor ever said that you have a heart condition OR high blood pressure?"
-say	session-runner	msg-11	"Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.\nReadiness 1-5? (skip if you like)"
+say	session-runner	msg-11	"Barbell Squat set 1, 185 lb x 5. Set 2 at 185 lb.\nReadiness 1-5? (skip if you like)"

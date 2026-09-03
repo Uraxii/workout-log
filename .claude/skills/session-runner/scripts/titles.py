@@ -1,7 +1,7 @@
 """What a `Sets` row is called in Notion.
 
 Notion takes exactly one title column per data source and shows it as the
-row's name everywhere: the table's first column, a relation chip, an
+row's name everywhere: the table's first column, a search result, an
 @-mention. `confirm_line` used to be that column, but it holds one line per
 entry rather than one per row, so every row of `squat 225x5x3` except the
 last landed unnamed (ticket workout-log-4sc). The confirm line's shape is
@@ -27,21 +27,20 @@ SET_TARGET = "Sets"
 UNNAMED = "Set"
 
 
-def title_for(payload: dict[str, Any], catalog_map: dict[str, Any]) -> str:
+def title_for(payload: dict[str, Any], known: dict[str, str]) -> str:
     """`<exercise> set <n>, <magnitudes>`, dropping any part this row lacks.
 
     Row 2 of a multi-row entry says `set 2` and its own magnitudes, so it
-    reads as the set it is rather than as a repeat of the entry. The
-    exercise resolves through `catalog.name_for`, the same call the confirm
-    line uses, so a row's title and its confirm line never disagree about
-    what the exercise is called.
+    reads as the set it is rather than as a repeat of the entry. `Exercise`
+    already holds the name, so a row's title and its confirm line cannot
+    disagree about what the exercise is called. Its measure kind comes from
+    what this athlete has logged, then from the shipped defaults.
     """
     note = payload.get("Notes")
     if note:
         return f"Note: {note}"
-    exercise_id = payload.get("Exercise")
-    name = catalog_lib.name_for(exercise_id, catalog_map, None) if exercise_id else None
-    measure = catalog_lib.measure_for(exercise_id, catalog_map) if exercise_id else None
+    name = payload.get("Exercise")
+    measure = catalog_lib.measure_of(name, known) if name else None
     index = payload.get("Set index")
     head = " ".join(part for part in (name, f"set {index}" if index else None) if part)
     magnitudes = row_shapes.magnitudes_text(measure, payload) if measure else ""
@@ -57,41 +56,44 @@ def name_every_set(turn: dict[str, Any], state: dict[str, Any]) -> dict[str, Any
     row already written and already named, not a new row (`writer.py`
     upserts on `write_key`), and nothing in it says what that row held.
     """
-    catalog_map = turn["state"].get("catalog", state.get("catalog", {}))
+    known = turn["state"].get("known", state.get("known", {}))
     for write in turn["writes"]:
         payload = write["payload"]
         if write["target"] != SET_TARGET or payload.get("stale"):
             continue
-        payload[TITLE] = title_for(payload, catalog_map)
+        payload[TITLE] = title_for(payload, known)
     return turn
 
 
 def _self_check() -> None:
     """python3 titles.py"""
-    catalog_map = {"Barbell Squat": {"id": "exercises-1", "measure": "weight_reps"},
-                   "Otago Sit to Stand": {"id": "exercises-2", "measure": "level_reps"}}
-    row = {"Exercise": "exercises-1", "Set index": 2, "Load": 225,
+    known = {"Barbell Squat": "weight_reps", "Otago Sit to Stand": "level_reps"}
+    row = {"Exercise": "Barbell Squat", "Set index": 2, "Load": 225,
            "Unit": "lb", "Reps": 5}
-    assert title_for(row, catalog_map) == "Barbell Squat set 2, 225 lb x 5"
-    assert title_for({**row, "Set index": 3}, catalog_map) == "Barbell Squat set 3, 225 lb x 5"
-    assert title_for({"Exercise": "exercises-2", "Set index": 1, "level": 3,
-                      "Reps": 8}, catalog_map) == "Otago Sit to Stand set 1, 3 x 8"
-    # A program picks exercises by shipped catalog id, which the athlete's
-    # own `Exercises` rows need never have held (fixture 04-today).
-    assert title_for({"Exercise": "Barbell_Squat", "Set index": 1, "Load": 225,
+    assert title_for(row, known) == "Barbell Squat set 2, 225 lb x 5"
+    assert title_for({**row, "Set index": 3}, known) == "Barbell Squat set 3, 225 lb x 5"
+    assert title_for({"Exercise": "Otago Sit to Stand", "Set index": 1, "level": 3,
+                      "Reps": 8}, known) == "Otago Sit to Stand set 1, 3 x 8"
+    # A program prescribes a shipped default name this athlete has never
+    # logged, so `known` cannot answer and the defaults file does
+    # (fixture 04-today).
+    assert title_for({"Exercise": "Barbell Squat", "Set index": 1, "Load": 225,
                       "Unit": "lb", "Reps": 5}, {}) == "Barbell Squat set 1, 225 lb x 5"
+    # A name no table carries still titles its row, from the row's own shape.
+    assert title_for({"Exercise": "zercher squat", "Set index": 1, "Load": 135,
+                      "Unit": "lb", "Reps": 5}, {}) == "zercher squat set 1"
     # Every part can be missing, and none of them empties the title.
-    assert title_for({"Exercise": "exercises-1", "Set index": 4}, catalog_map) == "Barbell Squat set 4"
-    assert title_for({"Set index": 4}, catalog_map) == "set 4"
-    assert title_for({"Notes": "185 felt heavy"}, catalog_map) == "Note: 185 felt heavy"
-    assert title_for({}, catalog_map) == UNNAMED
+    assert title_for({"Exercise": "Barbell Squat", "Set index": 4}, known) == "Barbell Squat set 4"
+    assert title_for({"Set index": 4}, known) == "set 4"
+    assert title_for({"Notes": "185 felt heavy"}, known) == "Note: 185 felt heavy"
+    assert title_for({}, known) == UNNAMED
 
     turn = {"writes": [{"verb": "row-create", "target": "Sets", "payload": dict(row)},
                        {"verb": "row-create", "target": "Sets",
                         "payload": {"write_key": "k", "stale": True}},
                        {"verb": "row-create", "target": "Sessions", "payload": {"Status": "closed"}}],
             "confirm_line": "x",
-            "state": {"catalog": {"Barbell Squat": {"id": "exercises-1", "measure": "weight_reps"}}}}
+            "state": {"known": {"Barbell Squat": "weight_reps"}}}
     named = name_every_set(turn, {})
     assert named["writes"][0]["payload"][TITLE] == "Barbell Squat set 2, 225 lb x 5"
     assert TITLE not in named["writes"][1]["payload"]  # stale merge, row already named

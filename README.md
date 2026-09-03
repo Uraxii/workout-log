@@ -30,7 +30,7 @@ Both install paths, step by step:
 Each is a folder under `.claude/skills/` holding a `SKILL.md` and its scripts.
 
 - `trainer-core` gates every turn: no set while the session is halted, no session without clearance and a program.
-- `intake` creates the four databases from the schema, seeds the exercise catalog, and asks every profile question with no silent defaults.
+- `intake` creates the two log databases from the schema and asks every profile question with no silent defaults.
 - `screen` asks the seven PAR-Q+ health questions verbatim and writes the clearance state.
 - `program-design` picks a template from `library/`, writes it to `program/current`, and swaps one exercise when a new restriction rules it out.
 - `session-runner` opens a session, parses each set line, advances the cursor, and closes the session.
@@ -39,29 +39,36 @@ Each is a folder under `.claude/skills/` holding a `SKILL.md` and its scripts.
 
 ## What it stores in Notion
 
-Four databases, `Sets`, `Sessions`, `Exercises`, and `Locations`, plus the
-config pages `config/athlete`, `config/preferences`, `config/limits`,
+Logs, and nothing else. Two databases, `Sets` and `Sessions`, plus the config
+pages `config/athlete`, `config/preferences`, `config/limits`,
 `program/current`, and `program/history/<date>`. Property names, types, and
 enums all come from one file:
 
 	schema/notion-schema.json
 
+Every value in there is a string, a number, a date, a select or a checkbox.
+No database points at another, and nothing that is not a log gets written:
+the exercise catalog ships inside the package as `exercises/defaults.json`,
+which the agent reads to build a program and never copies into Notion. A
+`Sets` row names its exercise by name.
+
 ## Limits
 
 - Codex loads the coaching text through `.agents/skills/`, but has no documented Notion MCP wiring, so a Codex user cannot write a set in release 1. No phase tests Codex.
 - Nothing here has run against a live Notion workspace. Every proof in the repo replays a fixture against an offline mock writer. Your first run is the first real test.
-- Notion paces each connection to an average of 3 requests per second on every plan, so seeding the 913-row catalog takes about 5 minutes. It happens once. The limit that scales with your plan is a separate per-workspace one with unpublished numbers (`research/01-storage-options.md:61`).
+- The shipped exercise list is 92 names: every lift the ten `library/` templates prescribe, plus every alias target and substitute. A lift that is not on it still logs, under the name you type; the list is a baseline for building programs, not a gate on what you can record.
 - `screen` runs PAR-Q+ and `pain-triage` refers you to a professional. Neither is a diagnosis, and none of this is medical advice.
 
 ## Licence and credit
 
 Code and skills are MIT (`.claude-plugin/plugin.json`).
 
-The exercise catalog is 913 rows: 876 vendored from
+`exercises/defaults.json` is 92 exercises: 55 taken from
 [yuhonas/free-exercise-db](https://github.com/yuhonas/free-exercise-db) under
-the Unlicense, plus 37 written for this project. A separate table of 131
-aliases maps shorthand to those rows. Rebuild and recount with
-`python3 tools/catalog/build.py`. See `exercises/README.md`.
+the Unlicense, whose text is kept at `exercises/LICENSE-free-exercise-db.md`,
+plus 37 written for this project. Each row records which of the two it came
+from. A separate table of 125 aliases maps shorthand to those names. Recheck
+both with `python3 tools/catalog/check.py`. See `exercises/README.md`.
 
 The ten program templates carry structure only, written in our own words from
 freely published sources and credited by name in `library/README.md`. GZCLP,

@@ -20,15 +20,15 @@
           "label": "T1",
           "sets": 1,
           "sequence": [
-            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 8, "load_pct": 0.65},
-            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 6, "load_pct": 0.75},
-            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 4, "load_pct": 0.85},
-            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 3, "load_pct": 0.85},
-            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 3, "load_pct": 0.9},
-            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 3, "load_pct": 0.95},
-            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 5, "load_pct": 0.65},
-            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 5, "load_pct": 0.75},
-            {"exercise": "Barbell_Bench_Press_-_Medium_Grip", "reps": 5, "load_pct": 0.85}
+            {"exercise": "Barbell Bench Press - Medium Grip", "reps": 8, "load_pct": 0.65},
+            {"exercise": "Barbell Bench Press - Medium Grip", "reps": 6, "load_pct": 0.75},
+            {"exercise": "Barbell Bench Press - Medium Grip", "reps": 4, "load_pct": 0.85},
+            {"exercise": "Barbell Bench Press - Medium Grip", "reps": 3, "load_pct": 0.85},
+            {"exercise": "Barbell Bench Press - Medium Grip", "reps": 3, "load_pct": 0.9},
+            {"exercise": "Barbell Bench Press - Medium Grip", "reps": 3, "load_pct": 0.95},
+            {"exercise": "Barbell Bench Press - Medium Grip", "reps": 5, "load_pct": 0.65},
+            {"exercise": "Barbell Bench Press - Medium Grip", "reps": 5, "load_pct": 0.75},
+            {"exercise": "Barbell Bench Press - Medium Grip", "reps": 5, "load_pct": 0.85}
           ],
           "amrap_last": true,
           "start": {"kind": "retest_pct", "test": "1rm", "pct": 0.9},
@@ -42,7 +42,7 @@
         },
         {
           "label": "T2",
-          "exercise": "Standing_Military_Press",
+          "exercise": "Standing Military Press",
           "sets": 4,
           "reps": 6,
           "progression": {
@@ -63,15 +63,15 @@
           "label": "T1",
           "sets": 1,
           "sequence": [
-            {"exercise": "Barbell_Squat", "reps": 8, "load_pct": 0.65},
-            {"exercise": "Barbell_Squat", "reps": 6, "load_pct": 0.75},
-            {"exercise": "Barbell_Squat", "reps": 4, "load_pct": 0.85},
-            {"exercise": "Barbell_Squat", "reps": 3, "load_pct": 0.85},
-            {"exercise": "Barbell_Squat", "reps": 3, "load_pct": 0.9},
-            {"exercise": "Barbell_Squat", "reps": 3, "load_pct": 0.95},
-            {"exercise": "Barbell_Squat", "reps": 5, "load_pct": 0.65},
-            {"exercise": "Barbell_Squat", "reps": 5, "load_pct": 0.75},
-            {"exercise": "Barbell_Squat", "reps": 5, "load_pct": 0.85}
+            {"exercise": "Barbell Squat", "reps": 8, "load_pct": 0.65},
+            {"exercise": "Barbell Squat", "reps": 6, "load_pct": 0.75},
+            {"exercise": "Barbell Squat", "reps": 4, "load_pct": 0.85},
+            {"exercise": "Barbell Squat", "reps": 3, "load_pct": 0.85},
+            {"exercise": "Barbell Squat", "reps": 3, "load_pct": 0.9},
+            {"exercise": "Barbell Squat", "reps": 3, "load_pct": 0.95},
+            {"exercise": "Barbell Squat", "reps": 5, "load_pct": 0.65},
+            {"exercise": "Barbell Squat", "reps": 5, "load_pct": 0.75},
+            {"exercise": "Barbell Squat", "reps": 5, "load_pct": 0.85}
           ],
           "amrap_last": true,
           "start": {"kind": "retest_pct", "test": "1rm", "pct": 0.9},
@@ -85,7 +85,7 @@
         },
         {
           "label": "T2",
-          "exercise": "Barbell_Deadlift",
+          "exercise": "Barbell Deadlift",
           "sets": 4,
           "reps": 6,
           "progression": {
@@ -106,15 +106,15 @@
           "label": "T1",
           "sets": 1,
           "sequence": [
-            {"exercise": "Standing_Military_Press", "reps": 8, "load_pct": 0.65},
-            {"exercise": "Standing_Military_Press", "reps": 6, "load_pct": 0.75},
-            {"exercise": "Standing_Military_Press", "reps": 4, "load_pct": 0.85},
-            {"exercise": "Standing_Military_Press", "reps": 3, "load_pct": 0.85},
-            {"exercise": "Standing_Military_Press", "reps": 3, "load_pct": 0.9},
-            {"exercise": "Standing_Military_Press", "reps": 3, "load_pct": 0.95},
-            {"exercise": "Standing_Military_Press", "reps": 5, "load_pct": 0.65},
-            {"exercise": "Standing_Military_Press", "reps": 5, "load_pct": 0.75},
-            {"exercise": "Standing_Military_Press", "reps": 5, "load_pct": 0.85}
+            {"exercise": "Standing Military Press", "reps": 8, "load_pct": 0.65},
+            {"exercise": "Standing Military Press", "reps": 6, "load_pct": 0.75},
+            {"exercise": "Standing Military Press", "reps": 4, "load_pct": 0.85},
+            {"exercise": "Standing Military Press", "reps": 3, "load_pct": 0.85},
+            {"exercise": "Standing Military Press", "reps": 3, "load_pct": 0.9},
+            {"exercise": "Standing Military Press", "reps": 3, "load_pct": 0.95},
+            {"exercise": "Standing Military Press", "reps": 5, "load_pct": 0.65},
+            {"exercise": "Standing Military Press", "reps": 5, "load_pct": 0.75},
+            {"exercise": "Standing Military Press", "reps": 5, "load_pct": 0.85}
           ],
           "amrap_last": true,
           "start": {"kind": "retest_pct", "test": "1rm", "pct": 0.9},
@@ -128,7 +128,7 @@
         },
         {
           "label": "T2",
-          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "exercise": "Barbell Bench Press - Medium Grip",
           "sets": 4,
           "reps": 6,
           "progression": {
@@ -149,15 +149,15 @@
           "label": "T1",
           "sets": 1,
           "sequence": [
-            {"exercise": "Barbell_Deadlift", "reps": 8, "load_pct": 0.65},
-            {"exercise": "Barbell_Deadlift", "reps": 6, "load_pct": 0.75},
-            {"exercise": "Barbell_Deadlift", "reps": 4, "load_pct": 0.85},
-            {"exercise": "Barbell_Deadlift", "reps": 3, "load_pct": 0.85},
-            {"exercise": "Barbell_Deadlift", "reps": 3, "load_pct": 0.9},
-            {"exercise": "Barbell_Deadlift", "reps": 3, "load_pct": 0.95},
-            {"exercise": "Barbell_Deadlift", "reps": 5, "load_pct": 0.65},
-            {"exercise": "Barbell_Deadlift", "reps": 5, "load_pct": 0.75},
-            {"exercise": "Barbell_Deadlift", "reps": 5, "load_pct": 0.85}
+            {"exercise": "Barbell Deadlift", "reps": 8, "load_pct": 0.65},
+            {"exercise": "Barbell Deadlift", "reps": 6, "load_pct": 0.75},
+            {"exercise": "Barbell Deadlift", "reps": 4, "load_pct": 0.85},
+            {"exercise": "Barbell Deadlift", "reps": 3, "load_pct": 0.85},
+            {"exercise": "Barbell Deadlift", "reps": 3, "load_pct": 0.9},
+            {"exercise": "Barbell Deadlift", "reps": 3, "load_pct": 0.95},
+            {"exercise": "Barbell Deadlift", "reps": 5, "load_pct": 0.65},
+            {"exercise": "Barbell Deadlift", "reps": 5, "load_pct": 0.75},
+            {"exercise": "Barbell Deadlift", "reps": 5, "load_pct": 0.85}
           ],
           "amrap_last": true,
           "start": {"kind": "retest_pct", "test": "1rm", "pct": 0.9},
@@ -171,7 +171,7 @@
         },
         {
           "label": "T2",
-          "exercise": "Barbell_Squat",
+          "exercise": "Barbell Squat",
           "sets": 4,
           "reps": 6,
           "progression": {

@@ -17,7 +17,7 @@
       "blocks": [
         {
           "label": "knee extension (quads)",
-          "exercise": "Leg_Extensions",
+          "exercise": "Leg Extensions",
           "stages": [
             {
               "level": 0,
@@ -57,7 +57,7 @@
         },
         {
           "label": "knee flexion (hamstrings)",
-          "exercise": "Standing_Leg_Curl",
+          "exercise": "Standing Leg Curl",
           "stages": [
             {
               "level": 0,
@@ -97,7 +97,7 @@
         },
         {
           "label": "hip abduction",
-          "exercise": "Otago_Hip_Abduction",
+          "exercise": "Otago Hip Abduction",
           "stages": [
             {
               "level": 0,
@@ -137,7 +137,7 @@
         },
         {
           "label": "hip extension (glutes)",
-          "exercise": "Hip_Extension_with_Bands",
+          "exercise": "Hip Extension with Bands",
           "stages": [
             {
               "level": 0,
@@ -177,7 +177,7 @@
         },
         {
           "label": "ankle plantarflexion (calf raise)",
-          "exercise": "Rocking_Standing_Calf_Raise",
+          "exercise": "Rocking Standing Calf Raise",
           "stages": [
             {
               "level": 0,
@@ -217,7 +217,7 @@
         },
         {
           "label": "ankle dorsiflexion (toe raise)",
-          "exercise": "Otago_Toe_Raise",
+          "exercise": "Otago Toe Raise",
           "stages": [
             {
               "level": 0,
@@ -257,7 +257,7 @@
         },
         {
           "label": "sit-to-stand",
-          "exercise": "Chair_Squat",
+          "exercise": "Chair Squat",
           "stages": [
             {
               "level": 0,
@@ -297,7 +297,7 @@
         },
         {
           "label": "tandem stance",
-          "exercise": "Otago_Tandem_Stance",
+          "exercise": "Otago Tandem Stance",
           "stages": [
             {
               "level": 0,
@@ -333,7 +333,7 @@
         },
         {
           "label": "heel-toe walk",
-          "exercise": "Otago_Heel_Toe_Walk",
+          "exercise": "Otago Heel Toe Walk",
           "stages": [
             {
               "level": 0,
@@ -373,7 +373,7 @@
         },
         {
           "label": "one-leg stand",
-          "exercise": "Otago_One_Leg_Stand",
+          "exercise": "Otago One Leg Stand",
           "stages": [
             {
               "level": 0,
@@ -409,7 +409,7 @@
         },
         {
           "label": "backwards walking",
-          "exercise": "Otago_Backwards_Walking",
+          "exercise": "Otago Backwards Walking",
           "stages": [
             {
               "level": 0,

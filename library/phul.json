@@ -17,7 +17,7 @@
       "blocks": [
         {
           "label": "Bench",
-          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "exercise": "Barbell Bench Press - Medium Grip",
           "sets": 3,
           "reps": 5,
           "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
@@ -31,7 +31,7 @@
         },
         {
           "label": "Row",
-          "exercise": "Bent_Over_Barbell_Row",
+          "exercise": "Bent Over Barbell Row",
           "sets": 3,
           "reps": 5,
           "progression": {
@@ -44,7 +44,7 @@
         },
         {
           "label": "Overhead press",
-          "exercise": "Standing_Military_Press",
+          "exercise": "Standing Military Press",
           "sets": 3,
           "rep_range": [6, 10],
           "progression": {
@@ -57,7 +57,7 @@
         },
         {
           "label": "Lat pulldown",
-          "exercise": "Wide-Grip_Lat_Pulldown",
+          "exercise": "Wide-Grip Lat Pulldown",
           "sets": 3,
           "rep_range": [6, 10],
           "progression": {
@@ -70,7 +70,7 @@
         },
         {
           "label": "Curl",
-          "exercise": "Barbell_Curl",
+          "exercise": "Barbell Curl",
           "sets": 2,
           "rep_range": [6, 10],
           "progression": {
@@ -89,7 +89,7 @@
       "blocks": [
         {
           "label": "Squat",
-          "exercise": "Barbell_Squat",
+          "exercise": "Barbell Squat",
           "sets": 3,
           "reps": 5,
           "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
@@ -103,7 +103,7 @@
         },
         {
           "label": "Deadlift",
-          "exercise": "Barbell_Deadlift",
+          "exercise": "Barbell Deadlift",
           "sets": 3,
           "reps": 5,
           "start": {"kind": "retest_pct", "test": "5rm", "pct": 0.9},
@@ -117,7 +117,7 @@
         },
         {
           "label": "Leg press",
-          "exercise": "Leg_Press",
+          "exercise": "Leg Press",
           "sets": 3,
           "rep_range": [10, 12],
           "progression": {
@@ -130,7 +130,7 @@
         },
         {
           "label": "Leg curl",
-          "exercise": "Lying_Leg_Curls",
+          "exercise": "Lying Leg Curls",
           "sets": 3,
           "rep_range": [6, 10],
           "progression": {
@@ -143,7 +143,7 @@
         },
         {
           "label": "Calf raise",
-          "exercise": "Standing_Calf_Raises",
+          "exercise": "Standing Calf Raises",
           "sets": 4,
           "rep_range": [6, 10],
           "progression": {
@@ -162,7 +162,7 @@
       "blocks": [
         {
           "label": "Incline press",
-          "exercise": "Incline_Dumbbell_Press",
+          "exercise": "Incline Dumbbell Press",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -175,7 +175,7 @@
         },
         {
           "label": "Lat pulldown",
-          "exercise": "Wide-Grip_Lat_Pulldown",
+          "exercise": "Wide-Grip Lat Pulldown",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -188,7 +188,7 @@
         },
         {
           "label": "Flat dumbbell press",
-          "exercise": "Dumbbell_Bench_Press",
+          "exercise": "Dumbbell Bench Press",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -201,7 +201,7 @@
         },
         {
           "label": "Seated row",
-          "exercise": "Seated_Cable_Rows",
+          "exercise": "Seated Cable Rows",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -214,7 +214,7 @@
         },
         {
           "label": "Lateral raise",
-          "exercise": "Side_Lateral_Raise",
+          "exercise": "Side Lateral Raise",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -227,7 +227,7 @@
         },
         {
           "label": "Triceps pushdown",
-          "exercise": "Triceps_Pushdown",
+          "exercise": "Triceps Pushdown",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -246,7 +246,7 @@
       "blocks": [
         {
           "label": "Squat",
-          "exercise": "Barbell_Squat",
+          "exercise": "Barbell Squat",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -259,7 +259,7 @@
         },
         {
           "label": "Leg extension",
-          "exercise": "Leg_Extensions",
+          "exercise": "Leg Extensions",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -272,7 +272,7 @@
         },
         {
           "label": "Romanian deadlift",
-          "exercise": "Romanian_Deadlift",
+          "exercise": "Romanian Deadlift",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -285,7 +285,7 @@
         },
         {
           "label": "Leg curl",
-          "exercise": "Lying_Leg_Curls",
+          "exercise": "Lying Leg Curls",
           "sets": 3,
           "rep_range": [8, 12],
           "progression": {
@@ -298,7 +298,7 @@
         },
         {
           "label": "Calf raise",
-          "exercise": "Standing_Calf_Raises",
+          "exercise": "Standing Calf Raises",
           "sets": 4,
           "rep_range": [8, 12],
           "progression": {

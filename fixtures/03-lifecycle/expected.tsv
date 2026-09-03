@@ -6,7 +6,7 @@ row-create	Sessions	Start time	2026-08-26T09:00:00+00:00
 row-create	Sessions	week_index	35
 row-create	Sets	Set	Squat (Barbell) set 1, 175 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-08-26T09:00:00+00:00
@@ -16,7 +16,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	6cc724c98f9689f0
+row-create	Sets	write_key	3eae23afcbeb9bc4
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 175 lb x 5. Set 2 at 175 lb.
@@ -29,7 +29,7 @@ row-create	Sessions	Start time	2026-09-01T23:50:00+00:00
 row-create	Sessions	week_index	36
 row-create	Sets	Set	Squat (Barbell) set 1, 185 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T23:50:00+00:00
@@ -39,13 +39,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	840ef49ab5044534
+row-create	Sets	write_key	b1a88b5d5bc0ce6f
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
 row-create	Sets	Set	Bench Press set 1, 135 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	exercises-2
+row-create	Sets	Exercise	Bench Press
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T23:50:00+00:00
@@ -55,13 +55,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	2cbdbb96fdfb8530
+row-create	Sets	write_key	e9a41149de69b33a
 row-create	Sets	source_message_id	msg-4
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 1, 135 lb x 5. Set 2 at 135 lb.
 row-create	Sets	Set	Squat (Barbell) set 2, 190 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T23:50:00+00:00
@@ -71,13 +71,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	df3a487a7e510a79
+row-create	Sets	write_key	2b19ede5f7926c3e
 row-create	Sets	source_message_id	msg-5
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 2, 190 lb x 5. Set 3 at 190 lb.
 row-create	Sets	Set	Bench Press set 2, 140 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	exercises-2
+row-create	Sets	Exercise	Bench Press
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T23:50:00+00:00
@@ -87,13 +87,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	fba65dda4d0faea0
+row-create	Sets	write_key	0977ca666c76af75
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 2, 140 lb x 5. Set 3 at 140 lb.
 row-create	Sets	Set	Squat (Barbell) set 3, 195 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	3
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-02T00:05:00+00:00
@@ -103,13 +103,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	14a2dd23ad104f65
+row-create	Sets	write_key	b37c07e21288bca2
 row-create	Sets	source_message_id	msg-7
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 3, 195 lb x 5. Set 4 at 195 lb.
 row-create	Sets	Set	Bench Press set 3, 145 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	exercises-2
+row-create	Sets	Exercise	Bench Press
 row-create	Sets	Set index	3
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-02T00:05:20+00:00
@@ -119,14 +119,14 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	7a5b71ff0c875650
+row-create	Sets	write_key	3194f8afa5d42427
 row-create	Sets	source_message_id	msg-8
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 3, 145 lb x 5. Set 4 at 145 lb.
 row-create	Sets	stale	True
 row-create	Sets	Set	Bench Press set 3, 150 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	exercises-2
+row-create	Sets	Exercise	Bench Press
 row-create	Sets	Set index	3
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-02T00:05:20+00:00
@@ -136,13 +136,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	1
-row-create	Sets	write_key	3daccbfb26fe27d5
+row-create	Sets	write_key	7b151e42823d9ee3
 row-create	Sets	source_message_id	msg-9
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Fixed set 3: now 150 lb x 5.
 row-create	Sets	Set	Bench Press set 2, 180 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-2
+row-create	Sets	Exercise	Bench Press
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-02T00:05:20+00:00
@@ -152,7 +152,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	6f494429259ef8b7
+row-create	Sets	write_key	8b3af78a48468407
 row-create	Sets	source_message_id	msg-10
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Backfilled 2026-08-26 set 2: 180 lb x 5.

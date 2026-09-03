@@ -1,6 +1,6 @@
 ---
 name: intake
-description: First run, "set me up", or a life change. Creates the four Notion databases from schema/notion-schema.json, seeds the exercise catalog, then asks every profile question in order with no silent defaults. Use on "set me up", a fresh workspace, or when the athlete's situation has changed enough to redo the profile.
+description: First run, "set me up", or a life change. Creates the two Notion log databases from schema/notion-schema.json, then asks every profile question in order with no silent defaults. Use on "set me up", a fresh workspace, or when the athlete's situation has changed enough to redo the profile.
 ---
 
 # intake
@@ -16,17 +16,19 @@ each answer belong to `scripts/questions.py`, and every write belongs to
 ## Database creation, first "set me up" (build-plan s5.1)
 
 There is no template page. `intake.py` returns **one** `database-create` write
-per turn until all four `schema/notion-schema.json` databases exist, because
-`notion-create-database` answers with the new data source id and the next
-database's relation columns need it. Apply the write, then put the returned id
-in `state["databases"][<name>]` before the next turn; the seam is a pure
-function of `(line, state)` and never sees a response.
+per turn until both `schema/notion-schema.json` databases exist. Apply the
+write, then put the returned data source id in `state["databases"][<name>]`
+before the next turn; the seam is a pure function of `(line, state)` and never
+sees a response.
 
-The order comes from the schema's relation graph, not a list: `Locations` and
-`Exercises` carry no relations out, `Sessions` relates to `Locations`, and
-`Sets` relates to `Sessions` and `Exercises`. Each call is query-before-create
-(rule L8): a database of that name under the user's page is adopted, not
-duplicated, so a second "set me up" is harmless and appends nothing.
+The two are `Sets` and `Sessions`, created in schema declaration order. That
+is the whole list, because Notion holds logs only: the exercise catalog is
+package data the agent reads, the gym's plates are `config/preferences`, and
+per-exercise progression state is a key on `program/current`. No column is a
+relation, so no create has to wait on another's id. Each call is
+query-before-create (rule L8): a database of that name under the user's page
+is adopted, not duplicated, so a second "set me up" is harmless and appends
+nothing.
 
 **The payload is rendered from the schema by `scripts/ddl.py`, never
 hand-built.** The tool takes a SQL DDL `CREATE TABLE` statement, and a payload
@@ -45,14 +47,12 @@ into `state["databases"]`. `intake.py` also writes that map to
 "which databases exist", so that key is the only way a later chat learns it
 (`tools/mock-notion/hydrate.py` reads it back).
 
-## Catalog seeding
+## Nothing is seeded
 
-After the four databases exist, seed `Exercises` from
-`exercises/catalog.json` (913 rows) with one `row_create` per row. Notion
-Free is rate-limited to roughly 3 requests/second, so this is a one-time step
-of **roughly 5 minutes**. Tell the user this before starting, and do not
-block the question flow on it finishing: the questions can run while it
-seeds, or right after; either order is fine as long as the user is told.
+There is no catalog to seed. `exercises/defaults.json` is 92 exercises the
+agent reads out of the package when it builds a program, and it is never
+copied into the athlete's workspace. Setup writes two `database-create` calls
+and her answers, and nothing else.
 
 ## The question flow
 

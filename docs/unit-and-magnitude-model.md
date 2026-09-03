@@ -171,11 +171,13 @@ Its replacement:
 - **lb: 5.** Plates load in pairs and the smallest pair in a normal gym is
   2.5 lb a side.
 - **kg: 2.5.** Same argument, 1.25 kg a side.
+- **The athlete's own gym, when she has named it.**
+  `config/preferences.min_increment_lb` / `_kg` overrides the unit default,
+  read by `loads.increment_for`. Absent, the unit default stands.
 - **Machine stack: from the exercise, not from the unit.** A stack moves in
-  whatever pin spacing it has. This needs a nullable `load_increment` on
-  `Exercises`, which overrides the unit default when set. That field does not
-  exist yet, so machines fall back to the unit default. Marked open in
-  section 8.
+  whatever pin spacing it has, which the per-gym increment above cannot
+  express. No per-exercise increment exists, so machines fall back to the gym
+  increment or the unit default. Marked open in section 8.
 - **Bodyweight-only: nothing to round.** `Load` is null, and
   `rules.TARGET_FIELD` already routes those exercises to the `level` or
   `variation` axis instead of a weight. `round_down_to_increment` is never
@@ -410,10 +412,13 @@ here; see section 8.
 
 ## 8. Left open
 
-- **`Exercises.load_increment`.** Machine stacks and micro-plates need a
-  per-exercise increment. Section 3 falls back to the unit default until the
-  field exists. One nullable number covers stacks, plate-loaded machines and
-  micro-plates; do not build a stack model.
+- **A per-exercise load increment.** Machine stacks and micro-plates need one,
+  and `config/preferences.min_increment_<unit>` is per gym, not per exercise.
+  Section 3 falls back to the gym increment, then the unit default. One
+  nullable number per exercise would cover stacks, plate-loaded machines and
+  micro-plates; do not build a stack model. It has nowhere to live yet: the
+  exercise catalog is read-only package data, so this belongs on
+  `config/preferences` keyed by exercise name, or nowhere.
 - **Bar weight.** Nothing stops a target landing below an empty bar, because no
   bar weight is stored anywhere. `round_down_to_increment(2.5, "lb")` is 0.
 - **A failed set.** `Reps: 1` as the lower bound assumes zero reps is not

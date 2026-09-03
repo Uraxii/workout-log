@@ -14,7 +14,8 @@ Three lines a turn can be, checked in this order:
 3. Anything else -> a plan request (`_plan_turn`): pick a template
    (`library.pick_template`) against the athlete's stored profile as well as
    this line, retrieve it verbatim from `library/`, and resolve a starting
-   load for every block whose baseline is on file.
+   load for every block whose baseline is on file, floored to what
+   `config/preferences` says her gym can load.
 
 Every turn that changes the program writes the whole template body to
 `program/current` (`program_page.py`), so the rotation a later chat reads is
@@ -32,8 +33,8 @@ from typing import Any, TypedDict
 
 import baselines
 import library
-import loads
 import program_page
+import starting_loads
 import substitutions
 
 DEFAULT_UNIT = "lb"
@@ -86,47 +87,15 @@ def _started_at(state: dict[str, Any], template_id: str) -> str:
     return state.get("now", "")
 
 
-def _blocks_with_start(program: dict[str, Any]):
-    for node in program["rotation"]:
-        for block in node["blocks"]:
-            if "start" in block:
-                yield block
-
-
 def _program_write(program: dict[str, Any], template_id: str, started_at: str) -> Write:
     return {"verb": "config-write", "target": "program/current",
             "payload": program_page.page_body(program, template_id, started_at)}
 
 
-def _start_load(block: dict[str, Any], weight: float, reps: int,
-                unit: str) -> tuple[Write, str] | None:
-    """One block's first working weight, as the `Exercises` row that carries
-    it and the clause that explains it. Arithmetic runs in kilograms and the
-    answer comes back in the athlete's own unit
-    (`docs/unit-and-magnitude-model.md` s1, workout-log-ayf.2)."""
-    effective_1rm_kg = loads.estimated_max(loads.to_kg(weight, unit), reps)
-    if effective_1rm_kg is None:
-        return None
-    start_load = loads.resolve_start_load(effective_1rm_kg, block["start"], unit)
-    if start_load is None:
-        return None
-    effective_1rm = loads.to_display(effective_1rm_kg, unit)
-    name = baselines.display_name(block["exercise"])
-    write: Write = {
-        "verb": "row-create", "target": "Exercises",
-        "payload": {"Name": name, "measure": "weight_reps",
-                    "training_max": loads.round_down_to_increment(effective_1rm, unit),
-                    "next_target": loads.format_load(start_load, unit)},
-    }
-    say = (f"{block.get('label', name)} {name} starts at "
-           f"{loads.format_load(start_load, unit)} (from {weight:g}x{reps}, e1RM "
-           f"{effective_1rm:.0f} {unit} after form allowance).")
-    return write, say
-
-
 def _plan_turn(line: str, state: dict[str, Any]) -> Turn:
     state = copy.deepcopy(state)
     athlete = state.get("athlete", {})
+    preferences = state.get("preferences", {})
     unit = state.get("units") or DEFAULT_UNIT
     days = _parse_days(line) or _profile_days(athlete)
     template_id, reason = library.pick_template(_profile_text(line, athlete), days)
@@ -135,14 +104,13 @@ def _plan_turn(line: str, state: dict[str, Any]) -> Turn:
     on_file = baselines.parse(f"{line} {athlete.get('strength_baseline', '')}")
 
     writes: list[Write] = [_program_write(program, template_id, started_at)]
-    load_lines = []
-    for block in _blocks_with_start(program):
-        baseline = on_file.get(block["exercise"])
-        resolved = _start_load(block, *baseline, unit) if baseline else None
-        if resolved is None:
-            continue
-        writes.append(resolved[0])
-        load_lines.append(resolved[1])
+    progression = state.setdefault("progression", {})
+    load_lines = starting_loads.resolve(program, on_file, unit, preferences,
+                                        progression)
+    if load_lines:
+        # One write for every resolved load: per-exercise state is one key on
+        # `program/current`, never a row. A starting load is not a log.
+        writes.append(program_page.progression_write(progression))
 
     state["program"] = program
     state["program_id"] = template_id
@@ -173,7 +141,7 @@ def _swap_turn(line: str, state: dict[str, Any]) -> Turn:
     if not swapped:
         return {"writes": [], "say": f"No substitute on file for {area}; leaving the program as is.", "state": state}
 
-    parts = [f"{node_label} {block_label}: {baselines.display_name(old)} -> {baselines.display_name(new)}"
+    parts = [f"{node_label} {block_label}: {old} -> {new}"
              for node_label, block_label, old, new in swapped]
     say = f"New {area} entry. Swapped in place: {'; '.join(parts)}."
     write = _program_write(program, state.get("program_id", ""),

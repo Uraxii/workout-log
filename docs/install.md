@@ -14,7 +14,7 @@ first real test.
 
 1. Create a free Notion account.
 
-2. Create one blank Notion page. The agent builds all four databases inside
+2. Create one blank Notion page. The agent builds both log databases inside
    this page.
 
 3. Copy the page link and keep it. Click **Share**, then **Copy link**. You
@@ -57,9 +57,10 @@ to Notion in a browser instead.
 
    Last it asks your timezone, as an IANA name like `America/Los_Angeles`.
 
-   `intake` creates `Exercises`, `Locations`, `Sessions`, and `Sets`, one
-   database per turn, then starts the PAR-Q+ health questions, one per turn. It
-   tells you the catalog seeding runs for about 5 minutes in the background.
+   `intake` creates `Sets` and `Sessions`, one database per turn, then starts
+   the PAR-Q+ health questions, one per turn. Nothing else is created and no
+   catalog is copied in: Notion holds your logs, and the exercise list the
+   agent picks a program from ships inside the package.
 
 6. Ask for a program.
 
@@ -107,8 +108,7 @@ to Notion in a browser instead.
 
    Same three questions first as flavour A: where to keep the log (answer
    `notion`), the page link or id, then your timezone. Same result after
-   that: four databases, then the health questions, with the catalog
-   seeding in the background.
+   that: two databases, then the health questions.
 
 7. Ask for a program.
 
@@ -136,15 +136,14 @@ acknowledge the hand-off it gave you.
 
 **It says it can't write to the store you named.** You answered the first
 setup question with something other than `notion`. It records what you named
-and creates nothing: no database, no catalog seed. Reply `notion` and setup
-continues from the same question.
+and creates nothing. Reply `notion` and setup continues from the same
+question.
 
-**Setup sits on the catalog for minutes.** Notion paces each connection to an
-average of 3 requests per second, on every plan, and the catalog is 913 rows.
-The limit that scales with your plan is a separate per-workspace one, and Notion
-does not publish its numbers (`research/01-storage-options.md:61`,
-`research/19-notion-database-create-api.md`). Answer the profile questions while
-the catalog seeds.
+**It logged a lift under a name I made up.** That is the design. The shipped
+list of 92 exercises is what the agent builds programs from, not a gate on
+what you can record: a name no table knows is written as you typed it, and
+the confirm line says it is the first time you have logged it. Correct the
+spelling on the row in Notion if it bothers you.
 
 **You ran "set me up" twice.** Nothing is duplicated. `intake` queries before it
 creates, so a database of that name under your page is adopted, not rebuilt.

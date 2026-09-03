@@ -18,7 +18,7 @@
       "blocks": [
         {
           "label": "Swings (EMOM)",
-          "exercise": "Kettlebell_Swing",
+          "exercise": "Kettlebell Swing",
           "reps": 10,
           "interval_s": 60,
           "sets": 10,
@@ -38,7 +38,7 @@
         },
         {
           "label": "Get-up",
-          "exercise": "Kettlebell_Turkish_Get-Up_Lunge_style",
+          "exercise": "Kettlebell Turkish Get-Up (Lunge style)",
           "sets": 3,
           "reps": 1,
           "rest_s": 60,
@@ -56,17 +56,17 @@
           "sets": 3,
           "rest_s": 45,
           "sequence": [
-            {"exercise": "Kettlebell_Swing", "reps": 3},
-            {"exercise": "Kettlebell_Swing", "reps": 5},
-            {"exercise": "Kettlebell_Swing", "reps": 7},
-            {"exercise": "Kettlebell_Swing", "reps": 5},
-            {"exercise": "Kettlebell_Swing", "reps": 3}
+            {"exercise": "Kettlebell Swing", "reps": 3},
+            {"exercise": "Kettlebell Swing", "reps": 5},
+            {"exercise": "Kettlebell Swing", "reps": 7},
+            {"exercise": "Kettlebell Swing", "reps": 5},
+            {"exercise": "Kettlebell Swing", "reps": 3}
           ],
           "note": "One ladder trip (3-5-7-5-3 reps) counts as one set; run it 3 times."
         },
         {
           "label": "Get-up",
-          "exercise": "Kettlebell_Turkish_Get-Up_Lunge_style",
+          "exercise": "Kettlebell Turkish Get-Up (Lunge style)",
           "sets": 3,
           "reps": 1,
           "rest_s": 60,

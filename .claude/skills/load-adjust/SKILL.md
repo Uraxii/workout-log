@@ -6,7 +6,7 @@ description: Fires at the end of a set, an exercise, a session, and on any perfo
 # load-adjust
 
 Conversation belongs here; the progression arithmetic, the deload ask, and
-the `Exercises` write-back belong to `scripts/rules.py` (pure arithmetic)
+the progression write-back belong to `scripts/rules.py` (pure arithmetic)
 and `scripts/load_adjust.py` (turn dispatch, `docs/architecture.md` "The
 script seam"). `scripts/read_layer.py` is the s1.7 read-time layer: e1RM,
 unit display conversion, and ranking, read-only over `Sets` rows, never
@@ -77,7 +77,7 @@ that point re-offers.
 ## Weight, level, or variation: one engine, three targets (lim L-20)
 
 The program's `axis` field says what moves: `weight` writes
-`Exercises.next_target`, `level` writes `stage_index` (Otago-style dosage
+`next_target`, `level` writes `stage_index` (Otago-style dosage
 levels), `variation` writes `variation_index` (a bodyweight-fitness chain,
 research/03 s11: "if the data model treats variation index and load as the
 same abstract difficulty axis, one engine covers both"). Same top-of-range
@@ -123,8 +123,11 @@ always the client's own clinician.
 the hard stop above: nothing else in this skill runs, whatever the remaining
 reads would have said. Then, for the exercise in question,
 `row_query("Sets", {"Exercise": <name>})` for its history and
-`row_query("Exercises", {"Name": <name>})` for `training_max`, `next_target`,
-`fail_count`, `deload_declined_at` and `stage_index`. Rows come back raw, in
+`config_read("program/current")` for the `progression` key, whose JSON body
+is `{exercise name: {field: value}}` and holds `training_max`, `next_target`,
+`fail_count`, `deload_declined_at` and `stage_index`. That state used to be
+an `Exercises` row and is not a log, so it lives on the program page now.
+Rows come back raw, in
 the unit they were logged in; `scripts/read_layer.py` converts and ranks
 them, and this skill never does that itself. An empty `Sets` result means no
 history: hold, say there is nothing to adjust yet, never bump and never read

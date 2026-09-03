@@ -14,7 +14,7 @@ all rows 2026-09-01. `(lim R#)` / `(lim L-##)` = `docs/limitations.md`.
 5. **One client, one install.** No client entity, no multi-client audit; jurisdiction is per install (dec "T2 superseded").
 6. **No Notion template.** `intake` creates the databases through the API on first "set me up" (dec "Notion template replaced by intake").
 7. **Every phase proof runs offline** from fixtures against a mock writer. The real Notion check happens once, at install, by the user (dec "No deployment during the build").
-8. Library grows to 10 templates and gains the formats they need; catalog is free-exercise-db + 24 extras + authored aliases + runtime rows (dec "Release-1 library grows from 3 to 10"), (dec "Exercise catalog").
+8. Library grows to 10 templates and gains the formats they need; the exercise catalog ships in the package as 92 authored defaults plus an authored alias table, and a name it lacks is logged as typed (dec "Release-1 library grows from 3 to 10"), (dec "Exercise catalog").
 9. Codex demoted to instructions-only; two supported install flavours, A and B (lim R10), (13 s2).
 10. Seven skills still, seven phases still. Cut list grew by four, shrank by two.
 
@@ -26,7 +26,7 @@ because it gets filtered; config is page bodies because the user hand-edits it
 
 ### 1.1 The set shape, in three lines (closes R1)
 
-1. **One row shape, not four.** The `Exercises` row declares a `measure` kind; the `Sets` row carries nullable magnitude columns and the kind says which are meaningful. Copied from FitNotes' `Kind` field (02 s9); nullable Notion columns cost nothing (02 s3), (lim R1).
+1. **One row shape, not four.** The exercise's catalog entry declares a `measure` kind; the `Sets` row carries nullable magnitude columns and the kind says which are meaningful. Copied from FitNotes' `Kind` field (02 s9); nullable Notion columns cost nothing (02 s3), (lim R1).
 2. **Every gap in R1 is a magnitude or a modifier, never a new entity.** Seconds, metres, a level index, a side, an interval. Four parallel schemas would be more code for less query power (lim R1), (lim L-01).
 3. **`load_kind` replaces two proposals at once**: research/02's `is_added_load` boolean and the cut `band` column. Assistance is a signed load, so an assisted trend cannot read backwards (02 s3), (lim L-04), (lim L-05).
 
@@ -79,21 +79,38 @@ a property of the exercise, so it costs zero set columns (02 s3), (lim R1).
 
 v1's properties stand, with four changes. `Status` becomes `open | closed | abandoned | halted`, so `pain-triage`'s halt is a recorded state and not a no-op (lim L-39), (00 sT "Safety envelope"). `Date` and `Timezone` freeze at open by rule L4 (lim L-28), (lim L-29). `Cursor` stays stored but is advisory only, per rule L8 (lim L-27), (04 s7.3). `Readiness` 1-5 gets its own turn, per rule L2 (dec "S28 readiness"), (lim L-49).
 
-### 1.5 `Exercises` database — the catalog
+### 1.5 The exercise catalog — package data, not a database
 
-v1's fields plus `measure` (s1.1), `implements` (s1.3), `variation_chain` + `variation_index` (00 sS delta 5), and per-exercise state (s1.6). Seed is free-exercise-db, 876 rows, Unlicense; plus `exercises/extra.json`, 24 authored rows; plus an authored alias table, because free-exercise-db has no aliases field; plus runtime user-added rows as the last resort (dec "Exercise catalog"), (15 DECISION), (lim L-16).
+**Superseded.** s1.5 declared an `Exercises` database seeded with 913 rows.
+The athlete's Notion holds logs only, so there is no such database. The
+catalog is `exercises/defaults.json`, 92 exercises shipped inside the
+package, which the agent reads to pick exercises when it builds a program
+and never writes anywhere. Identity is the exercise `name`: no slug, no id.
+A `Sets` row names its exercise by name, and a name the defaults lack is
+written as the athlete typed it (s3.2 rung 4). `exercises/README.md` says
+how the 92 were chosen.
 
 ### 1.6 Per-exercise state (closes R4)
 
-Properties on the `Exercises` row, outliving every session. v1 put resolved
-ambiguity in `Sessions.Overrides`, which dies at close (lim L-11).
+**Superseded in its home, not in its content.** These fields were properties
+on an `Exercises` row. That row does not exist, and none of them is a log, so
+they live under the `progression` key on `program/current`, JSON encoded as
+`{exercise name: {field: value}}` (`program-design/scripts/program_page.py`
+owns the round trip). v1 put resolved ambiguity in `Sessions.Overrides`,
+which dies at close (lim L-11).
 
 | Field | Written by | Read by | Ref |
 |---|---|---|---|
 | `fail_count`, `training_max`, `stage_index`, `variation_index`, `last_deload_at` | `load-adjust` | `load-adjust` | (00 sS delta 4) |
-| `grey_band_answer` | `session-runner` on rule G2 | the parser, before guessing again | (lim L-11), (04 s2.4 A) |
 | `deload_declined_at` | `load-adjust` | checked before re-offering a deload | (lim L-22), (dec "S19 progression") |
-| `next_target` + `target_source_set` | `load-adjust` at close | `session-runner` at open | (dec "S19 progression"), (lim L-23) |
+| `next_target` | `load-adjust` at close | `session-runner` at open | (dec "S19 progression"), (lim L-23) |
+
+Two fields from the v1 table are gone rather than moved. `grey_band_answer`
+was never written by any code: rule G2's reading survives inside the chat's
+own `last_greyband` state and the `fix` that reverses it, and a field nothing
+writes is not state. `target_source_set` was never written either, and it
+pointed at a `Sets` row by an identity the reader would have had to
+reconstruct.
 
 ### 1.7 Read-time layer (closes R9)
 
@@ -103,9 +120,17 @@ Storage rules are untouched; three read-only helpers sit on top (dec "S11 units"
 2. Display conversion is read-only, into the `config/preferences` unit. A mixed lb/kg history ranks correctly and no stored row changes (lim L-35).
 3. Carry-forward moves `{value, unit}` as one pair, never two rules (lim L-34), (02 s7).
 
-### 1.8 `Locations`, `Programs`, config
+### 1.8 The gym, `Programs`, config
 
-`Locations` keeps its v1 shape (00 sS delta 6) and gains a write path, section 6.
+**Superseded for `Locations`.** v1 gave the gym's equipment its own database.
+Plates and bars are the athlete's own settings, not a log, so they are keys
+on `config/preferences`: `location`, `plate_pairs_lb`/`_kg`,
+`bar_weight_lb`/`_kg`, `min_increment_lb`/`_kg`.
+`program-design/scripts/loads.increment_for` reads the last pair and floors a
+resolved load to the smallest pair the athlete says her gym racks, falling
+back to 5 lb / 2.5 kg when she has not said. `fixtures/14-plate-rounding` is
+the proof, through a cold start.
+
 `Programs` headers add `progression_unit: session | week | block | level` and
 `dose: sets | minutes`, the two units the 10-template library needs (lim L-19),
 (16 "Format fit"). Config stays page bodies (00 sS delta 7); `config/limits` holds
@@ -179,12 +204,15 @@ weight/reps order"), (04 s3).
 |---|---|---|---|
 | 1 | Grammar parse against today's day scope | 0 round trips | (04 s2.3) |
 | 2 | Alias table lookup, authored, shipped in-repo | 0 round trips | (dec "Aliases authored by us"), (lim L-16) |
-| 3 | Fuzzy match, day scope first then whole catalog; prompt only on a tie | 0-1 turns | (04 s2.4 J), (lim L-13) |
-| 4 | Create-on-demand: write a new `Exercises` row from the typed name with `measure` inferred from the set shape, confirm in the same line | 1 extra write | (dec "Exercise catalog"), (15 DECISION), (lim L-15) |
+| 3 | Whole-word match, the athlete's own logged names first then the shipped defaults; refuses on a tie rather than picking | 0 round trips | (04 s2.4 J), (lim L-13) |
+| 4 | Log the typed name verbatim, `measure` inferred from the set shape, said in the confirm line | 0 extra writes | (dec "Exercise catalog"), (15 DECISION), (lim L-15) |
 | 5 | Verbatim `Notes` row, never a rejection | 1 write | (04 s2.6) |
 
-Rung 4 is the "no match" path R3 asked for, so a required `Exercise` relation no
-longer contradicts never-reject (lim R3), (lim L-15).
+Rung 4 is the "no match" path R3 asked for, so a required `Exercise` value no
+longer contradicts never-reject (lim R3), (lim L-15). It costs nothing now:
+the exercise IS the name, so there is no row to create and no id to mint.
+Rung 3's "own names first" scope is derived from her logged `Sets`, never
+stored.
 
 **Entry budget, restated as a measurable proxy.** No phase proof can time a real
 write, because nothing deploys (dec "No deployment during the build"). The budget
@@ -232,8 +260,8 @@ increment (dec "S25 PR hints"). Rest target rides in the same line, no fake time
 There is no template page to duplicate (dec "Notion template replaced by intake").
 
 1. The user creates one blank Notion page and grants the connector or MCP server access to it (13 s6), (00 sS "Friend replicates it").
-2. The user says "set me up". `intake` reads `schema/notion-schema.json` — the single source of truth phase 1 builds — and creates `Sets`, `Sessions`, `Exercises`, `Locations` under that page through the API (dec "Notion template replaced by intake").
-3. `intake` seeds `Exercises` from free-exercise-db plus `exercises/extra.json` plus the alias table (dec "Exercise catalog"), (15 DECISION).
+2. The user says "set me up". `intake` reads `schema/notion-schema.json` — the single source of truth phase 1 builds — and creates `Sets` and `Sessions` under that page through the API (dec "Notion template replaced by intake"). Those two are the whole schema: Notion holds logs only.
+3. Nothing is seeded, and there is no rate-limit wait. The exercise catalog is package data (s1.5).
 4. Creation is idempotent: a database of that name under that parent is adopted, not duplicated. Same query-before-create discipline as rule L8 (04 s7.3).
 
 **Vetoable**: it trades a published template page for an API call the user cannot
@@ -249,7 +277,7 @@ question"). Four changes:
 | Change | Why | Ref |
 |---|---|---|
 | Q3 jurisdiction is per install, not per client | install = client | (dec "T2 superseded") |
-| Q13 writes the `Locations` row through the section 6 write path | one named path | (lim L-33) |
+| Q13 writes `config/preferences.location` through the section 6 write path | one named path | (lim L-33) |
 | New Q23: preferred measure kinds — do you do timed holds, carries, runs, level-graded work | drives `measure` defaults and library choice | (lim R1), (16 "Format fit") |
 | `intake_cursor` on `config/athlete`, written after every turn | 22 groups is 7-8 turns; a dropped connection must not restart it | (lim L-48) |
 
@@ -275,10 +303,10 @@ config" half of R6 without adding a skill (lim R6), (lim L-33).
 | Skill | Trigger | Writes | New in v2, by root shape |
 |---|---|---|---|
 | `trainer-core` | Every coaching turn, loaded unconditionally | nothing, it gates | Audit = the stored `confirm_line`, single client, no per-client jurisdiction (dec "T2 superseded"), (lim L-31). Never unattended (dec "S4 no unattended runs") |
-| `intake` | First run, "set me up", life change | all config, and the four databases | Creates databases via API (dec "Notion template replaced by intake"). `intake_cursor` (lim L-48). Out-of-order writes (lim L-47). Q23 measure kinds (lim R1) |
+| `intake` | First run, "set me up", life change | all config, and the two log databases | Creates databases via API (dec "Notion template replaced by intake"). `intake_cursor` (lim L-48). Out-of-order writes (lim L-47). Q23 measure kinds (lim R1) |
 | `screen` | Inside `intake`; re-fires on any health change | clearance state and date | PAR-Q+ verbatim, follow-ups only on YES (dec "T3 PAR-Q+ asked verbatim"). Owns the re-screen that clears `progression: manual`, rule S5 (lim L-42) |
 | `program-design` | "Make me a plan", block end, **any new `open` limits entry** | `program/current`, `program/history/<date>` | Trigger threshold now defined (lim L-21). Scripted refusal-with-options, section 7.2 (lim L-17). Swap-in-place for one exercise, replacing the cut `substitute-exercise` (lim L-21). Emits `progression_unit: level` and `dose: minutes` (lim L-19) |
-| `session-runner` | "What am I doing today", "next", "done", any logged set | set rows, session page, cursor, `Locations` | Preconditions, rule S1 (lim L-37). Fallback ladder, section 3.2 (lim R2), (lim R3). Readiness as its own turn (lim L-49). Creates a `Locations` row on "new gym" (lim L-33). Rest-node acknowledgement, rule L17 (lim L-14) |
+| `session-runner` | "What am I doing today", "next", "done", any logged set | set rows, session page, cursor | Preconditions, rule S1 (lim L-37). Fallback ladder, section 3.2 (lim R2), (lim R3). Readiness as its own turn (lim L-49). A new gym is a `config/preferences` answer, not a row (lim L-33). Rest-node acknowledgement, rule L17 (lim L-14) |
 | `load-adjust` | End of set, exercise, session, **and any performance question** | `next_target`, per-exercise state | Reads `progression: manual` first (00 sT "PEM hard stop"). `deload_declined_at` (lim L-22). `variation_index` and `level` stepping (lim L-20). Recompute on `stale`, rule L14 (lim L-23). Never reads `load_kind = assist` as a rising trend (lim L-05). HRT branch lives here, since `deload` and `plateau-review` are cut (lim L-44), (00 sT "HRT-aware branch") |
 | `pain-triage` | Pain, numbness, tingling, a pop, swelling, **plus crash, wiped out, payback, flare** | `halted` status, dated limits entry | Fatigue and crash language added (lim L-43). Free-text-to-enum table, rule S3 (lim L-38). Multi-profession hand-off in one line (lim L-45). Under-18 referral threshold, rule S4 (lim L-40) |
 
@@ -362,7 +390,7 @@ drills are program content or one extras row per drill, never a catalog category
 workout-log/
 ├── AGENTS.md, CLAUDE.md
 ├── schema/notion-schema.json   # the one schema, read by intake AND the mock writer
-├── exercises/{extra.json,aliases.json}
+├── exercises/{defaults.json,aliases.json}
 ├── library/<10 templates>
 ├── fixtures/<transcript, expected>
 ├── tools/mock-notion/          # offline writer, section 9
@@ -393,7 +421,7 @@ present is a `FileNotFoundError` naming the path, never a silent wrong dir
 | 3 | `/plugin marketplace add Uraxii/workout-log` (13 s1.4) | Connect the Notion connector, OAuth, no keys (13 s6) |
 | 4 | `/plugin install workout@uraxii-plugins` (13 s1.4) | Enable code execution in Settings, Capabilities (13 s6) |
 | 5 | Grant the Notion MCP access to that page (13 s7) | Customize > Skills > Upload `dist/workout-skills.zip` (13 s6) |
-| 6 | Say "set me up"; `intake` creates the four databases (dec "Notion template replaced by intake") | Same |
+| 6 | Say "set me up"; `intake` creates the two log databases (dec "Notion template replaced by intake") | Same |
 
 A needs a terminal, an always-on PC and Pro-or-better, phone leg via Remote
 Control (dec "Phone path"), (13 s5), (dec "Open point 5"). B needs none of those

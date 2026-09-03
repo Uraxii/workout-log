@@ -6,7 +6,7 @@ row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
 row-create	Sessions	week_index	36
 row-create	Sets	Set	Squat (Barbell) set 1, 185 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -16,7 +16,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	590df2ecff4e15ca
+row-create	Sets	write_key	2a7b6b000ddc1e5b
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
@@ -31,7 +31,7 @@ row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Noted.
 row-create	Sets	Set	Squat (Barbell) set 2, 185 lb x 30
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -41,13 +41,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	ecbc92e5d28605f5
+row-create	Sets	write_key	dda859b3f54e8b0e
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Squat (Barbell) set 3, 185 lb x 30
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	3
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -57,13 +57,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	3b96ddd7f2827d02
+row-create	Sets	write_key	1e30f0a2a046b815
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Squat (Barbell) set 4, 185 lb x 30
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	4
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -73,13 +73,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b4f25242c163f14e
+row-create	Sets	write_key	c1c0e7597414239b
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Squat (Barbell) set 5, 185 lb x 30
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	5
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -89,13 +89,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	9c7a8292568dfc47
+row-create	Sets	write_key	7e552cac3e977df1
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Squat (Barbell) set 6, 185 lb x 30
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	6
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -105,13 +105,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	ff78d335db9fdd46
+row-create	Sets	write_key	7219ca0171f7f4e8
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Squat (Barbell) set 7, 185 lb x 30
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	7
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -121,13 +121,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b877af9e73f392c5
+row-create	Sets	write_key	51655988d9c94e55
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Squat (Barbell) set 8, 185 lb x 30
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	8
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -137,28 +137,25 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	bc5e166ad19ff9b0
+row-create	Sets	write_key	b0ab95fcf0532a2f
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 2-8, 185 lb x 30. Set 9 at 185 lb.
-row-create	Exercises	Name	a x
-row-create	Exercises	measure	reps_only
-row-create	Exercises	source	user
 row-create	Sets	Set	a x set 1, 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-2
+row-create	Sets	Exercise	a x
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	51027a107470fe12
+row-create	Sets	write_key	470c2a074cac754f
 row-create	Sets	source_message_id	msg-5
 row-create	Sets	Pain flag	none
-row-create	Sets	confirm_line	Added a x to your catalog. a x set 1, 5. Set 2.
+row-create	Sets	confirm_line	First time logging a x. a x set 1, 5. Set 2.
 say	session-runner	msg-1	"Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.\nReadiness 1-5? (skip if you like)"
 say	session-runner	msg-2	"Noted."
 say	session-runner	msg-3	"Squat (Barbell) set 2-8, 185 lb x 30. Set 9 at 185 lb."
 say	session-runner	msg-4	"185 is outside the plausible reps range (1 to 100). Nothing written. Retype the set."
-say	session-runner	msg-5	"Added a x to your catalog. a x set 1, 5. Set 2."
+say	session-runner	msg-5	"First time logging a x. a x set 1, 5. Set 2."

@@ -14,7 +14,6 @@ from __future__ import annotations
 
 from typing import Any
 
-import catalog
 import rows as row_shapes
 
 
@@ -49,24 +48,22 @@ def notes_fallback(state, writes, line, session_id, session_key, message_id, now
     return {"writes": writes, "confirm_line": confirm, "state": state}
 
 
-def log_entry(state, writes, result, created_payload, catalog_map, cursor, carry, targets,
+def log_entry(state, writes, result, is_new_name, known, cursor, carry, targets,
               session_id, session_key, now, message_id, units) -> dict[str, Any]:
+    """`result["exercise_id"]` is the exercise NAME: identity is the name, so
+    nothing is created anywhere and no id is predicted. Rung 4 is the case
+    where no shipped table knew the name, so it is logged as typed and the
+    confirm line says so; a quiet rung 4 is how a typo used to become a
+    second lift with its own history (workout-log-9yj)."""
     exercise_id = result["exercise_id"]
-    exercise_seq = state.get("exercise_seq", 0)
-    if created_payload is not None:
-        # Predicted id matches the mock writer's `<db>-<n>` scheme (rule L8),
-        # computable before the write applies. `Exercises`' identity is its
-        # `Name` (unaffected by defect 2, which is `Sessions`-only).
-        exercise_seq += 1
-        exercise_id = f"exercises-{exercise_seq}"
-        catalog_map[created_payload["Name"]] = {"id": exercise_id, "measure": created_payload["measure"]}
-        writes.append({"verb": "row-create", "target": "Exercises", "payload": created_payload})
-    name = catalog.name_for(exercise_id, catalog_map, created_payload)
     measure, entry = result["measure"], result["entry"]
+    if is_new_name:
+        known[exercise_id] = measure
     set_index = cursor.get(exercise_id, 1)
     last_index = set_index + len(entry["rows"]) - 1
 
-    prefix = f"Added {created_payload['Name']} to your catalog. " if created_payload else ""
+    name = exercise_id
+    prefix = f"First time logging {name}. " if is_new_name else ""
     confirm = row_shapes.confirm_line(name, set_index, entry, measure, last_index, units, prefix)
     row_shapes.emit_rows(writes, entry["rows"], session_id, session_key, exercise_id, set_index, 0, now,
                          message_id, confirm, entry.get("rpe"))
@@ -84,7 +81,7 @@ def log_entry(state, writes, result, created_payload, catalog_map, cursor, carry
                          "second": row["Reps"], "units": units}
     last_write = {"write_key": row_shapes.write_key(session_key, exercise_id, last_index, 0),
                  "exercise_id": exercise_id, "set_index": set_index}
-    state.update(exercise_seq=exercise_seq, cursor=cursor, carry=carry, targets=targets,
-                scope=list(scope), last_greyband=last_greyband, catalog=catalog_map,
+    state.update(cursor=cursor, carry=carry, targets=targets,
+                scope=list(scope), last_greyband=last_greyband, known=known,
                 last_write=last_write)
     return {"writes": writes, "confirm_line": confirm, "state": state}

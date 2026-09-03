@@ -45,7 +45,9 @@ def week_index(local_date: str) -> int:
 
 def write_key(session_key: str, exercise_id: str, set_index: int, attempt: int) -> str:
     """Rule L8 identity: sha256 of the four parts, truncated. `session_key` is
-    the client-side session identity above, not the Notion page id."""
+    the client-side session identity above, not the Notion page id;
+    `exercise_id` is the exercise NAME, which is what identifies an exercise
+    now that there is no catalog database and no slug."""
     parts = f"{session_key}|{exercise_id}|{set_index}|{attempt}"
     return hashlib.sha256(parts.encode()).hexdigest()[:WRITE_KEY_LEN]
 
@@ -100,7 +102,7 @@ def emit_rows(writes: list[dict[str, Any]], rows: list[dict[str, Any]], session_
     """Append one `row-create` write per row. Only the last row in a multi-row
     entry (a ladder, an EMOM) carries the confirm line.
 
-    `session_id` fills the `Session` relation; `session_key` (defect 2) feeds
+    `session_id` fills the `Session` text column; `session_key` (defect 2) feeds
     `write_key` instead. Every row, including row 2..N of a multi-row turn
     (a ladder, an EMOM), keeps the bare `message_id`: that is its true
     provenance (rule L9 defect 3). `write_key` already varies by `Set index`

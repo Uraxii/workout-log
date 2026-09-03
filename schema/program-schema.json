@@ -119,7 +119,7 @@
       "properties": {
         "exercise": {
           "type": "string",
-          "description": "Exercises catalog id."
+          "description": "Exercise name, e.g. \"Barbell Squat\". Identity is the name; there is no slug or id."
         },
         "sequence": {
           "type": "array",

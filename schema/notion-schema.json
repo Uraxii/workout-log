@@ -20,8 +20,8 @@
       "idempotency": ["source_message_id"],
       "properties": {
         "Set":               {"type": "title", "note": "Notion requires exactly one title per data source, and the title is the row's name everywhere it is read: the Sets table, a relation chip, an @-mention. session-runner derives it from the row's own exercise, set index and magnitudes in titles.name_every_set, which runs on every Sets write leaving the log_set seam, so no handler can produce an unnamed row (ticket workout-log-4sc)."},
-        "Session":           {"type": "relation", "database": "Sessions"},
-        "Exercise":          {"type": "relation", "database": "Exercises"},
+        "Session":           {"type": "rich_text", "note": "The session page id the create call returned, as text. Not a relation: Notion holds logs only, so every value is a string, number, date, select or checkbox and no database points at another."},
+        "Exercise":          {"type": "rich_text", "note": "The exercise NAME, verbatim. Identity is the name: there is no slug, no id and no catalog database. A name the shipped exercises/defaults.json does not carry is written as typed (session-runner rung 4)."},
         "Set index":         {"type": "number"},
         "Set type":          {"type": "select", "enum": ["warmup", "working", "backoff", "dropset"], "default": "working"},
         "is_amrap":          {"type": "checkbox"},
@@ -71,54 +71,7 @@
         "Session RPE":       {"type": "number"},
         "Bodyweight":        {"type": "number"},
         "Bodyweight unit":   {"type": "select", "enum": ["lb", "kg"]},
-        "Location":          {"type": "relation", "database": "Locations"},
         "Notes":             {"type": "rich_text"}
-      }
-    },
-
-    "Exercises": {
-      "description": "The catalog plus per-exercise state. s1.5, s1.6.",
-      "identity": ["Name"],
-      "properties": {
-        "Name":               {"type": "title"},
-        "slug":               {"type": "rich_text"},
-        "aliases":            {"type": "rich_text"},
-        "measure":            {"type": "select", "enum": ["weight_reps", "reps_only", "hold_time", "distance_load", "distance_time", "level_reps", "interval_reps"]},
-        "implements":         {"type": "number", "default": 1},
-        "primary_muscles":    {"type": "multi_select"},
-        "secondary_muscles":  {"type": "multi_select"},
-        "equipment":          {"type": "multi_select"},
-        "mechanic":           {"type": "select", "enum": ["compound", "isolation"]},
-        "is_unilateral":      {"type": "checkbox"},
-        "min_increment":      {"type": "number"},
-        "min_increment_unit": {"type": "select", "enum": ["lb", "kg"]},
-        "variation_chain":    {"type": "rich_text"},
-        "variation_index":    {"type": "number"},
-        "source":             {"type": "select", "enum": ["free-exercise-db", "extra", "user"]},
-        "fail_count":         {"type": "number", "written_by": "load-adjust"},
-        "training_max":       {"type": "number", "written_by": "load-adjust"},
-        "stage_index":        {"type": "number", "written_by": "load-adjust"},
-        "last_deload_at":     {"type": "date", "written_by": "load-adjust"},
-        "deload_declined_at": {"type": "date", "written_by": "load-adjust"},
-        "grey_band_answer":   {"type": "rich_text", "written_by": "session-runner", "rule": "G2"},
-        "next_target":        {"type": "rich_text", "written_by": "load-adjust"},
-        "target_source_set":  {"type": "rich_text", "written_by": "load-adjust"}
-      }
-    },
-
-    "Locations": {
-      "description": "Per-gym equipment reality. s1.8.",
-      "identity": ["Name"],
-      "properties": {
-        "Name":             {"type": "title"},
-        "plate_pairs_lb":   {"type": "rich_text"},
-        "plate_pairs_kg":   {"type": "rich_text"},
-        "bar_weight_lb":    {"type": "number"},
-        "bar_weight_kg":    {"type": "number"},
-        "fixed_stacks":     {"type": "rich_text"},
-        "min_increment_lb": {"type": "number"},
-        "min_increment_kg": {"type": "number"},
-        "Notes":            {"type": "rich_text"}
       }
     }
   },
@@ -129,7 +82,10 @@
       "keys": ["goal", "training_age", "days_per_week", "equipment", "strength_baseline", "jurisdiction", "referral_name", "age", "measure_kinds", "intake_cursor", "storage_platform", "notion_parent_page_id", "timezone", "notion_data_sources"]
     },
     "config/preferences": {
-      "keys": ["units", "nutrition_strictness", "rest_display"],
+      "note": "`location` and the plate/bar keys are the gym's equipment reality, which was a `Locations` database row until Notion became logs-only. They are the athlete's own settings, not a log, so they belong on a config page. `min_increment_lb`/`min_increment_kg` are what `program-design/scripts/loads.py` floors a resolved load to; absent, it falls back to the smallest pair a normal gym racks.",
+      "keys": ["units", "nutrition_strictness", "rest_display", "location",
+               "plate_pairs_lb", "plate_pairs_kg", "bar_weight_lb", "bar_weight_kg",
+               "min_increment_lb", "min_increment_kg"],
       "enums": {"units": ["lb", "kg"]}
     },
     "config/limits": {
@@ -141,8 +97,8 @@
       }
     },
     "program/current": {
-      "note": "`body` is the picked library/*.json template verbatim, JSON encoded, so the rotation a later chat reads is the one this program actually has, swaps included. `started_at` scopes the rotation cursor to this program: the sessions that count are the closed ones that also started at or after it was picked. Round trip owned by .claude/skills/program-design/scripts/program_page.py.",
-      "headers": ["name", "origin", "progression_unit", "dose", "days", "template_id", "started_at", "body"],
+      "note": "`body` is the picked library/*.json template verbatim, JSON encoded, so the rotation a later chat reads is the one this program actually has, swaps included. `started_at` scopes the rotation cursor to this program: the sessions that count are the closed ones that also started at or after it was picked. `progression` is the JSON `{exercise name: {field: value}}` that per-exercise progression state lives in now that there is no `Exercises` row to hang it on: only the fields no reader can derive from the logged sets are here. Round trip owned by .claude/skills/program-design/scripts/program_page.py.",
+      "headers": ["name", "origin", "progression_unit", "dose", "days", "template_id", "started_at", "body", "progression"],
       "enums": {
         "progression_unit": ["session", "week", "block", "level"],
         "dose": ["sets", "minutes"]

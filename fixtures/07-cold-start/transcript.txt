@@ -12,8 +12,11 @@
 #     schema that nothing ever wrote, answered with `{}` and not an error;
 #   - the SECOND `@cold` lands mid-session, with three sets already on the
 #     open session, so hydration takes the branch the first one cannot:
-#     `row-query Sessions Status=open 1` finds the session, and the fourth
-#     read `row-query Sets Session=sessions-2 3` rebuilds `cursor` from it.
+#     `row-query Sessions Status=open 1` finds the session, and the single
+#     `row-query Sets *` read before it rebuilds `cursor` from that
+#     session's rows. One unfiltered `Sets` read now serves both `cursor`
+#     and `known` (the exercises this athlete has logged), which is what
+#     the `Exercises` query used to answer before Notion went logs-only.
 #     msg-7 then writes `Set index` 4 on that same session, not 1 (rule L7
 #     scopes `Set index` to `(session, exercise)`; a chat boundary is not a
 #     session boundary). msg-7 names the exercise because `scope` is chat

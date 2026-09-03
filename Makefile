@@ -22,7 +22,7 @@ skills:
 # Every offline proof from docs/build-plan.md s9, plus the packaging
 # validators from s9 phase 7. No Notion, no network.
 check:
-	python3 tools/catalog/build.py
+	python3 tools/catalog/check.py
 	python3 library/check.py
 	python3 tools/schema/check_e1rm.py
 	python3 tools/intake/check_questions_docs.py

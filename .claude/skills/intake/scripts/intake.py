@@ -82,11 +82,7 @@ def _answer_writes(step_id: str, line: str, value: Any,
     step = questions.FIELD_BY_ID[step_id]
     if step.get("state_key"):
         state[step["state_key"]] = value
-    if step.get("location"):
-        writes: list[Write] = [{"verb": "row-create", "target": "Locations",
-                                "payload": {"Name": value}}]
-    else:
-        writes = [_config_write(step["page"], step["key"], value)]
+    writes: list[Write] = [_config_write(step["page"], step["key"], value)]
     for other, found in questions.volunteered(line, ist["answers"], step_id):
         ist["answers"][other["id"]] = found
         writes.append(_config_write(other["page"], other["key"], found))
@@ -116,7 +112,7 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
     state["intake"] = ist
     now = state.get("now", "")
 
-    # One database per turn until all four exist, on every turn and not only
+    # One database per turn until both exist, on every turn and not only
     # the trigger turn, so the question flow is not stalled behind setup.
     writes: list[Write] = _data_source_writes(state, ist)
     writes += ddl.next_create_write(state)
@@ -147,8 +143,8 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
     refusal_text = refuse(value) if refuse else None
     writes += _answer_writes(step_id, line, value, state, now)
     if refusal_text is not None:
-        # A row can opt into this generically (same shape as `state_key`
-        # and `location`): the answer is still recorded above, so she is
+        # A row can opt into this generically (same shape as `state_key`):
+        # the answer is still recorded above, so she is
         # never asked the question from scratch, but the cursor does not
         # move, so the same step catches her correction
         # (docs/storage-section-design.md "Refusing a store").

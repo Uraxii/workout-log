@@ -14,8 +14,8 @@ then applies the returned writes through `row-create` / `config-write`.
 Never parse a set line yourself. Call `log_set(line, state)` (in process or
 `python3 scripts/log_set.py` with `{"line", "state"}` on stdin) and say back
 its `confirm_line` verbatim. It never returns a question and never raises on
-bad input; the fallback ladder (`ladder.py`, `catalog.py`) always finds an
-exercise or creates one, and the grammar (`grammar.py`, `tokens.py`) always
+bad input; the fallback ladder (`ladder.py`, `catalog.py`) always names an
+exercise, and the grammar (`grammar.py`, `tokens.py`) always
 returns a row or falls through to a note.
 
 **What a user can type**, one example per shape:
@@ -37,10 +37,10 @@ returns a row or falls through to a note.
   numbers collapse first: `one thirty five` becomes `135`.
 - A leading name picks the exercise: `ohp 95 8/8/6`, `zercher squat 135x5`.
   Names are matched by whole word, never by similarity score. The athlete's
-  own `Exercises` rows go first, so `row` is whichever row THEY train, and
-  only then the shipped alias table and the shipped catalog. A word that
+  own logged exercise names go first, so `row` is whichever one THEY train,
+  and only then the shipped alias table and the shipped defaults. A word that
   several exercises could mean refuses rather than picking one: `press`
-  against a catalog holding a bench press and a military press falls through
+  against a history holding a bench press and a military press falls through
   to the alias table to be settled there.
 
 **Grey band, no dialogue.** `20x8` with no prior weight for that exercise
@@ -48,10 +48,12 @@ and no program target reads as weight x reps, never a question (rule G2).
 The confirm line states the reading and says `fix` reverses it; a bare
 `fix` right after flips that one reading.
 
-**When no table knows the name.** A line that still parses as a set adds one
-`Exercises` row and says so in the confirm line ("Added bnch press to your
-catalog."), so a typo is visible in the same breath rather than silently
-attributed to a lift the athlete never did. A line that parses as nothing
+**When no table knows the name.** A line that still parses as a set is logged
+under the name she typed, verbatim, and the confirm line says so ("First time
+logging bnch press."), so a typo is visible in the same breath rather than
+silently attributed to a lift the athlete never did. Nothing is created
+anywhere: the exercise IS the name, and Notion holds logs only. A line that
+parses as nothing
 becomes a verbatim `Notes` row on the open session, never rejected, never
 re-asked.
 
@@ -92,25 +94,27 @@ today` (`program_cursor` is one-advance-per-session-guarded, so a rest ack
 and a same-session close never both fire).
 
 **`swap <exercise>`.** Session-only: resolves the named exercise through
-the normal catalog lookup and re-scopes, so the sets logged next name the
+the normal ladder lookup and re-scopes, so the sets logged next name the
 swap. Never rewrites `program` or `program/current` — that is
 `program-design`'s swap-in-place (a different, permanent edit).
 
 ## Turn 1, from cold
 
 The heaviest hydration of the seven, and what a day-2 "what am i doing today"
-runs on. Four reads, in order:
+runs on. Three reads, in order:
 
-1. `row_query("Exercises")` rebuilds `state["catalog"]`, `page_id` and
-   `measure` per name. An empty result needs no special case: the fallback
-   ladder creates a catalog row the first time it meets a name.
+1. `row_query("Sets")` rebuilds two things at once. `state["known"]` is
+   `{exercise name: measure kind}` for every exercise she has logged, which
+   is the ladder's scope filter; the measure comes from
+   `exercises/defaults.json` when it carries the name, and otherwise from the
+   row's own magnitudes. `state["cursor"]` is the highest `Set index` per
+   exercise on the open session, so numbering continues instead of restarting
+   at 1 (rule L7). Both are derived: there is no exercise database to read,
+   because Notion holds logs only.
 2. `row_query("Sessions")` gives `session_seq`, and the frozen `tz` from the
    last row's `Timezone` (rules L3, L4). Nothing else stores that zone.
 3. `row_query("Sessions", {"Status": "open"})` gives `session_id` and
    `session_status`.
-4. Only if a session is open, `row_query("Sets", {"Session": <id>})` rebuilds
-   `state["cursor"]` as the highest `Set index` per exercise, so numbering
-   continues instead of restarting at 1 (rule L7).
 
 `state["program"]` and `state["program_cursor"]` come from
 `config_read("program/current")`: `body` is the active template verbatim,

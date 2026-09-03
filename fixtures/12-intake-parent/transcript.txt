@@ -4,6 +4,11 @@
 # timezone either, so session 1 froze `Timezone` empty and every later
 # day-boundary check read that back. The seed is gone. This fixture is the
 # proof that both values arrive from the athlete's own answers.
+#
+# The `@exercise` seed does not survive the `@cold` turn, and that is
+# correct: an exercise this athlete has logged is derived from her `Sets`
+# rows, and she has none yet. So the closing `squat 185x5` resolves against
+# the shipped defaults and lands on `Barbell Squat`.
 @now	2026-09-01T09:00:00+00:00
 @units	lb
 @exercise	Squat (Barbell)	weight_reps

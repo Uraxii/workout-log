@@ -6,11 +6,8 @@ config-write	program/current	dose	sets
 config-write	program/current	days	3
 config-write	program/current	template_id	gzclp
 config-write	program/current	started_at	2026-09-01T09:00:00+00:00
-config-write	program/current	body	{"format_version":1,"name":"GZCLP","origin":"Cody Lefever (GZCL tier method); GZCLP structure as documented on the r/Fitness wiki","source":{"url":"https://thefitness.wiki/routines/gzclp/","method_url":"https://swoleateveryheight.blogspot.com/2014/07/the-gzcl-method-simplified_13.html","note":"Structure only: which lifts, how many sets and reps, when load moves. Written in our own words from the cited pages, no text reproduced. A training method is not copyrightable expression (17 U.S.C. 102(b), research/16 'The licence rule')."},"progression_unit":"session","dose":"sets","days":3,"notes":"Four workouts rotate in order regardless of weekday; the source runs them 3 to 4 times a week, so spacing is the user's. No rest nodes: the rotation is not pinned to a weekly grid. T1 starts at 85% of a tested 5RM; T2 and T3 starting loads are set at intake, the source gives no single number worth asserting.","rotation":[{"id":"A1","label":"A1 (squat T1, bench T2)","blocks":[{"label":"T1","exercise":"Barbell_Squat","amrap_last":true,"start":{"kind":"retest_pct","test":"5rm","pct":0.85},"stages":[{"sets":5,"reps":3,"amrap_last":true},{"sets":6,"reps":2,"amrap_last":true},{"sets":10,"reps":1,"amrap_last":true}],"progression":{"axis":"weight","increment":10,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"retest_pct","test":"5rm","pct":0.85,"stage":0}}},{"label":"T2","exercise":"Barbell_Bench_Press_-_Medium_Grip","stages":[{"sets":3,"reps":10},{"sets":3,"reps":8},{"sets":3,"reps":6}],"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"load_delta","value":15,"unit":"lb","stage":0}}},{"label":"T3","exercise":"Wide-Grip_Lat_Pulldown","sets":3,"reps":15,"amrap_last":true,"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"amrap_at_least","reps":25},"on_miss":"hold"}}]},{"id":"B1","label":"B1 (overhead press T1, deadlift T2)","blocks":[{"label":"T1","exercise":"Standing_Military_Press","amrap_last":true,"start":{"kind":"retest_pct","test":"5rm","pct":0.85},"stages":[{"sets":5,"reps":3,"amrap_last":true},{"sets":6,"reps":2,"amrap_last":true},{"sets":10,"reps":1,"amrap_last":true}],"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"retest_pct","test":"5rm","pct":0.85,"stage":0}}},{"label":"T2","exercise":"Barbell_Deadlift","stages":[{"sets":3,"reps":10},{"sets":3,"reps":8},{"sets":3,"reps":6}],"progression":{"axis":"weight","increment":10,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"load_delta","value":15,"unit":"lb","stage":0}}},{"label":"T3","exercise":"Bent_Over_Two-Dumbbell_Row","sets":3,"reps":15,"amrap_last":true,"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"amrap_at_least","reps":25},"on_miss":"hold"}}]},{"id":"A2","label":"A2 (bench T1, squat T2)","blocks":[{"label":"T1","exercise":"Barbell_Bench_Press_-_Medium_Grip","amrap_last":true,"start":{"kind":"retest_pct","test":"5rm","pct":0.85},"stages":[{"sets":5,"reps":3,"amrap_last":true},{"sets":6,"reps":2,"amrap_last":true},{"sets":10,"reps":1,"amrap_last":true}],"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"retest_pct","test":"5rm","pct":0.85,"stage":0}}},{"label":"T2","exercise":"Barbell_Squat","stages":[{"sets":3,"reps":10},{"sets":3,"reps":8},{"sets":3,"reps":6}],"progression":{"axis":"weight","increment":10,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"load_delta","value":15,"unit":"lb","stage":0}}},{"label":"T3","exercise":"Wide-Grip_Lat_Pulldown","sets":3,"reps":15,"amrap_last":true,"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"amrap_at_least","reps":25},"on_miss":"hold"}}]},{"id":"B2","label":"B2 (deadlift T1, overhead press T2)","blocks":[{"label":"T1","exercise":"Barbell_Deadlift","amrap_last":true,"start":{"kind":"retest_pct","test":"5rm","pct":0.85},"stages":[{"sets":5,"reps":3,"amrap_last":true},{"sets":6,"reps":2,"amrap_last":true},{"sets":10,"reps":1,"amrap_last":true}],"progression":{"axis":"weight","increment":10,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"retest_pct","test":"5rm","pct":0.85,"stage":0}}},{"label":"T2","exercise":"Standing_Military_Press","stages":[{"sets":3,"reps":10},{"sets":3,"reps":8},{"sets":3,"reps":6}],"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"load_delta","value":15,"unit":"lb","stage":0}}},{"label":"T3","exercise":"Bent_Over_Two-Dumbbell_Row","sets":3,"reps":15,"amrap_last":true,"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"amrap_at_least","reps":25},"on_miss":"hold"}}]}]}
-row-create	Exercises	Name	Barbell Squat
-row-create	Exercises	measure	weight_reps
-row-create	Exercises	training_max	185.0
-row-create	Exercises	next_target	140 lb
+config-write	program/current	body	{"format_version":1,"name":"GZCLP","origin":"Cody Lefever (GZCL tier method); GZCLP structure as documented on the r/Fitness wiki","source":{"url":"https://thefitness.wiki/routines/gzclp/","method_url":"https://swoleateveryheight.blogspot.com/2014/07/the-gzcl-method-simplified_13.html","note":"Structure only: which lifts, how many sets and reps, when load moves. Written in our own words from the cited pages, no text reproduced. A training method is not copyrightable expression (17 U.S.C. 102(b), research/16 'The licence rule')."},"progression_unit":"session","dose":"sets","days":3,"notes":"Four workouts rotate in order regardless of weekday; the source runs them 3 to 4 times a week, so spacing is the user's. No rest nodes: the rotation is not pinned to a weekly grid. T1 starts at 85% of a tested 5RM; T2 and T3 starting loads are set at intake, the source gives no single number worth asserting.","rotation":[{"id":"A1","label":"A1 (squat T1, bench T2)","blocks":[{"label":"T1","exercise":"Barbell Squat","amrap_last":true,"start":{"kind":"retest_pct","test":"5rm","pct":0.85},"stages":[{"sets":5,"reps":3,"amrap_last":true},{"sets":6,"reps":2,"amrap_last":true},{"sets":10,"reps":1,"amrap_last":true}],"progression":{"axis":"weight","increment":10,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"retest_pct","test":"5rm","pct":0.85,"stage":0}}},{"label":"T2","exercise":"Barbell Bench Press - Medium Grip","stages":[{"sets":3,"reps":10},{"sets":3,"reps":8},{"sets":3,"reps":6}],"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"load_delta","value":15,"unit":"lb","stage":0}}},{"label":"T3","exercise":"Wide-Grip Lat Pulldown","sets":3,"reps":15,"amrap_last":true,"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"amrap_at_least","reps":25},"on_miss":"hold"}}]},{"id":"B1","label":"B1 (overhead press T1, deadlift T2)","blocks":[{"label":"T1","exercise":"Standing Military Press","amrap_last":true,"start":{"kind":"retest_pct","test":"5rm","pct":0.85},"stages":[{"sets":5,"reps":3,"amrap_last":true},{"sets":6,"reps":2,"amrap_last":true},{"sets":10,"reps":1,"amrap_last":true}],"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"retest_pct","test":"5rm","pct":0.85,"stage":0}}},{"label":"T2","exercise":"Barbell Deadlift","stages":[{"sets":3,"reps":10},{"sets":3,"reps":8},{"sets":3,"reps":6}],"progression":{"axis":"weight","increment":10,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"load_delta","value":15,"unit":"lb","stage":0}}},{"label":"T3","exercise":"Bent Over Two-Dumbbell Row","sets":3,"reps":15,"amrap_last":true,"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"amrap_at_least","reps":25},"on_miss":"hold"}}]},{"id":"A2","label":"A2 (bench T1, squat T2)","blocks":[{"label":"T1","exercise":"Barbell Bench Press - Medium Grip","amrap_last":true,"start":{"kind":"retest_pct","test":"5rm","pct":0.85},"stages":[{"sets":5,"reps":3,"amrap_last":true},{"sets":6,"reps":2,"amrap_last":true},{"sets":10,"reps":1,"amrap_last":true}],"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"retest_pct","test":"5rm","pct":0.85,"stage":0}}},{"label":"T2","exercise":"Barbell Squat","stages":[{"sets":3,"reps":10},{"sets":3,"reps":8},{"sets":3,"reps":6}],"progression":{"axis":"weight","increment":10,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"load_delta","value":15,"unit":"lb","stage":0}}},{"label":"T3","exercise":"Wide-Grip Lat Pulldown","sets":3,"reps":15,"amrap_last":true,"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"amrap_at_least","reps":25},"on_miss":"hold"}}]},{"id":"B2","label":"B2 (deadlift T1, overhead press T2)","blocks":[{"label":"T1","exercise":"Barbell Deadlift","amrap_last":true,"start":{"kind":"retest_pct","test":"5rm","pct":0.85},"stages":[{"sets":5,"reps":3,"amrap_last":true},{"sets":6,"reps":2,"amrap_last":true},{"sets":10,"reps":1,"amrap_last":true}],"progression":{"axis":"weight","increment":10,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"retest_pct","test":"5rm","pct":0.85,"stage":0}}},{"label":"T2","exercise":"Standing Military Press","stages":[{"sets":3,"reps":10},{"sets":3,"reps":8},{"sets":3,"reps":6}],"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"all_prescribed_reps"},"on_miss":"next_stage","reset":{"kind":"load_delta","value":15,"unit":"lb","stage":0}}},{"label":"T3","exercise":"Bent Over Two-Dumbbell Row","sets":3,"reps":15,"amrap_last":true,"progression":{"axis":"weight","increment":5,"increment_unit":"lb","advance_when":{"kind":"amrap_at_least","reps":25},"on_miss":"hold"}}]}]}
+config-write	program/current	progression	{"Barbell Squat": {"next_target": "140 lb", "training_max": 185.0}}
 row-create	Sessions	Date	2026-09-01
 row-create	Sessions	Timezone	UTC
 row-create	Sessions	Status	open
@@ -18,7 +15,7 @@ row-create	Sessions	Start time	2026-09-01T18:00:00+00:00
 row-create	Sessions	week_index	36
 row-create	Sets	Set	Barbell Squat set 1, 225 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	Barbell_Squat
+row-create	Sets	Exercise	Barbell Squat
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T18:00:00+00:00
@@ -28,13 +25,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	1d883ce7024cbe30
+row-create	Sets	write_key	b1ab9ea9b7734f6b
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Barbell Squat set 2, 225 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	Barbell_Squat
+row-create	Sets	Exercise	Barbell Squat
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T18:00:00+00:00
@@ -44,13 +41,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	ec3fa29fea03e9d4
+row-create	Sets	write_key	52f2603bafdbd301
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Barbell Squat set 3, 225 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	Barbell_Squat
+row-create	Sets	Exercise	Barbell Squat
 row-create	Sets	Set index	3
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T18:00:00+00:00
@@ -60,7 +57,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	829a91ba7e8d1679
+row-create	Sets	write_key	56f56093eec79a29
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Barbell Squat set 1-3, 225 lb x 5. Set 4 at 225 lb.
@@ -73,7 +70,7 @@ row-create	Sessions	Start time	2026-09-03T18:00:00+00:00
 row-create	Sessions	week_index	36
 row-create	Sets	Set	Standing Military Press set 1, 95 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Exercise	Standing Military Press
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-03T18:00:00+00:00
@@ -83,13 +80,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	d22bca227b725d7a
+row-create	Sets	write_key	f89db50dfd2606e9
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Standing Military Press set 2, 95 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Exercise	Standing Military Press
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-03T18:00:00+00:00
@@ -99,13 +96,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	70d5d22e8e5b6ada
+row-create	Sets	write_key	259d628cfbc67615
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Standing Military Press set 3, 95 lb x 5
 row-create	Sets	Session	sessions-2
-row-create	Sets	Exercise	Standing_Military_Press
+row-create	Sets	Exercise	Standing Military Press
 row-create	Sets	Set index	3
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-03T18:00:00+00:00
@@ -115,7 +112,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	fe10867a10af6853
+row-create	Sets	write_key	da876d3e475427ea
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Standing Military Press set 1-3, 95 lb x 5. Set 4 at 95 lb.
@@ -128,7 +125,7 @@ row-create	Sessions	Start time	2026-09-05T18:00:00+00:00
 row-create	Sessions	week_index	36
 row-create	Sets	Set	Barbell Bench Press - Medium Grip set 1, 185 lb x 5
 row-create	Sets	Session	sessions-3
-row-create	Sets	Exercise	Barbell_Bench_Press_-_Medium_Grip
+row-create	Sets	Exercise	Barbell Bench Press - Medium Grip
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-05T18:00:00+00:00
@@ -138,13 +135,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b7e9cd525048722e
+row-create	Sets	write_key	1305773743930410
 row-create	Sets	source_message_id	msg-9
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Barbell Bench Press - Medium Grip set 2, 185 lb x 5
 row-create	Sets	Session	sessions-3
-row-create	Sets	Exercise	Barbell_Bench_Press_-_Medium_Grip
+row-create	Sets	Exercise	Barbell Bench Press - Medium Grip
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-05T18:00:00+00:00
@@ -154,13 +151,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	c2ee078772fb6a42
+row-create	Sets	write_key	130cb651903d6e00
 row-create	Sets	source_message_id	msg-9
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Barbell Bench Press - Medium Grip set 3, 185 lb x 5
 row-create	Sets	Session	sessions-3
-row-create	Sets	Exercise	Barbell_Bench_Press_-_Medium_Grip
+row-create	Sets	Exercise	Barbell Bench Press - Medium Grip
 row-create	Sets	Set index	3
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-05T18:00:00+00:00
@@ -170,7 +167,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	16d175940527df7a
+row-create	Sets	write_key	af688fb19cb900a7
 row-create	Sets	source_message_id	msg-9
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Barbell Bench Press - Medium Grip set 1-3, 185 lb x 5. Set 4 at 185 lb.
@@ -183,7 +180,7 @@ row-create	Sessions	Start time	2026-09-07T18:00:00+00:00
 row-create	Sessions	week_index	37
 row-create	Sets	Set	Barbell Deadlift set 1, 315 lb x 5
 row-create	Sets	Session	sessions-4
-row-create	Sets	Exercise	Barbell_Deadlift
+row-create	Sets	Exercise	Barbell Deadlift
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-07T18:00:00+00:00
@@ -193,13 +190,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	60b8d2cac511de58
+row-create	Sets	write_key	6fb15f5134ff2b05
 row-create	Sets	source_message_id	msg-12
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Barbell Deadlift set 2, 315 lb x 5
 row-create	Sets	Session	sessions-4
-row-create	Sets	Exercise	Barbell_Deadlift
+row-create	Sets	Exercise	Barbell Deadlift
 row-create	Sets	Set index	2
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-07T18:00:00+00:00
@@ -209,13 +206,13 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	c5c9717f07b74cf3
+row-create	Sets	write_key	bda8856357870958
 row-create	Sets	source_message_id	msg-12
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
 row-create	Sets	Set	Barbell Deadlift set 3, 315 lb x 5
 row-create	Sets	Session	sessions-4
-row-create	Sets	Exercise	Barbell_Deadlift
+row-create	Sets	Exercise	Barbell Deadlift
 row-create	Sets	Set index	3
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-07T18:00:00+00:00
@@ -225,7 +222,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	5aaf1df595167327
+row-create	Sets	write_key	48f679799ca7f90d
 row-create	Sets	source_message_id	msg-12
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Barbell Deadlift set 1-3, 315 lb x 5. Set 4 at 315 lb.

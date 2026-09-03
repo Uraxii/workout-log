@@ -3,8 +3,9 @@
 One JSON object per template in `library/`, stored verbatim in the Notion
 config page `program/current` and archived to `program/history/<date>`
 (build-plan s6, s1.8). The file never changes at runtime: every moving number
-lives in Notion, on the `Exercises` row (`stage_index`, `variation_index`,
-`next_target`, s1.6) or in the cursor. One shape covers all ten templates of
+lives in Notion, under the `progression` key on that same `program/current`
+page (`stage_index`, `variation_index`, `next_target`, s1.6) or in the
+cursor. `progression` is JSON, `{exercise name: {field: value}}`. One shape covers all ten templates of
 s7.1, with no second schema. Machine-checkable form:
 `schema/program-schema.json` (draft 2020-12), checked by
 `python3 library/check.py`, standard library only.
@@ -37,7 +38,7 @@ One exercise's prescription. Exactly one of `exercise` or `sequence`.
 
 | Field | Type | Meaning |
 |---|---|---|
-| `exercise` | string | `Exercises` catalog id, e.g. `Barbell_Squat` |
+| `exercise` | string | Exercise name, e.g. `Barbell Squat`. Identity is the name; there is no slug |
 | `sequence` | array of prescriptions | Ordered inner steps repeated `sets` times: C25K run/walk, kettlebell ladders, complexes |
 | `label` | string | Tier or group shown in the opener, e.g. `T1` |
 | `sets` | integer | Sets, or repeats of `sequence` |
@@ -45,11 +46,11 @@ One exercise's prescription. Exactly one of `exercise` or `sequence`.
 | `amrap_last` | bool | Last set to failure (`is_amrap` on the row) |
 | `duration_s`, `distance`, `interval_s`, `level` | int, `{value, unit}`, int, int | The nullable magnitude columns of `Sets`, s1.2. Which apply is decided by the catalog row's `measure`, never restated here |
 | `rest_s` | integer | Rest target for the confirm line |
-| `load_pct` | number, optional | Fraction of `Exercises.training_max` this set loads to, e.g. `0.85` for 85%. Carries a wave (nSuns): each `sequence` step sets its own. Absent means load comes from `start` or `next_target` instead |
+| `load_pct` | number, optional | Fraction of `progression[exercise].training_max` this set loads to, e.g. `0.85` for 85%. Carries a wave (nSuns): each `sequence` step sets its own. Absent means load comes from `start` or `next_target` instead |
 | `side` | `each \| left \| right \| both`, optional, default `both` | `each` repeats the prescription once per side, alternating (a kettlebell get-up); `left`/`right` pin one side; `both` is bilateral or side-agnostic |
 | `start` | start rule | Where the first load comes from |
 | `progression` | progression rule | Absent means the block never advances by itself |
-| `stages` | array of prescriptions | Ordered alternatives for this block; the current one is `Exercises.stage_index` |
+| `stages` | array of prescriptions | Ordered alternatives for this block; the current one is `progression[exercise].stage_index` |
 | `note` | string | Free text for the opener |
 
 A **prescription** carries the same magnitude fields plus `exercise`, and
@@ -86,8 +87,8 @@ merge rule serves GZCLP set-and-rep stages and Otago level variants alike.
 The cursor is `{"node": <index>, "cycle": <n>}`, stored in `Sessions.Cursor`
 (advisory, rule L8) and in `program/current`. Today is `rotation[cursor.node]`,
 one array index. Per block: the active prescription is
-`stages[Exercises.stage_index]` merged over the block, the load is
-`Exercises.next_target` written by `load-adjust` at last close, or `start` on
+`stages[progression[exercise].stage_index]` merged over the block, the load is
+`progression[exercise].next_target` written by `load-adjust` at last close, or `start` on
 the first session. Nothing is searched. Advancing is
 `(node + 1) % len(rotation)`, `cycle` incremented on wrap, the same operation
 for a rest node.
@@ -111,10 +112,10 @@ for a rest node.
 
 ## HYPOTHESIS
 
-- Not a hypothesis any more: the six ids `gzclp.json` uses were checked against
-  `exercises/catalog.json` and all exist. `Running` and `Walking`, used in the
-  mini example above, do **not**. Couch to 5k needs both added to
-  `exercises/extra.json` first.
+- Not a hypothesis any more: `python3 tools/catalog/check.py` fails the build
+  if any `library/` template prescribes a name `exercises/defaults.json` does
+  not carry, so the whole library is checked on every run, not just
+  `gzclp.json`. `Running` and `Walking` are both in the defaults.
 - `sequence` is claimed to cover C25K, kettlebell EMOM and ladders, unproven
   until those two templates are authored. Same for the four `advance_when`
   kinds: a template needing a fifth means the shape is wrong, not the template.

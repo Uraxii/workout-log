@@ -27,7 +27,7 @@ The resolution is that these two things are talking about different layers,
 and the five verbs already sit on the line between them.
 
 **The data model stays deterministic and proven.** Which entities exist
-(`Sets`, `Sessions`, `Exercises`, `Locations`), which fields each carries,
+(`Sets` and `Sessions`, the only two, because Notion holds logs only), which fields each carries,
 what type each field holds, which enum values are legal, the identity keys
 (`write_key`, `session_key`, rule L8), the unit each magnitude is logged in,
 and the e1RM rule in
@@ -56,7 +56,7 @@ Read as a table:
 | What value goes in a field | the skill scripts, pure | every fixture |
 | Row identity and dedup | `rows.py`, `writer.py` | 01, 03, 09 |
 | The `CREATE TABLE` text | `intake/scripts/ddl.py` | 05-first-run, 12-intake-parent |
-| Create order across relations | `ddl.create_order`, from the relation graph | 05-first-run |
+| Create order | schema declaration order; nothing to sort, no column is a relation | 05-first-run |
 | Which store, and where in it | the athlete, asked | 13-storage-refusal |
 | Display names of the containers | the athlete, asked on collision | 13-storage-existing |
 | Auth, paging, rate limits, id threading | the model, at run time | not provable offline, by construction |
@@ -317,8 +317,9 @@ the next question:
 > down that you asked for Airtable. Say 'notion' and I'll set that up instead."
 
 **What is written.** Exactly one thing: the config-write recording
-`storage_platform`. No `database-create`, no `row-create`, no catalog seeding.
-The 913-row seed never starts.
+`storage_platform`. No `database-create` and no `row-create`. There is no
+catalog seeding to stop: the exercise list is package data and was never
+written to a store.
 
 **No fallback.** There is deliberately no local file mode and no degraded
 store to fall back on. A fallback store would be a second store with no proof

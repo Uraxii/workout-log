@@ -66,9 +66,13 @@ rule:
    there: 5 lb or 2.5 kg. Rounding happens in the unit the athlete loads,
    never in the basis, and always down.
 
-The result writes to `Exercises.training_max` (the adjusted estimate itself)
-and `Exercises.next_target` (the resolved starting weight, always carrying
-its unit) via `row-create`, one write per exercise a baseline was given for.
+The result writes to the `progression` key on `program/current`, one JSON
+body of `{exercise name: {field: value}}` in a single `config-write`, holding
+`training_max` (the adjusted estimate itself) and `next_target` (the resolved
+starting weight, always carrying its unit) for every exercise a baseline was
+given for. The floor comes from `config/preferences.min_increment_<unit>`
+when the athlete named her gym's smallest pair, and from the smallest pair a
+normal gym racks when she did not.
 A block with no `start` rule (GZCLP's T2 and T3, for example) gets no
 computed load here; the source gives no single number worth asserting either
 (`library/gzclp.json` notes).

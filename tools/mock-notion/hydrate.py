@@ -17,6 +17,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from from_sets import known_exercises, set_cursor
 from reader import MockNotionReader
 
 _SKILLS_DIR = Path(__file__).resolve().parents[2] / ".claude" / "skills"
@@ -37,7 +38,8 @@ def hydrate(reader: MockNotionReader) -> dict[str, Any]:
     store. A page or database that was never written yields the same empty
     value the seams already default to, so turn 1 of a genuinely empty
     workspace hydrates without a single special case."""
-    units = reader.config_read("config/preferences").get("units", DEFAULT_UNITS)
+    preferences = reader.config_read("config/preferences")
+    units = preferences.get("units", DEFAULT_UNITS)
     # `trainer_core` reads `limits.clearance`, `load_adjust` reads
     # `limits.progression`, `pain_triage` reads `limits.entries`.
     limits = reader.config_read("config/limits")
@@ -52,6 +54,8 @@ def hydrate(reader: MockNotionReader) -> dict[str, Any]:
         raise RuntimeError(storage.refusal(storage_platform))
     state: dict[str, Any] = {
         "units": units,
+        # The gym's plates, read by `loads.increment_for`. Was `Locations`.
+        "preferences": preferences,
         "limits": limits,
         "athlete": athlete,
         # What `intake` asked for and wrote (ticket workout-log-mqs). The
@@ -62,17 +66,18 @@ def hydrate(reader: MockNotionReader) -> dict[str, Any]:
         "notion_parent_page_id": athlete.get("notion_parent_page_id"),
         "databases": json.loads(athlete.get("notion_data_sources") or "{}"),
     }
-    page = program_page.read_page(reader.config_read("program/current"))
+    program_body = reader.config_read("program/current")
+    page = program_page.read_page(program_body)
     state["has_program"] = page is not None
+    state["progression"] = json.loads(program_body.get("progression") or "{}")
 
-    catalog = {
-        row["Name"]: {"id": row["page_id"], "measure": row.get("measure")}
-        for row in reader.row_query("Exercises")
-    }
-    state["catalog"] = catalog
-    state["exercise_seq"] = len(catalog)
+    # ponytail: every `Sets` row, unfiltered, so it grows with the log.
+    # `row_query` has no ranges; add one and filter on `Timestamp` when this
+    # gets slow.
+    logged = reader.row_query("Sets")
+    state["known"] = known_exercises(logged)
 
-    state.update(_session_state(reader, athlete))
+    state.update(_session_state(reader, athlete, logged))
     state.update(_program_state(reader, page))
     state.update(_EMPTY_AFTER_COLD)
     return state
@@ -95,10 +100,10 @@ _EMPTY_AFTER_COLD = {
 }
 
 
-def _session_state(reader: MockNotionReader,
-                   athlete: dict[str, Any]) -> dict[str, Any]:
+def _session_state(reader: MockNotionReader, athlete: dict[str, Any],
+                   logged: list[dict[str, Any]]) -> dict[str, Any]:
     """Session identity and the open session's set cursor, from two reads of
-    `Sessions` plus (only when one is open) one of `Sets`."""
+    `Sessions` plus the `Sets` rows already in hand."""
     sessions = reader.row_query("Sessions")
     open_rows = reader.row_query("Sessions", {"Status": "open"})
     open_row = open_rows[-1] if open_rows else None
@@ -116,7 +121,7 @@ def _session_state(reader: MockNotionReader,
         "sessions_by_date": _sessions_by_date(sessions),
         "session_id": open_row["page_id"] if open_row else None,
         "session_status": open_row["Status"] if open_row else None,
-        "cursor": _cursor(reader, open_row),
+        "cursor": set_cursor(logged, open_row),
     }
 
 
@@ -137,25 +142,6 @@ def _sessions_by_date(sessions: list[dict[str, Any]]) -> dict[str, Any]:
             "status": row.get("Status"),
         }
     return by_date
-
-
-def _cursor(reader: MockNotionReader, open_row: dict[str, Any] | None) -> dict[str, int]:
-    """The NEXT `Set index` per exercise, which is the value `log_set.py`
-    stores (`cursor[exercise_id] = last_index + 1`) and reads back
-    (`cursor.get(exercise_id, 1)`), so the max stored index plus one.
-
-    No open session means no cursor and no query: `Set index` is scoped to
-    `(session, exercise)` (rule L7), so a closed session's indices would
-    mislabel set 1 of the next session as a continuation."""
-    if open_row is None:
-        return {}
-    cursor: dict[str, int] = {}
-    for row in reader.row_query("Sets", {"Session": open_row["page_id"]}):
-        exercise_id, set_index = row.get("Exercise"), row.get("Set index")
-        if exercise_id is None or set_index is None:
-            continue
-        cursor[exercise_id] = max(cursor.get(exercise_id, 0), set_index + 1)
-    return cursor
 
 
 def _closed_since(reader: MockNotionReader, started_at: str) -> int:

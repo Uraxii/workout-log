@@ -1,5 +1,16 @@
 # The trainer without scripts
 
+> **Superseded in part.** This note was written against a Notion workspace
+> holding four databases. It now holds two, `Sets` and `Sessions`, and nothing
+> that is not a log: the exercise catalog is 92 package rows in
+> `exercises/defaults.json`, the gym's plates are `config/preferences`, and
+> per-exercise progression state is the `progression` key on
+> `program/current`. An exercise is identified by its NAME; there is no slug
+> and no id. Every argument below that prices seeding a catalog into Notion,
+> or that reads a slug off an `Exercises` row, is describing a shape that no
+> longer exists. `docs/build-plan.md` s1.5, s1.6 and s1.8 carry the
+> replacement.
+
 Design note. Explanation mode: it argues a shape and prices it. No code
 changes with it. `docs/build-plan.md` stays the authority for content and
 `docs/architecture.md` stays the authority for structure until a phase below

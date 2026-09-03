@@ -1,0 +1,21 @@
+# Load rounding reads the gym's own smallest loadable pair from
+# `config/preferences`, which is where the plate and bar inventory lives now
+# that Notion holds logs only (there is no `Locations` database).
+#
+# The turn is `@cold` on purpose: state comes from `hydrate.py`, so the
+# 2.5 lb pair reaches `loads.round_down_to_increment` by being READ back off
+# the page, not by being handed in. Seeded silently (`@pref`), the same way
+# `@exercise` seeds what the athlete logged before the transcript starts.
+#
+# 187x5 estimates a 187 lb max after the form allowance, and GZCLP's T1
+# starts at 85% of the 5RM. Floored to 5 lb, the default, that is 140 lb.
+# Floored to her gym's 2.5 lb pair it is 142.5 lb, and 142.5 is the whole
+# proof: no other line in this file can produce it.
+@tz	UTC
+@units	lb
+@now	2026-09-01T09:00:00+00:00
+@pref	units	lb
+@pref	min_increment_lb	2.5
+@skill	program-design
+@cold
+make me a plan, 3 days a week, squat 187x5

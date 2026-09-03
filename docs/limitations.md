@@ -37,7 +37,7 @@ Sorted by severity, then cases-hit descending.
 | L-15 | blocks-core-loop | `Exercise` relation, docs/build-plan.md s1.1 (:28) | required relation with no runtime create-on-demand path, so a catalog miss blocks the write | 09, 15 | W2-F8, W3-F9 | contradicts "never reject a line", research/04-routines-and-logging-ux.md:432-433 | adopt research/15's runtime user-added-row escape hatch (:189-202) into s1.3 |
 | L-17 | blocks-core-loop | `program-design`, docs/build-plan.md s4 (:259) | "selects from library/, never invents" with no scripted reply when no template matches | 04, 09 | W1-F12, W2-F12 | research/16-program-library.md Gaps: 5 GAP categories incl. rings and carries (:100-104) | one refusal/nearest-template wording rule in `ref/wording` |
 | L-21 | blocks-core-loop | `program-design` triggers, docs/build-plan.md s4 (:259) | "config change big enough to invalidate the plan" is undefined; no skill owns a targeted single-exercise edit | 17, 20 | W4-F6 | s7 cut list (:364) removes `substitute-exercise` and `re-entry` | define the threshold ("any new `open` limits entry") and give `program-design` a swap-in-place fallback |
-| L-33 | blocks-core-loop | `Locations` db, docs/build-plan.md s1.4 + intake q13 (:215) | no skill in the s4 table (:254-262) writes a `Locations` row outside one-time intake | 05, 20 | W1-F13 | mid-session gym change has no path into the data model | give `session-runner` a "new location described" trigger mirroring intake q13 |
+| L-33 | blocks-core-loop | the gym's equipment, docs/build-plan.md s1.8 + intake q13 (:215) | no skill in the s4 table (:254-262) writes `config/preferences.location` outside one-time intake (it was a `Locations` database row when this was found) | 05, 20 | W1-F13 | mid-session gym change has no path into the data model | give `session-runner` a "new location described" trigger mirroring intake q13 |
 | L-50 | blocks-core-loop | repo layout and friend replication, docs/build-plan.md s5 (:288-332) | Codex has no replication flavour, no documented MCP/Notion path, no committed skill symlinks, no phase-7 run | 10 | W2-F13, W2-F14, W2-F15, W2-F16 | dec "Plugin targets release 1" (decisions.tsv:81) commits to Codex CLI | write flavour C, document Codex MCP wiring or declare it unsupported, add a phase-7 run |
 | L-02 | blocks-core-loop | grammar, research/04-routines-and-logging-ux.md s2.3 | no clock or interval concept; EMOM and a 20-minute time cap are unrepresentable | 08 | W2-F5 | 04 s5.2 "Do not fake it" bars a faked timer | real capability gap, not a grammar patch |
 | L-03 | blocks-core-loop | `reps_expr`, research/04-routines-and-logging-ux.md s2.3 + s7.3 | no production expands one ladder line into N sets, and no deterministic `set_index` for the expansion | 08 | W2-F6 | shares the undefined-index problem with L-25 | new grammar production plus an index assignment rule |
@@ -126,7 +126,7 @@ session identity with a defined write order. Explains L-25, L-26, L-27, L-28,
 L-29.
 
 **R6. Config pages are singular and only `intake` writes them.** One
-`config/athlete`, one `config/limits`, one `program/current`, one `Locations`
+`config/athlete`, one `config/limits`, one `program/current`, one gym-equipment
 write path, no intake cursor, no rule for an answer arriving early, no client
 dimension, no audit shape. Everything that must be per-client or written
 mid-session collides with this. Explains L-30, L-31, L-32, L-33, L-47, L-48.

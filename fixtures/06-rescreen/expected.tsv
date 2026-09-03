@@ -6,7 +6,7 @@ row-create	Sessions	Start time	2026-09-01T09:00:00+00:00
 row-create	Sessions	week_index	36
 row-create	Sets	Set	Squat (Barbell) set 1, 185 lb x 5
 row-create	Sets	Session	sessions-1
-row-create	Sets	Exercise	exercises-1
+row-create	Sets	Exercise	Squat (Barbell)
 row-create	Sets	Set index	1
 row-create	Sets	Set type	working
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
@@ -16,7 +16,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	590df2ecff4e15ca
+row-create	Sets	write_key	2a7b6b000ddc1e5b
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
@@ -27,7 +27,7 @@ config-read	config/preferences	*	0
 config-read	config/limits	*	2
 config-read	config/athlete	*	0
 config-read	program/current	*	0
-row-query	Exercises	*	1
+row-query	Sets	*	1
 row-query	Sessions	*	1
 row-query	Sessions	Status=open	0
 config-write	config/limits	clearance	cleared
@@ -36,7 +36,7 @@ config-read	config/preferences	*	0
 config-read	config/limits	*	4
 config-read	config/athlete	*	0
 config-read	program/current	*	0
-row-query	Exercises	*	1
+row-query	Sets	*	1
 row-query	Sessions	*	1
 row-query	Sessions	Status=open	0
 config-write	config/limits	parq_date	2026-09-21
@@ -44,7 +44,7 @@ config-read	config/preferences	*	0
 config-read	config/limits	*	4
 config-read	config/athlete	*	0
 config-read	program/current	*	0
-row-query	Exercises	*	1
+row-query	Sets	*	1
 row-query	Sessions	*	1
 row-query	Sessions	Status=open	0
 config-write	config/limits	clearance	pending
@@ -54,7 +54,7 @@ config-read	config/preferences	*	0
 config-read	config/limits	*	4
 config-read	config/athlete	*	0
 config-read	program/current	*	0
-row-query	Exercises	*	1
+row-query	Sets	*	1
 row-query	Sessions	*	1
 row-query	Sessions	Status=open	0
 config-write	config/limits	clearance	cleared

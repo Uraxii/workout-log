@@ -20,7 +20,8 @@ BRZYCKI_MAX_REPS = 10
 FORM_ALLOWANCE_PCT = 0.10  # haircut on an estimated (untested) max
 KG_PER_LB = 0.45359237     # the international pound, exact by definition
 # Smallest pair a normal gym racks: 2.5 lb or 1.25 kg a side
-# (`docs/unit-and-magnitude-model.md` s3).
+# (`docs/unit-and-magnitude-model.md` s3). The fallback when the athlete has
+# not told us what her gym actually racks.
 LOADABLE_INCREMENT = {"lb": 5.0, "kg": 2.5}
 _KG_PER_UNIT = {"lb": KG_PER_LB, "kg": 1.0}
 _TEST_REPS = {"1rm": 1, "3rm": 3, "5rm": 5}
@@ -46,13 +47,33 @@ def to_display(value_kg: float, unit: str) -> float:
     return value_kg / _for_unit(_KG_PER_UNIT, unit)
 
 
-def round_down_to_increment(value: float, unit: str) -> float:
+def increment_for(unit: str, preferences: dict[str, str] | None = None) -> float:
+    """The smallest weight this athlete's gym can actually add, in `unit`.
+
+    `config/preferences.min_increment_lb` / `_kg` is her own answer, which was
+    a `Locations` row until Notion became logs-only. Absent or unreadable, the
+    smallest pair a normal gym racks stands in: a wrong guess here costs one
+    increment on a floored target, and refusing to resolve a load at all costs
+    the whole block."""
+    fallback = _for_unit(LOADABLE_INCREMENT, unit)
+    raw = (preferences or {}).get(f"min_increment_{unit}")
+    if raw in (None, ""):
+        return fallback
+    try:
+        increment = float(raw)
+    except (TypeError, ValueError):
+        return fallback
+    return increment if increment > 0 else fallback
+
+
+def round_down_to_increment(value: float, unit: str,
+                            preferences: dict[str, str] | None = None) -> float:
     """Floor `value` to a loadable weight IN `unit`, never in the basis: 90 kg
     is a clean plate load and its 198.42 lb twin is not. Floors because every
     caller wants down (a bump must not exceed what the rule computed, a
     deload must not undo itself, a first block should be conservative), so
     there is no direction to pass and no tie to break."""
-    increment = _for_unit(LOADABLE_INCREMENT, unit)
+    increment = increment_for(unit, preferences)
     return math.floor(value / increment + _FLOOR_TOLERANCE) * increment
 
 
@@ -74,7 +95,8 @@ def estimated_max(weight_kg: float, reps: int) -> float | None:
     return None if e1rm_kg is None else e1rm_kg * (1 - FORM_ALLOWANCE_PCT)
 
 
-def resolve_start_load(effective_1rm_kg: float, start_rule: dict, unit: str) -> float | None:
+def resolve_start_load(effective_1rm_kg: float, start_rule: dict, unit: str,
+                       preferences: dict[str, str] | None = None) -> float | None:
     """A block's `start` rule (`docs/program-format.md` "Progression rule"),
     applied to an estimated max, answered in `unit` and already floored to a
     loadable weight. Only `retest_pct` carries baseline math; `load_delta`
@@ -83,7 +105,8 @@ def resolve_start_load(effective_1rm_kg: float, start_rule: dict, unit: str) -> 
         return None
     test_reps = _TEST_REPS[start_rule["test"]]
     test_weight_kg = effective_1rm_kg * (37 - test_reps) / 36
-    return round_down_to_increment(to_display(test_weight_kg * start_rule["pct"], unit), unit)
+    return round_down_to_increment(
+        to_display(test_weight_kg * start_rule["pct"], unit), unit, preferences)
 
 
 def _self_check() -> None:
@@ -113,6 +136,15 @@ def _self_check() -> None:
     assert resolve_start_load(estimated_max(to_kg(187, "lb"), 5), rule, "lb") == 140.0
     assert resolve_start_load(estimated_max(to_kg(187, "kg"), 5), rule, "kg") == 142.5
     assert resolve_start_load(1.0, {"kind": "hold"}, "lb") is None
+    # The gym's own smallest pair, from `config/preferences` (the keys that
+    # used to be a `Locations` row).
+    assert increment_for("lb", {"min_increment_lb": "2.5"}) == 2.5
+    assert round_down_to_increment(143.055, "lb", {"min_increment_lb": "2.5"}) == 142.5
+    assert resolve_start_load(estimated_max(to_kg(187, "lb"), 5), rule, "lb",
+                              {"min_increment_lb": "1"}) == 143.0
+    for junk in ({}, {"min_increment_lb": ""}, {"min_increment_lb": "heavy"},
+                 {"min_increment_lb": "0"}, {"min_increment_lb": "-5"}):
+        assert increment_for("lb", junk) == 5.0, junk
     print("loads.py self-check: ok")
 
 

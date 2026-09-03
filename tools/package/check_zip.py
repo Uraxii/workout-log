@@ -27,10 +27,9 @@ SEAM_LINE = "185x5"
 SEAM_STATE = {
     "tz": "UTC",
     "units": "lb",
-    "catalog": {"Squat (Barbell)": {"id": "exercises-1", "measure": "weight_reps"}},
+    "known": {"Squat (Barbell)": "weight_reps"},
     "session_id": None,
     "session_seq": 0,
-    "exercise_seq": 1,
     "cursor": {},
     "now": "2026-09-01T09:00:00+00:00",
     "message_id": "msg-1",

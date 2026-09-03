@@ -18,9 +18,16 @@ layout.
 `config-write(page, key, value)` and `row-create(db, payload)` are the two
 write verbs a coaching skill may call (docs/build-plan.md s6).
 `database-create(db, payload)` is the third write verb, and `intake` alone
-calls it, once per database, to build the four the schema declares
-(docs/build-plan.md s5.1). No skill writes to Notion, or to a fixture, through
-any other route.
+calls it, once per database, to build the two the schema declares, `Sets` and
+`Sessions` (docs/build-plan.md s5.1). No skill writes to Notion, or to a
+fixture, through any other route.
+
+Notion holds logs only. Anything that is not a log is either a config page
+(the athlete's own settings, her limits, her current program) or package
+reference data the agent reads and never writes: `exercises/defaults.json`
+and `library/*.json` are the whole of it. Nothing seeds a catalog into her
+workspace, and no database points at another, so every stored value is a
+string, number, date, select or checkbox.
 
 Reads are not writes, so the rule above does not cover them. There are two read
 verbs, `config-read(page)` and `row-query(db, where)`, both in

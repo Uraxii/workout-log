@@ -17,7 +17,7 @@
       "blocks": [
         {
           "label": "Squat",
-          "exercise": "Barbell_Squat",
+          "exercise": "Barbell Squat",
           "sets": 3,
           "reps": 5,
           "amrap_last": true,
@@ -34,7 +34,7 @@
         },
         {
           "label": "Bench",
-          "exercise": "Barbell_Bench_Press_-_Medium_Grip",
+          "exercise": "Barbell Bench Press - Medium Grip",
           "sets": 3,
           "reps": 5,
           "amrap_last": true,
@@ -51,7 +51,7 @@
         },
         {
           "label": "Row",
-          "exercise": "Bent_Over_Barbell_Row",
+          "exercise": "Bent Over Barbell Row",
           "sets": 3,
           "reps": 5,
           "amrap_last": true,
@@ -73,7 +73,7 @@
       "blocks": [
         {
           "label": "Squat",
-          "exercise": "Barbell_Squat",
+          "exercise": "Barbell Squat",
           "sets": 3,
           "reps": 5,
           "amrap_last": true,
@@ -90,7 +90,7 @@
         },
         {
           "label": "Overhead press",
-          "exercise": "Standing_Military_Press",
+          "exercise": "Standing Military Press",
           "sets": 3,
           "reps": 5,
           "amrap_last": true,
@@ -107,7 +107,7 @@
         },
         {
           "label": "Deadlift",
-          "exercise": "Barbell_Deadlift",
+          "exercise": "Barbell Deadlift",
           "sets": 1,
           "reps": 5,
           "amrap_last": true,

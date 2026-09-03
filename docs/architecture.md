@@ -5,10 +5,13 @@ Structure only; `docs/build-plan.md` is the authority for content.
 ## File tree
 
 ```
-schema/notion-schema.json                    # the one schema: 4 dbs, 7 measure kinds, config pages
+schema/notion-schema.json                    # the one schema: 2 dbs, 7 measure kinds, config pages
+exercises/defaults.json                      # 92 exercises the agent reads; never written to Notion
 tools/mock-notion/writer.py                  # offline Notion: 3 write verbs, appends TSV
 tools/mock-notion/reader.py                  # offline Notion: 2 read verbs, appends TSV
+tools/mock-notion/payload_rules.py           # what the schema permits a payload or filter to name
 tools/mock-notion/hydrate.py                 # turn-1 state rebuilt from reads alone
+tools/mock-notion/from_sets.py               # what one read of Sets tells a cold chat
 tools/mock-notion/replay.py                  # phase proof runner: transcript -> writes -> diff
 .claude/skills/<skill>/SKILL.md              # the LLM half: conversation, retrieval, gating
 .claude/skills/<skill>/scripts/*.py          # the deterministic half: parse, arithmetic, row shaping
@@ -35,7 +38,8 @@ Write = {"verb": "row-create"|"config-write", "target": str, "payload": dict}
 
 - **In**: one user chat line, plus `state`, which is JSON and is the whole
   input besides the line: frozen session clock and zone (rules L3, L4), open
-  session id and cursor, catalog rows in scope, per-exercise carry-forward.
+  session id and cursor, the exercise names this athlete has logged
+  (`known`), per-exercise carry-forward.
 - **Out**: writes not yet applied, the line the agent says back, and the next
   turn's `state`. The caller applies the writes; the script never calls Notion.
 - **Two callers, one contract**: in process (`from log_set import log_set`) for
@@ -177,7 +181,7 @@ first-run install transcript and never crosses a chat boundary.
 
 `expected.tsv`: header `verb, target, field, value`, then one line per emitted
 write field and one line per read call. Long form, not a wide row table,
-because the four databases and the config pages have different columns and
+because the two databases and the config pages have different columns and
 this compares exactly with no projection of one onto the other.
 
 Write and read rows come first, interleaved in emission order, so read/write
@@ -228,9 +232,10 @@ hashed on. A predicted page id is only reproducible against the mock
 writer's own deterministic `<db>-<n>` scheme; real Notion assigns opaque
 UUIDs at write time, so hashing one is not computable before the write and
 breaks at install. `session_key` is computable up front and stable across
-a real install. `session_id` still fills the `Sessions` relation on a
-`Sets` row; `session_key` only feeds the hash. Deterministic ids make both
-hand checkable.
+a real install. `session_id` still fills the `Sets` row's `Session` column,
+which is text and no longer a relation; `session_key` only feeds the hash.
+`exercise_id` is the exercise NAME, since identity is the name and there is
+no slug. Deterministic ids make both hand checkable.
 
 ## Running a phase proof
 
@@ -330,8 +335,8 @@ suffix. Settled by dedup on `identity` (`write_key`) alone, which already
 varies per row within a turn; the suffix is gone, every row keeps its
 turn's real `message_id`.
 
-`session-runner`'s scripts split further: `catalog.py` gained
-`make_lookup`/`name_for` (pure catalog-only helpers, moved out of
+`session-runner`'s scripts split further: `catalog.py` gained `make_lookup`
+(a pure resolution helper over the shipped defaults, moved out of
 `log_set.py`), and a new `lifecycle.py` holds session opening
 (`open_session`, rules L1, L3, L4) and the commands phase 2 left as Notes
 rows (`note`, `undo`, `fix set <n> <correction>`, `fix <date> set <n>
@@ -355,3 +360,39 @@ exit, but that skill has no acknowledgement branch to test against yet, so
 today` instead, to prove the upsert mechanism a real hand-off would use.
 That is a scope substitution, not a claim that `session-runner` owns the
 transition; see the phase-3 report for the citation.
+
+## Logs-only note: two databases, no relations
+
+The athlete's Notion holds her training log and nothing else. Four databases
+became two, `Sets` and `Sessions`, and every stored value is a string, a
+number, a date, a select or a checkbox. No property is a relation, so no
+create waits on another's data source id and `ddl.py` creates the two in
+schema declaration order.
+
+What left, and where it went:
+
+| Was | Is now | Why |
+|---|---|---|
+| `Exercises` database, 913 seeded rows | `exercises/defaults.json`, 92 rows, package data | A catalog is reference data the agent reads to build a program, not a log |
+| `Exercises.slug` | nothing. Identity is the `name` | One identifier, and it is the one a human reads |
+| `Sets.Exercise` relation | `Sets.Exercise` text, the name verbatim | Nothing to relate to |
+| `Sets.Session` relation | `Sets.Session` text, the session page id | Same value, no relation |
+| `Exercises` progression fields | `program/current.progression`, JSON keyed by name | Not a log, and it belongs to the program that produced it |
+| `Locations` database | `config/preferences` keys | The gym's plates are her settings |
+| `Sessions.Location` relation | dropped | Nothing to relate to |
+
+Two consequences worth naming, because they change behaviour rather than
+storage.
+
+**Rung 4 of the ladder no longer writes.** It used to create an `Exercises`
+row from the typed name. There is nothing to create, so the name is logged as
+typed and the confirm line says it is the first time. `fixtures/09-name-matching`
+msg-6 is the proof: `bnch press` lands as `bnch press`, not as Neck Press and
+not as a new row.
+
+**The ladder's scope filter is derived from the log.** Rung 3 used to narrow
+`row` to the athlete's own `Exercises` rows. It now narrows to the exercise
+names she has logged a set of, read out of `Sets` at cold start
+(`hydrate.known_exercises`). That is one unfiltered `Sets` read replacing two
+reads, the `Exercises` query and the per-session `Sets` query, and it grows
+with the log; `row_query` has no ranges to narrow it with yet.

@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any
 
 import writer
+from payload_rules import SchemaViolation, check_fields, properties_of
 
 NO_FILTER = "*"  # `<field>` on a config read, `<filter>` on an unfiltered query
 
@@ -40,7 +41,7 @@ class MockNotionReader:
         loud.
         """
         if page not in self.store.schema["config_pages"]:
-            raise writer.SchemaViolation(f"unknown config page {page!r}")
+            raise SchemaViolation(f"unknown config page {page!r}")
         body = dict(self.store.config.get(page, {}))
         self.store.emit("config-read", page, {NO_FILTER: len(body)})
         return body
@@ -59,14 +60,10 @@ class MockNotionReader:
         e1RM, unit conversion and ranking, so one place converts and the
         store stays dumb.
         """
-        databases = self.store.schema["databases"]
-        if db not in databases:
-            raise writer.SchemaViolation(f"unknown database {db!r}")
+        properties_of(self.store.schema, db)
         criteria = where or {}
-        properties = databases[db]["properties"]
-        for name in criteria:
-            if name not in properties:
-                raise writer.SchemaViolation(f"{db}.{name} not in schema")
+        # An unmatched enum VALUE is an empty result, not a violation.
+        check_fields(self.store.schema, db, criteria, check_enums=False)
         found = [
             {**row, "page_id": page_id}
             for page_id, row in self.store.rows.get(db, {}).items()
@@ -120,7 +117,7 @@ def _self_check() -> None:
                      lambda: reader.row_query("Sessions", {"Nope": 1})):
             try:
                 call()
-            except writer.SchemaViolation:
+            except SchemaViolation:
                 continue
             raise AssertionError("a name the schema lacks must raise")
 

@@ -30,7 +30,8 @@ class Fixture(NamedTuple):
 
     timezone: str
     units: str
-    catalog: list[dict[str, str]]
+    preferences: dict[str, str]
+    known: dict[str, str]
     turns: list[Turn]
     intake_cursor: str | None
 
@@ -39,10 +40,15 @@ def parse_transcript(text: str) -> Fixture:
     """Split `@directive` setup lines from user chat lines.
 
     Directives, tab separated: `@tz <iana>`, `@units lb|kg`,
-    `@exercise <Name> <measure>`, `@now <iso8601>`, which may repeat
+    `@exercise <Name> <measure>` (an exercise this athlete has logged before
+    the transcript starts; it seeds state only, since there is no exercise
+    database to seed), `@now <iso8601>`, which may repeat
     mid-transcript so a fixture can cross midnight (rule L4); `@skill <name>`,
     which routes every following turn to that seam until it repeats (phase 5:
-    `intake`, `screen`; default `session-runner`); `@intake_cursor <n>`,
+    `intake`, `screen`; default `session-runner`); `@pref <key> <value>`, seeding one
+    `config/preferences` key the athlete answered before this transcript (her
+    gym's smallest loadable pair is the one that changes arithmetic);
+    `@intake_cursor <n>`,
     seeding a resumed intake's cursor (lim L-48); and `@resend`, repeating
     the previous turn verbatim against that turn's own pre-call state (rule
     L9: a resend, not a second message). Blank and `#` lines drop out;
@@ -59,7 +65,8 @@ def parse_transcript(text: str) -> Fixture:
     """
     timezone = ""
     units = ""
-    catalog: list[dict[str, str]] = []
+    known: dict[str, str] = {}
+    preferences: dict[str, str] = {}
     turns: list[Turn] = []
     now = ""
     msg_n = 0
@@ -82,7 +89,9 @@ def parse_transcript(text: str) -> Fixture:
             elif directive == "@now":
                 now = parts[1]
             elif directive == "@exercise":
-                catalog.append({"name": parts[1], "measure": parts[2]})
+                known[parts[1]] = parts[2]
+            elif directive == "@pref":
+                preferences[parts[1]] = parts[2]
             elif directive == "@skill":
                 current_skill = parts[1]
             elif directive == "@intake_cursor":
@@ -104,4 +113,5 @@ def parse_transcript(text: str) -> Fixture:
         pending_rest_node = None
         pending_cold = False
 
-    return Fixture(timezone=timezone, units=units, catalog=catalog, turns=turns, intake_cursor=intake_cursor)
+    return Fixture(timezone=timezone, units=units, preferences=preferences,
+                   known=known, turns=turns, intake_cursor=intake_cursor)

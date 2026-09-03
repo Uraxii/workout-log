@@ -10,7 +10,7 @@ line writes (`entries.py`) and rule S2's halted check (`preconditions.py`).
     python3 log_set.py            # {"line":..., "state":...} on stdin, Turn on stdout
     from log_set import log_set   # in-process, from the replay runner
 
-`state` (JSON, threaded turn to turn): `tz`/`units`, `catalog`, `scope`,
+`state` (JSON, threaded turn to turn): `tz`/`units`, `known`, `scope`,
 `carry`, `targets`, `cursor`, `session_id`/`session_key`, `open_date`,
 `sessions_by_date`, `attempts`, `last_write`, `program` (program-design's
 template, unchanged), `program_cursor` (`program.py`, L17/L18),
@@ -68,7 +68,10 @@ def _run_turn(line: str, state: dict[str, Any]) -> Turn:
     """An unparseable line still returns a write (rung 5), never an empty turn."""
     state = copy.deepcopy(state)
     now, message_id, units = state["now"], state["message_id"], state.get("units", "lb")
-    catalog_map = state.get("catalog", {})
+    # `known` is `{exercise name: measure kind}` for the names this athlete
+    # has already logged. Derived from the `Sets` rows at cold start
+    # (`hydrate.py`), never stored: Notion holds logs only.
+    known = state.setdefault("known", {})
     text = line.strip()
     # L11: "advance" answers a pending ask; anything else is an implicit "finish".
     pending_advance = state.pop("finish_or_advance", None)
@@ -98,8 +101,8 @@ def _run_turn(line: str, state: dict[str, Any]) -> Turn:
         return _finish(entries.apply_greyband_fix(state, writes, last_greyband, session_id,
                                                   session_key, now, message_id))
 
-    lookup = catalog.make_lookup(catalog_map)
-    implicit = [(info["id"], info["measure"]) for info in catalog_map.values()]
+    lookup = catalog.make_lookup(known)
+    implicit = list(known.items())
 
     def resolve(entry_text: str):
         return ladder.resolve(entry_text, scope, lookup, units, carry.get(scope[0]) if scope else None,
@@ -115,16 +118,15 @@ def _run_turn(line: str, state: dict[str, Any]) -> Turn:
             return _finish(result)
 
     result = resolve(text)
-    created_payload = None
+    is_new_name = False
     if result is None:
-        result = ladder.resolve_create(text, units)
-        if result is not None:
-            created_payload = catalog.new_row_payload(result["name"], result["measure"])
+        result = ladder.resolve_unknown_name(text, units)
+        is_new_name = result is not None
 
     if result is None:
         return _finish(entries.notes_fallback(state, writes, line, session_id, session_key, message_id, now))
 
-    return _finish(entries.log_entry(state, writes, result, created_payload, catalog_map, cursor,
+    return _finish(entries.log_entry(state, writes, result, is_new_name, known, cursor,
                                      carry, targets, session_id, session_key, now, message_id, units))
 
 

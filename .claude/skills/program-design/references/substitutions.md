@@ -8,6 +8,6 @@ the entry's `area` here.
 
 | area | exercise | substitute | reason |
 |---|---|---|---|
-| knee | Barbell_Squat | Leg_Press | Leg Press holds the same quad-dominant pattern with the knee supported and no free-standing load. |
-| knee | Front_Barbell_Squat | Leg_Press | Same swap as the back squat: Leg Press keeps the pattern, drops the free-standing load on the knee. |
-| back | Barbell_Deadlift | Trap_Bar_Deadlift | The trap bar's neutral grip and higher start position cut spinal shear versus a straight bar pull. |
+| knee | Barbell Squat | Leg Press | Leg Press holds the same quad-dominant pattern with the knee supported and no free-standing load. |
+| knee | Front Barbell Squat | Leg Press | Same swap as the back squat: Leg Press keeps the pattern, drops the free-standing load on the knee. |
+| back | Barbell Deadlift | Trap Bar Deadlift | The trap bar's neutral grip and higher start position cut spinal shear versus a straight bar pull. |

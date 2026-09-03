@@ -1,5 +1,16 @@
 # 20 use cases, rising difficulty
 
+> **Superseded in part.** This note was written against a Notion workspace
+> holding four databases. It now holds two, `Sets` and `Sessions`, and nothing
+> that is not a log: the exercise catalog is 92 package rows in
+> `exercises/defaults.json`, the gym's plates are `config/preferences`, and
+> per-exercise progression state is the `progression` key on
+> `program/current`. An exercise is identified by its NAME; there is no slug
+> and no id. Every argument below that prices seeding a catalog into Notion,
+> or that reads a slug off an `Exercises` row, is describing a shape that no
+> longer exists. `docs/build-plan.md` s1.5, s1.6 and s1.8 carry the
+> replacement.
+
 System under test: `docs/build-plan.md`, release 1. No code exists. Each case is a script
 written to find a bound; `Agent: ???` marks a turn the plan does not specify, which is the
 finding. Refs: `(plan sN)`, `(04 s2.4)` research note, `(dec "X")` decision row of

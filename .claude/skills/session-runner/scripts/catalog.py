@@ -1,19 +1,24 @@
 """Exercise-name resolution, the fallback ladder's rungs 2-4 (build-plan s3.2).
 
+An exercise IS its name. There is no slug, no id, and no catalog database:
+Notion holds logs only, so a `Sets` row stores the name as text and the
+shipped `exercises/defaults.json` is package reference data the agent reads,
+never something written to the athlete's workspace.
+
 Rung 1 (grammar parse against today's scope) and rung 5 (verbatim note) live
 in `log_set.py`, which owns the dispatch order. This module only answers
-"what exercise is this": a whole-word match inside the athlete's own
-`Exercises` rows (rung 3's scope filter), the shipped alias table (rung 2),
-and the shape of a create-on-demand row (rung 4).
+"what exercise is this": a whole-word match inside the names this athlete has
+already logged (rung 3's scope filter), the shipped alias table (rung 2), and
+the shipped defaults.
 
-Nothing here guesses. Similarity scoring against the 913-row shipped catalog
-used to sit at rung 3 and is gone: measured over 23 typed names it returned 2
-right answers and 5 silently wrong ones (`bnch press` -> Neck Press,
-`deadlift` -> Car Deadlift), and no cutoff repairs it, because
-`SequenceMatcher` scores `row` higher against `Wide-Grip Lat Pulldown` than
-against `Bent Over Two-Dumbbell Row`. A wrong exercise poisons every trend
-and progression decision that later reads the row, so an unrecognised name
-falls to rung 4, which announces the catalog row it adds (workout-log-9yj).
+Nothing here guesses. Similarity scoring against the old 913-row catalog used
+to sit at rung 3 and is gone: measured over 23 typed names it returned 2 right
+answers and 5 silently wrong ones (`bnch press` -> Neck Press, `deadlift` ->
+Car Deadlift), and no cutoff repairs it, because `SequenceMatcher` scores
+`row` higher against `Wide-Grip Lat Pulldown` than against `Bent Over
+Two-Dumbbell Row`. A wrong exercise poisons every trend and progression
+decision that later reads the row, so an unrecognised name falls to rung 4,
+which logs the name as typed and announces that it is new (workout-log-9yj).
 """
 
 from __future__ import annotations
@@ -36,7 +41,7 @@ EXERCISES_DIR = _DATA_ROOT / "exercises"
 _NON_WORD = re.compile(r"[^a-z0-9]+")
 
 # Equipment abbreviations a lifter types as often as the full word. Expanded
-# on both sides of a comparison, so `incline db press` and the catalog's
+# on both sides of a comparison, so `incline db press` and the defaults'
 # `Incline Dumbbell Press` reduce to the same three words. A spelling rule,
 # not a guess: `db` never means anything else in an exercise name.
 _SAME_WORD = {"db": "dumbbell", "bb": "barbell", "kb": "kettlebell"}
@@ -46,14 +51,26 @@ def _load_json(path: Path) -> Any:
     return json.loads(path.read_text())
 
 
+@lru_cache(maxsize=1)
 def load_aliases() -> dict[str, str]:
+    """`{typed shorthand: default name}`, rung 2's authored table."""
     return _load_json(EXERCISES_DIR / "aliases.json")
 
 
-def load_catalog_names() -> dict[str, str]:
-    """`{lowercased catalog name: canonical id}`, for rung 1 and rung 3."""
-    catalog = _load_json(EXERCISES_DIR / "catalog.json")
-    return {row["name"].lower(): row["id"] for row in catalog}
+@lru_cache(maxsize=1)
+def load_defaults() -> dict[str, str]:
+    """`{default exercise name: measure kind}`, the shipped baseline the agent
+    picks a program from. Read once per process, not once per typed name."""
+    return {row["name"]: row["measure"]
+            for row in _load_json(EXERCISES_DIR / "defaults.json")}
+
+
+def measure_of(name: str, known: dict[str, str] | None = None) -> str | None:
+    """This athlete's own measure kind for `name`, else the shipped default,
+    else `None` so a caller renders no magnitudes rather than guessing."""
+    if known and name in known:
+        return known[name]
+    return load_defaults().get(name)
 
 
 def _words(name: str) -> set[str]:
@@ -67,7 +84,7 @@ def sole_word_match(typed: str, names: Iterable[str]) -> str | None:
     Bench Press` that merely contains those words; `row` is nobody's whole
     name, so it falls to containment and finds `Bent Over Two-Dumbbell Row`.
 
-    `None` when a tier has no name or several, so `press` against a catalog
+    `None` when a tier has no name or several, so `press` against defaults
     holding a bench press and a military press refuses instead of picking.
     Rung 3's scope filter (build-plan s3.2). Whole words, never substrings:
     `row` must not answer `Narrow Grip Press`."""
@@ -82,118 +99,65 @@ def sole_word_match(typed: str, names: Iterable[str]) -> str | None:
     return None
 
 
-def resolve_name(typed: str, catalog_names: dict[str, str], aliases: dict[str, str]) -> str | None:
-    """The shipped tables: a catalog name (rung 1), an authored alias (rung
-    2), then the one shipped name built from exactly these words, which is
+def resolve_name(typed: str) -> str | None:
+    """The shipped tables: a default name (rung 1), an authored alias (rung
+    2), then the one default name built from exactly these words, which is
     how `incline db press` reaches `Incline Dumbbell Press` without anyone
     authoring that alias. The authored table goes first because it is a
     deliberate answer to an ambiguous word: `dip` is Parallel Bar Dip, not
     one of the four shipped names carrying the word.
 
-    `None` when no table knows the name, which sends the line to rung 4's
-    announced create rather than to a guess."""
+    `None` when no table knows the name, which sends the line to rung 4,
+    where it is logged under the name the athlete typed."""
     key = typed.strip().lower()
-    if key in catalog_names:
-        return catalog_names[key]
+    defaults = load_defaults()
+    by_lower = {name.lower(): name for name in defaults}
+    if key in by_lower:
+        return by_lower[key]
+    aliases = load_aliases()
     if key in aliases:
         return aliases[key]
-    shipped = sole_word_match(key, catalog_names)
-    return catalog_names[shipped] if shipped else None
+    return sole_word_match(key, defaults)
 
 
 def infer_measure(entry_shape: dict[str, Any] | None) -> str:
     """Rung 4: infer `measure` from the set shape the same line just typed,
-    per s3.2 ("measure inferred from the set shape, confirm in the same
-    line"). Falls back to `reps_only`, the shape needing the fewest fields."""
+    per s3.2 ("measure inferred from the set shape"). Also reads it back off a
+    stored `Sets` row, which carries the same magnitude keys. Falls back to
+    `reps_only`, the shape needing the fewest fields."""
     if not entry_shape:
         return "reps_only"
-    if "duration_s" in entry_shape:
+    if entry_shape.get("duration_s") is not None:
         return "hold_time"
-    if "distance" in entry_shape and "Load" in entry_shape:
+    if entry_shape.get("distance") is not None and entry_shape.get("Load") is not None:
         return "distance_load"
-    if "distance" in entry_shape:
+    if entry_shape.get("distance") is not None:
         return "distance_time"
-    if "Load" in entry_shape:
+    if entry_shape.get("Load") is not None:
         return "weight_reps"
     return "reps_only"
 
 
-def new_row_payload(name: str, measure: str) -> dict[str, Any]:
-    """Rung 4's `Exercises` row: the typed name, the inferred measure, no
-    other seed fields (those belong to the shipped catalog, not a runtime add)."""
-    return {"Name": name, "measure": measure, "source": "user"}
+def make_lookup(known: dict[str, str]) -> Callable[[str], tuple[str, str] | None]:
+    """Rung 3 in scope order: the names this athlete has already logged first,
+    by exact name and then by whole word, and only after they have no single
+    answer do the shipped tables get asked. Returns `(name, measure)`.
 
-
-def load_measures() -> dict[str, str]:
-    """`{canonical id: measure kind}`, for the ladder to know what it found."""
-    catalog = _load_json(EXERCISES_DIR / "catalog.json")
-    return {row["id"]: row["measure"] for row in catalog}
-
-
-def make_lookup(catalog_map: dict[str, Any]) -> Callable[[str], tuple[str, str] | None]:
-    """Rung 3 in scope order: the athlete's own `Exercises` rows first, by
-    exact name and then by whole word, and only after they have no single
-    answer do the shipped tables get asked.
-
-    Scope first is what stops `row` meaning one of the shipped catalog's 55
-    rows. It also makes the same word answer differently for two athletes:
-    `row` is the dumbbell row for someone running GZCLP and the Pendlay row
-    for someone whose catalog holds that instead."""
-    catalog_names, aliases, measures = load_catalog_names(), load_aliases(), load_measures()
-    # The athlete's own row wins over the shipped id for the same exercise.
-    # `press` reaching `Standing_Military_Press` through the alias table while
-    # every set they ever logged sits on their own `Exercises` page would
-    # split one lift's history across two ids.
-    owned = {catalog_names[nm.lower()]: info for nm, info in catalog_map.items()
-             if nm.lower() in catalog_names}
-
+    Scope first is what stops `row` meaning one of the 92 shipped names. It
+    also makes the same word answer differently for two athletes: `row` is the
+    dumbbell row for someone whose log holds that, and the barbell row for
+    someone who has logged neither and gets the authored alias."""
     def lookup(name_text: str) -> tuple[str, str] | None:
         key = name_text.strip().lower()
-        for nm, info in catalog_map.items():
-            if nm.lower() == key:
-                return info["id"], info["measure"]
-        scoped = sole_word_match(key, catalog_map)
+        for name, measure in known.items():
+            if name.lower() == key:
+                return name, measure
+        scoped = sole_word_match(key, known)
         if scoped is not None:
-            return catalog_map[scoped]["id"], catalog_map[scoped]["measure"]
-        resolved = resolve_name(name_text, catalog_names, aliases)
+            return scoped, known[scoped]
+        resolved = resolve_name(name_text)
         if resolved is None:
             return None
-        info = owned.get(resolved)
-        return (info["id"], info["measure"]) if info else (resolved, measures[resolved])
+        return resolved, measure_of(resolved, known)
 
     return lookup
-
-
-def name_for(exercise_id: str, catalog_map: dict[str, Any],
-            created_payload: dict[str, Any] | None) -> str:
-    """The display name for a confirm line: the just-created payload, this
-    fixture's own seeded scope, then the shipped catalog."""
-    if created_payload:
-        return created_payload["Name"]
-    for nm, info in catalog_map.items():
-        if info["id"] == exercise_id:
-            return nm
-    shipped = shipped_by_id().get(exercise_id)
-    return shipped[0] if shipped else exercise_id
-
-
-def measure_for(exercise_id: str, catalog_map: dict[str, Any]) -> str | None:
-    """The measure kind for a row's exercise, resolved in `name_for`'s order:
-    the athlete's own rows first, then the shipped catalog. `None` when
-    neither knows the id, so a caller renders no magnitudes rather than
-    guessing which ones the row holds."""
-    for info in catalog_map.values():
-        if info["id"] == exercise_id:
-            return info["measure"]
-    shipped = shipped_by_id().get(exercise_id)
-    return shipped[1] if shipped else None
-
-
-@lru_cache(maxsize=1)
-def shipped_by_id() -> dict[str, tuple[str, str]]:
-    """`{shipped catalog id: (display name, measure kind)}`. A program picks
-    exercises by shipped id (`Barbell_Squat`), so a row can name an exercise
-    the athlete's own `Exercises` rows have never held. Cached: the 913-row
-    file is read once per process, not once per row named."""
-    return {row["id"]: (row["name"], row["measure"])
-            for row in _load_json(EXERCISES_DIR / "catalog.json")}
