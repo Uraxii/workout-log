@@ -1,10 +1,10 @@
-"""The natural-key replacement for the sha256 `write_key`.
+"""The natural-key scheme for a host that runs no scripts.
 
-Today `write_key = sha256("<session_key>|<exercise_id>|<set_index>|
-<attempt>")[:16]` and `session_key = sha256("<start>|<tz>")[:16]`
-(docs/architecture.md, rule L8). A language model cannot compute sha256
-by hand, so on a host with no script execution the key must be a string
-the model can build by concatenation from fields the row already carries.
+`rows.py` already replaced the old hashed `write_key` and `session_key`
+with plain concatenation (docs/architecture.md, rule L8). This module
+gives a model that cannot run scripts the same keys to build by hand,
+plus `matches_row`, the query-before-create check that is the only
+defence against a malformed key (docs/scriptless-design.md).
 
 The separator is `SEPARATOR`, a pipe and not a slash: rule L3 freezes
 `Timezone` to the device IANA zone, and `America/New_York` carries a

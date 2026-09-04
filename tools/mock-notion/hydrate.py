@@ -130,7 +130,7 @@ def _sessions_by_date(sessions: list[dict[str, Any]]) -> dict[str, Any]:
     """The shape `session_open.open_session` and `lifecycle.try_fix_backfill`
     read (rule L15's 7-day window resolves a date to a session through it):
     `{date: {"session_id", "session_key", "status"}}`. `session_key` is
-    derived, not stored: it is `sha256(Start time|Timezone)` by construction
+    derived, not stored: it joins Start time and Timezone with a pipe
     (defect 2), so the two frozen open fields regenerate it exactly."""
     by_date = {}
     for row in sessions:

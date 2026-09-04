@@ -224,8 +224,8 @@ Regenerate an expectation from a real run instead of editing it by hand:
 python3 tools/mock-notion/replay.py --update fixtures/06-safety
 ```
 
-`write_key = sha256("<session_key>|<exercise_id>|<set_index>|<attempt>")[:16]`
-(rule L8). `session_key = sha256("<start>|<tz>")[:16]` (phase 3 defect 2): the
+`write_key = f"{session_key}|{exercise_id}|{set_index}|{attempt}"`
+(rule L8). `session_key = f"{start}|{tz}"` (phase 3 defect 2): the
 client-side session identity, the frozen open time plus the frozen zone
 (rules L3, L4), not the predicted Notion page id `session_id` used to be
 hashed on. A predicted page id is only reproducible against the mock
