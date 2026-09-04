@@ -27,6 +27,7 @@ check:
 	python3 tools/schema/check_e1rm.py
 	python3 tools/intake/check_questions_docs.py
 	python3 tools/mock-notion/notion_ddl.py
+	python3 tools/replay/check_replay.py
 	@fixtures_failed=0; \
 	for f in $(FIXTURES); do \
 		if out=$$(python3 tools/mock-notion/replay.py "$$f" 2>&1); then \
