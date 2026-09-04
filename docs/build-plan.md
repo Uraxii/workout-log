@@ -50,7 +50,7 @@ New or changed in v2:
 | `level` | number | Stage index inside `variation_chain` | (16 "Format fit"), (lim L-19) |
 | `interval_s` | number | EMOM and every-N-minutes work; one row per round | (16 "Format fit"), (lim L-02) |
 | `attempt` | number | Write-order counter, rule L7 | (lim L-25) |
-| `write_key` | text | Renamed from `client_key`; it is a hash, not a person | (lim L-32), (04 s7.3) |
+| `write_key` | text | Renamed from `client_key`; it is a row key, not a person | (lim L-32), (04 s7.3) |
 | `source_message_id` | text | Primary idempotency key, rule L9 | (04 s7.4), (lim L-26) |
 | `Pain flag` | select `none \| niggle \| stop` | Mapped from free text by rule S3 | (02 s2), (lim L-38) |
 | `confirm_line` | text | The audit trail: what the agent told the user | (dec "Open point 3") |
@@ -154,7 +154,7 @@ that adds a line; a rule can be checked (lim R11), (lim L-49).
 **Write identity**
 
 - **L7.** `attempt` counts per `(session, exercise, set_index)`, first write 0. A `fix` on an occupied slot writes `attempt+1` and supersedes (lim L-25).
-- **L8.** `write_key = hash(session_id, exercise_id, set_index, attempt)`, query-before-create inside one write path, so a drifting `Cursor` corrupts nothing (lim L-27), (04 s7.3).
+- **L8.** `write_key = "<session_key>|<exercise_id>|<set_index>|<attempt>"`, query-before-create inside one write path, so a drifting `Cursor` corrupts nothing (lim L-27), (04 s7.3).
 - **L9.** Idempotency is `source_message_id` alone. Second guard for a human retype: identical content in the same slot within 120 s is a duplicate, confirmed not re-written (lim L-26), (04 s7.4).
 - **L10.** The confirm line the agent sent is stored as `confirm_line`. That is the whole audit log (dec "Open point 3"), (dec "T2 superseded").
 

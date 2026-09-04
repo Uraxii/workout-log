@@ -82,7 +82,7 @@ Sorted by severity, then cases-hit descending.
 | L-45 | friction | hand-off template, research/00-synthesis-trainer.md:141-163 | no rule for naming two professions in one confirm-shaped line when two red flags fire | 18 | W4-F8 | actions already union to "stop", so this is wording only | let the template take a list of professions and stay one line |
 | L-46 | friction | override tiers | referenced as a structure by docs/use-cases.md:531 but never defined | 19 | W4-F12 | research/12-trainer-practice-and-ethics.md:925-935 and 00-synthesis-trainer.md:22 gesture at one | name the tiers in `ref/scope-and-refusals` |
 | L-48 | friction | `intake`, docs/build-plan.md s4 (:257) | no resume marker for a half-finished intake, unlike Sessions' `Cursor` | 16 | W4-F3 | intake is 22 items at 2-4 per turn, so 7-8+ turns (docs/build-plan.md:198-224) | store an `intake_cursor` on `config/athlete` |
-| L-32 | cosmetic | `client_key`, research/04-routines-and-logging-ux.md:806-810 | the name means an idempotency hash, not a coaching client, which misleads given L-30 | 20 | W4-F14 | reinforces that no client-scoping field exists | rename to `write_key` |
+| L-32 | cosmetic | `client_key`, research/04-routines-and-logging-ux.md:806-810 | the name means an idempotency key, not a coaching client, which misleads given L-30 | 20 | W4-F14 | reinforces that no client-scoping field exists | rename to `write_key` |
 
 ## Root shapes
 
