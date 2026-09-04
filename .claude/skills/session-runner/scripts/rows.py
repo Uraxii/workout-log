@@ -5,14 +5,11 @@ pure function of the fields already decided.
 
 from __future__ import annotations
 
-import hashlib
 import json
 from datetime import date
 from pathlib import Path
 from typing import Any
 
-WRITE_KEY_LEN = 16
-SESSION_KEY_LEN = 16
 # <skill>/data is the copy tools/package/build_zip.py vendors into the ZIP;
 # the repo root is the shared original a plugin checkout keeps (build-plan s8).
 _SKILL_DIR = Path(__file__).resolve().parent.parent
@@ -30,10 +27,9 @@ _CARRY_KEYS = ("Load", "Unit", "Reps", "load_kind")
 def session_key(start: str, tz: str) -> str:
     """Client-side session identity (defect 2): the frozen open time plus the
     frozen timezone (rules L3, L4), never a predicted Notion page id. Real
-    Notion page ids are opaque UUIDs assigned at write time, so hashing one
-    (the old scheme) is not reproducible until after the row exists; this is
+    Notion page ids are opaque UUIDs assigned at write time, so this is
     computable before any write and stays stable across a real install."""
-    return hashlib.sha256(f"{start}|{tz}".encode()).hexdigest()[:SESSION_KEY_LEN]
+    return f"{start}|{tz}"
 
 
 def week_index(local_date: str) -> int:
@@ -44,12 +40,11 @@ def week_index(local_date: str) -> int:
 
 
 def write_key(session_key: str, exercise_id: str, set_index: int, attempt: int) -> str:
-    """Rule L8 identity: sha256 of the four parts, truncated. `session_key` is
-    the client-side session identity above, not the Notion page id;
+    """Rule L8 identity: the natural key, written out. `session_key` is the
+    client-side session identity above, not the Notion page id;
     `exercise_id` is the exercise NAME, which is what identifies an exercise
     now that there is no catalog database and no slug."""
-    parts = f"{session_key}|{exercise_id}|{set_index}|{attempt}"
-    return hashlib.sha256(parts.encode()).hexdigest()[:WRITE_KEY_LEN]
+    return f"{session_key}|{exercise_id}|{set_index}|{attempt}"
 
 
 def carry_from(row: dict[str, Any]) -> dict[str, Any]:
