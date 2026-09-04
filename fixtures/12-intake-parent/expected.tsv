@@ -40,7 +40,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	795a7e54feb1c61f
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|America/Los_Angeles|Barbell Squat|1|0
 row-create	Sets	source_message_id	msg-11
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Barbell Squat set 1, 185 lb x 5. Set 2 at 185 lb.

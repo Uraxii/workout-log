@@ -16,7 +16,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b1ab9ea9b7734f6b
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|Barbell Squat|1|0
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Barbell Squat set 1, 225 lb x 5. Set 2 at 225 lb.
@@ -32,7 +32,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	12
 row-create	Sets	attempt	0
-row-create	Sets	write_key	34389d02805d52b7
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|Bent Over Two-Dumbbell Row|1|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bent Over Two-Dumbbell Row set 1, 60 lb x 12. Set 2 at 60 lb.
@@ -48,7 +48,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	4c7dd74b5c4fe194
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|Standing Military Press|1|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Standing Military Press set 1, 95 lb x 8. Set 2 at 95 lb.
@@ -64,7 +64,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	12
 row-create	Sets	attempt	0
-row-create	Sets	write_key	ff036d5bb7f380e4
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|Barbell Curl|1|0
 row-create	Sets	source_message_id	msg-4
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Barbell Curl set 1, 30 lb x 12. Set 2 at 30 lb.
@@ -77,7 +77,7 @@ row-create	Sets	Timestamp	2026-09-01T18:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	12
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b886d91ba9d7c028
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|Parallel Bar Dip|1|0
 row-create	Sets	source_message_id	msg-5
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Parallel Bar Dip set 1, 12. Set 2.
@@ -93,7 +93,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	38307ab93056de64
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|bnch press|1|0
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	First time logging bnch press. bnch press set 1, 135 lb x 5. Set 2 at 135 lb.
@@ -109,7 +109,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	attempt	0
-row-create	Sets	write_key	797e8ce2a9d5cb34
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|Incline Dumbbell Press|1|0
 row-create	Sets	source_message_id	msg-7
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Incline Dumbbell Press set 1, 60 lb x 10. Set 2 at 60 lb.

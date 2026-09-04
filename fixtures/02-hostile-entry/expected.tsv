@@ -16,7 +16,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	2a7b6b000ddc1e5b
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Squat (Barbell)|1|0
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
@@ -25,7 +25,7 @@ row-create	Sets	Session	sessions-1
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Notes	0x0
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b014b987bfc8af81
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|msg-2|0|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Noted.
@@ -41,7 +41,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	dda859b3f54e8b0e
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Squat (Barbell)|2|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -57,7 +57,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	1e30f0a2a046b815
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Squat (Barbell)|3|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -73,7 +73,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	c1c0e7597414239b
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Squat (Barbell)|4|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -89,7 +89,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	7e552cac3e977df1
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Squat (Barbell)|5|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -105,7 +105,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	7219ca0171f7f4e8
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Squat (Barbell)|6|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -121,7 +121,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	51655988d9c94e55
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Squat (Barbell)|7|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -137,7 +137,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	30
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b0ab95fcf0532a2f
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Squat (Barbell)|8|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 2-8, 185 lb x 30. Set 9 at 185 lb.
@@ -150,7 +150,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	470c2a074cac754f
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|a x|1|0
 row-create	Sets	source_message_id	msg-5
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	First time logging a x. a x set 1, 5. Set 2.

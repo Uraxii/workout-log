@@ -25,7 +25,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b1ab9ea9b7734f6b
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|Barbell Squat|1|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -41,7 +41,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	52f2603bafdbd301
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|Barbell Squat|2|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -57,7 +57,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	56f56093eec79a29
+row-create	Sets	write_key	2026-09-01T18:00:00+00:00|UTC|Barbell Squat|3|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Barbell Squat set 1-3, 225 lb x 5. Set 4 at 225 lb.
@@ -89,7 +89,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	f89db50dfd2606e9
+row-create	Sets	write_key	2026-09-03T18:00:00+00:00|UTC|Standing Military Press|1|0
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -105,7 +105,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	259d628cfbc67615
+row-create	Sets	write_key	2026-09-03T18:00:00+00:00|UTC|Standing Military Press|2|0
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -121,7 +121,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	da876d3e475427ea
+row-create	Sets	write_key	2026-09-03T18:00:00+00:00|UTC|Standing Military Press|3|0
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Standing Military Press set 1-3, 95 lb x 5. Set 4 at 95 lb.
@@ -146,7 +146,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	ea58b686311c9eac
+row-create	Sets	write_key	None|Standing Military Press|4|0
 row-create	Sets	source_message_id	msg-7
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Standing Military Press set 4, 95 lb x 5. Set 5 at 95 lb.

@@ -16,7 +16,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	f4fa5bb7e3d9006d
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|1|0
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 1, 135 lb x 5. Set 2 at 135 lb.
@@ -32,7 +32,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	79f1d709a5e84ecb
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|2|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 2, 135 lb x 5. Set 3 at 135 lb.
@@ -48,7 +48,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	3b870be8ec9a8281
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|3|0
 row-create	Sets	source_message_id	msg-3
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 3, 135 lb x 5. Set 4 at 135 lb.
@@ -64,7 +64,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	4
 row-create	Sets	attempt	0
-row-create	Sets	write_key	232032e6ac68fb66
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|4|0
 row-create	Sets	source_message_id	msg-4
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 4, 135 lb x 4. Set 5 at 135 lb.
@@ -80,7 +80,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	4
 row-create	Sets	attempt	0
-row-create	Sets	write_key	e971c3c34c1e5eb8
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|5|0
 row-create	Sets	source_message_id	msg-5
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 5, 140 lb x 4. Set 6 at 140 lb.
@@ -96,7 +96,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	057cca5c9b8a978c
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|6|0
 row-create	Sets	source_message_id	msg-6
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 6, 140 lb x 8. Set 7 at 140 lb.
@@ -112,7 +112,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	d0a38c8f0fe3c52a
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|7|0
 row-create	Sets	source_message_id	msg-7
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -128,7 +128,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	e3e00dc6bab9dc27
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|8|0
 row-create	Sets	source_message_id	msg-7
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -144,7 +144,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	4
 row-create	Sets	attempt	0
-row-create	Sets	write_key	33b9ba8cecf5b339
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|9|0
 row-create	Sets	source_message_id	msg-7
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 7-9, 135 lb x 4. Set 10 at 135 lb.
@@ -160,7 +160,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	24fd283f914a4fff
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|10|0
 row-create	Sets	source_message_id	msg-8
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -176,7 +176,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	587af38ba382aa60
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|11|0
 row-create	Sets	source_message_id	msg-8
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -192,7 +192,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	5b29c2af403730bb
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|12|0
 row-create	Sets	source_message_id	msg-8
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 10-12, 225 lb x 5. Set 13 at 225 lb.
@@ -208,7 +208,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	57667639411f5056
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|13|0
 row-create	Sets	source_message_id	msg-9
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 13, 135 lb x 5. Set 14 at 135 lb.
@@ -224,7 +224,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	918c08ff67f1719e
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|14|0
 row-create	Sets	source_message_id	msg-10
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -240,7 +240,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	a2c2a8dcd547ea31
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|15|0
 row-create	Sets	source_message_id	msg-10
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -256,7 +256,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b5b9143e5e05f471
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|16|0
 row-create	Sets	source_message_id	msg-10
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 14-16, 135 lb x 5. Set 17 at 135 lb.
@@ -273,7 +273,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	f7d5b969c48b53f5
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|17|0
 row-create	Sets	source_message_id	msg-11
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 17, 135 lb x 5 @8. Set 18 at 135 lb.
@@ -289,7 +289,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	added
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	e906713c734556d9
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|18|0
 row-create	Sets	source_message_id	msg-12
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 18, 25 lb x 8. Set 19 at 25 lb.
@@ -303,7 +303,7 @@ row-create	Sets	Side	both
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	12
 row-create	Sets	attempt	0
-row-create	Sets	write_key	3b898efde52acd64
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|19|0
 row-create	Sets	source_message_id	msg-13
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 19, 12. Set 20.
@@ -317,7 +317,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	12
 row-create	Sets	attempt	0
-row-create	Sets	write_key	745969b1735f16dd
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Bench Press|20|0
 row-create	Sets	source_message_id	msg-14
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Bench Press set 20, 12. Set 21.
@@ -333,7 +333,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	304c8a1390e28b0a
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|1|0
 row-create	Sets	source_message_id	msg-15
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -349,7 +349,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	e9608756b1792161
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|2|0
 row-create	Sets	source_message_id	msg-15
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -365,7 +365,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	6
 row-create	Sets	attempt	0
-row-create	Sets	write_key	d2faf765f534d2b9
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|3|0
 row-create	Sets	source_message_id	msg-15
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Standing Military Press set 1-3, 95 lb x 6. Set 4 at 95 lb.
@@ -381,7 +381,7 @@ row-create	Sets	Unit	kg
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	387007aac9cff66a
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|4|0
 row-create	Sets	source_message_id	msg-16
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -397,7 +397,7 @@ row-create	Sets	Unit	kg
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	ee86458ddfeb511d
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|5|0
 row-create	Sets	source_message_id	msg-16
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -413,7 +413,7 @@ row-create	Sets	Unit	kg
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	9f5be7c5a758c9d6
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|6|0
 row-create	Sets	source_message_id	msg-16
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Standing Military Press set 4-6, 60 kg x 8. Set 7 at 60 kg.
@@ -429,7 +429,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	c9f9f5b87269e678
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|7|0
 row-create	Sets	source_message_id	msg-17
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Standing Military Press set 7, read as 20 lb x 8 fix if reversed. Set 8 at 20 lb.
@@ -442,7 +442,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	40
 row-create	Sets	attempt	0
-row-create	Sets	write_key	fe9d6dc55920fe3a
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|8|0
 row-create	Sets	source_message_id	msg-18
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -455,7 +455,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	40
 row-create	Sets	attempt	0
-row-create	Sets	write_key	79a8bf9c9520ef1d
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|9|0
 row-create	Sets	source_message_id	msg-18
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -468,7 +468,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	40
 row-create	Sets	attempt	0
-row-create	Sets	write_key	734546f91eabf72f
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|10|0
 row-create	Sets	source_message_id	msg-18
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -481,7 +481,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	40
 row-create	Sets	attempt	0
-row-create	Sets	write_key	461dff5b035b8d63
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|11|0
 row-create	Sets	source_message_id	msg-18
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -494,7 +494,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	40
 row-create	Sets	attempt	0
-row-create	Sets	write_key	35aeaeed760ade2f
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|12|0
 row-create	Sets	source_message_id	msg-18
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -507,7 +507,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	40
 row-create	Sets	attempt	0
-row-create	Sets	write_key	d7d38f0142b9290c
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|13|0
 row-create	Sets	source_message_id	msg-18
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -520,7 +520,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	40
 row-create	Sets	attempt	0
-row-create	Sets	write_key	d061fe5287a43730
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|14|0
 row-create	Sets	source_message_id	msg-18
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -533,7 +533,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	40
 row-create	Sets	attempt	0
-row-create	Sets	write_key	efb4a47828ee1325
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Standing Military Press|15|0
 row-create	Sets	source_message_id	msg-18
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Standing Military Press set 8-15, 40. Set 16.
@@ -543,7 +543,7 @@ row-create	Sets	Session	sessions-1
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Notes	fix set 3 was 4 reps
 row-create	Sets	attempt	0
-row-create	Sets	write_key	d908920b9893f4ad
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|msg-24|0|0
 row-create	Sets	source_message_id	msg-24
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Noted.
@@ -552,7 +552,7 @@ row-create	Sets	Session	sessions-1
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Notes	left shoulder tweaky
 row-create	Sets	attempt	0
-row-create	Sets	write_key	e7f7b77cc787f751
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|msg-25|0|0
 row-create	Sets	source_message_id	msg-25
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Noted: left shoulder tweaky
@@ -571,7 +571,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	2a7b6b000ddc1e5b
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Squat (Barbell)|1|0
 row-create	Sets	source_message_id	msg-27
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Squat (Barbell) set 1, 185 lb x 5. Set 2 at 185 lb.
@@ -584,7 +584,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	duration_s	20
 row-create	Sets	attempt	0
-row-create	Sets	write_key	a119b24a243f0297
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|L-Sit|1|0
 row-create	Sets	source_message_id	msg-28
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	L-Sit set 1, 20s. Set 2, same target.
@@ -601,7 +601,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	distance	60
 row-create	Sets	distance_unit	m
 row-create	Sets	attempt	0
-row-create	Sets	write_key	7861939e2c6a2bb6
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Farmer's Carry|1|0
 row-create	Sets	source_message_id	msg-29
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Farmer's Carry set 1, 60 m x 70 lb. Set 2.
@@ -615,7 +615,7 @@ row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	level	3
 row-create	Sets	attempt	0
-row-create	Sets	write_key	786052aa4442c208
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Ring Row|1|0
 row-create	Sets	source_message_id	msg-30
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Ring Row set 1, 3 x 8. Set 2.
@@ -632,7 +632,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	2310e781c9d985f3
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|1|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -649,7 +649,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	9b36943ebf417d8b
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|2|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -666,7 +666,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	4a758549798a1a36
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|3|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -683,7 +683,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	d6fec90db36f2573
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|4|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -700,7 +700,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	a0f25baca2819264
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|5|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -717,7 +717,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	6fbe840c672e63d1
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|6|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -734,7 +734,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	2346838fbe169d2b
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|7|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -751,7 +751,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b295628593096f13
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|8|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -768,7 +768,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	4b3dc0b327cc1483
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|9|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -785,7 +785,7 @@ row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	10
 row-create	Sets	interval_s	60
 row-create	Sets	attempt	0
-row-create	Sets	write_key	1c328dfc91487e05
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|KB Swing|10|0
 row-create	Sets	source_message_id	msg-31
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	KB Swing set 1-10, 10 x 60s x 24 kg. Set 11.
@@ -801,7 +801,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	5
 row-create	Sets	attempt	0
-row-create	Sets	write_key	63286c0496bfb2bb
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Zurkhaneh Swing|1|0
 row-create	Sets	source_message_id	msg-32
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	First time logging Zurkhaneh Swing. Zurkhaneh Swing set 1, 135 lb x 5. Set 2 at 135 lb.
@@ -810,7 +810,7 @@ row-create	Sets	Session	sessions-1
 row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Notes	asdlkfj not a real thing
 row-create	Sets	attempt	0
-row-create	Sets	write_key	79e76c7110ee311b
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|msg-33|0|0
 row-create	Sets	source_message_id	msg-33
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Noted.

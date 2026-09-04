@@ -16,7 +16,7 @@ row-create	Sets	Unit	lb
 row-create	Sets	load_kind	absolute
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	bd979dc2c10faef9
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|1|0
 row-create	Sets	source_message_id	msg-1
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Row set 1, read as 20 lb x 8 fix if reversed. Set 2 at 20 lb.
@@ -29,7 +29,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	1
-row-create	Sets	write_key	29de0864ff122344
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|1|1
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -42,7 +42,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	6a82bbcae309c8a8
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|2|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -55,7 +55,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	8451f4b6f13d5b0f
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|3|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -68,7 +68,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	398f93085eebf58e
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|4|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -81,7 +81,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	1fdd42529ecab993
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|5|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -94,7 +94,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	f769ed5b52778e23
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|6|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -107,7 +107,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	7790303327560d44
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|7|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -120,7 +120,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	fd4a934d650e7e02
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|8|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -133,7 +133,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	19b7b1a987660b00
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|9|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -146,7 +146,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	ce9c04cf754585a8
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|10|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -159,7 +159,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b61e8fcaff5dd828
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|11|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -172,7 +172,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	674877b4209bb570
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|12|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -185,7 +185,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	812741848348efe5
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|13|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -198,7 +198,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	6336ac0a8aa7a26e
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|14|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -211,7 +211,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	ef21bf9b72015988
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|15|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -224,7 +224,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	f654776c12ce4bfd
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|16|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -237,7 +237,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	2b4f46753b82cead
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|17|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -250,7 +250,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	b7a856843e59e277
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|18|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -263,7 +263,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	c72472fe430a39c5
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|19|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	
@@ -276,7 +276,7 @@ row-create	Sets	Timestamp	2026-09-01T09:00:00+00:00
 row-create	Sets	Side	both
 row-create	Sets	Reps	8
 row-create	Sets	attempt	0
-row-create	Sets	write_key	7131cbee53a6226b
+row-create	Sets	write_key	2026-09-01T09:00:00+00:00|UTC|Row|20|0
 row-create	Sets	source_message_id	msg-2
 row-create	Sets	Pain flag	none
 row-create	Sets	confirm_line	Fixed: now read as 8 x 20.
