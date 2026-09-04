@@ -81,6 +81,23 @@ def evaluate(cfg: dict[str, Any], sets: list[dict[str, Any]], kind: str | None,
     return _miss(cfg, kind)
 
 
+def replay(cfg: dict[str, Any],
+           sessions: list[tuple[list[dict[str, Any]], str | None, float | None]]
+           ) -> dict[str, Any]:
+    """Fold `evaluate` over already-parsed sessions, oldest first, against a
+    scratch copy of `cfg`. Pure: never mutates the caller's `cfg`. `sessions`
+    is exactly `evaluate`'s own trailing three arguments per entry, so
+    hydrating a `SetRow` into one (a typed transcript line today, `Sets`
+    rows after workout-log-rb0) is the caller's job (docs/architecture.md
+    "Hydration belongs to the caller"), not this fold's."""
+    acc = dict(cfg)
+    outcomes = [evaluate(acc, sets, kind, rpe)["outcome"]
+                for sets, kind, rpe in sessions]
+    return {"current": acc["current"], "fail_count": acc["fail_count"],
+            "high_rpe_streak": acc["high_rpe_streak"],
+            "stage": acc.get("stage", 0), "outcomes": outcomes}
+
+
 def _miss(cfg: dict[str, Any], kind: str | None) -> dict[str, Any]:
     cfg["fail_count"] += 1
     if cfg["fail_count"] < cfg["after_misses"]:
