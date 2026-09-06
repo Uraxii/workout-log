@@ -1,0 +1,9 @@
+# Regression proof for workout-log-t5a: baselines.parse used to let a
+# named-but-numberless lift steal the NEXT lift's number by proximity, so
+# "squat 185x5, bench, deadlift 225x5" started Bench at Deadlift's 225x5
+# and Deadlift never started at all. Bench is named here with no number,
+# alongside squat and deadlift, which each keep their own. Bench must
+# come back with no starting load, not a borrowed one.
+@now	2026-09-01T09:00:00+00:00
+@skill	program-design
+make me a plan, goal get stronger, 3 days a week, barbell and rack, some experience, squat 185x5, bench, deadlift 225x5
