@@ -46,6 +46,26 @@ def page_id(line: str) -> str | None:
                      digits[16:20], digits[20:]))
 
 
+def vault_path(line: str) -> str | None:
+    """The vault folder path in the line, exactly as she typed it.
+
+    The other half of the same question `page_id` answers: a store's root,
+    in the only form that store understands. A first token starting with
+    `/` or `~` answers; anything else is re-asked rather than stored to
+    fail when the first note is written.
+
+    Nothing is expanded and nothing is normalised. `~` stays `~` and a
+    trailing slash stays a trailing slash, because the model performs the
+    write against this string and a rewritten path is a value the athlete
+    never typed. That also keeps this reader, and `vault.py` behind it,
+    free of `pathlib` and of the filesystem.
+    """
+    words = line.split()
+    if not words or not words[0].startswith(("/", "~")):
+        return None
+    return words[0]
+
+
 def timezone(line: str) -> str | None:
     """An IANA zone name the system tz database knows, or `None`.
 
