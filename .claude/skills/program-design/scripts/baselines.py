@@ -31,16 +31,24 @@ _NXR_RE = re.compile(r"\b(\d+(?:\.\d+)?)\s*x\s*(\d+)\b", re.IGNORECASE)
 
 
 def parse(text: str) -> dict[str, tuple[float, int]]:
-    """Pair each lift name in `text` with its nearest `NxR` (185x5), keyed by
-    exercise name (identity is the name; there is no slug)."""
-    keyword_hits = [(m.start(), exercise_name) for alias, exercise_name in LIFT_ALIASES.items()
-                    for m in re.finditer(rf"\b{re.escape(alias)}\b", text, re.IGNORECASE)]
+    """Pair each lift name in `text` with its own `NxR` (185x5), keyed by
+    exercise name (identity is the name; there is no slug). Lift names are
+    read left to right and each claims the nearest `NxR` not already claimed
+    by an earlier lift name, so "squat 185x5, bench 135x5, deadlift 225x5"
+    keeps each lift's own number instead of letting a closer neighbour's
+    number leak across (workout-log-t5a)."""
+    keyword_hits = sorted(
+        (m.start(), exercise_name)
+        for alias, exercise_name in LIFT_ALIASES.items()
+        for m in re.finditer(rf"\b{re.escape(alias)}\b", text, re.IGNORECASE))
     nxr_hits = [(m.start(), float(m.group(1)), int(m.group(2))) for m in _NXR_RE.finditer(text)]
     found: dict[str, tuple[float, int]] = {}
     for keyword_pos, exercise_name in keyword_hits:
         if not nxr_hits:
             continue
-        _, weight, reps = min(nxr_hits, key=lambda hit: abs(hit[0] - keyword_pos))
+        i, (_, weight, reps) = min(
+            enumerate(nxr_hits), key=lambda hit: abs(hit[1][0] - keyword_pos))
+        del nxr_hits[i]
         found[exercise_name] = (weight, reps)
     return found
 

@@ -1,0 +1,8 @@
+# Regression proof for workout-log-t5a: baselines.parse paired each lift
+# name with its nearest NxR by text distance instead of by which lift the
+# athlete named, so a three-lift line could start Deadlift at Bench's
+# number. This profile names squat, bench, and deadlift with three
+# different numbers in one line; each must start at its own weight.
+@now	2026-09-01T09:00:00+00:00
+@skill	program-design
+make me a plan, goal get stronger, 3 days a week, barbell and rack, some experience, squat 185x5, bench 135x5, deadlift 225x5
