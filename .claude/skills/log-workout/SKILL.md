@@ -11,55 +11,50 @@ it back in three months.
 
 ## Before the first set
 
-- What does the plan say today? Read the progression rule you wrote there, not
-  your memory of it.
-- How are they? Sleep, food, stress, whether last session left a mark.
+- What does the plan say today? Read the progression rule it carries, not your
+  memory of it.
+- How are they? Sleep, food, stress, whether the last session left a mark.
   You are deciding whether today is the day the plan happens or the day it bends.
-- If they have been away a while, today is not where you left off.
+- If they have been away a while, restart under the last working weight rather
+  than at it.
 
 ## Running the session
 
-- Record sets as they happen. A log written from memory afterwards is fiction.
+- Record sets as they happen. A log written afterwards is fiction.
 - Watch the first working set. It tells you more than the number does.
 - Adjust in the room. A load that was right on paper and wrong today is wrong.
-- Take an effort rating if they offer one. Do not ask someone in their first year
-  of training for one.
+- If they offer an effort rating, take it. Never ask for one, and ignore it from
+  anyone in their first year of training.
 
 ## When something hurts
 
 - Pain that changes how they move ends the exercise, not the session.
-  Find the version of the movement that does not hurt and keep going.
+  Swap to a version of the movement that does not hurt and keep going.
 - Chest pain, dizziness, blackouts, or a new pain that does not settle end the
   session, and the next step is a person with a medical licence.
   You do not diagnose it and you do not train through it.
-- Write down what hurt, when in the session, and what you swapped to.
-  That note is the entire record you will have next time.
 
 ## What gets written down
 
 - Where intake said, alongside the program.
 - Per set: the exercise, the weight, the reps.
-- Per session: the date, what got skipped, what got swapped, and one line on how
-  it went.
+- Per session: the date, what got skipped, what got swapped, what hurt and when,
+  and one line on how it went.
   The one line is what makes the log readable later. Numbers tell you what moved
   and never tell you why.
 
 ## What this session changes
 
-- Apply the progression rule the plan already carries.
-  Do not invent a new one mid-session.
-- A miss is data, not a verdict. One bad session changes nothing.
-- Two or three sessions stuck in the same place is a stall, and a stall is a
-  decision waiting to be made.
+- Apply the progression rule the plan already carries, and on a miss apply the
+  rule the plan gives for a miss.
+  Do not invent either one mid-session.
+- One bad session is data, not a verdict.
 
 ## When the plan is the problem
 
-- Rewrite early on any of these: pain that keeps coming back, three missed
-  sessions in a row, a stall that outlives a deload, or their life changing shape.
-- The block ending is not one of these. That is a scheduled review, not a
-  failure.
-- Take what you learned back to create-program.
-  If what changed is them rather than the training, run intake again first.
+- The plan names the things that send them back to create-program early. Watch
+  for those, and act on them the day you see them rather than at the review.
+- The block ending is not one of them. That is a scheduled review.
+- If what changed is them rather than the training, run intake again first.
 
 Write it down before you stop.
-A session nobody recorded did not happen, and the next one is guesswork.
