@@ -1,5 +1,12 @@
 """Turn `schema/notion-schema.json` into `notion-create-database` calls.
 
+The Notion entry in `storage.PROFILES`, and the twin of `vault.py`: `ID`,
+`ROOT_KEY`, `ROOT_PROMPT`, `ROOT_REASK`, `root_parse`, `create_payload` and
+`LAYOUT_REF` are what a store profile owes the registry, and the rest of
+this module is how Notion in particular is written to. The loop that picks
+a profile and emits one create per turn lives in
+`storage.next_create_write`, because it is the same loop for every store.
+
 The hosted MCP tool takes a SQL DDL `CREATE TABLE` statement, not a Notion
 REST properties object, and returns the new data source id. One call creates
 one database, and `create_payload` renders one call.
@@ -24,7 +31,7 @@ import json
 from pathlib import Path
 from typing import Any, Callable
 
-import storage
+import readers
 
 # <skill>/data is the copy tools/package/build_zip.py vendors into the ZIP;
 # the repo root is the shared original a plugin checkout keeps (build-plan s8).
@@ -35,6 +42,15 @@ _DATA_ROOT = (
     else _SKILL_DIR.parents[2]
 )
 SCHEMA_PATH = _DATA_ROOT / "schema" / "notion-schema.json"
+
+ID = "notion"
+ROOT_KEY = "storage_root"
+LAYOUT_REF = "references/db-create.md"
+
+ROOT_PROMPT = "First, where should I put your logs? Make a blank Notion page, share it with this connection, then paste the page link here."
+ROOT_REASK = "That has no Notion page id in it. Open the page, hit Share, copy link, and paste the whole link here."
+
+root_parse = readers.page_id
 
 
 class RenderError(ValueError):
@@ -90,33 +106,6 @@ def create_payload(db: str, parent_page_id: str,
         "title": db,
         "schema": render(db, schema),
     }
-
-
-def next_create_write(state: dict[str, Any]) -> list[dict[str, Any]]:
-    """At most one `database-create` write: the next database still missing.
-
-    One call per database, in schema declaration order, with the caller
-    threading each returned data source id back into `state["databases"]`
-    (ticket workout-log-29l) so a rerun adopts rather than duplicates.
-
-    The parent page id is the user's, read from `state`. `intake` asking for
-    it is ticket workout-log-mqs; with no id there is nothing to create under
-    and the questions still run.
-    """
-    parent = state.get("notion_parent_page_id")
-    created = state.get("databases", {})
-    if parent is None:
-        return []
-    if not storage.is_proven(storage.named(state)):
-        # Gate 1 of two (docs/storage-section-design.md "Refusing a
-        # store"). Not one `database-create` for a store this build has no
-        # DDL for, so nothing is created under the athlete's page.
-        return []
-    for db in load_schema()["databases"]:
-        if db not in created:
-            return [{"verb": "database-create", "target": db,
-                     "payload": create_payload(db, parent)}]
-    return []
 
 
 def _literal(text: object, quote: str = "'") -> str:

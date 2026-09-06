@@ -32,8 +32,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "screen" / "scripts
 import screen  # noqa: E402  (skill-to-skill seam import, mirrors replay.py's own sys.path use)
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import ddl  # noqa: E402  (same-dir renderer; the dir name is not importable)
 import questions  # noqa: E402  (same-dir table; the dir name is not importable)
+import storage  # noqa: E402  (same-dir registry; the dir name is not importable)
 
 TRIGGER_RE = re.compile(r"\bset\s*me\s*up\b", re.IGNORECASE)
 DONE_SAY = 'All set. Say "what do I have today" to start.'
@@ -64,8 +64,8 @@ def _answer_writes(step_id: str, line: str, value: Any,
     S8 keeps that decision in `clearance.py`, reached through `screen`.
 
     A row carrying `state_key` also lands its answer on `state`, because
-    the parent page id and the timezone are read by the rest of this same
-    turn and the next one (`ddl.next_create_write`, `session_open`) rather
+    the store root and the timezone are read by the rest of this same turn
+    and the next one (`storage.next_create_write`, `session_open`) rather
     than only by a later chat reading the page back.
     """
     ist = state["intake"]
@@ -115,7 +115,7 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
     # One database per turn until both exist, on every turn and not only
     # the trigger turn, so the question flow is not stalled behind setup.
     writes: list[Write] = _data_source_writes(state, ist)
-    writes += ddl.next_create_write(state)
+    writes += storage.next_create_write(state)
 
     if TRIGGER_RE.search(line):
         # First "set me up" starts the creates and starts asking. A later one
@@ -124,20 +124,22 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
         # (lim L-48).
         idx, acks = questions.advance(ist["answers"], ist["cursor"])
         ist["cursor"] = idx
-        return {"writes": writes, "say": _say(acks, idx), "state": state}
+        return {"writes": writes, "say": _say(acks, idx, state), "state": state}
 
     idx = ist["cursor"]
     if idx >= len(questions.ALL_IDS):
         return {"writes": writes, "say": DONE_SAY, "state": state}
 
     step_id = questions.ALL_IDS[idx]
-    value = questions.parse(step_id, line)
+    store = storage.profile(state)
+    value = questions.parse(step_id, line, store)
     if value is None:
         # The one re-ask rule, for every row of the table (ticket
         # workout-log-481). An answer that did not parse re-enters its own
         # step: the cursor does not move, nothing is written for it, and no
         # step needs a retry branch of its own.
-        return {"writes": writes, "say": questions.reask_for(step_id), "state": state}
+        return {"writes": writes, "say": questions.reask_for(step_id, store),
+                "state": state}
 
     refuse = questions.FIELD_BY_ID.get(step_id, {}).get("refuse")
     refusal_text = refuse(value) if refuse else None
@@ -153,13 +155,21 @@ def intake_turn(line: str, state: dict[str, Any]) -> Turn:
     next_idx, acks = questions.advance(ist["answers"], idx + 1)
     ist["cursor"] = next_idx
     writes.append(_config_write("config/athlete", "intake_cursor", str(next_idx)))
-    return {"writes": writes, "say": _say(acks, next_idx), "state": state}
+    return {"writes": writes, "say": _say(acks, next_idx, state), "state": state}
 
 
-def _say(acks: list[str], idx: int) -> str:
+def _say(acks: list[str], idx: int, state: dict[str, Any]) -> str:
     """Skipped-question acknowledgements, then the next question, or the
-    closing line once the table runs out."""
-    tail = questions.prompt_for(questions.ALL_IDS[idx]) if idx < len(questions.ALL_IDS) else DONE_SAY
+    closing line once the table runs out.
+
+    The store profile is read from `state` here rather than passed in,
+    because the turn that answers `storage_platform` is the turn that
+    decides whose words the next question uses, and `state` carries that
+    answer by the time this runs.
+    """
+    profile = storage.profile(state)
+    tail = (questions.prompt_for(questions.ALL_IDS[idx], profile)
+            if idx < len(questions.ALL_IDS) else DONE_SAY)
     return " ".join(acks + [tail])
 
 

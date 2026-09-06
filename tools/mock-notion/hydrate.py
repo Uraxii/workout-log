@@ -59,11 +59,16 @@ def hydrate(reader: MockNotionReader) -> dict[str, Any]:
         "limits": limits,
         "athlete": athlete,
         # What `intake` asked for and wrote (ticket workout-log-mqs). The
-        # creates need the page id, and each one's returned data source id
-        # is named by the next database's relation columns; no read verb
+        # creates need the store root, and each one's returned data source
+        # id is named by the next database's relation columns; no read verb
         # answers "which databases exist", so `intake` persists the ids the
         # caller handed it and they come back from the page.
-        "notion_parent_page_id": athlete.get("notion_parent_page_id"),
+        #
+        # A workspace set up before the second store existed holds the same
+        # value under `notion_parent_page_id`, the name it had while Notion
+        # was the only place a log could go, and nothing rewrites it.
+        "storage_root": (athlete.get("storage_root")
+                         or athlete.get("notion_parent_page_id")),
         "databases": json.loads(athlete.get("notion_data_sources") or "{}"),
     }
     program_body = reader.config_read("program/current")

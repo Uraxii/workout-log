@@ -21,7 +21,7 @@ the top (lim L-48).
 | # | id | Prompt | Writes to |
 |---|---|---|---|
 | 1 | `storage_platform` | "Where do you want your training log kept? Notion is what I can write to today. Name anything else and I'll tell you straight away rather than half build it." | `config/athlete.storage_platform` |
-| 2 | `notion_parent_page_id` | "First, where should I put your logs? Make a blank Notion page, share it with this connection, then paste the page link here." | `config/athlete.notion_parent_page_id` |
+| 2 | `storage_root` | "First, where should I put your logs?" and then the words of the store she named in question 1 (`ddl.ROOT_PROMPT`, `vault.ROOT_PROMPT`) | `config/athlete.storage_root` |
 | 3 | `timezone` | "What timezone are you in? I need it as an IANA name, like America/Los_Angeles or Europe/London, so a late session lands on the right day." | `config/athlete.timezone` |
 | 4-10 | `parq_1`..`parq_7` | PAR-Q+ Q1-Q7 verbatim | `config/limits.clearance`, `.parq_date` (via `screen`) |
 | 11 | `parq_followup` | Only asked if any Q1-Q7 was YES | `config/limits.clearance`, `.parq_date` (via `screen`) |

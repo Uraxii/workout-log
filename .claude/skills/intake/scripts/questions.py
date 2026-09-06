@@ -2,7 +2,7 @@
 
 Split out of `intake.py` (house limit, docs/architecture.md "One script per
 skill" splits by DOMAIN): what gets asked and in what order is one body of
-knowledge. Turning an answer into Notion writes is another, and stays in
+knowledge. Turning an answer into writes is another, and stays in
 `intake.py`; reading a value out of a chat line is a third, and lives in
 `readers.py`.
 
@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from types import ModuleType
 from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "screen" / "scripts"))
@@ -37,6 +38,15 @@ import storage  # noqa: E402  (same-dir storage; the dir name is not importable)
 # row ahead of PAR-Q+ in `ALL_IDS`; every other row runs after. `state_key`
 # names the state key the answer also lands on, for the two values the rest
 # of the turn needs in hand and not only on the page it was written to.
+#
+# `ROOT_STEP_ID` is the one row that carries no `prompt`, `reask` or
+# `answer` of its own: a Notion page link and a path to a vault folder are
+# the same question asked by two stores, so the store profile owns its
+# words and its reader (`ddl.ROOT_PROMPT`, `vault.root_parse`, and the rest
+# of the names every profile answers). That is why `prompt_for`,
+# `reask_for` and `parse` each take a profile.
+
+ROOT_STEP_ID = "storage_root"
 
 
 def _storage_refusal(value: str) -> str | None:
@@ -49,16 +59,12 @@ def _storage_refusal(value: str) -> str | None:
 FIELD_STEPS: list[dict[str, Any]] = [
     {"id": "storage_platform", "page": "config/athlete", "key": "storage_platform",
      "section": "storage", "state_key": "storage_platform",
-     "prompt": "Where do you want your training log kept? Notion is what I can write to today. Name anything else and I'll tell you straight away rather than half build it.",
+     "prompt": f"Where do you want your training log kept? {storage.proven_stores()} are what I can write to today. Name anything else and I'll tell you straight away rather than half build it.",
      "answer": readers.platform,
-     "reask": "I need the name of a place to put it. Notion is the one I can write to today.",
+     "reask": f"I need the name of a place to put it. {storage.proven_stores()} are the ones I can write to today.",
      "refuse": _storage_refusal},
-    {"id": "notion_parent_page_id", "page": "config/athlete",
-     "key": "notion_parent_page_id", "section": "storage",
-     "state_key": "notion_parent_page_id",
-     "prompt": "First, where should I put your logs? Make a blank Notion page, share it with this connection, then paste the page link here.",
-     "answer": readers.page_id,
-     "reask": "That has no Notion page id in it. Open the page, hit Share, copy link, and paste the whole link here."},
+    {"id": ROOT_STEP_ID, "page": "config/athlete", "key": ROOT_STEP_ID,
+     "section": "storage", "state_key": ROOT_STEP_ID},
     {"id": "timezone", "page": "config/athlete", "key": "timezone",
      "section": "storage", "state_key": "tz",
      "prompt": "What timezone are you in? I need it as an IANA name, like America/Los_Angeles or Europe/London, so a late session lands on the right day.",
@@ -110,7 +116,8 @@ SAFETY_IDS = tuple(f"parq_{i}" for i in range(1, 8)) + ("parq_followup",)
 # Three questions about the tool, then every question after is about her.
 # The storage platform is first because the athlete has to name a store
 # before anything else about it makes sense
-# (docs/storage-section-design.md question 1); the parent page id is
+# (docs/storage-section-design.md question 1), and because the store she
+# names owns the words of the question after it; the storage root is
 # second because the database creates fire from the "set me up" turn
 # onward and each one needs it (ticket workout-log-mqs); the timezone is
 # third because it is frozen onto session 1 (rule L3) and a session can
@@ -122,8 +129,17 @@ ALL_IDS = (tuple(s["id"] for s in FIELD_STEPS if s.get("section") == "storage")
            + tuple(s["id"] for s in FIELD_STEPS if s.get("section") != "storage"))
 
 
-def prompt_for(step_id: str) -> str:
-    """The question the athlete reads when this step comes up."""
+def prompt_for(step_id: str, profile: ModuleType | None) -> str:
+    """The question the athlete reads when this step comes up.
+
+    `profile` is the store profile from `storage.profile`, and only
+    `ROOT_STEP_ID` reads it. That step is unreachable until the athlete has
+    named a store this build can write to, because an unproven answer holds
+    the cursor on `storage_platform`, so `None` never reaches a profile
+    name.
+    """
+    if step_id == ROOT_STEP_ID:
+        return profile.ROOT_PROMPT
     if step_id == "parq_followup":
         return screen.FOLLOWUP_PROMPT
     if step_id.startswith("parq_"):
@@ -131,7 +147,7 @@ def prompt_for(step_id: str) -> str:
     return FIELD_BY_ID[step_id]["prompt"]
 
 
-def parse(step_id: str, line: str) -> Any | None:
+def parse(step_id: str, line: str, profile: ModuleType | None) -> Any | None:
     """This step's answer, or `None` when the line does not answer it.
 
     `None` is never a value and never a default: it routes to `reask_for`
@@ -139,21 +155,26 @@ def parse(step_id: str, line: str) -> Any | None:
     follow-up read an explicit yes or no, so "maybe" is not silently a NO;
     `units` and `nutrition_strictness` accept only what they can map, so
     `config/preferences` is never handed a sentence its own schema enum
-    would then reject.
+    would then reject. The store root reads whatever its own store accepts,
+    a page link or a vault path, and rejects the other one the same way.
     """
+    if step_id == ROOT_STEP_ID:
+        return profile.root_parse(line)
     if step_id in SAFETY_IDS:
         return screen.yes_no(line)
     return FIELD_BY_ID[step_id]["answer"](line)
 
 
-def reask_for(step_id: str) -> str:
+def reask_for(step_id: str, profile: ModuleType | None) -> str:
     """What the athlete reads when her answer did not parse. The seven
     PAR-Q+ questions stay verbatim inside it (build-plan s6.1 rule S8)."""
+    if step_id == ROOT_STEP_ID:
+        return profile.ROOT_REASK
     if step_id == "parq_followup":
         return screen.CLEARANCE_REASK
     if step_id.startswith("parq_"):
-        return f"I need a yes or a no. {prompt_for(step_id)}"
-    return FIELD_BY_ID[step_id].get("reask", prompt_for(step_id))
+        return f"I need a yes or a no. {prompt_for(step_id, profile)}"
+    return FIELD_BY_ID[step_id].get("reask", prompt_for(step_id, profile))
 
 
 def advance(answers: dict[str, Any], idx: int) -> tuple[int, list[str]]:
