@@ -36,8 +36,9 @@ import storage  # noqa: E402  (same-dir storage; the dir name is not importable)
 # the athlete reads when her answer did not parse; a row without one
 # repeats its prompt. `section` (only value used today: `"storage"`) puts a
 # row ahead of PAR-Q+ in `ALL_IDS`; every other row runs after. `state_key`
-# names the state key the answer also lands on, for the two values the rest
-# of the turn needs in hand and not only on the page it was written to.
+# names the state key the answer also lands on, for the values a later turn
+# of the same chat needs in hand and not only on the page they were written
+# to (ticket workout-log-36h).
 #
 # `ROOT_STEP_ID` is the one row that carries no `prompt`, `reask` or
 # `answer` of its own: a Notion page link and a path to a vault folder are
@@ -71,6 +72,7 @@ FIELD_STEPS: list[dict[str, Any]] = [
      "answer": readers.timezone,
      "reask": "I don't know that zone. It's Area/City, capitals and all, like America/New_York or Australia/Sydney."},
     {"id": "units", "page": "config/preferences", "key": "units",
+     "state_key": "units",
      "prompt": "Pounds or kilos?", "answer": readers.units, "scan": readers.units,
      "reask": "Pounds or kilos? One or the other, please."},
     {"id": "jurisdiction", "page": "config/athlete", "key": "jurisdiction",

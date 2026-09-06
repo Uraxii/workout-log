@@ -64,9 +64,12 @@ def _answer_writes(step_id: str, line: str, value: Any,
     S8 keeps that decision in `clearance.py`, reached through `screen`.
 
     A row carrying `state_key` also lands its answer on `state`, because
-    the store root and the timezone are read by the rest of this same turn
-    and the next one (`storage.next_create_write`, `session_open`) rather
-    than only by a later chat reading the page back.
+    the store root, the timezone and the units are read by the rest of this
+    same chat (`storage.next_create_write`, `session_open`, `grammar`)
+    rather than only by a later chat reading the page back. An answer the
+    athlete volunteered on someone else's line lands the same way: it is
+    never asked again, so this is its only chance to reach `state`
+    (ticket workout-log-36h).
     """
     ist = state["intake"]
     ist["answers"][step_id] = value
@@ -79,13 +82,14 @@ def _answer_writes(step_id: str, line: str, value: Any,
             return [screen.clearance_write(False, "", now)]
         return []
 
-    step = questions.FIELD_BY_ID[step_id]
-    if step.get("state_key"):
-        state[step["state_key"]] = value
-    writes: list[Write] = [_config_write(step["page"], step["key"], value)]
-    for other, found in questions.volunteered(line, ist["answers"], step_id):
-        ist["answers"][other["id"]] = found
-        writes.append(_config_write(other["page"], other["key"], found))
+    answered = [(questions.FIELD_BY_ID[step_id], value),
+                *questions.volunteered(line, ist["answers"], step_id)]
+    writes: list[Write] = []
+    for step, answer in answered:
+        ist["answers"][step["id"]] = answer
+        if step.get("state_key"):
+            state[step["state_key"]] = answer
+        writes.append(_config_write(step["page"], step["key"], answer))
     return writes
 
 
