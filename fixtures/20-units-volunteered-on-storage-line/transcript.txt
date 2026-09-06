@@ -1,0 +1,44 @@
+# Ticket workout-log-36h, regression case. In plain words: someone answers
+# the very first setup question — which platform to use — and tacks her
+# units answer onto that same line: "notion, and I work in pounds." No
+# `@units` directive appears anywhere in this fixture; the only place
+# "pounds" can come from is that volunteered clause. Before the fix, only
+# the answer to the question actually being asked got landed on `state`
+# (`_answer_writes` in intake.py), so a line volunteering a later field's
+# answer wrote it to `config/preferences` but left `state["units"]` unset;
+# the set turn then read an empty string and `grammar.py` raised
+# `KeyError: ''`. The units question itself is never asked in this
+# transcript — `questions.advance` skips it once volunteered — so nothing
+# here gives the harness a second chance to supply units the normal way.
+@now	2026-09-01T09:00:00+00:00
+@skill	intake
+
+# The three questions about the tool itself, then PAR-Q+, then her profile.
+# Line 2 answers "where do you want your log kept" AND volunteers units.
+set me up
+notion, and I work in pounds
+24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
+America/Denver
+no
+no
+no
+no
+no
+no
+no
+Colorado
+get stronger
+two years, on and off
+4
+barbell, rack, plates
+155x5 on squat
+none of those
+34
+general
+Dr. Reyes, my GP
+Garage
+
+# The set turn, same chat. If `state["units"]` never landed, this line
+# throws in grammar.py instead of writing a Sets row in pounds.
+@skill	session-runner
+squat 185x5
