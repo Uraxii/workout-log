@@ -22,6 +22,8 @@ questions" section near the end.
 | `05-existing-tools-and-formats.md` | What to reuse: exercise DBs, program DSLs, MCP servers, export formats |
 | `06-trainer-agent-skills.md` | The 15-skill catalog and the evidence on LLM coaching |
 | `13-plugin-packaging.md` | Packaging the skills as a git repo for Claude Code, Codex and Copilot; Remote Control and the terminal-free friend path |
+| `19-notion-database-create-api.md` | The `POST /v1/databases` payload this repo must render, every claim carrying a developers.notion.com URL |
+| `20-host-capability-matrix.md` | What a packaged skill can do on each host, so the trainer survives being added to a webapp chat and not just a terminal |
 | `15-exercise-catalog-coverage.md` | Measured coverage of free-exercise-db and wger against an 84-exercise probe list: hit rates, 24-item true gap, schema comparison, seed-plus-extras decision |
 
 ## Trainer half (how the agent coaches)
@@ -37,6 +39,9 @@ questions" section near the end.
 | `14-gaps-adherence-policy-minors.md` | Three closed gaps: reminder adherence has no RCT and is null at 24 months; eligibility-policy revision cadence and a 12-month staleness rule; under-18 clients, COPPA vs the UK Children's Code, and the guardian consent record |
 | `16-program-library.md` | Free, legally shippable program templates for `library/` across all goal categories: 16 SHIP, 5 POINTER, 2 SKIP, with the copyright rule for the SHIP/POINTER split and a format-fit list feeding the s1.5 stress test |
 | `17-ottawa-paediatric.md` | Ottawa ankle/knee rules in children: age floor 5 (Dowling 2009 ankle, Vijayasankar 2009 knee meta-analyses), rule text unchanged above the floor, growth-plate (Salter-Harris) caveat below it. Sources build-plan s6.1 rule S4, closing (lim L-40) |
+| `18-parq-plus-verification.md` | The published PAR-Q+ checked word by word against the copy this repo used. Written for the deleted `screen` skill; kept for the form wording |
+| `21-athlete-support-teams.md` | Who is on an athlete's staff, what each role owns and decides, where the boundaries get crossed, and which roles are real knowledge versus artefacts of a big organisation |
+| `22-how-a-team-builds-a-program.md` | How a performance staff actually produces a plan: the calendar first, the medical gate, the nine steps with who signs off, the revision loop, and which steps survive when one person wears every hat |
 
 ## Verified by hand this session
 
