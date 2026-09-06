@@ -26,10 +26,10 @@ That is why a skill can stay short without going shallow.
 Three skills, in this order:
 
 - `intake`. Learn who you are coaching. Written.
-- `create-program`. Write this person a program. Not written yet.
-- `log-workout`. Run and record a session. Not written yet.
+- `create-program`. Write this person a program. Written.
+- `log-workout`. Run and record a session. Written.
 
-`research/` holds 24 documents and 19 source tables behind those skills. `.kb/`
+`research/` holds 26 documents and 19 source tables behind those skills. `.kb/`
 is a 647-page knowledgebase, gitignored and irreplaceable. `exercises/` holds
 the exercise catalog. Read the research before writing a skill. Do not re-run it.
 
