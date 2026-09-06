@@ -1,0 +1,10 @@
+# Regression proof for workout-log-t5a: the fix that made baselines.parse
+# pair each lift with its own number (066cce7) left a bare "press" alias in
+# place, which matches the word "press" sitting inside "bench press". That
+# phantom Standing Military Press then stole squat's number and squat
+# never started at all. This profile names bench with the two-word phrase
+# the athlete actually says, alongside squat and deadlift, so all three
+# must start at their own weight and no Standing Military Press may appear.
+@now	2026-09-01T09:00:00+00:00
+@skill	program-design
+make me a plan, goal get stronger, 3 days a week, barbell and rack, some experience, bench press 135x5, squat 185x5, deadlift 225x5
