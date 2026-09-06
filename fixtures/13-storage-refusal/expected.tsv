@@ -1,4 +1,0 @@
-verb	target	field	value
-config-write	config/athlete	storage_platform	airtable
-say	intake	msg-1	"Where do you want your training log kept? Notion and Obsidian are what I can write to today. Name anything else and I'll tell you straight away rather than half build it."
-say	intake	msg-2	"I can't write to Airtable yet. Notion and Obsidian are the ones I've been proven against, and I'd rather say so now than build you half a log. I've written down that you asked for Airtable. Say 'notion' or 'obsidian' and I'll set that up instead."

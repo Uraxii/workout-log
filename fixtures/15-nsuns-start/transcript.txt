@@ -1,9 +1,0 @@
-# Regression proof for workout-log-bv0: nSuns' T1 blocks carry `exercise`
-# inside `sequence[]`, not on the block itself. `starting_loads.resolve`
-# used to read `block["exercise"]` directly and crash with `KeyError:
-# 'exercise'` for every nsuns-lp pick. This profile (powerlifting, 4 days,
-# barbell, intermediate) routes to nsuns-lp and must produce a program
-# instead of a traceback.
-@now	2026-09-01T09:00:00+00:00
-@skill	program-design
-make me a plan, goal powerlifting, 4 days a week, barbell only, intermediate lifter, squat 315x5, bench 225x5, deadlift 405x3, press 135x5
