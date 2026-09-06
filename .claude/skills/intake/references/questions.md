@@ -7,12 +7,12 @@ from a phone). Age has no gate (dec "T18 final"): it is an ordinary profile
 fact, asked in its normal turn.
 
 Three questions about the tool come first, because nothing works without
-them: the storage platform, the Notion parent page id (ticket
+them: the storage platform, the root inside that store (ticket
 workout-log-mqs), and the timezone, frozen onto session 1 (rule L3). Naming
-a store this build has no DDL for does not fail to parse; it is recorded,
-then refused in place of the next prompt (`storage.refusal`, pinned byte for
-byte by `fixtures/13-storage-refusal`). Then safety runs, via `screen`'s
-seven PAR-Q+ questions, verbatim, one per turn:
+a store this build has no profile for does not fail to parse; it is
+recorded, then refused in place of the next prompt (`storage.refusal`,
+pinned byte for byte by `fixtures/13-storage-refusal`). Then safety runs,
+via `screen`'s seven PAR-Q+ questions, verbatim, one per turn:
 `.claude/skills/screen/references/parq-plus.md`. `intake` calls
 `screen_turn` in-process for that block; `intake_cursor` still advances one
 step per PAR-Q+ question, so an interruption mid-PAR-Q+ resumes there, not at
@@ -20,7 +20,7 @@ the top (lim L-48).
 
 | # | id | Prompt | Writes to |
 |---|---|---|---|
-| 1 | `storage_platform` | "Where do you want your training log kept? Notion is what I can write to today. Name anything else and I'll tell you straight away rather than half build it." | `config/athlete.storage_platform` |
+| 1 | `storage_platform` | "Where do you want your training log kept? Notion and Obsidian are what I can write to today. Name anything else and I'll tell you straight away rather than half build it." | `config/athlete.storage_platform` |
 | 2 | `storage_root` | "First, where should I put your logs?" and then the words of the store she named in question 1 (`ddl.ROOT_PROMPT`, `vault.ROOT_PROMPT`) | `config/athlete.storage_root` |
 | 3 | `timezone` | "What timezone are you in? I need it as an IANA name, like America/Los_Angeles or Europe/London, so a late session lands on the right day." | `config/athlete.timezone` |
 | 4-10 | `parq_1`..`parq_7` | PAR-Q+ Q1-Q7 verbatim | `config/limits.clearance`, `.parq_date` (via `screen`) |
