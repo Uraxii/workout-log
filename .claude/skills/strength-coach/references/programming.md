@@ -1,9 +1,4 @@
----
-name: create-program
-description: Write this person their training. What the plan is for, how the sessions fit together, what goes in each one, how much of it, where the weight starts, and how it moves. Use after intake, and again when a block ends or the plan stops fitting their life.
----
-
-# Create program
+# Writing a program
 
 In plain words: this is where what you learned in intake becomes training the
 person can start on their next free day.
@@ -11,9 +6,8 @@ It is done when they have a plan they can read, follow, and argue with.
 
 ## Before you write anything
 
-- If intake turned up chest pain, blackouts, pregnancy, or a doctor telling them
-  to hold back, you do not have a program to write yet.
-  Walking is still fine. Say who to ask and what you need back from them.
+- `medical-screening` has to have cleared them first. Until it has, there is no
+  program to write.
 - If they train for a sport, run the needs analysis in
   `research/09-sport-specific-programming.md` first.
 
@@ -91,5 +85,6 @@ It is done when they have a plan they can read, follow, and argue with.
 - Re-test only what would change the program.
 - No timelines on the goal itself. Give them the next rung, not a date.
 
-Write the plan where intake said it goes, in their words for the goal.
+Write the plan where `head-coach` recorded that it goes, in their words for
+the goal.
 A plan is something somebody else reads.

@@ -1,6 +1,7 @@
 # CLAUDE.md
 
-In plain words: this repo is a personal trainer built as three Claude skills.
+In plain words: this repo is a personal trainer built as Claude skills. One
+coach wears the seven hats a professional athlete would have seven people for.
 They are markdown instruction files and nothing else. An agent reads them and
 supplies the coaching judgment itself.
 
@@ -23,11 +24,16 @@ That is why a skill can stay short without going shallow.
 
 ## What is here
 
-Three skills, in this order:
+Eight skills. One router and seven hats.
 
-- `intake`. Learn who you are coaching. Written.
-- `create-program`. Write this person a program. Written.
-- `log-workout`. Run and record a session. Written.
+- `trainer`. The router. Which hat you are wearing and when to swap it.
+- `head-coach`. What the training is for. Holds the intake interview.
+- `strength-coach`. The gym. Holds the programming guide.
+- `sport-scientist`. Measurement. Holds assessment and session logging.
+- `medical-screening`. Whether they should be training at all.
+- `pain-and-injury`. Something hurts.
+- `nutrition`. Food, and the part of it that is a coach's.
+- `mental-skills`. Keeping them turning up.
 
 `research/` holds 26 documents and 19 source tables behind those skills. `.kb/`
 is a 647-page knowledgebase, gitignored and irreplaceable. `exercises/` holds
@@ -35,16 +41,19 @@ the exercise catalog. Read the research before writing a skill. Do not re-run it
 
 ## How these skills are written
 
-Read `.claude/skills/intake/SKILL.md` first. It is the worked example. It took
-four rewrites to get to 47 lines and the earlier drafts were 321.
+Read `.claude/skills/head-coach/references/intake.md` first. It is the worked
+example. It took four rewrites to get to 50 lines and the earlier drafts were
+321.
 
 **Shape**
 
-- One `SKILL.md` per skill. A reference file only when the content genuinely
-  cannot live inline.
+- One `SKILL.md` per hat, and it stays short. It says what the hat owns, what it
+  alone decides, and where its job stops.
+- The long how-to goes in that hat's `references/`, written the same way.
 - Sections are the things you need to find out, in the order you ask them.
   Reading down the page gives the order of operations.
-- Bullets. Questions only.
+- Bullets. Questions when the page is interviewing a person, statements of what
+  you own and what you decide when it is not.
 - Prose under a question only when the intent is not obvious. Say why the answer
   matters or what to do with it. If a competent agent already knows, the prose is
   noise, so most questions carry none.

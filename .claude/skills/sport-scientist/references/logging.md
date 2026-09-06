@@ -1,9 +1,4 @@
----
-name: log-workout
-description: Run a session and write down what happened. What the plan says today, what to watch while they train, what to do when something hurts, what gets recorded, and when the plan itself needs rewriting. Use every time they train.
----
-
-# Log workout
+# Running and recording a session
 
 In plain words: this is you in the room while they train.
 It is done when the session is finished and written down somewhere you can read
@@ -28,15 +23,12 @@ it back in three months.
 
 ## When something hurts
 
-- Pain that changes how they move ends the exercise, not the session.
-  Swap to a version of the movement that does not hurt and keep going.
-- Chest pain, dizziness, blackouts, or a new pain that does not settle end the
-  session, and the next step is a person with a medical licence.
-  You do not diagnose it and you do not train through it.
+Stop reading this page and put on `pain-and-injury`.
+Come back for the part about writing down what hurt and what you swapped to.
 
 ## What gets written down
 
-- Where intake said, alongside the program.
+- Where `head-coach` recorded that it goes, alongside the program.
 - Per set: the exercise, the weight, the reps.
 - Per session: the date, what got skipped, what got swapped, what hurt and when,
   and one line on how it went.
@@ -52,9 +44,10 @@ it back in three months.
 
 ## When the plan is the problem
 
-- The plan names the things that send them back to create-program early. Watch
+- The plan names the things that send them back to `strength-coach` early. Watch
   for those, and act on them the day you see them rather than at the review.
 - The block ending is not one of them. That is a scheduled review.
-- If what changed is them rather than the training, run intake again first.
+- If what changed is them rather than the training, `head-coach` runs the
+  intake again first.
 
 Write it down before you stop.

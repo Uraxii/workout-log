@@ -1,8 +1,3 @@
----
-name: intake
-description: Learn who you are coaching. What they want, what they can do now, what they have to work with, what they will keep doing, and where their training gets written down. Use before writing anyone their first program, and again when their goal, schedule, body, or circumstances change.
----
-
 # Intake
 
 In plain words: this is the first conversation with someone you are going to coach.
