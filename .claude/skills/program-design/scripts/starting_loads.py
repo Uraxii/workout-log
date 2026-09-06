@@ -28,6 +28,16 @@ def blocks_with_start(program: dict[str, Any]) -> Iterator[dict[str, Any]]:
                 yield block
 
 
+def block_exercise(block: dict[str, Any]) -> str:
+    """The lift a `start`-bearing block trains. Most blocks name it directly
+    on `exercise`; nSuns' T1 blocks run one lift through several rep/pct
+    steps in `sequence` instead, so the name lives on the first step
+    (workout-log-bv0)."""
+    if "exercise" in block:
+        return block["exercise"]
+    return block["sequence"][0]["exercise"]
+
+
 def resolve(program: dict[str, Any], on_file: dict[str, tuple[float, int]],
             unit: str, preferences: dict[str, str],
             progression: dict[str, dict[str, Any]]) -> list[str]:
@@ -37,10 +47,11 @@ def resolve(program: dict[str, Any], on_file: dict[str, tuple[float, int]],
     is skipped in silence: it starts wherever the template says."""
     clauses = []
     for block in blocks_with_start(program):
-        baseline = on_file.get(block["exercise"])
+        name = block_exercise(block)
+        baseline = on_file.get(name)
         if baseline is None:
             continue
-        resolved = _one_block(block, *baseline, unit, preferences)
+        resolved = _one_block(block, name, *baseline, unit, preferences)
         if resolved is None:
             continue
         name, record, clause = resolved
@@ -49,8 +60,9 @@ def resolve(program: dict[str, Any], on_file: dict[str, tuple[float, int]],
     return clauses
 
 
-def _one_block(block: dict[str, Any], weight: float, reps: int, unit: str,
-               preferences: dict[str, str]) -> tuple[str, dict[str, Any], str] | None:
+def _one_block(block: dict[str, Any], name: str, weight: float, reps: int,
+               unit: str, preferences: dict[str, str]
+               ) -> tuple[str, dict[str, Any], str] | None:
     """One block's first working weight: the progression record carrying it,
     and the clause explaining it. Arithmetic in kilograms, answer in her own
     unit, floored to what her gym loads (`docs/unit-and-magnitude-model.md`
@@ -63,7 +75,6 @@ def _one_block(block: dict[str, Any], weight: float, reps: int, unit: str,
     if start_load is None:
         return None
     effective_1rm = loads.to_display(effective_1rm_kg, unit)
-    name = block["exercise"]
     record = {
         "training_max": loads.round_down_to_increment(effective_1rm, unit, preferences),
         "next_target": loads.format_load(start_load, unit),
