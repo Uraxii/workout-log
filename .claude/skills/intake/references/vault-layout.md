@@ -37,14 +37,11 @@ One markdown note per session. The session's own fields are YAML front matter.
 Its sets are the rows of one markdown table in the body.
 
 	---
-	Title: 2026-09-01 A1
 	Date: 2026-09-01
 	Timezone: UTC
 	Status: closed
 	Start time: 2026-09-01T18:00:00+00:00
 	End time: 2026-09-01T18:45:00+00:00
-	Program: GZCLP
-	Day: A1 (squat T1, bench T2)
 	week_index: 36
 	Readiness: 4
 	---
@@ -54,6 +51,8 @@ Its sets are the rows of one markdown table in the body.
 	| Barbell Squat | 1 | 2026-09-01T18:00:00+00:00 | 225 | lb | absolute | 5 | msg-3 | |
 	| Barbell Squat | 2 | 2026-09-01T18:00:00+00:00 | 225 | lb | absolute | 5 | msg-3 | |
 	| Barbell Squat | 3 | 2026-09-01T18:00:00+00:00 | 225 | lb | absolute | 5 | msg-3 | Barbell Squat set 1-3, 225 lb x 5. Set 4 at 225 lb. |
+
+A value that contains `|` is written `\|`, so the pipe does not end the cell.
 
 The file name carries the date, which is safe because `Date` is frozen at open
 (rule L4, `Sessions.Date.frozen_at`) and a rename would break Obsidian links.
@@ -72,13 +71,16 @@ Four properties are never stored:
 | Property | Comes back from |
 |---|---|
 | `Session` | the note the row is in |
-| `Set` | `Exercise`, `Set index` and the magnitudes |
-| `write_key` | `Timestamp`, the note's `Timezone`, `Exercise`, `Set index` and `attempt`, joined with `\|` |
+| `Set` | `Notes`, or `Exercise`, `Set index` and the magnitudes (`session_runner.titles.title_for`) |
+| `write_key` | the note's `Start time` and `Timezone`, then `Exercise`, `Set index` and `attempt`, joined with `\|` (`session_runner.rows.write_key`) |
 | `e1RM` | `load_adjust.read_layer.e1rm` |
 
 A stored copy of any of the four would be a second source of truth that a hand
 edit to the visible row could put out of step. A derived `write_key` moves
-with the row instead.
+with the row instead. Both session fields it needs, `Start time` and
+`Timezone`, are in the note's front matter, so every row in one note derives
+the same session half. The row's own `Timestamp` is not one of them: it moves
+set by set, and the session half does not.
 
 `e1RM` is a Notion `formula`, and a markdown table cannot compute one.
 `formula` columns are never stored and are computed on read by

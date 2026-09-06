@@ -51,11 +51,12 @@ NOTE_FOLDER = "sessions"
 
 # The properties a note never carries, keyed by database so a third
 # database is a row here and not a new branch. Each one is recoverable from
-# what the row already shows, and a stored copy would be a second source of
+# what the note already shows, and a stored copy would be a second source of
 # truth that a hand edit could put out of step: `Session` is the note the
-# row sits in, `Set` restates the row, `write_key` is derived from the
-# fields beside it, and `e1RM` is a Notion formula a markdown table cannot
-# compute (`references/vault-layout.md`).
+# row sits in, `Set` restates the row, `write_key` joins the note's frozen
+# `Start time` and `Timezone` with the row's `Exercise`, `Set index` and
+# `attempt`, and `e1RM` is a Notion formula a markdown table cannot compute
+# (`references/vault-layout.md`).
 NOT_STORED: dict[str, frozenset[str]] = {
     "Sets": frozenset({"Session", "Set", "write_key", "e1RM"}),
     "Sessions": frozenset(),
