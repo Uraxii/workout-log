@@ -4,6 +4,23 @@ In plain words: this repo is a personal trainer built as three Claude skills.
 They are markdown instruction files and nothing else. An agent reads them and
 supplies the coaching judgment itself.
 
+## Why markdown and not code
+
+The hard part of coaching is judgment, and Python can only hold rules, so every
+attempt to write the trainer as code turned into a decision table that was wrong
+for the person standing in front of it.
+The agent already has the judgment.
+What it does not have is this person's facts and your standards, and markdown
+delivers exactly those and nothing else.
+Code also has to be trusted, so it needs tests, but a test of coaching judgment
+is a test of the model, which is how 4,700 lines ended up existing to satisfy a
+suite that proved nothing.
+
+The research is the exception, and it ships with the skills.
+It is what the agent reads when a branch needs depth the skill does not carry,
+so a skill cites `research/` by path instead of reproducing it.
+That is why a skill can stay short without going shallow.
+
 ## What is here
 
 Three skills, in this order:
