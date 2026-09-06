@@ -1,7 +1,7 @@
 verb	target	field	value
 config-write	config/athlete	storage_platform	notion
 config-write	config/athlete	intake_cursor	1
-config-write	config/athlete	notion_parent_page_id	24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
+config-write	config/athlete	storage_root	24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
 config-write	config/athlete	intake_cursor	2
 database-create	Sets	Parent	24b1f9c8-e4b7-801d-9f3a-c2d5e6f70a19
 database-create	Sets	Schema	CREATE TABLE ("Set" TITLE, "Session" RICH_TEXT, "Exercise" RICH_TEXT, "Set index" NUMBER, "Set type" SELECT('warmup', 'working', 'backoff', 'dropset'), "is_amrap" CHECKBOX, "to_failure" CHECKBOX, "RPE" NUMBER, "RIR" NUMBER, "Timestamp" DATE, "machine_setting" RICH_TEXT, "Side" SELECT('both', 'left', 'right'), "reps_left" NUMBER, "reps_right" NUMBER, "Notes" RICH_TEXT, "Load" NUMBER, "Unit" SELECT('lb', 'kg'), "load_kind" SELECT('absolute', 'added', 'assist'), "Reps" NUMBER, "duration_s" NUMBER, "distance" NUMBER, "distance_unit" SELECT('m', 'km', 'mi'), "level" NUMBER, "interval_s" NUMBER, "attempt" NUMBER, "write_key" RICH_TEXT, "source_message_id" RICH_TEXT, "Pain flag" SELECT('none', 'niggle', 'stop'), "confirm_line" RICH_TEXT, "stale" CHECKBOX, "e1RM" FORMULA('if(prop("Set type") == "working" and prop("Reps") >= 1 and prop("Reps") <= 10, prop("Load") * 36 / (37 - prop("Reps")), empty())'))
@@ -31,7 +31,7 @@ config-read	agent/progression-state	*	0
 row-query	Sets	*	0
 row-query	Sessions	*	0
 row-query	Sessions	Status=open	0
-say	intake	msg-1	"Where do you want your training log kept? Notion is what I can write to today. Name anything else and I'll tell you straight away rather than half build it."
+say	intake	msg-1	"Where do you want your training log kept? Notion and Obsidian are what I can write to today. Name anything else and I'll tell you straight away rather than half build it."
 say	intake	msg-2	"First, where should I put your logs? Make a blank Notion page, share it with this connection, then paste the page link here."
 say	intake	msg-3	"What timezone are you in? I need it as an IANA name, like America/Los_Angeles or Europe/London, so a late session lands on the right day."
 say	intake	msg-4	"I don't know that zone. It's Area/City, capitals and all, like America/New_York or Australia/Sydney."
