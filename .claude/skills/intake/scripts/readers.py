@@ -47,12 +47,14 @@ def page_id(line: str) -> str | None:
 
 
 def vault_path(line: str) -> str | None:
-    """The vault folder path in the line, exactly as she typed it.
+    """The whole line, when it starts with `/` or `~`. Otherwise `None`.
 
-    The other half of the same question `page_id` answers: a store's root,
-    in the only form that store understands. A first token starting with
-    `/` or `~` answers; anything else is re-asked rather than stored to
-    fail when the first note is written.
+    A vault folder name can hold a space, as `~/Documents/Obsidian Vault`
+    does, so the answer is the whole stripped line and never its first
+    word. Extra words then make the path fail loudly when the first note is
+    written, which this repo prefers to a shorter path that still looks
+    valid and is silently wrong. A line naming no path answers nothing and
+    is re-asked.
 
     Nothing is expanded and nothing is normalised. `~` stays `~` and a
     trailing slash stays a trailing slash, because the model performs the
@@ -60,10 +62,10 @@ def vault_path(line: str) -> str | None:
     never typed. That also keeps this reader, and `vault.py` behind it,
     free of `pathlib` and of the filesystem.
     """
-    words = line.split()
-    if not words or not words[0].startswith(("/", "~")):
+    stripped = line.strip()
+    if not stripped.startswith(("/", "~")):
         return None
-    return words[0]
+    return stripped
 
 
 def timezone(line: str) -> str | None:
