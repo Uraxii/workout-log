@@ -6,10 +6,14 @@ It is done when they have a plan they can read, follow, and argue with.
 
 ## Before you write anything
 
-- `medical-screening` has to have cleared them first. Until it has, there is no
-  program to write.
+- `medical-screening` has to have been through.
+  If it flagged something, there is no program to write yet.
+  If nobody has asked yet, write the block, and say at the top of it that it does
+  not start until those four answers come back.
 - If they train for a sport, run the needs analysis in
   `research/09-sport-specific-programming.md` first.
+  If the sport has weight classes, `nutrition` comes before you write, not after
+  the plan turns out to be undoable.
 
 ## What the program is for
 
@@ -24,6 +28,9 @@ It is done when they have a plan they can read, follow, and argue with.
 
 - Training age from how fast they adapt, not how many years they have trained.
   Someone back after five years off progresses like a novice for a few weeks.
+- If they are on hormones, the direction and the start date change how fast
+  strength moves and what the body will do without any training at all.
+  `research/11-transgender-clients-and-hrt.md` has it. Nothing here gates on it.
 - The honest number of sessions, counting the weeks that go wrong.
   A three-session plan that happens beats a five-session plan that does not.
 
@@ -47,6 +54,14 @@ It is done when they have a plan they can read, follow, and argue with.
   vocabulary and not a measured dose. Start at the low end and let the log move it.
 - Program against the named restriction, not against general stiffness.
   Pick the version of the movement they can do today.
+- A position they cannot get into is an exercise selection problem and it is
+  yours, because nothing hurts and so `pain-and-injury` never wakes up.
+  Pick the version that asks less of that position. A bar held in the elbows
+  needs shoulders that a bar on the back does not.
+  It may be their proportions rather than their range. It does not matter which,
+  because you pick a different movement either way, and they do not have to earn
+  the old one back.
+  Name the movement that is out, in the plan, so nobody puts it back by accident.
 - The injury-prevention work is the last thing cut when a session runs short,
   not the first.
 

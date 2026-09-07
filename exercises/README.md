@@ -1,6 +1,6 @@
 # Exercise defaults
 
-`defaults.json` is 92 exercises the agent reads when it builds a program. It
+`defaults.json` is 103 exercises the agent reads when it builds a program. It
 is package reference data and is **never written to the athlete's Notion
 workspace**: Notion holds logs only. Authored by hand, not generated.
 

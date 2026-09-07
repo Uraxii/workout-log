@@ -24,9 +24,14 @@ This page says which hat you are wearing right now, and when to swap it.
 - `head-coach` first. Everything below is shaped by what they want and by when.
 - `medical-screening` before a single set is written. It is a gate, not a step.
 - `sport-scientist` next, to find out where they are starting from.
-- `strength-coach` writes the plan.
+- `nutrition` before the plan and not after it, any time the goal involves
+  losing weight, making a weight class, or gaining size.
+  Food decides whether the plan can work at all, so it is an input.
+- `mental-skills` before the plan too. How much they will actually do belongs in
+  the plan, not in the postmortem of the plan.
+- `strength-coach` writes it, with all of that in hand.
 - Then it loops. `strength-coach` runs the sessions, `sport-scientist` reads
-  them, and the other three interrupt whenever they need to.
+  them, and `pain-and-injury` interrupts whenever it has to.
 
 ## When two hats disagree
 

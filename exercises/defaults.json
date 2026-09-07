@@ -1,5 +1,10 @@
 [
   {
+    "name": "90/90 Hip Switch",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
     "name": "ATG Split Squat",
     "measure": "weight_reps",
     "source": "extra"
@@ -17,6 +22,16 @@
   {
     "name": "Archer Pull-Up",
     "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Band Pull-Apart",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Band Shoulder External Rotation",
+    "measure": "weight_reps",
     "source": "extra"
   },
   {
@@ -70,6 +85,11 @@
     "source": "free-exercise-db"
   },
   {
+    "name": "Bird Dog",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
     "name": "Bodyweight Squat",
     "measure": "reps_only",
     "source": "free-exercise-db"
@@ -110,6 +130,16 @@
     "source": "extra"
   },
   {
+    "name": "Couch Stretch",
+    "measure": "hold_time",
+    "source": "extra"
+  },
+  {
+    "name": "Dead Bug",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
     "name": "Devil Press",
     "measure": "weight_reps",
     "source": "extra"
@@ -117,6 +147,11 @@
   {
     "name": "Diamond Push-Up",
     "measure": "reps_only",
+    "source": "extra"
+  },
+  {
+    "name": "Doorway Pec Stretch",
+    "measure": "hold_time",
     "source": "extra"
   },
   {
@@ -245,6 +280,11 @@
     "source": "free-exercise-db"
   },
   {
+    "name": "Neck Isometric Hold",
+    "measure": "hold_time",
+    "source": "extra"
+  },
+  {
     "name": "Negative Pull-Up",
     "measure": "reps_only",
     "source": "extra"
@@ -293,6 +333,11 @@
     "name": "Overhead Squat",
     "measure": "weight_reps",
     "source": "free-exercise-db"
+  },
+  {
+    "name": "Pallof Press",
+    "measure": "weight_reps",
+    "source": "extra"
   },
   {
     "name": "Parallel Bar Dip",
@@ -445,6 +490,11 @@
     "source": "extra"
   },
   {
+    "name": "Wall Slide",
+    "measure": "reps_only",
+    "source": "extra"
+  },
+  {
     "name": "Wall Walk",
     "measure": "reps_only",
     "source": "extra"
@@ -453,6 +503,11 @@
     "name": "Wide-Grip Lat Pulldown",
     "measure": "weight_reps",
     "source": "free-exercise-db"
+  },
+  {
+    "name": "Zercher Squat",
+    "measure": "weight_reps",
+    "source": "extra"
   },
   {
     "name": "Zottman Curl",

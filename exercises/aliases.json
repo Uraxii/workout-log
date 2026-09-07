@@ -123,5 +123,17 @@
   "diamond push up": "Diamond Push-Up",
   "diamond push ups": "Diamond Push-Up",
   "run": "Running",
-  "walk": "Walking"
+  "walk": "Walking",
+  "zercher": "Zercher Squat",
+  "zercher squat": "Zercher Squat",
+  "zsq": "Zercher Squat",
+  "pallof": "Pallof Press",
+  "neck iso": "Neck Isometric Hold",
+  "neck isos": "Neck Isometric Hold",
+  "pull apart": "Band Pull-Apart",
+  "band pullapart": "Band Pull-Apart",
+  "ext rotation": "Band Shoulder External Rotation",
+  "deadbug": "Dead Bug",
+  "birddog": "Bird Dog",
+  "90/90": "90/90 Hip Switch"
 }

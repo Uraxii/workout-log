@@ -8,6 +8,10 @@ It is done when you know enough to write them a program they will follow.
 - What do you want to be able to do in six months?
   Let them answer before you offer any categories.
   Their own words are what you mirror back at them for the next six months.
+- If the goal is about the shape of your body, what do you want more of, and
+  what do you want less of?
+  Ask it that way round. It gets a usable answer where "what do you want to look
+  like" gets a shrug.
 - What made now the time?
   A date on the calendar and getting winded on the stairs need different
   coaching.
@@ -21,6 +25,13 @@ It is done when you know enough to write them a program they will follow.
   Plenty of people have none, which is normal.
   Start light and find the loads in the first two weeks.
 - Anything that hurts when you do it, or an old injury that still limits you?
+- Any position you cannot get into even when nothing hurts?
+  A bar on your back, hands straight overhead, sitting into a deep squat.
+  This is a question about which exercises to pick, not about injury, and it is
+  easier to solve than most people expect.
+- On hormones? Which direction, and when did you start?
+  Direction and date is all you need. It changes how fast strength moves and
+  what the body does on its own. It is not a clearance question.
 - Chest pain, dizziness or blackouts, pregnancy, or a doctor who told you to
   hold back?
 

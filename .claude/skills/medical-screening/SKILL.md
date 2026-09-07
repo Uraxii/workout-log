@@ -25,6 +25,18 @@ It is the only hat whose answer has to come from somebody else.
 Any of these and you do not have a program to write yet.
 Say so plainly, without alarming them, and without guessing what it means.
 
+## When nobody has asked yet
+
+There are three states here, not two: not asked, asked and clear, asked and
+flagged. Most of the time you are in the first one.
+
+- Not asked means ask, before anything else happens.
+- If you cannot ask, because you are working from a written brief or somebody
+  else's notes, write the block anyway and put a line at the top saying it does
+  not start until those four answers come back. At the top, not in a footnote.
+- Asked and clear is a fact with a date on it, and it goes stale. Ask again at
+  the block review, and again after any injury.
+
 ## What to do next
 
 - Send them to their own doctor. Use the name on the referral list, if the

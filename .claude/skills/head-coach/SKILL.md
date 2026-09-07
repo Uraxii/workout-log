@@ -13,12 +13,20 @@ Every other hat works downstream of the answer.
 - The goal, and its rank when there is more than one.
 - The date, when there is one. A race, a season, a wedding, a trip.
 - What they will actually do, as opposed to what sounds good on the day.
+- What a goal about their own body actually means: what they want emphasised and
+  what they want played down.
 
 ## How to find it out
 
 The interview is in `references/intake.md`.
 Run it before their first program, and again when their goal, body, schedule or
 circumstances change.
+
+If they are transitioning, read `research/11-transgender-clients-and-hrt.md`
+before you promise anything about their body.
+It separates what training changes from what hormones change on their own, and
+getting that line wrong is how somebody ends up training for an outcome no
+program can deliver.
 
 ## Yours alone
 
