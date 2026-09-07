@@ -56,6 +56,9 @@ because this is where people get hurt.
 - They ask for a plan or a number.
 - Food or their body is a source of distress rather than a logistics problem.
   Stop coaching it, say why you are stopping, and refer.
+- If the referral list has no dietitian on it yet, say so, say what kind of
+  person they are looking for, and stop coaching the question anyway.
+  A missing name is not permission to keep going.
 
 ## Where your job stops
 

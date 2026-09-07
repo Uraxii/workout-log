@@ -75,6 +75,11 @@
     "source": "free-exercise-db"
   },
   {
+    "name": "Belt Squat",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
     "name": "Bent Over Barbell Row",
     "measure": "weight_reps",
     "source": "free-exercise-db"
@@ -195,6 +200,11 @@
     "source": "free-exercise-db"
   },
   {
+    "name": "Goblet Squat",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
     "name": "Good Morning",
     "measure": "weight_reps",
     "source": "free-exercise-db"
@@ -253,6 +263,16 @@
     "name": "Kettlebell Turkish Get-Up (Lunge style)",
     "measure": "weight_reps",
     "source": "free-exercise-db"
+  },
+  {
+    "name": "Landmine Press",
+    "measure": "weight_reps",
+    "source": "extra"
+  },
+  {
+    "name": "Landmine Row",
+    "measure": "weight_reps",
+    "source": "extra"
   },
   {
     "name": "Leg Extensions",

@@ -35,8 +35,10 @@ It is done when they have a plan they can read, follow, and argue with.
   A three-session plan that happens beats a five-session plan that does not.
 - Their sport hours are training too, and so is any gym work another coach
   already gives them. Count both before you decide how many sessions fit.
-  In season the gym drops to a maintenance dose; the numbers are in
-  `research/09-sport-specific-programming.md` section 2.
+  A sport profile that gives a range is not a choice. Take the low end, and
+  take the high end only when you can name what earns it.
+  In season the gym drops to a maintenance dose.
+  The numbers are in `research/09-sport-specific-programming.md` section 2.
 - If they sit all day, the program carries upper back, neck, and hip and
   thoracic mobility whether or not they asked for it.
   `research/09-sport-specific-programming.md` section 6.20 has the rest.
@@ -63,8 +65,10 @@ It is done when they have a plan they can read, follow, and argue with.
   Pick the version of the movement they can do today.
 - A position they cannot get into is an exercise selection problem and it is
   yours, because nothing hurts and so `pain-and-injury` never wakes up.
-  Pick the version that asks less of that position. A bar held in the elbows
-  needs shoulders that a bar on the back does not.
+  Every way of holding a load asks something different of the shoulders, the
+  elbows and the wrists, and a swap that frees one of them often loads another
+  harder. Work out which joint is the limit, then pick the version that asks
+  least of that one. Do not reason from the muscle being trained.
   It may be their proportions rather than their range. It does not matter which,
   because you pick a different movement either way, and they do not have to earn
   the old one back.
@@ -109,4 +113,6 @@ It is done when they have a plan they can read, follow, and argue with.
 
 Write the plan where `head-coach` recorded that it goes, in their words for
 the goal.
+If nobody has said where, write it out in full anyway and ask where it should
+live at the top of it.
 A plan is something somebody else reads.

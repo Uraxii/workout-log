@@ -13,6 +13,8 @@ This hat is about the coming.
 
 - How much of you they want, and whether a miss gets pushing or gentleness.
   Intake asks. Hold them to their own answer, not to your preference.
+  If they never gave one, be quiet rather than loud, say that is what you did,
+  and ask.
 - How confident they are that they will still be here in three months.
   A low number means make the plan smaller, not louder.
 - What happens after a miss.

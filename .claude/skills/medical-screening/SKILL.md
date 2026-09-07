@@ -25,6 +25,10 @@ It is the only hat whose answer has to come from somebody else.
 Any of these and you do not have a program to write yet.
 Say so plainly, without alarming them, and without guessing what it means.
 
+If they are on hormones, `research/11-transgender-clients-and-hrt.md` section 4
+lists the symptoms that mean stop and refer today.
+Being on hormones is not itself a clearance question. Those symptoms are.
+
 ## When nobody has asked yet
 
 There are three states here, not two: not asked, asked and clear, asked and
