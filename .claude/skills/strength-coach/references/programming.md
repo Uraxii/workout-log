@@ -33,6 +33,13 @@ It is done when they have a plan they can read, follow, and argue with.
   `research/11-transgender-clients-and-hrt.md` has it. Nothing here gates on it.
 - The honest number of sessions, counting the weeks that go wrong.
   A three-session plan that happens beats a five-session plan that does not.
+- Their sport hours are training too, and so is any gym work another coach
+  already gives them. Count both before you decide how many sessions fit.
+  In season the gym drops to a maintenance dose; the numbers are in
+  `research/09-sport-specific-programming.md` section 2.
+- If they sit all day, the program carries upper back, neck, and hip and
+  thoracic mobility whether or not they asked for it.
+  `research/09-sport-specific-programming.md` section 6.20 has the rest.
 
 ## The shape of the cycle
 
@@ -88,8 +95,8 @@ It is done when they have a plan they can read, follow, and argue with.
 ## What you are not training right now
 
 - Name the secondary goals, put each on a maintenance dose, and say so out loud.
-- If two goals fight, sequence them across blocks instead of splitting the cycle
-  between them.
+- If two goals fight, that is `head-coach`'s call, not yours. It ranks them and
+  tells you which block is for which. You build the block.
 
 ## When you look at it again
 

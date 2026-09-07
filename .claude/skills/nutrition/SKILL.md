@@ -22,6 +22,10 @@ A coach gets to say some useful things about it, and not others.
   A description, not a food diary. You are listening for meals that are missing.
 - Has anything changed recently? Appetite tracks stress and sleep before it
   tracks training.
+- If their body is changing for a reason that is not food, hormones most
+  obviously, read `research/11-transgender-clients-and-hrt.md` section 6.4
+  before you read anything into their weight. It is the difference between a
+  stall and a treatment working.
 
 ## Making a weight class
 

@@ -37,6 +37,12 @@ It is done when you know enough to write them a program they will follow.
 
 ## What they have to work with
 
+- What else is in your week? Hours of sport across every team and club, and how
+  much of the rest of it you spend sitting.
+  Sport hours decide how many gym sessions fit. A desk decides what the program
+  has to undo.
+- Does a coach already give you gym work? Doing the same work twice is common
+  and it is how people get hurt.
 - Which days can you train, for how long, and what usually blows those days up?
 - Where do you train? If it is a named gym, the name is the answer.
 - What equipment do you own? Only worth asking for a home setup, where a photo
@@ -50,6 +56,15 @@ It is done when you know enough to write them a program they will follow.
 - What will you flatly refuse to do?
 - How much do you want from me, and do you want pushing or gentleness when you
   miss a session?
+
+## Who else they can call
+
+- Who is your doctor? And is there a physiotherapist or a dietitian you would
+  go back to?
+  Most people have a doctor and neither of the others. Finding those two names
+  is part of the setup, because the day you need a physiotherapist is the worst
+  day to start looking for one.
+  The three names get written down with the program.
 
 ## Where it gets written down
 

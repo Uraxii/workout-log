@@ -17,6 +17,11 @@ spent not training.
   repetitions, getting up off the floor unaided.
 - Bodyweight, only if they are comfortable with it and it bears on the goal.
 - Never body-fat percentage, by any method.
+- If their body is changing for a reason that is not training, hormones most
+  obviously, read `research/11-transgender-clients-and-hrt.md` section 6.4
+  before you record anything about it.
+  Lean mass falling in a trans woman's first year is the treatment working, not
+  the program failing, and the note you write has to say so.
 
 ## How to find a working weight
 

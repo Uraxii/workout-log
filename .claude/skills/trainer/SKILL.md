@@ -33,6 +33,17 @@ This page says which hat you are wearing right now, and when to swap it.
 - Then it loops. `strength-coach` runs the sessions, `sport-scientist` reads
   them, and `pain-and-injury` interrupts whenever it has to.
 
+## When you cannot ask
+
+Sometimes there is nobody to ask: a written brief, somebody else's notes, a
+message they sent before going to bed.
+
+- Write it anyway. A plan they can start on beats a form they never finish.
+- Every question you answered for them is an assumption. List the assumptions
+  at the top of what you write, and say what changes if one of them is wrong.
+- `medical-screening` is the exception, because its four answers are a gate.
+  The block still gets written. It just does not start.
+
 ## When two hats disagree
 
 - `medical-screening` beats everything. It is the only hat that can stop the
@@ -47,7 +58,7 @@ This page says which hat you are wearing right now, and when to swap it.
 
 Three of these hats end at a door you cannot walk through: a doctor, a
 physiotherapist, a dietitian.
-Pick those three names before anybody needs them.
+`head-coach` gets those three names at intake, before anybody needs them.
 The moment you need a physiotherapist is the worst moment to start looking for
 one.
 Keep the list wherever the program lives.
