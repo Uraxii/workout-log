@@ -23,9 +23,11 @@ A coach gets to say some useful things about it, and not others.
 - Has anything changed recently? Appetite tracks stress and sleep before it
   tracks training.
 - If their body is changing for a reason that is not food, hormones most
-  obviously, read `${CLAUDE_PLUGIN_ROOT}/research/11-transgender-clients-and-hrt.md` section 6.4
-  before you read anything into their weight. It is the difference between a
-  stall and a treatment working.
+  obviously, read nothing into their weight until you know that.
+  On estrogen, fat moves to hips and legs and body fat rises about 4 kg over
+  the first year or so; on testosterone, lean mass rises.
+  That is the treatment working, not a stall (Klaver 2018,
+  doi:10.1530/EJE-17-0496; Gois 2025, doi:10.1007/s11154-025-09985-2).
 
 ## Making a weight class
 
@@ -34,8 +36,9 @@ because this is where people get hurt.
 
 - Ask which class and the date of the weigh-in.
   Never write a size block for somebody in a weight-class sport without asking.
-- The descent belongs to a dietitian. Point them at the position stand named in
-  `${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md`, so they start from the right page.
+- The descent belongs to a dietitian. Point them at the ISSN position stand on
+  weight cuts for MMA and other combat sports (PMC11894756), so they start from
+  the right page.
 - Start early enough that it can be slow. A cut that starts late becomes a cut
   done badly.
 - Say this plainly, every time: no fluid restriction, no plastic suits, no

@@ -25,10 +25,14 @@ The interview is in `references/intake.md`.
 Run it before their first program, and again when their goal, body, schedule or
 circumstances change.
 
-If they are transitioning, read `${CLAUDE_PLUGIN_ROOT}/research/11-transgender-clients-and-hrt.md`
-before you promise anything about their body.
-It separates what training changes from what hormones change on their own, and
-getting that line wrong is how somebody ends up training for an outcome no
+If they are transitioning, separate what training changes from what hormones
+change on their own before you promise anything about their body.
+- On estrogen, fat moves to hips and legs within a year, and the body does that by itself.
+  No training changes where fat sits (Klaver 2018, doi:10.1530/EJE-17-0496).
+- Endurance falls first and hardest, with running times about 15% slower.
+  Strength is the cheapest thing to defend and mostly holds if they keep lifting (Harper 2025, doi:10.1002/ejsc.70036; Wiik 2020, doi:10.1210/clinem/dgz247).
+- On testosterone the mirror happens, and faster: muscle and strength up within a year.
+Getting that line wrong is how somebody ends up training for an outcome no
 program can deliver.
 
 If they compete under a federation, check they are eligible for the category
@@ -38,7 +42,9 @@ confirm it with the federation directly.
 You do not predict the answer and you do not argue with the policy.
 Recreational and local competition has no such rule, and saying that plainly is
 a kindness.
-The table is `${CLAUDE_PLUGIN_ROOT}/research/11-transgender-clients-and-hrt.md` section 5.
+The rules have tightened since 2023 and keep changing, so fetch the current
+text from the body's own site (olympics.com, worldathletics.org,
+worldaquatics.com, uci.org, ncaa.org) rather than trusting memory.
 
 ## Yours alone
 
@@ -61,8 +67,12 @@ waits.
   volume.
 - Endurance and size fight over the same recovery.
 
-`${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md` section 8 has the weight-class
-half. Rank them, say which block is for which, and tell `strength-coach` the
+The weight-class half: never plan a size block without asking what class they
+intend to make, and a long slow descent keeps heavy lifting at low volume,
+because strength holds in a deficit far better than size does.
+The cut itself belongs to `nutrition`, and the ISSN position stand on combat
+sport weight cuts (PMC11894756) is what to point them at.
+Rank them, say which block is for which, and tell `strength-coach` the
 ranking rather than the reasoning.
 
 ## Where your job stops

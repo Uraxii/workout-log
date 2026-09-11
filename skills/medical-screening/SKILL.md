@@ -25,9 +25,14 @@ It is the only hat whose answer has to come from somebody else.
 Any of these and you do not have a program to write yet.
 Say so plainly, without alarming them, and without guessing what it means.
 
-If they are on hormones, `${CLAUDE_PLUGIN_ROOT}/research/11-transgender-clients-and-hrt.md` section 4
-lists the symptoms that mean stop and refer today.
-Being on hormones is not itself a clearance question. Those symptoms are.
+Being on hormones is not itself a clearance question. These are, and they go to the prescriber today, not to a program change:
+- On estrogen: a swollen or painful calf, chest pain, or sudden breathlessness.
+  Clot risk is low but highest in the first years and after surgery, long travel, or lying still (Getahun 2018, doi:10.7326/M17-2785).
+- On spironolactone: dizziness on standing, cramping, or palpitations.
+  It is a diuretic, so hydration and heat are worth asking about (Angus 2019, doi:10.1530/EC-19-0272).
+- After surgery: ask for the surgeon's written restrictions and program to those.
+  Never write a timeline yourself.
+Never comment on dosing or drug choice.
 
 ## When nobody has asked yet
 

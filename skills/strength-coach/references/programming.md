@@ -10,8 +10,12 @@ It is done when they have a plan they can read, follow, and argue with.
   If it flagged something, there is no program to write yet.
   If nobody has asked yet, write the block, and say at the top of it that it does
   not start until those four answers come back.
-- If they train for a sport, run the needs analysis in
-  `${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md` first.
+- If they train for a sport, run the needs analysis first: the sport, level
+  and hours a week of practice; which movements and joints it loads; which
+  qualities it pays for; how long a bout lasts and how long the rests are;
+  which injuries are common in it and in them; then two or three field tests
+  that map to those (NSCA, Essentials of Strength Training and Conditioning,
+  5th ed.).
   If the sport has weight classes, `nutrition` comes before you write, not after
   the plan turns out to be undoable.
 
@@ -30,18 +34,24 @@ It is done when they have a plan they can read, follow, and argue with.
   Someone back after five years off progresses like a novice for a few weeks.
 - If they are on hormones, the direction and the start date change how fast
   strength moves and what the body will do without any training at all.
-  `${CLAUDE_PLUGIN_ROOT}/research/11-transgender-clients-and-hrt.md` has it. Nothing here gates on it.
+  On estrogen, strength mostly holds if they lift while muscle falls about 5%
+  in year one; on testosterone, muscle and strength climb about 15% in a year
+  (Wiik 2020, doi:10.1210/clinem/dgz247). Nothing here gates on it.
 - The honest number of sessions, counting the weeks that go wrong.
   A three-session plan that happens beats a five-session plan that does not.
 - Their sport hours are training too, and so is any gym work another coach
   already gives them. Count both before you decide how many sessions fit.
   A sport profile that gives a range is not a choice. Take the low end, and
   take the high end only when you can name what earns it.
-  In season the gym drops to a maintenance dose.
-  The numbers are in `${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md` section 2.
+  In season the gym drops to a maintenance dose: one or two sessions a week,
+  two to four lifts each, under forty minutes, load kept heavy.
+  One heavy session a week held strength through a twelve-week season and one
+  every second week lost it (Rønnestad 2011, J Strength Cond Res 25(10)).
 - If they sit all day, the program carries upper back, neck, and hip and
   thoracic mobility whether or not they asked for it.
-  `${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md` section 6.20 has the rest.
+  Two to three sessions a week and no season to manage.
+  Breaks from sitting, sleep and a warm-up do more than any wrist gadget
+  (Sports Medicine Open 2025, doi:10.1186/s40798-025-00971-1).
 
 ## The shape of the cycle
 
@@ -51,16 +61,19 @@ It is done when they have a plan they can read, follow, and argue with.
   cycle before you use it.
 - Hardest and most technical work first: large before small, multi-joint before
   single-joint, heavy before light.
-  An endurance goal orders itself differently. That is in
-  `${CLAUDE_PLUGIN_ROOT}/research/08-goal-specific-programming.md`.
+  An endurance goal orders itself differently: most sessions easy, one or two
+  hard and kept apart, roughly 80/20 once the volume supports it (Seiler 2010,
+  PMID 20861519).
 - Hard cardio never lands next to heavy lower body, either side of it.
 
 ## What goes in a session
 
 - Exercises from `${CLAUDE_PLUGIN_ROOT}/exercises/`, that fit the room they actually train in.
 - How much: sets, reps, load, and rest, chosen for the ranked goal.
-  The set counts in `${CLAUDE_PLUGIN_ROOT}/research/08-goal-specific-programming.md` are planning
-  vocabulary and not a measured dose. Start at the low end and let the log move it.
+  Set counts by goal are planning vocabulary and not a measured dose: strength
+  wants heavy and few, size wants a weekly count of hard sets that climbs, and
+  both start at the low end (ACSM position stand on resistance training, PMID
+  19204579). Let the log move it.
 - Program against the named restriction, not against general stiffness.
   Pick the version of the movement they can do today.
 - A position they cannot get into is an exercise selection problem and it is
