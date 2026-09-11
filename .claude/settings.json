@@ -1,0 +1,8 @@
+{
+  "extraKnownMarketplaces": {
+    "uraxii-plugins": {
+      "source": { "source": "github", "repo": "Uraxii/workout-log" }
+    }
+  },
+  "enabledPlugins": { "workout-trainer@uraxii-plugins": true }
+}
