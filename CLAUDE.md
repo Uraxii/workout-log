@@ -39,9 +39,13 @@ Eight skills. One router and seven hats.
 is a 647-page knowledgebase, gitignored and irreplaceable. `exercises/` holds
 the exercise catalog. Read the research before writing a skill. Do not re-run it.
 
+This repo is a Claude Code plugin.
+Skills cite `research/` and `exercises/` through `${CLAUDE_PLUGIN_ROOT}` so the paths resolve after install.
+Dev loop is `claude --plugin-dir .`.
+
 ## How these skills are written
 
-Read `.claude/skills/head-coach/references/intake.md` first. It is the worked
+Read `skills/head-coach/references/intake.md` first. It is the worked
 example. It took four rewrites to get to 50 lines and the earlier drafts were
 321.
 

@@ -11,7 +11,7 @@ It is done when they have a plan they can read, follow, and argue with.
   If nobody has asked yet, write the block, and say at the top of it that it does
   not start until those four answers come back.
 - If they train for a sport, run the needs analysis in
-  `research/09-sport-specific-programming.md` first.
+  `${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md` first.
   If the sport has weight classes, `nutrition` comes before you write, not after
   the plan turns out to be undoable.
 
@@ -30,7 +30,7 @@ It is done when they have a plan they can read, follow, and argue with.
   Someone back after five years off progresses like a novice for a few weeks.
 - If they are on hormones, the direction and the start date change how fast
   strength moves and what the body will do without any training at all.
-  `research/11-transgender-clients-and-hrt.md` has it. Nothing here gates on it.
+  `${CLAUDE_PLUGIN_ROOT}/research/11-transgender-clients-and-hrt.md` has it. Nothing here gates on it.
 - The honest number of sessions, counting the weeks that go wrong.
   A three-session plan that happens beats a five-session plan that does not.
 - Their sport hours are training too, and so is any gym work another coach
@@ -38,10 +38,10 @@ It is done when they have a plan they can read, follow, and argue with.
   A sport profile that gives a range is not a choice. Take the low end, and
   take the high end only when you can name what earns it.
   In season the gym drops to a maintenance dose.
-  The numbers are in `research/09-sport-specific-programming.md` section 2.
+  The numbers are in `${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md` section 2.
 - If they sit all day, the program carries upper back, neck, and hip and
   thoracic mobility whether or not they asked for it.
-  `research/09-sport-specific-programming.md` section 6.20 has the rest.
+  `${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md` section 6.20 has the rest.
 
 ## The shape of the cycle
 
@@ -52,14 +52,14 @@ It is done when they have a plan they can read, follow, and argue with.
 - Hardest and most technical work first: large before small, multi-joint before
   single-joint, heavy before light.
   An endurance goal orders itself differently. That is in
-  `research/08-goal-specific-programming.md`.
+  `${CLAUDE_PLUGIN_ROOT}/research/08-goal-specific-programming.md`.
 - Hard cardio never lands next to heavy lower body, either side of it.
 
 ## What goes in a session
 
-- Exercises from `exercises/`, that fit the room they actually train in.
+- Exercises from `${CLAUDE_PLUGIN_ROOT}/exercises/`, that fit the room they actually train in.
 - How much: sets, reps, load, and rest, chosen for the ranked goal.
-  The set counts in `research/08-goal-specific-programming.md` are planning
+  The set counts in `${CLAUDE_PLUGIN_ROOT}/research/08-goal-specific-programming.md` are planning
   vocabulary and not a measured dose. Start at the low end and let the log move it.
 - Program against the named restriction, not against general stiffness.
   Pick the version of the movement they can do today.

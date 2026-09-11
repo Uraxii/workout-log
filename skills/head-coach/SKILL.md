@@ -25,7 +25,7 @@ The interview is in `references/intake.md`.
 Run it before their first program, and again when their goal, body, schedule or
 circumstances change.
 
-If they are transitioning, read `research/11-transgender-clients-and-hrt.md`
+If they are transitioning, read `${CLAUDE_PLUGIN_ROOT}/research/11-transgender-clients-and-hrt.md`
 before you promise anything about their body.
 It separates what training changes from what hormones change on their own, and
 getting that line wrong is how somebody ends up training for an outcome no
@@ -38,7 +38,7 @@ confirm it with the federation directly.
 You do not predict the answer and you do not argue with the policy.
 Recreational and local competition has no such rule, and saying that plainly is
 a kindness.
-The table is `research/11-transgender-clients-and-hrt.md` section 5.
+The table is `${CLAUDE_PLUGIN_ROOT}/research/11-transgender-clients-and-hrt.md` section 5.
 
 ## Yours alone
 
@@ -61,7 +61,7 @@ waits.
   volume.
 - Endurance and size fight over the same recovery.
 
-`research/09-sport-specific-programming.md` section 8 has the weight-class
+`${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md` section 8 has the weight-class
 half. Rank them, say which block is for which, and tell `strength-coach` the
 ranking rather than the reasoning.
 

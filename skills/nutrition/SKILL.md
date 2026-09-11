@@ -23,7 +23,7 @@ A coach gets to say some useful things about it, and not others.
 - Has anything changed recently? Appetite tracks stress and sleep before it
   tracks training.
 - If their body is changing for a reason that is not food, hormones most
-  obviously, read `research/11-transgender-clients-and-hrt.md` section 6.4
+  obviously, read `${CLAUDE_PLUGIN_ROOT}/research/11-transgender-clients-and-hrt.md` section 6.4
   before you read anything into their weight. It is the difference between a
   stall and a treatment working.
 
@@ -35,7 +35,7 @@ because this is where people get hurt.
 - Ask which class and the date of the weigh-in.
   Never write a size block for somebody in a weight-class sport without asking.
 - The descent belongs to a dietitian. Point them at the position stand named in
-  `research/09-sport-specific-programming.md`, so they start from the right page.
+  `${CLAUDE_PLUGIN_ROOT}/research/09-sport-specific-programming.md`, so they start from the right page.
 - Start early enough that it can be slow. A cut that starts late becomes a cut
   done badly.
 - Say this plainly, every time: no fluid restriction, no plastic suits, no
