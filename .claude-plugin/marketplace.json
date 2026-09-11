@@ -1,0 +1,11 @@
+{
+  "name": "uraxii-plugins",
+  "owner": { "name": "Nicole" },
+  "plugins": [
+    {
+      "name": "workout-trainer",
+      "source": "./",
+      "description": "A personal trainer built from seven Claude Code skills, one hat per coaching role"
+    }
+  ]
+}
