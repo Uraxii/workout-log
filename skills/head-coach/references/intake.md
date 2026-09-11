@@ -68,7 +68,9 @@ It is done when you know enough to write them a program they will follow.
 
 ## Where it gets written down
 
-- Where do you want this kept? Notion, or a folder of markdown in an Obsidian vault.
+- Where do you want this kept?
+  Wherever they already keep things: a Notion page, a folder of notes, a
+  spreadsheet. Use whatever tool reaches it. Do not push them toward one.
 - Which page, or which folder?
 
 Ask once.
