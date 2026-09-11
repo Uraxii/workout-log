@@ -5,7 +5,7 @@
 .dolt/
 *.db
 .beads-credential-key
-.beads/proxieddb/
+.beads/
 
 # Knowledge base: local research cache, not shared
 .kb/

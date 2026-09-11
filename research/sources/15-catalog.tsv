@@ -1,9 +1,0 @@
-url	title	kind	cited_by	why	access
-https://github.com/yuhonas/free-exercise-db	free-exercise-db	primary	-	catalog seed named in build-plan.md s1.3; source of the 876-entry exercises.json audited here	open
-https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json	free-exercise-db exercises.json	primary	-	the actual dataset, fetched and grepped directly for this audit	open
-https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/LICENSE.md	free-exercise-db LICENSE.md	primary	-	confirms Unlicense (public domain) text	open
-https://api.github.com/repos/yuhonas/free-exercise-db	free-exercise-db GitHub repo API	primary	-	freshness check: pushed_at, stargazers_count, license.spdx_id	open
-https://wger.de/api/v2/	wger API root	primary	-	endpoint discovery for the rival probe	open
-https://wger.de/api/v2/exercise-translation/	wger exercise-translation endpoint	primary	-	English exercise names + aliases field, paginated for the probe list	open
-https://wger.de/api/v2/exerciseinfo/	wger exerciseinfo endpoint	primary	-	schema comparison: category, equipment, muscles, variation_group, translations.aliases	open
-https://wger.de/api/v2/language/	wger language endpoint	primary	-	resolved English language id (2) used to filter exercise-translation	open

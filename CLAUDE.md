@@ -17,9 +17,8 @@ Code also has to be trusted, so it needs tests, but a test of coaching judgment
 is a test of the model, which is how 4,700 lines ended up existing to satisfy a
 suite that proved nothing.
 
-The research is the exception, and it ships with the skills.
-It is what the agent reads when a branch needs depth the skill does not carry,
-so a skill cites `research/` by path instead of reproducing it.
+The research behind the skills lives in `.nikki-agents/research/`, gitignored, and does not ship.
+A skill carries the lessons it needs and cites the primary source for anything beyond them.
 That is why a skill can stay short without going shallow.
 
 ## What is here
@@ -35,12 +34,13 @@ Eight skills. One router and seven hats.
 - `nutrition`. Food, and the part of it that is a coach's.
 - `mental-skills`. Keeping them turning up.
 
-`research/` holds 26 documents and 19 source tables behind those skills. `.kb/`
-is a 647-page knowledgebase, gitignored and irreplaceable. `exercises/` holds
-the exercise catalog. Read the research before writing a skill. Do not re-run it.
+`.nikki-agents/research/` holds 26 documents and 19 source tables behind those
+skills, gitignored. `.kb/` is a 647-page knowledgebase, gitignored and
+irreplaceable. `exercises/` holds the exercise catalog and ships with the
+skills. Read the research before writing a skill. Do not re-run it.
 
 This repo is a Claude Code plugin.
-Skills cite `research/` and `exercises/` through `${CLAUDE_PLUGIN_ROOT}` so the paths resolve after install.
+Skills cite `exercises/` through `${CLAUDE_PLUGIN_ROOT}` so the path resolves after install.
 Dev loop is `claude --plugin-dir .`.
 
 ## How these skills are written
@@ -72,8 +72,9 @@ example. It took four rewrites to get to 50 lines and the earlier drafts were
   consent machinery, no compliance apparatus, no routing a person to an external
   service the agent could handle itself.
 - Trust the agent. Do not encode procedure it already has.
-- Do not reproduce a research document. The research is exhaustive on purpose.
-  The skill is not.
+- Do not reproduce a research document, and do not cite one. The research is
+  exhaustive on purpose. The skill is not. Carry the lesson and cite the
+  primary source.
 - Cut any question that would not change what gets written.
 - Ask what a real person can answer. "Any numbers you already know" got back
   "numbers? like my weight?". "Any lifts or times you remember" works. A named

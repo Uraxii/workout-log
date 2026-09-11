@@ -35,7 +35,7 @@ coaching.
 
 55 rows come from [yuhonas/free-exercise-db](https://github.com/yuhonas/free-exercise-db),
 Unlicense. 52 are written for this project, closing the gaps in
-`research/15-exercise-catalog-coverage.md`. Every row says which it is in its
+the catalog coverage research. Every row says which it is in its
 `source` field. Nothing is fetched at runtime.
 
 ## Adding one
