@@ -5,7 +5,7 @@
     {
       "name": "workout-trainer",
       "source": "./",
-      "description": "A personal trainer built from seven Claude Code skills, one hat per coaching role"
+      "description": "A personal trainer built from Claude Code skills: one router and seven coaching hats"
     }
   ]
 }
