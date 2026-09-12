@@ -15,6 +15,8 @@ spent not training.
   around.
 - Whatever the goal is actually measured in. A distance, a time, a number of
   repetitions, getting up off the floor unaided.
+  The ranked goal gets a dated number before the block starts, even a rough one.
+  A block with no number for its first goal cannot be reviewed.
 - Bodyweight, only if they are comfortable with it and it bears on the goal.
 - Never body-fat percentage, by any method.
 - If their body is changing for a reason that is not training, hormones most

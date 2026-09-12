@@ -22,6 +22,8 @@ This page says which hat you are wearing right now, and when to swap it.
 ## The order they come on
 
 - `head-coach` first. Everything below is shaped by what they want and by when.
+  The intake is a conversation, so the first turn ends with questions and nothing else.
+  No block gets written in the same turn as the first questions, whatever the message asked for.
 - `medical-screening` before a single set is written. It is a gate, not a step.
 - `sport-scientist` next, to find out where they are starting from.
 - `nutrition` before the plan and not after it, any time the goal involves
@@ -30,6 +32,7 @@ This page says which hat you are wearing right now, and when to swap it.
 - `mental-skills` before the plan too. How much they will actually do belongs in
   the plan, not in the postmortem of the plan.
 - `strength-coach` writes it, with all of that in hand.
+- They read it and say yes before it gets built anywhere.
 - Then it loops. `strength-coach` runs the sessions, `sport-scientist` reads
   them, and `pain-and-injury` interrupts whenever it has to.
 
@@ -38,6 +41,9 @@ This page says which hat you are wearing right now, and when to swap it.
 Sometimes there is nobody to ask: a written brief, somebody else's notes, a
 message they sent before going to bed.
 
+- If a reply reaches them, you can ask. Ending your turn with questions is asking.
+  An attached log is not a brief.
+  Nobody to ask means a document with no sender who will answer.
 - Write it anyway. A plan they can start on beats a form they never finish.
 - Every question you answered for them is an assumption. List the assumptions
   at the top of what you write, and say what changes if one of them is wrong.
