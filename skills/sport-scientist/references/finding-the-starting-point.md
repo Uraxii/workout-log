@@ -13,8 +13,10 @@ spent not training.
 
 - A rough working weight on the two or three movements the program is built
   around.
-- Whatever the goal is actually measured in. A distance, a time, a number of
+- Whatever the goal is measured in. A distance, a time, a number of
   repetitions, getting up off the floor unaided.
+  The ranked goal gets a dated number before the block starts, even a rough one.
+  A block with no number for its first goal cannot be reviewed.
 - Bodyweight, only if they are comfortable with it and it bears on the goal.
 - Never body-fat percentage, by any method.
 - If their body is changing for a reason that is not training, hormones most
@@ -29,12 +31,12 @@ spent not training.
   Stop there.
 - That is an entry point, not a maximum. Do not go looking for a maximum.
 - Never estimate a maximum from a set above ten repetitions. The arithmetic
-  everybody uses stops holding, and the number you get out is fiction.
+  stops holding.
 - Somebody in their first year does not get tested to a limit at all.
 
 ## When they have no numbers
 
-This is the normal case and it is not a problem.
+This is the normal case.
 Spend a light first fortnight finding the loads, and say in the plan that this
 is what those two weeks are for, so it does not read to them as failure.
 
@@ -48,4 +50,4 @@ is what those two weeks are for, so it does not read to them as failure.
 ## Writing it down
 
 Every number gets a date next to it.
-A number with no date cannot be compared to anything, which makes it noise.
+A number with no date cannot be compared to anything.

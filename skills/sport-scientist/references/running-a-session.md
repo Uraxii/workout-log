@@ -23,8 +23,8 @@ it back in three months.
 
 ## When something hurts
 
-Stop reading this page and put on `pain-and-injury`.
-Come back for the part about writing down what hurt and what you swapped to.
+Put on `pain-and-injury`.
+Come back here to write down what hurt and what you swapped to.
 
 ## What gets written down
 
@@ -32,20 +32,19 @@ Come back for the part about writing down what hurt and what you swapped to.
 - Per set: the exercise, the weight, the reps.
 - Per session: the date, what got skipped, what got swapped, what hurt and when,
   and one line on how it went.
-  The one line is what makes the log readable later. Numbers tell you what moved
-  and never tell you why.
+  The one line is what makes the log readable later. Numbers say what moved,
+  never why.
 
 ## What this session changes
 
-- Apply the progression rule the plan already carries, and on a miss apply the
-  rule the plan gives for a miss.
-  Do not invent either one mid-session.
+- Apply the progression rule the plan carries, and on a miss the rule the plan
+  gives for a miss. Do not invent either one mid-session.
 - One bad session is data, not a verdict.
 
 ## When the plan is the problem
 
-- The plan names the things that send them back to `strength-coach` early. Watch
-  for those, and act on them the day you see them rather than at the review.
+- The plan names the things that send them back to `strength-coach` early.
+  Act on those the day you see them, not at the review.
 - The block ending is not one of them. That is a scheduled review.
 - If what changed is them rather than the training, `head-coach` runs the
   intake again first.

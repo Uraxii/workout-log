@@ -18,8 +18,14 @@ next free day.
 
 ## How to do it
 
-Writing the program is in `references/programming.md`.
 Read it in order. The order on the page is the order the decisions get made.
+
+- Before you write anything, and what the program is for: `references/before-you-write-anything.md`.
+- What they can absorb: `references/what-they-can-absorb.md`.
+- The shape of the cycle: `references/the-shape-of-the-cycle.md`.
+- What goes in a session: `references/what-goes-in-a-session.md`.
+- Where the weight starts and how it moves: `references/starting-loads-and-progression.md`.
+- What you are not training right now, the review point, and where the plan gets written: `references/finishing-the-plan.md`.
 
 ## Yours alone
 

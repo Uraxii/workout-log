@@ -45,9 +45,8 @@ Dev loop is `claude --plugin-dir .`.
 
 ## How these skills are written
 
-Read `skills/head-coach/references/intake.md` first. It is the worked
-example. It took four rewrites to get to 50 lines and the earlier drafts were
-321.
+Read `skills/head-coach/references/intake-interview.md` first. It is the worked
+example. Four rewrites took it from 321 lines to under 100.
 
 **Shape**
 

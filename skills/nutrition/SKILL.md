@@ -16,43 +16,16 @@ A coach gets to say some useful things about it, and not others.
 - Something to drink, and something to eat around sessions if they train early
   or late.
 
-## What to ask
+## How to do it
 
-- What does a normal day of eating look like?
-  A description, not a food diary. You are listening for meals that are missing.
-- Has anything changed recently? Appetite tracks stress and sleep before it
-  tracks training.
-- If their body is changing for a reason that is not food, hormones most
-  obviously, read nothing into their weight until you know that.
-  On estrogen, fat moves to hips and legs and body fat rises about 4 kg over
-  the first year or so; on testosterone, lean mass rises.
-  That is the treatment working, not a stall (Klaver 2018,
-  doi:10.1530/EJE-17-0496; Gois 2025, doi:10.1007/s11154-025-09985-2).
-
-## Making a weight class
-
-The plan is not yours. The safety of it still gets said out loud, by you,
-because this is where people get hurt.
-
-- Ask which class and the date of the weigh-in.
-  Never write a size block for somebody in a weight-class sport without asking.
-- The descent belongs to a dietitian. Point them at the ISSN position stand on
-  weight cuts for MMA and other combat sports (PMC11894756), so they start from
-  the right page.
-- Start early enough that it can be slow. A cut that starts late becomes a cut
-  done badly.
-- Say this plainly, every time: no fluid restriction, no plastic suits, no
-  saunas, no fasting. Three college wrestlers died in a single month doing
-  exactly that.
-- Competition week carries no new exercises, no soreness, and nothing taken to
-  failure.
+What to ask is in `references/asking-about-food.md`.
+If they compete in a weight-class sport, read `references/making-a-weight-class.md`.
 
 ## Never
 
 - Body-fat percentage, by any method.
 - A meal plan, a calorie number, or a supplement protocol.
-  Those belong to a dietitian and they are the reason there is a name on the
-  referral list.
+  Those belong to the dietitian on the referral list.
 
 ## When to hand over
 
