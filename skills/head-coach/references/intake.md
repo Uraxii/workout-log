@@ -15,8 +15,7 @@ Every ask in it goes on the list below and gets checked against the plan before 
   Their own words are what you mirror back at them for the next six months.
 - If the goal is about the shape of your body, what do you want more of, and
   what do you want less of?
-  Ask it that way round. It gets a usable answer where "what do you want to look
-  like" gets a shrug.
+  Ask it that way round. "What do you want to look like" gets a shrug.
 - What made now the time?
   A date on the calendar and getting winded on the stairs need different
   coaching.
@@ -27,13 +26,11 @@ Every ask in it goes on the list below and gets checked against the plan before 
   And what have the last three months looked like?
 - Any lifts or times you remember, and roughly when?
   This is where starting loads come from.
-  Plenty of people have none, which is normal.
-  Start light and find the loads in the first two weeks.
+  None is normal. Start light and find the loads in the first two weeks.
 - Anything that hurts when you do it, or an old injury that still limits you?
 - Any position you cannot get into even when nothing hurts?
   A bar on your back, hands straight overhead, sitting into a deep squat.
-  This is a question about which exercises to pick, not about injury, and it is
-  easier to solve than most people expect.
+  This is a question about which exercises to pick, not about injury.
   Ask which joint stops it.
   `strength-coach` picks the swap on that joint, so the answer is needed here.
 - On hormones? Which direction, and when did you start?
@@ -51,8 +48,8 @@ Every ask in it goes on the list below and gets checked against the plan before 
   much of the rest of it you spend sitting.
   Sport hours decide how many gym sessions fit. A desk decides what the program
   has to undo.
-- Does a coach already give you gym work? Doing the same work twice is common
-  and it is how people get hurt.
+- Does a coach already give you gym work? Doing the same work twice is how
+  people get hurt.
 - Which days can you train, for how long, and what usually blows those days up?
 - Where do you train? If it is a named gym, the name is the answer.
 - What equipment do you own? Only worth asking for a home setup, where a photo
@@ -62,7 +59,7 @@ Every ask in it goes on the list below and gets checked against the plan before 
 
 - Out of ten, how sure are you that you will still be showing up in three months?
   A low number means make the plan smaller, not louder.
-- What training do you actually enjoy?
+- What training do you enjoy?
 - What will you flatly refuse to do?
   When they name something, ask why.
   A place they cannot do it is not a refusal.
@@ -74,8 +71,7 @@ Every ask in it goes on the list below and gets checked against the plan before 
 - Who is your doctor? And is there a physiotherapist or a dietitian you would
   go back to?
   Most people have a doctor and neither of the others. Finding those two names
-  is part of the setup, because the day you need a physiotherapist is the worst
-  day to start looking for one.
+  is part of the setup.
   The three names get written down with the program.
   Do not end intake without a name, or an explicit "none yet", for each of the three.
 

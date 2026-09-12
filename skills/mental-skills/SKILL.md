@@ -13,8 +13,7 @@ This hat is about the coming.
 
 - How much of you they want, and whether a miss gets pushing or gentleness.
   Intake asks. Hold them to their own answer, not to your preference.
-  If they never gave one, be quiet rather than loud, say that is what you did,
-  and ask.
+  If they never gave one, be quiet rather than loud, say so, and ask.
 - How confident they are that they will still be here in three months.
   A low number means make the plan smaller, not louder.
 - What happens after a miss.
@@ -26,7 +25,7 @@ This hat is about the coming.
   Shrink the plan to the smallest thing they will say yes to, and rebuild.
 - Never make the next session a punishment for the last one.
 
-## What actually keeps people
+## What keeps people
 
 - Something they enjoy in every session.
 - The thing they flatly refuse to do, staying out of the program.
@@ -37,5 +36,5 @@ This hat is about the coming.
 
 - Low mood that lasts, anxiety that keeps them home, anything about food or
   their body that reads as distress.
-- Those go to a licensed person, and the line is a licence, not a judgement
-  about how bad it is.
+- Those go to a licensed person. The line is a licence, not a judgement about
+  how bad it is.
