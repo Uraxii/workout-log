@@ -16,8 +16,8 @@ Without it, every session is guesswork dressed up as a plan.
 
 ## How to do it
 
-Finding the starting point is in `references/assessment.md`.
-Running and recording a session is in `references/logging.md`.
+Finding the starting point, and testing again at the end of a block, is in `references/finding-the-starting-point.md`.
+Running and recording a session, and what to do when the plan is the problem, is in `references/running-a-session.md`.
 
 ## Yours alone
 

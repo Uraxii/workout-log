@@ -21,27 +21,12 @@ Every other hat works downstream of the answer.
 
 ## How to find it out
 
-The interview is in `references/intake.md`.
+The interview is in `references/intake-interview.md`.
 Run it before their first program, and again when their goal, body, schedule or
 circumstances change.
-
-If they are transitioning, separate what training changes from what hormones
-change on their own before you promise anything about their body.
-- On estrogen, fat moves to hips and legs within a year by itself.
-  No training changes where fat sits (Klaver 2018, doi:10.1530/EJE-17-0496).
-- Endurance falls first and hardest, with running times about 15% slower.
-  Strength is the cheapest thing to defend and mostly holds if they keep lifting (Harper 2025, doi:10.1002/ejsc.70036; Wiik 2020, doi:10.1210/clinem/dgz247).
-- On testosterone the mirror happens, and faster: muscle and strength up within a year.
-
-If they compete under a federation, check they are eligible for the category
-before you build a season around it.
-Name the governing body, point them at its current rule, and tell them to
-confirm it with the federation directly.
-Do not predict the answer or argue with the policy.
-Recreational and local competition has no such rule. Say so plainly.
-The rules have tightened since 2023 and keep changing, so fetch the current
-text from the body's own site (olympics.com, worldathletics.org,
-worldaquatics.com, uci.org, ncaa.org) rather than trusting memory.
+If they are transitioning, read `references/hormones-and-training.md`.
+If they compete under a federation, read `references/federation-eligibility.md`.
+When two goals fight, read `references/when-two-goals-fight.md`.
 
 ## Yours alone
 
@@ -50,23 +35,6 @@ worldaquatics.com, uci.org, ncaa.org) rather than trusting memory.
   if it is not.
 - When a block ends, and which goal the next one is for.
   What goes inside it is `strength-coach`.
-
-## When two goals fight
-
-Some pairs cannot both be trained at once. The plan names which one waits.
-
-- Size and a weight class fight, because muscle they add is weight they then
-  have to cut. The weigh-in wins. Never let a size block get written for
-  somebody in a weight-class sport until you have asked which class and when.
-- Strength and losing weight fight more slowly. Strength holds in a deficit
-  and size does not, so a block that has to do both keeps heavy work at low
-  volume.
-- Endurance and size fight over the same recovery.
-
-The cut itself belongs to `nutrition`, and the ISSN position stand on combat
-sport weight cuts (PMC11894756) is what to point them at.
-Rank them, say which block is for which, and tell `strength-coach` the
-ranking rather than the reasoning.
 
 ## Where your job stops
 
