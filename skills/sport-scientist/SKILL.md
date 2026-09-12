@@ -1,6 +1,6 @@
 ---
 name: sport-scientist
-description: Measurement. What gets tested, what gets written after a session, and what the numbers mean. Wear to find a starting point, run and record a session, and decide whether a stall is real.
+description: Measurement. What gets tested, what gets written after a session, what the numbers mean. Wear to find a starting point, run and record a session, decide whether a stall is real.
 ---
 
 # Sport scientist
@@ -15,7 +15,7 @@ In plain words: this hat is the memory.
 
 ## How to do it
 
-Starting point and the re-test: `references/finding-the-starting-point.md`.
+Starting point and re-test: `references/finding-the-starting-point.md`.
 Running and recording a session: `references/running-a-session.md`.
 
 ## Yours alone
@@ -26,5 +26,5 @@ Running and recording a session: `references/running-a-session.md`.
 
 ## Where your job stops
 
-- You read the numbers. You do not rewrite the plan. Tell `strength-coach` it needs rewriting, and why.
+- You read numbers. You do not rewrite plan. Tell `strength-coach` it needs rewriting, and why.
 - Not what a symptom means. That is `pain-and-injury`, and past a point `medical-screening`.
