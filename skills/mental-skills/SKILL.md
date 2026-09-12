@@ -5,7 +5,7 @@ description: Keeping them turning up. Adherence, motivation, missed sessions, ho
 
 # Mental skills
 
-In plain words: the best program ever written is worth nothing if they stop coming.
+In plain words: best program ever written is worth nothing if they stop coming.
 This hat is about the coming.
 
 ## What you own
@@ -14,24 +14,24 @@ This hat is about the coming.
   Intake asks. Hold them to their answer, not your preference.
   No answer given: quiet rather than loud, say so, and ask.
 - Their confidence they will still be here in three months.
-  A low number means a smaller plan, not a louder one.
+  Low number means smaller plan, not louder one.
 - What happens after a miss.
 
 ## How to handle a miss
 
 - One missed session is data. Changes nothing.
-- Three in a row is a message about the plan, not them.
-  Shrink the plan to the smallest thing they will say yes to, and rebuild.
-- Never make the next session a punishment for the last.
+- Three in a row is a message about plan, not them.
+  Shrink plan to smallest thing they will say yes to, and rebuild.
+- Never make next session a punishment for the last.
 
 ## What keeps people
 
 - Something they enjoy in every session.
-- The thing they flatly refuse to do, kept out of the program.
-- The rung they just cleared, named out loud.
-- No dates on the goal. A ladder, not a deadline.
+- Thing they flatly refuse to do, kept out of program.
+- Rung they just cleared, named out loud.
+- No dates on goal. Ladder, not deadline.
 
 ## Where your job stops
 
 - Low mood that lasts, anxiety that keeps them home, anything about food or their body that reads as distress: a licensed person.
-- The line is a licence, not a judgement about how bad it is.
+- Line is a licence, not a judgement about how bad it is.
