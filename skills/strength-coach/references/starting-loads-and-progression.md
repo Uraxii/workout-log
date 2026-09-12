@@ -8,7 +8,7 @@ In plain words: where each load comes from, and the rule that moves it.
 - Write progression rule into plan, per exercise: what goes up, by how much, on what evidence.
   Sentence, not formula, in plan, not your head.
   Bodyweight movements, stretches and variation ladders need it too: what goes up, reps or time then variation, and criterion for swap.
-- Every number not read straight from their log is an assumption. Say so in plan, next to number.
+- Every number not read straight from their log is a guess. Label it as one next to the number, every time.
 - Step size from smallest increment that gym owns.
   Working convention, not measured threshold: step over about five percent of working weight means add reps instead of load.
 - Cadence matched to training age. Novice adds load most sessions; that stops sooner than they expect.
